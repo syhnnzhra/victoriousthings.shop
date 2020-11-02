@@ -233,34 +233,34 @@
                             </li>
                       </ul>
                     </li>
-                  <li class="sub-menu">
-                      <a class="nav-link {{ Request::path() === 'user' ? 'bg-primary' :''}} " href="customer">
-                          <i class="glyphicon glyphicon-user"></i>
-                          <span>Customer</span>
-                      </a>
-                  </li>
-                  <li class="sub-menu">
-                      <a class="nav-link {{ Request::path() === 'user' ? 'bg-primary' :''}} " href="/user">
-                      <i class="fa fa-book"></i>
-                          <span>Distributor</span>
-                      </a>
-                  </li>
-                  <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="glyphicon glyphicon-stats"></i>
-                          <span>Transaksi</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a  class="nav-link {{ Request::path() === 'pesanan' ? 'bg-primary' :''}} " href="/pesanan">
-                                <span>Pesanan</span>
-                            </a>
-                        </li>
-                          <li><a  class="nav-link {{ Request::path() === 'Dpesanan' ? 'bg-primary' :''}} " href="/Dpesanan">
-                            <span>Detail Pesanan</span>
-                            </a>
-                        </li>
-                      </ul>
-                    </li>
+                            <li class="sub-menu">
+                                <a class="nav-link {{ Request::path() === 'customer' ? 'bg-primary' :''}} " href="customer">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                    <span>Customer</span>
+                                </a>
+                            </li>
+                            <li class="sub-menu">
+                                <a class="nav-link {{ Request::path() === 'distributor' ? 'bg-primary' :''}} " href="distributor">
+                                <i class="fa fa-book"></i>
+                                    <span>Distributor</span>
+                                </a>
+                            </li>
+                            <li class="sub-menu">
+                                <a href="javascript:;" >
+                                    <i class="glyphicon glyphicon-stats"></i>
+                                    <span>Transaksi</span>
+                                </a>
+                            <ul class="sub">
+                                <li><a  class="nav-link {{ Request::path() === 'order' ? 'bg-primary' :''}} " href="/order">
+                                        <span>Order</span>
+                                    </a>
+                                </li>
+                                <li><a  class="nav-link {{ Request::path() === 'Odetail' ? 'bg-primary' :''}} " href="/Odetail">
+                                    <span>Order Detail</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            </li>
               </ul>
               <!-- sidebar menu end-->
           </div>
