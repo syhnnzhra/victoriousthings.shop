@@ -3,7 +3,10 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', 'PagesController@home'); 
+Route::get('/', 'PagesController@home');
+
+//item
+Route::resource('/item', 'ItemController'); 
 
 // Barang
 Route::get('/barang', 'barangController@index');

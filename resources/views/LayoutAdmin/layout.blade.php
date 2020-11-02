@@ -11,6 +11,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <!--external css-->
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="assets/css/zabuto_calendar.css">
@@ -211,17 +212,37 @@
                       </a>
                   </li>
 
+
                   <li class="sub-menu">
-                      <a class="nav-link {{ Request::path() === 'barang' ? 'bg-primary' :''}} " href="/barang">
-                          <i class="fa fa-desktop"></i>
+                      <a href="javascript:;" >
+                      <i class="fa fa-th"></i>
                           <span>Data Barang</span>
                       </a>
-                  </li>
-
+                      <ul class="sub">
+                            <li><a  class="nav-link {{ Request::path() === 'pesanan' ? 'bg-primary' :''}} " href="item">
+                                <span>Barang</span>
+                                </a>
+                            </li>
+                            <li><a  class="nav-link {{ Request::path() === 'Dpesanan' ? 'bg-primary' :''}} " href="#">
+                                <span>Kategori Barang</span>
+                                </a>
+                            </li>
+                            <li><a  class="nav-link {{ Request::path() === 'Dpesanan' ? 'bg-primary' :''}} " href="#">
+                                <span>Barang Masuk</span>
+                                </a>
+                            </li>
+                      </ul>
+                    </li>
                   <li class="sub-menu">
                       <a class="nav-link {{ Request::path() === 'user' ? 'bg-primary' :''}} " href="/user">
                           <i class="glyphicon glyphicon-user"></i>
-                          <span>Costumer</span>
+                          <span>Customer</span>
+                      </a>
+                  </li>
+                  <li class="sub-menu">
+                      <a class="nav-link {{ Request::path() === 'user' ? 'bg-primary' :''}} " href="/user">
+                      <i class="fa fa-book"></i>
+                          <span>Distributor</span>
                       </a>
                   </li>
                   <li class="sub-menu">
@@ -311,6 +332,11 @@
           console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
       }
   </script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
 
 
 </body>

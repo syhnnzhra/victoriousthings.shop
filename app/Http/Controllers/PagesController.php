@@ -12,7 +12,7 @@ class PagesController extends Controller
 
     public function home()
     {
-        return view('homeAdmin');
+        return view('admin.homeAdmin');
     }
 
 }
