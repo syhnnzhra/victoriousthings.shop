@@ -42,7 +42,7 @@
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
             <!--logo start-->
-            <a href="index.html" class="logo"><b>DASHGUM FREE</b></a>
+            <a href="index.html" class="logo"><b>Victorious Things</b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
@@ -202,7 +202,7 @@
               <ul class="sidebar-menu" id="nav-accordion">
               
               	  <p class="centered"><a href="profile.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
-              	  <h5 class="centered">Marcel Newman</h5>
+              	  <h5 class="centered">Admin</h5>
               	  	
                   <li class="mt">
                       <a class="nav-link {{ Request::path() === '/' ? 'bg-primary' :''}} " href="/">
@@ -251,10 +251,7 @@
       <!--footer start-->
       <footer class="site-footer">
         <div class="text-center">
-            2014 - Alvarez.is
-            <a href="index.html#" class="go-top">
-                <i class="fa fa-angle-up"></i>
-            </a>
+            2020
         </div>
     </footer>
     <!--footer end-->

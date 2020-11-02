@@ -1,6 +1,6 @@
 @extends('layoutAdmin/layout')
 
-      @section('title', 'wellcome ')
+      @section('title', 'Dashboard ')
 
       @section('container')
       <section id="main-content">
@@ -8,7 +8,7 @@
         <div class="row mt">
           <div class="col-lg-12">
             <div class="content-panel">
-              <h4><i class="fa fa-angle-right"></i> Wellcome</h4>
+              <h4>Welcome to Victorious Things</h4>
               </div>
             </div>
           </div>
