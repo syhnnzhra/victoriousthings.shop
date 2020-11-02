@@ -7,6 +7,7 @@ Route::get('/', 'PagesController@home');
 
 //item
 Route::resource('/item', 'ItemController'); 
+Route::resource('/customer', 'Admin\CustomerController'); 
 
 // Barang
 Route::get('/barang', 'barangController@index');
