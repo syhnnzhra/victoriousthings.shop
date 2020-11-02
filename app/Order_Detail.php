@@ -4,8 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class OrderDetail extends Model
+class Order_Detail extends Model
 {
+    protected $table='Order_Details';
     public function Item()
     {
         return $this->belongsTo('App\Item','item_id','id');

@@ -10,7 +10,7 @@ class Order extends Model
     {
         return $this->belongsTo('App\Customer','customer_id','id');
     }
-    public function OrderDetail()
+    public function Order_Detail()
     {
         return $this->hasMany('App\OrderDetail','order_id','id');
     }

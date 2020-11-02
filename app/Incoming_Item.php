@@ -7,4 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Incoming_Item extends Model
 {
     protected $table='incoming_items';
+    public function Item()
+    {
+        return $this->belongsTo('App\Item','item_id','id');
+    }
+    
+    public function Distributor()
+    {
+        return $this->belongsTo('App\Distributor','distributor_id','id');
+    }
 }
