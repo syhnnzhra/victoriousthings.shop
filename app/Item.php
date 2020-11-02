@@ -10,7 +10,7 @@ class Item extends Model
     {
         return $this->hasMany('App\OrderDetail','item_id','id');
     }
-    public function Categorie()
+    public function Category()
     {
         return $this->belonngsTo('App\Categorie','nama','kategori');
     }

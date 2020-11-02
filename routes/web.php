@@ -11,6 +11,12 @@ Route::resource('/item', 'ItemController');
 //costumer
 Route::resource('/customer', 'Admin\CustomerController'); 
 
+//kategori
+Route::resource('/kategori', 'Admin\CategoryController'); 
+
+//barang masuk
+Route::resource('/barang_masuk', 'Admin\IncomingitemController'); 
+
 //distributor
 Route::resource('/distributor', 'Admin\DistributorController'); 
 

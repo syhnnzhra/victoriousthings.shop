@@ -11,7 +11,7 @@
                             <div class="content ml-4">
                                 <h2> Tabel Customer </h2>
                                     <div class="new-data">
-                                        <a href="" class="btn btn-outline-success btn-lg mt-3"><i class="fa fa-plus"></i> Tambah Data</a>
+                                        <a href="customer/create" class="btn btn-outline-success btn-lg mt-3"><i class="fa fa-plus"></i> Tambah Data</a>
                                     </div>
                                     <div class="table mt-3">
                                         <table class="table">
@@ -33,7 +33,9 @@
                                                     <th>{{$pelanggan->no_telp}}</th>
                                                     <th>{{$pelanggan->alamat}}</th>
                                                     <th>{{$pelanggan->jenis_kelamin}}</th>
-                                                    <th><a href="#" class="btn btn-warning btn-sm"> Edit</a>
+                                                    <th>
+                                                        <a href="#" class="btn btn-outline-warning"> Edit</a>
+                                                        <a href="#" class="btn btn-outline-danger">Hapus</a>
                                                     </th>
                                                 </tr>
                                             @endforeach

@@ -223,11 +223,11 @@
                                 <span>Barang</span>
                                 </a>
                             </li>
-                            <li><a  class="nav-link {{ Request::path() === 'Dpesanan' ? 'bg-primary' :''}} " href="#">
+                            <li><a  class="nav-link {{ Request::path() === 'Dpesanan' ? 'bg-primary' :''}} " href="kategori">
                                 <span>Kategori Barang</span>
                                 </a>
                             </li>
-                            <li><a  class="nav-link {{ Request::path() === 'Dpesanan' ? 'bg-primary' :''}} " href="#">
+                            <li><a  class="nav-link {{ Request::path() === 'Dpesanan' ? 'bg-primary' :''}} " href="barang_masuk">
                                 <span>Barang Masuk</span>
                                 </a>
                             </li>
