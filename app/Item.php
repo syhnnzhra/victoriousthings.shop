@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Item extends Model
 {
-    public function Order_Detail()
+    public function Order()
     {
-        return $this->hasMany('App\OrderDetail','item_id','id');
+        return $this->hasMany('App\Order','item_id','id');
     }
     public function Category()
     {
@@ -16,6 +16,6 @@ class Item extends Model
     }
     public function Incoming_Item()
     {
-        return $this->hasMany('App\IncomingItem','item_id','id');
+        return $this->hasMany('App\Incoming_Item','item_id','id');
     }
 }

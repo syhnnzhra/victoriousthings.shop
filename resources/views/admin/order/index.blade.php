@@ -19,8 +19,8 @@
                                                 <tr>
                                                     <th>ID</th>
                                                     <th>ID Customer</th>
+                                                    <th>ID Barang</th>
                                                     <th>Qty</th>
-                                                    <th>Harga</th>
                                                     <th>Aksi</th>
                                                 </tr>
                                             </thead>
@@ -29,8 +29,8 @@
                                                 <tr>
                                                     <th>{{$order->id}}</th>
                                                     <th>{{$order->customer_id}}</th>
+                                                    <th>{{$order->item_id}}</th>
                                                     <th>{{$order->quantity}}</th>
-                                                    <th>{{$order->harga}}</th>
                                                     <th><a href="#" class="btn btn-warning btn-sm"> Edit</a>
                                                     </th>
                                                 </tr>

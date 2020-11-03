@@ -19,7 +19,7 @@
                                                 <tr>
                                                     <th>ID</th>
                                                     <th>ID Order</th>
-                                                    <th>ID Item</th>
+                                                    <th>Harga</th>
                                                     <th>Jumlah</th>
                                                     <th>Pembayaran/Payment</th>
                                                     <th>Order Address</th>
@@ -34,7 +34,7 @@
                                                 <tr>
                                                     <th>{{$orderdetail->id}}</th>
                                                     <th>{{$orderdetail->order_id}}</th>
-                                                    <th>{{$orderdetail->item_id}}</th>
+                                                    <th>{{$orderdetail->Harga}}</th>
                                                     <th>{{$orderdetail->jumlah}}</th>
                                                     <th>{{$orderdetail->pembayaran}}</th>
                                                     <th>{{$orderdetail->order_address}}</th>

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\OrderDetail;
+use App\Order_Detail;
 use Illuminate\Http\Request;
 
 class OdetailController extends Controller
@@ -15,7 +15,7 @@ class OdetailController extends Controller
      */
     public function index()
     {
-        $orderdetail = OrderDetail::all();
+        $orderdetail = Order_Detail::all();
         return view('admin.orderdetail.index', compact('orderdetail'));
     }
 
