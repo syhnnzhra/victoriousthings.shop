@@ -11,7 +11,7 @@
                             <div class="content ml-4">
                                 <h2> Tabel Customer </h2>
                                     <div class="new-data">
-                                        <a href="customer/create" class="btn btn-outline-success btn-lg mt-3"><i class="fa fa-plus"></i> Tambah Data</a>
+                                        <a href="{{url('/customer/create')}}" class="btn btn-outline-success btn-lg mt-3"><i class="fa fa-plus"></i> Tambah Data</a>
                                     </div>
                                     <div class="table mt-3">
                                         <table class="table">
@@ -28,15 +28,19 @@
                                             <tbody>
                                             @foreach($customer as $pelanggan)
                                                 <tr>
-                                                    <th>{{$pelanggan->id}}</th>
-                                                    <th>{{$pelanggan->nama}}</th>
-                                                    <th>{{$pelanggan->no_telp}}</th>
-                                                    <th>{{$pelanggan->alamat}}</th>
-                                                    <th>{{$pelanggan->jenis_kelamin}}</th>
-                                                    <th>
-                                                        <a href="#" class="btn btn-outline-warning"> Edit</a>
-                                                        <a href="#" class="btn btn-outline-danger">Hapus</a>
-                                                    </th>
+                                                    <td>{{$pelanggan->id}}</td>
+                                                    <td>{{$pelanggan->nama}}</td>
+                                                    <td>{{$pelanggan->no_telp}}</td>
+                                                    <td>{{$pelanggan->alamat}}</td>
+                                                    <td>{{$pelanggan->jenis_kelamin}}</td>
+                                                    <td>
+                                                            <a href="{{route('customer.edit',$pelanggan->id)}}" class="btn btn-outline-warning"><i class="fa fa-edit"></i> Edit</a> 
+                                                            <form action="{{route('customer.destroy',$pelanggan->id)}}" method="post">
+                                                                @csrf
+                                                                @method('delete')
+                                                                <button type="submit" class="btn btn-outline-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                                            </form>
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                             </tbody>

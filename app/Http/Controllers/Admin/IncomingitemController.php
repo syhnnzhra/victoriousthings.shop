@@ -80,8 +80,11 @@ class IncomingitemController extends Controller
      * @param  \App\Incoming_Item  $incoming_Item
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Incoming_Item $incoming_Item)
+    public function destroy($id)
     {
-        //
+        $msk = Incoming_Item::FindOrFail($id);
+        $msk->delete();
+
+        return redirect()->route('barang_masuk.index');
     }
 }

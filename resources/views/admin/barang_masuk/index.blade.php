@@ -39,6 +39,14 @@
                                                     <th>Rp {{$brng->harga}}</th>
                                                     <th>Rp {{$brng->subtotal}}</th>
                                                     <th>Rp {{$brng->total}}</th>
+                                                    <th>
+                                                        <a href="{{route('barang_masuk.edit',$brng->id)}}" class="btn btn-outline-warning"><i class="fa fa-edit"></i> Edit</a> 
+                                                            <form action="{{route('barang_masuk.destroy',$brng->id)}}" method="post">
+                                                                @csrf
+                                                                @method('delete')
+                                                                <button type="submit" class="btn btn-outline-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                                            </form>
+                                                    </th>
                                                 </tr>
                                             @endforeach
                                             </tbody>

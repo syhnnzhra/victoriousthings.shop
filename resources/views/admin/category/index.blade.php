@@ -30,8 +30,12 @@
                                                 <td>{{$kat->nama}}</td>
                                                 <td>{{$kat->deskripsi}}</td>
                                                 <td>
-                                                    <a href="#" class="btn btn-outline-warning"> Edit</a>
-                                                    <a href="#" class="btn btn-outline-danger"> Hapus</a>
+                                                    <a href="{{route('kategori.edit',$kat->id)}}" class="btn btn-outline-warning"><i class="fa fa-edit"></i> Edit</a> 
+                                                            <form action="{{route('kategori.destroy',$kat->id)}}" method="post">
+                                                                @csrf
+                                                                @method('delete')
+                                                                <button type="submit" class="btn btn-outline-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                                            </form>
                                                 </td>
                                             </tr>
                                         @endforeach

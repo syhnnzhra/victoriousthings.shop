@@ -80,8 +80,11 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+        $category = Category::FindOrFail($id);
+        $category->delete();
+
+        return redirect()->route('kategori.index');
     }
 }

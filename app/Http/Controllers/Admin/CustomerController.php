@@ -80,8 +80,11 @@ class CustomerController extends Controller
      * @param  \App\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Customer $customer)
+    public function destroy($id)
     {
-        //
+        $customer = Customer::FindOrFail($id);
+        $customer->delete();
+
+        return redirect()->route('customer.index');
     }
 }
