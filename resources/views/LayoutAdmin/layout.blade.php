@@ -219,28 +219,28 @@
                           <span>Data Barang</span>
                       </a>
                       <ul class="sub">
-                            <li><a  class="nav-link {{ Request::path() === 'pesanan' ? 'bg-primary' :''}} " href="item">
+                            <li><a  class="nav-link {{ Request::path() === 'item' ? 'bg-primary' :''}} " href="/item">
                                 <span>Barang</span>
                                 </a>
                             </li>
-                            <li><a  class="nav-link {{ Request::path() === 'Dpesanan' ? 'bg-primary' :''}} " href="kategori">
+                            <li><a  class="nav-link {{ Request::path() === 'kategori' ? 'bg-primary' :''}} " href="/kategori">
                                 <span>Kategori Barang</span>
                                 </a>
                             </li>
-                            <li><a  class="nav-link {{ Request::path() === 'Dpesanan' ? 'bg-primary' :''}} " href="barang_masuk">
+                            <li><a  class="nav-link {{ Request::path() === 'barang_masuk' ? 'bg-primary' :''}} " href="/barang_masuk">
                                 <span>Barang Masuk</span>
                                 </a>
                             </li>
                       </ul>
                     </li>
                             <li class="sub-menu">
-                                <a class="nav-link {{ Request::path() === 'customer' ? 'bg-primary' :''}} " href="customer">
+                                <a class="nav-link {{ Request::path() === 'customer' ? 'bg-primary' :''}} " href="/customer">
                                     <i class="glyphicon glyphicon-user"></i>
                                     <span>Customer</span>
                                 </a>
                             </li>
                             <li class="sub-menu">
-                                <a class="nav-link {{ Request::path() === 'distributor' ? 'bg-primary' :''}} " href="distributor">
+                                <a class="nav-link {{ Request::path() === 'distributor' ? 'bg-primary' :''}} " href="/distributor">
                                 <i class="fa fa-book"></i>
                                     <span>Distributor</span>
                                 </a>
@@ -250,17 +250,17 @@
                                     <i class="glyphicon glyphicon-stats"></i>
                                     <span>Transaksi</span>
                                 </a>
-                            <ul class="sub">
-                                <li><a  class="nav-link {{ Request::path() === 'order' ? 'bg-primary' :''}} " href="/order">
-                                        <span>Order</span>
-                                    </a>
-                                </li>
-                                <li><a  class="nav-link {{ Request::path() === 'Odetail' ? 'bg-primary' :''}} " href="/Odetail">
-                                    <span>Order Detail</span>
-                                    </a>
-                                </li>
-                            </ul>
-                            </li>
+                                <ul class="sub">
+                                    <li><a  class="nav-link {{ Request::path() === 'order' ? 'bg-primary' :''}} " href="/order">
+                                          <span>Order</span>
+                                      </a>
+                                  </li>
+                                    <li><a  class="nav-link {{ Request::path() === 'Odetail' ? 'bg-primary' :''}} " href="/Odetail">
+                                      <span>Order Detail</span>
+                                      </a>
+                                  </li>
+                                </ul>
+                              </li>
               </ul>
               <!-- sidebar menu end-->
           </div>
@@ -289,7 +289,7 @@
 
 
   <!--common script for all pages-->
-  <script src="{{ asset('assets/js/common-scripts.js')}}/"></script>
+  <script src="{{ asset('assets/js/common-scripts.js')}}"></script>
   
   <script type="text/javascript" src="{{ asset('assets/js/gritter/js/jquery.gritter.js') }}"></script>
   <script type="text/javascript" src="{{ asset('assets/js/gritter-conf.js') }}"></script>
@@ -299,40 +299,39 @@
   <script src="{{ asset('assets/js/zabuto_calendar.js') }}"></script>	
   
   <script type="application/javascript">
-      $(document).ready(function () {
-          $("#date-popover").popover({html: true, trigger: "manual"});
-          $("#date-popover").hide();
-          $("#date-popover").click(function (e) {
-              $(this).hide();
-          });
-      
-          $("#my-calendar").zabuto_calendar({
-              action: function () {
-                  return myDateFunction(this.id, false);
-              },
-              action_nav: function () {
-                  return myNavFunction(this.id);
-              },
-              ajax: {
-                  url: "show_data.php?action=1",
-                  modal: true
-              },
-              legend: [
-                  {type: "text", label: "Special event", badge: "00"},
-                  {type: "block", label: "Regular event", }
-              ]
-          });
-      });
-      
-      
-      function myNavFunction(id) {
-          $("#date-popover").hide();
-          var nav = $("#" + id).data("navigation");
-          var to = $("#" + id).data("to");
-          console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
-      }
-  </script>
-  
+    $(document).ready(function () {
+        $("#date-popover").popover({html: true, trigger: "manual"});
+        $("#date-popover").hide();
+        $("#date-popover").click(function (e) {
+            $(this).hide();
+        });
+    
+        $("#my-calendar").zabuto_calendar({
+            action: function () {
+                return myDateFunction(this.id, false);
+            },
+            action_nav: function () {
+                return myNavFunction(this.id);
+            },
+            ajax: {
+                url: "show_data.php?action=1",
+                modal: true
+            },
+            legend: [
+                {type: "text", label: "Special event", badge: "00"},
+                {type: "block", label: "Regular event", }
+            ]
+        });
+    });
+    
+    
+    function myNavFunction(id) {
+        $("#date-popover").hide();
+        var nav = $("#" + id).data("navigation");
+        var to = $("#" + id).data("to");
+        console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
+    }
+</script>
 
 
 </body>
