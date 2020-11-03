@@ -1,6 +1,6 @@
 @extends('layoutAdmin/layout')
 
-      @section('title', 'Tambah Data Kategori Barang')
+      @section('title', 'Edit Data Kategori Barang')
 
       @section('container')
       <section id="main-content">
@@ -9,22 +9,23 @@
           <div class="col-lg-12">
                     <div class="content-panel">
                         <div class="content ml-4">
-                            <h3> Form Tambah Data </h3>
-                                <form action="{{route('kategori.store')}}" method="post">
+                            <h3> Form Edit Data</h3>
+                                <form action="{{route('kategori.update',$category->id)}}" method="post">
+                                @Method('PUT')
                                 @csrf
                                     <div class="form-group row mt-4 ml-4">
                                         <label for="colFormLabel" class="col-sm-2 col-form-label">Nama Kategori</label>
                                         <div class="col-sm-6">
-                                        <input type="text" class="form-control" name="nama" placeholder="Masukan Nama Kategori Barang" required>
+                                        <input type="text" class="form-control" name="nama" placeholder="Masukan Nama" required value="{{$category->nama}}">
                                         </div>
                                         <div class="col-sm-4">
                                         
                                         </div>
                                     </div>
                                     <div class="form-group row mt-4 ml-4">
-                                        <label for="colFormLabel" class="col-sm-2 col-form-label">Deskripsi</label>
+                                        <label for="colFormLabel" class="col-sm-2 col-form-label">Deskripsi Kategori</label>
                                         <div class="col-sm-6">
-                                        <textarea type="text" class="form-control" name="deskripsi" placeholder="Masukan Nama Deskripsi Barang" required rows="3"></textarea>
+                                        <input type="text" class="form-control" name="deskripsi" required value="{{$category->deskripsi}}"></input>
                                         </div>
                                         <div class="col-sm-4">
                                         

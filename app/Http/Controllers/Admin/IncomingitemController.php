@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Incoming_Item;
 use Illuminate\Http\Request;
+use App\Item;
+use App\Distributor;
 
 class IncomingitemController extends Controller
 {
@@ -26,7 +28,8 @@ class IncomingitemController extends Controller
      */
     public function create()
     {
-        //
+        $data['distributor']=Distributor::all();
+        return view('admin.barang_masuk.create', $data);
     }
 
     /**
@@ -37,7 +40,16 @@ class IncomingitemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $brng=new Incoming_Item;
+        $brng->item_id=$request->item_id;
+        $brng->distributor_id=$request->distributor_id;
+        $brng->tanggal=$request->tanggal;
+        $brng->jumlah=$request->jumlah;
+        $brng->harga=$request->harga;
+        $brng->subtotal=$request->subtotal;
+        $brng->total=$request->total;
+        $brng->save();
+        return redirect()->route('barang_masuk.index');
     }
 
     /**
@@ -57,9 +69,11 @@ class IncomingitemController extends Controller
      * @param  \App\Incoming_Item  $incoming_Item
      * @return \Illuminate\Http\Response
      */
-    public function edit(Incoming_Item $incoming_Item)
+    public function edit($id)
     {
-        //
+        $distributor = Distributor::all();
+        $brng_msk = Incoming_Item::FindOrFail($id);
+        return view('admin.barang_masuk.edit', compact('brng_msk', 'distributor'));
     }
 
     /**
@@ -69,9 +83,18 @@ class IncomingitemController extends Controller
      * @param  \App\Incoming_Item  $incoming_Item
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Incoming_Item $incoming_Item)
+    public function update(Request $request, $id)
     {
-        //
+        $brng = Incoming_Item::FindOrFail($id);
+        $brng->item_id=$request->item_id;
+        $brng->distributor_id=$request->distributor_id;
+        $brng->tanggal=$request->tanggal;
+        $brng->jumlah=$request->jumlah;
+        $brng->harga=$request->harga;
+        $brng->subtotal=$request->subtotal;
+        $brng->total=$request->total;
+        $brng->save();
+        return redirect()->route('barang_masuk.index');
     }
 
     /**

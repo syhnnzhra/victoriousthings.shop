@@ -11,7 +11,7 @@
                             <div class="content ml-4">
                                 <h3> Tabel Barang Masuk</h3>
                                     <div class="new-data">
-                                        <a href="" class="btn btn-outline-success btn-lg mt-3"><i class="fa fa-plus"></i> Tambah Data</a>
+                                        <a href="/barang_masuk/create" class="btn btn-outline-success btn-lg mt-3"><i class="fa fa-plus"></i> Tambah Data</a>
                                     </div>
                                     <div class="table mt-3">
                                         <table class="table">

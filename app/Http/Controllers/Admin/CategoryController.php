@@ -37,7 +37,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category=new Category;
+        $category->nama=$request->nama;
+        $category->deskripsi=$request->deskripsi;
+        $category->save();
+
+        return redirect()->route('kategori.index');
     }
 
     /**
@@ -57,9 +62,10 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        //
+        $category = Category::FindOrFail($id);
+        return view('admin.category.edit', compact('category'));
     }
 
     /**
@@ -69,9 +75,13 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
-        //
+        $category = Category::FindOrFail($id);
+        $category->nama=$request->nama;
+        $category->deskripsi=$request->deskripsi;
+        $category->save();
+        return redirect()->route('kategori.index');
     }
 
     /**

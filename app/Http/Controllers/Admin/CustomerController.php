@@ -37,7 +37,14 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $customer=new Customer;
+        $customer->nama=$request->nama;
+        $customer->no_telp=$request->no_telp;
+        $customer->alamat=$request->alamat;
+        $customer->jenis_kelamin=$request->jenis_kelamin;
+        $customer->save();
+
+        return redirect()->route('customer.index');
     }
 
     /**
@@ -57,9 +64,10 @@ class CustomerController extends Controller
      * @param  \App\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Customer $customer)
+    public function edit($id)
     {
-        //
+        $customer = Customer::FindOrFail($id);
+        return view('admin.customer.edit', compact('customer'));
     }
 
     /**
@@ -69,9 +77,15 @@ class CustomerController extends Controller
      * @param  \App\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Customer $customer)
+    public function update(Request $request, $id)
     {
-        //
+        $customer = Customer::FindOrFail($id);
+        $customer->nama=$request->nama;
+        $customer->no_telp=$request->no_telp;
+        $customer->alamat=$request->alamat;
+        $customer->jenis_kelamin=$request->jenis_kelamin;
+        $customer->save();
+        return redirect()->route('customer.index');
     }
 
     /**
