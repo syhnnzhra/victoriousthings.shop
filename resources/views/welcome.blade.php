@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Harus nya halaman Public
                 </div>
 
                 <div class="links">

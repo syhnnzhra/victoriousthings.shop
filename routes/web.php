@@ -30,3 +30,10 @@ Route::resource('/Odetail', 'Admin\OdetailController');
 Route::get('/barang', 'barangController@index');
 Route::post('/barang', 'barangController@store');
 Route::delete('/barang/{item}', 'barangController@destroy');
+
+
+
+
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
