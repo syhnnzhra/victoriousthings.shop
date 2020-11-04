@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Order;
+use App\Customer;
+use App\Item;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -15,8 +17,10 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $order = order::all();
-        return view('admin.order.index', compact('order'));
+        $data['customer']=Customer::all();
+        $data['item']=Item::all();
+        $data['order']=Order::all();
+        return view('admin.order.index', $data);
     }
 
     /**
@@ -26,7 +30,9 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        $data['customer']=Customer::all();
+        $data['item']=Item::all();
+        return view('admin.order.create', $data);
     }
 
     /**
@@ -37,7 +43,13 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $order=new Order;
+        $order->customer_id=$request->customer_id;
+        $order->item_id=$request->item_id;
+        $order->quantity=$request->quantity;
+        $order->save();
+
+        return redirect()->route('order.index');
     }
 
     /**
@@ -57,9 +69,12 @@ class OrderController extends Controller
      * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function edit(Order $order)
+    public function edit($id)
     {
-        //
+        $customer = Customer::all();
+        $item = Item::all();
+        $order = Order::FindOrFail($id);
+        return view('admin.order.edit', compact('order', 'customer', 'item'));
     }
 
     /**
@@ -69,9 +84,14 @@ class OrderController extends Controller
      * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order $order)
+    public function update(Request $request, $id)
     {
-        //
+        $order = Order::FindOrFail($id);
+        $order->customer_id=$request->customer_id;
+        $order->item_id=$request->item_id;
+        $order->quantity=$request->quantity;
+        $order->save();
+        return redirect()->route('order.index');
     }
 
     /**
@@ -80,8 +100,11 @@ class OrderController extends Controller
      * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Order $order)
+    public function destroy($id)
     {
-        //
+        $order = Order::FindOrFail($id);
+        $order->delete();
+
+        return redirect()->route('order.index');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Order_Detail;
+use App\Order;
 use Illuminate\Http\Request;
 
 class OdetailController extends Controller
@@ -26,7 +27,8 @@ class OdetailController extends Controller
      */
     public function create()
     {
-        //
+        $data['order']=Order::all();
+        return view('admin.orderdetail.create', $data);
     }
 
     /**
@@ -37,7 +39,17 @@ class OdetailController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $orderdetail=new Order_Detail;
+        $orderdetail->order_id=$request->order_id;
+        $orderdetail->harga=$request->harga;
+        $orderdetail->jumlah=$request->jumlah;
+        $orderdetail->pembayaran=$request->pembayaran;
+        $orderdetail->order_address=$request->order_address;
+        $orderdetail->email=$request->email;
+        $orderdetail->tanggal=$request->tanggal;
+        $orderdetail->status=$request->status;
+        $orderdetail->save();
+        return redirect()->route('Odetail.index');
     }
 
     /**
@@ -57,9 +69,11 @@ class OdetailController extends Controller
      * @param  \App\Odetail  $odetail
      * @return \Illuminate\Http\Response
      */
-    public function edit(Odetail $odetail)
+    public function edit($id)
     {
-        //
+        $order = Order::all();
+        $orderdetail = Order_Detail::FindOrFail($id);
+        return view('admin.orderdetail.edit', compact('orderdetail','order'));
     }
 
     /**
@@ -69,9 +83,19 @@ class OdetailController extends Controller
      * @param  \App\Odetail  $odetail
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Odetail $odetail)
+    public function update(Request $request, $id)
     {
-        //
+        $orderdetail = Order_Detail::FindOrFail($id);
+        $orderdetail->order_id=$request->order_id;
+        $orderdetail->harga=$request->harga;
+        $orderdetail->jumlah=$request->jumlah;
+        $orderdetail->pembayaran=$request->pembayaran;
+        $orderdetail->order_address=$request->order_address;
+        $orderdetail->email=$request->email;
+        $orderdetail->tanggal=$request->tanggal;
+        $orderdetail->status=$request->status;
+        $orderdetail->save();
+        return redirect()->route('Odetail.index');
     }
 
     /**
@@ -80,8 +104,11 @@ class OdetailController extends Controller
      * @param  \App\Odetail  $odetail
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Odetail $odetail)
+    public function destroy($id)
     {
-        //
+        $orderdetail = Order_Detail::FindOrFail($id);
+        $orderdetail->delete();
+
+        return redirect()->route('Odetail.index');
     }
 }

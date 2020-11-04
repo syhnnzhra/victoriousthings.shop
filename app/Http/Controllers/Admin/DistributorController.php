@@ -37,7 +37,14 @@ class DistributorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $distributor = new Distributor;
+        $distributor->nama = $request->nama;
+        $distributor->alamat = $request->alamat;
+        $distributor->email = $request->email;
+        $distributor->telephone = $request->telephone;
+        $distributor->save();
+        
+        return redirect('/distributor');
     }
 
     /**
@@ -57,9 +64,10 @@ class DistributorController extends Controller
      * @param  \App\Distributor  $distributor
      * @return \Illuminate\Http\Response
      */
-    public function edit(Distributor $distributor)
+    public function edit($id)
     {
-        //
+        $distributor = Distributor::FindOrFail($id);
+        return view('admin.distributor.edit', compact('distributor'));
     }
 
     /**
@@ -69,9 +77,15 @@ class DistributorController extends Controller
      * @param  \App\Distributor  $distributor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Distributor $distributor)
+    public function update(Request $request, $id)
     {
-        //
+        $distributor = Distributor::FindOrFail($id);
+        $distributor->nama=$request->nama;
+        $distributor->alamat=$request->alamat;
+        $distributor->email=$request->email;
+        $distributor->telephone=$request->telephone;
+        $distributor->save();
+        return redirect()->route('distributor.index');
     }
 
     /**
@@ -80,8 +94,12 @@ class DistributorController extends Controller
      * @param  \App\Distributor  $distributor
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Distributor $distributor)
+    public function destroy($id)
     {
-        //
+        $distributor = Distributor::FindOrFail($id);
+        $distributor->delete();
+
+        return redirect()->route('distributor.index');
     }
-}
+    }
+

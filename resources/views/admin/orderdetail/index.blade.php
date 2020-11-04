@@ -5,13 +5,13 @@
       @section('container')
           <section id="main-content">
             <section class="wrapper">
-            <div class="row mt-4">
+            <div class="row mt">
               <div class="col-lg-12">
                         <div class="content-panel">
                             <div class="content ml-4">
                                 <h3> Tabel Order Detail </h3>
                                     <div class="new-data">
-                                        <a href="/orderdetail/create" class="btn btn-outline-success btn-lg mt-3"><i class="fa fa-plus"></i> Tambah Data</a>
+                                        <a href="/Odetail/create" class="btn btn-outline-success btn-lg mt-3"><i class="fa fa-plus"></i> Tambah Data</a>
                                     </div>
                                     <div class="table mt-3">
                                         <table class="table">
@@ -32,17 +32,23 @@
                                             <tbody>
                                             @foreach($orderdetail as $orderdetail)
                                                 <tr>
-                                                    <th>{{$orderdetail->id}}</th>
-                                                    <th>{{$orderdetail->order_id}}</th>
-                                                    <th>{{$orderdetail->Harga}}</th>
-                                                    <th>{{$orderdetail->jumlah}}</th>
-                                                    <th>{{$orderdetail->pembayaran}}</th>
-                                                    <th>{{$orderdetail->order_address}}</th>
-                                                    <th>{{$orderdetail->email}}</th>
-                                                    <th>{{$orderdetail->tanggal}}</th>
-                                                    <th>{{$orderdetail->status}}</th>
-                                                    <th><a href="#" class="btn btn-warning btn-sm"> Edit</a>
-                                                    </th>
+                                                    <td>{{$orderdetail->id}}</td>
+                                                    <td>{{$orderdetail->order_id}}</td>
+                                                    <td>{{$orderdetail->harga}}</td>
+                                                    <td>{{$orderdetail->jumlah}}</td>
+                                                    <td>{{$orderdetail->pembayaran}}</td>
+                                                    <td>{{$orderdetail->order_address}}</td>
+                                                    <td>{{$orderdetail->email}}</td>
+                                                    <td>{{$orderdetail->tanggal}}</td>
+                                                    <td>{{$orderdetail->status}}</td>
+                                                    <td>
+                                                        <a href="{{route('Odetail.edit',$orderdetail->id)}}" class="btn btn-outline-warning"><i class="fa fa-edit"></i></a> 
+                                                        <form action="{{route('Odetail.destroy',$orderdetail->id)}}" method="post" class="d-inline">
+                                                            @csrf
+                                                            @method('delete')
+                                                            <button type="submit" class="btn btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                                        </form>
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                             </tbody>

@@ -18,8 +18,8 @@
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>ID Customer</th>
-                                                    <th>ID Barang</th>
+                                                    <th>Customer</th>
+                                                    <th>Barang</th>
                                                     <th>Qty</th>
                                                     <th>Aksi</th>
                                                 </tr>
@@ -27,12 +27,18 @@
                                             <tbody>
                                             @foreach($order as $order)
                                                 <tr>
-                                                    <th>{{$order->id}}</th>
-                                                    <th>{{$order->customer_id}}</th>
-                                                    <th>{{$order->item_id}}</th>
-                                                    <th>{{$order->quantity}}</th>
-                                                    <th><a href="#" class="btn btn-warning btn-sm"> Edit</a>
-                                                    </th>
+                                                    <td>{{$order->id}}</td>
+                                                    <td>{{$order->customer->id}} - {{$order->customer->nama}}</td>
+                                                    <td>{{$order->item_id}} - {{$order->item->nama}}</td>
+                                                    <td>{{$order->quantity}}</td>
+                                                    <td>
+                                                        <a href="{{route('order.edit',$order->id)}}" class="btn btn-outline-warning"><i class="fa fa-edit"></i></a> 
+                                                        <form action="{{route('order.destroy',$order->id)}}" method="post" class="d-inline">
+                                                            @csrf
+                                                            @method('delete')
+                                                            <button type="submit" class="btn btn-outline-danger"><i class="fa fa-trash-o"></i></button>
+                                                        </form>
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                             </tbody>
