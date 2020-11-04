@@ -42,7 +42,10 @@
                                     <div class="form-group row mt-4 ml-4">
                                         <label for="colFormLabel" class="col-sm-2 col-form-label">Jenis Kelamin</label>
                                         <div class="col-sm-6">
-                                        <input type="text" class="form-control" name="jenis_kelamin" placeholder="Jeni" required>
+                                            <select class="form-control" id="exampleFormControlSelect1" required name="jenis_kelamin">
+                                                <option value="Perempuan">Perempuan</option>
+                                                <option value="Laki-Laki">Laki-Laki</option>
+                                            </select>
                                         </div>
                                         <div class="col-sm-4">
                                         

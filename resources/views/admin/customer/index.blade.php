@@ -34,11 +34,13 @@
                                                     <td>{{$pelanggan->alamat}}</td>
                                                     <td>{{$pelanggan->jenis_kelamin}}</td>
                                                     <td>
-                                                            <a href="{{route('customer.edit',$pelanggan->id)}}" class="btn btn-outline-warning"><i class="fa fa-edit"></i> Edit</a> 
-                                                            <form action="{{route('customer.destroy',$pelanggan->id)}}" method="post">
+                                                            <a href="{{route('customer.edit',$pelanggan->id)}}" class="btn btn-outline-warning"><i class="fa fa-edit"></i></a> 
+                                                            <form action="{{route('customer.destroy',$pelanggan->id)}}" method="post" class="d-inline">
                                                                 @csrf
                                                                 @method('delete')
-                                                                <button type="submit" class="btn btn-outline-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                                                <button type="submit" class="btn btn-outline-danger">
+                                                                <i class="fa fa-trash-o"></i>
+                                                                </button>
                                                             </form>
                                                     </td>
                                                 </tr>

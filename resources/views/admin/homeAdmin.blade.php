@@ -5,6 +5,7 @@
       @section('container')
       <section id="main-content">
         <section class="wrapper">
+        @if(Auth::user()->level == 'admin')
         <div class="row mt">
           <div class="col-lg-12">
             <div class="content-panel">
@@ -12,6 +13,7 @@
               </div>
             </div>
           </div>
+        @endif
 
 @endsection
     

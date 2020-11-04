@@ -9,7 +9,7 @@
               <div class="col-lg-12">
                         <div class="content-panel">
                             <div class="content ml-4">
-                                <h3> Tabel Barang Masuk</h3>
+                                <h2> Tabel Barang Masuk</h2>
                                     <div class="new-data">
                                         <a href="/barang_masuk/create" class="btn btn-outline-success btn-lg mt-3"><i class="fa fa-plus"></i> Tambah Data</a>
                                     </div>
@@ -40,11 +40,14 @@
                                                     <th>Rp {{$brng->subtotal}}</th>
                                                     <th>Rp {{$brng->total}}</th>
                                                     <th>
-                                                        <a href="{{route('barang_masuk.edit',$brng->id)}}" class="btn btn-outline-warning"><i class="fa fa-edit"></i> Edit</a> 
-                                                            <form action="{{route('barang_masuk.destroy',$brng->id)}}" method="post">
+                                                        <a href="{{route('barang_masuk.edit',$brng->id)}}" class="btn btn-warning"><i class="fa fa-edit"></i> </a> 
+                                                            
+                                                            <form action="{{route('barang_masuk.destroy',$brng->id)}}" method="post" class="d-inline">
                                                                 @csrf
                                                                 @method('delete')
-                                                                <button type="submit" class="btn btn-outline-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                                                <button type="submit" class="btn btn-danger">
+                                                                <i class="fa fa-trash-o"></i>
+                                                                </button>
                                                             </form>
                                                     </th>
                                                 </tr>

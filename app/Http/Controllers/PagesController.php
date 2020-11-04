@@ -16,7 +16,7 @@ class PagesController extends Controller
 
     public function home()
     {
-        return view('admin.homeAdmin');
+        return view('welcome');
     }
 
 }

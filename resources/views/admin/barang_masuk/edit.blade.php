@@ -1,6 +1,6 @@
 @extends('layoutAdmin/layout')
 
-      @section('title', 'Tambah Data Brang Masuk')
+      @section('title', 'Edit Data Barang Masuk')
 
       @section('container')
       <section id="main-content">
@@ -9,7 +9,7 @@
           <div class="col-lg-12">
                     <div class="content-panel">
                         <div class="content ml-4">
-                            <h3> Form Tambah Data </h3>
+                            <h3> Form Edit Data </h3>
                                 <form action="{{route('barang_masuk.update',$brng_msk->id)}}" method="post">
                                 @Method('PUT')
                                 @csrf
@@ -27,7 +27,7 @@
                                         <div class="col-sm-6">
                                             <select class="form-control" id="exampleFormControlSelect1" required name="distributor_id">
                                                 @foreach($distributor as $ds)
-                                                <option value="{{$ds->id}}">{{$ds->nama}}</option>
+                                                <option value="{{$ds->nama}}">{{$ds->nama}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -35,19 +35,7 @@
                                         
                                         </div>
                                     </div>
-                                    <div class="form-group row mt-4 ml-4">
-                                        <label for="colFormLabel" class="col-sm-2 col-form-label">Tanggal</label>
-                                        <div class="col-sm-6">
-                                        <input type="text" class="date form-control" name="tanggal" required value="{{$brng_msk->tanggal}}">
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <script type="text/javascript">
-                                                $('.date').datepicker({  
-                                                format: 'yyyy-mm-dd'
-                                                });  
-                                            </script> 
-                                        </div>
-                                    </div>
+                                    
                                     <div class="form-group row mt-4 ml-4">
                                         <label for="colFormLabel" class="col-sm-2 col-form-label">Jumlah</label>
                                         <div class="col-sm-6">
@@ -82,6 +70,19 @@
                                         </div>
                                         <div class="col-sm-4">
                                         
+                                        </div>
+                                    </div>
+                                    <div class="form-group row mt-4 ml-4">
+                                        <label for="colFormLabel" class="col-sm-2 col-form-label">Tanggal</label>
+                                        <div class="col-sm-6">
+                                        <input type="text" class="date form-control" name="tanggal" required value="{{$brng_msk->tanggal}}">
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <script type="text/javascript">
+                                                $('.date').datepicker({  
+                                                format: 'yyyy-mm-dd'
+                                                });  
+                                            </script> 
                                         </div>
                                     </div>
                                     <div class="button ml-5 mb-4">

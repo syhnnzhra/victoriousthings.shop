@@ -21,20 +21,23 @@
                                                 <th>Nama Kategori</th>
                                                 <th>Deskripsi</th>
                                                 <th>Aksi</th>
+                                                <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                         @foreach($category as $kat)
                                             <tr>
                                                 <th>{{$kat->id}}</th>
-                                                <td>{{$kat->nama}}</td>
-                                                <td>{{$kat->deskripsi}}</td>
+                                                <th>{{$kat->nama}}</th>
+                                                <th>{{$kat->deskripsi}}</th>
                                                 <td>
-                                                    <a href="{{route('kategori.edit',$kat->id)}}" class="btn btn-outline-warning"><i class="fa fa-edit"></i> Edit</a> 
-                                                            <form action="{{route('kategori.destroy',$kat->id)}}" method="post">
+                                                    <a href="{{route('kategori.edit',$kat->id)}}" class="btn btn-outline-warning"><i class="fa fa-edit"></i> </a> 
+                                                            <form action="{{route('kategori.destroy',$kat->id)}}" method="post" class="d-inline">
                                                                 @csrf
                                                                 @method('delete')
-                                                                <button type="submit" class="btn btn-outline-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                                                <button type="submit" class="btn btn-outline-danger">
+                                                                <i class="fa fa-trash-o"></i>
+                                                                </button>
                                                             </form>
                                                 </td>
                                             </tr>
