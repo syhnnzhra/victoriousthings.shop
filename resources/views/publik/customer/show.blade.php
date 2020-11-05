@@ -10,7 +10,12 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="center-heading">
-                        <h2 class="section-title">My Profile</h2>
+                        <div class="profil">
+                            <img src="{{asset('assets/images/profile.png')}}" width="175px"></img>
+                        </div>
+                        <div class="nama mt-4">
+                            <h2 class="section-title">My Profile</h2>
+                        </div>
                     </div>
                 </div>
                 <div class="offset-lg-3 col-lg-6">
@@ -33,14 +38,29 @@
                         <div class="alert alert-danger">{{ session('error') }}</div>
                         @endif
                       </div>
-                      
-                      @foreach ($customer as $cu)
-                          <li class="list-group-item d-flex justify-content-between align-items-center">
-                              {{$cu->id}} - {{$cu->nama}}
-                          <a href="{{route('customer_publik.show',$cu->id)}}" class="badge badge-secondary">Detail</a>
-                          </li>
-                      @endforeach
 
+                        <div class="table text-center">
+                            <table class="table table-borderless">
+                                <tbody>
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">{{$customer->nama}}</th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Telephone</th>
+                                        <th scope="col">{{$customer->no_telp}}</th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Alamat</th>
+                                        <th scope="col">{{$customer->alamat}}</th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Jenis Kelamin</th>
+                                        <th scope="col">{{$customer->jenis_kelamin}}</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
                 <!-- ***** Contact Form End ***** -->

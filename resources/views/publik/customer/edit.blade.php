@@ -28,19 +28,28 @@
                     <div class="col-9">
                     <div class="col-lg-8 col-md-6 col-sm-12">
                     <div class="contact-form">
-                      <div class="table-responsive">
-                        @if (session('error'))
-                        <div class="alert alert-danger">{{ session('error') }}</div>
-                        @endif
-                      </div>
-                      
-                      @foreach ($customer as $cu)
-                          <li class="list-group-item d-flex justify-content-between align-items-center">
-                              {{$cu->id}} - {{$cu->nama}}
-                          <a href="{{route('customer_publik.show',$cu->id)}}" class="badge badge-secondary">Detail</a>
-                          </li>
-                      @endforeach
-
+                        <form action="{{route('customer_publik.store')}}" method="post">
+                        @csrf
+                            <div class="form-group">
+                                <label for="inputAddress2">Nama</label>
+                                <input type="text" class="form-control" name="nama">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAddress2">No Telephone</label>
+                                <input type="text" class="form-control" name="no_telp">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAddress2">Alamat</label>
+                                <input type="text" class="form-control" name="alamat">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAddress2">Alamat</label>
+                                <input type="text" class="form-control" name="alamat">
+                            </div>
+                                <fieldset>
+                                    <button type="submit" id="form-submit"  class="main-button">Kirim</button>
+                                </fieldset>
+                            </form>
                     </div>
                 </div>
                 <!-- ***** Contact Form End ***** -->

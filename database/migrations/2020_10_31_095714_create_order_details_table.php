@@ -18,7 +18,7 @@ class CreateOrderDetailsTable extends Migration
             $table->integer('order_id');
             $table->integer('harga');
             $table->integer('jumlah');
-            $table->integer('pembayaran');
+            $table->string('pembayaran');
             $table->string('order_address');
             $table->string('email');
             $table->date('tanggal');

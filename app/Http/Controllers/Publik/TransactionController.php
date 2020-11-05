@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Publik;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Order;
+use App\Customer;
+use App\Item;
+use App\Order_Detail;
 
 class TransactionController extends Controller
 {
@@ -14,7 +18,10 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        return view ('publik.transaksi.index');
+        $data['customer']=Customer::all();
+        $data['item']=Item::all();
+        $data['order']=Order::all();
+        return view ('publik.transaksi.index', $data);
     }
 
     /**
@@ -35,7 +42,17 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $ud=new Order_Detail;
+        $ud->order_id=$request->order_id;
+        $ud->harga=$request->harga;
+        $ud->jumlah=$request->jumlah;
+        $ud->pembayaran=$request->pembayaran;
+        $ud->order_address=$request->order_address;
+        $ud->email=$request->email;
+        $ud->tanggal=$request->tanggal;
+        $ud->status=$request->status;
+        $ud->save();
+        return redirect()->route('transaksi.index');
     }
 
     /**

@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Publik;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Order;
 use App\Customer;
+use App\Item;
+use App\Order_Detail;
 
-class CustomerController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +18,18 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customer = Customer::all();
-        return view('publik.customer.index', compact('customer'));
+        $order = Order::with(['district.city.province', 'details', 'details.product', 'payment'])
+        ->where('invoice', $invoice)->first();
+
+        //JADI KITA CEK, VALUE forUser() NYA ADALAH CUSTOMER YANG SEDANG LOGIN
+        //DAN ALLOW NYA MEMINTA DUA PARAMETER
+        //PERTAMA ADALAH NAMA GATE YANG DIBUAT SEBELUMNYA DAN YANG KEDUA ADALAH DATA ORDER DARI QUERY DI ATAS
+        if (\Gate::forUser(auth()->guard('customer')->user())->allows('order-view', $order)) {
+            //JIKA HASILNYA TRUE, MAKA KITA TAMPILKAN DATANYA
+            return view('publik.customer.index', compact('order'));
+        }
+        //JIKA FALSE, MAKA REDIRECT KE HALAMAN YANG DIINGINKAN
+        return redirect(route('/customer_publik'))->with(['error' => 'Anda Tidak Diizinkan Untuk Mengakses Order Orang Lain']);
     }
 
     /**
@@ -48,8 +61,7 @@ class CustomerController extends Controller
      */
     public function show($id)
     {
-        $data['customer']=Customer::findOrFail($id);
-        return view('publik.customer.show', $data);
+        //
     }
 
     /**
@@ -60,8 +72,7 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        $customer = Customer::find($id);
-        return view('publik.customer.edit', compact('customer'));
+        //
     }
 
     /**

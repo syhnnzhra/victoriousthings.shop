@@ -2,6 +2,7 @@
 
       @section('title', 'My Transaction')
 
+
       @section('container')
       <section class="section colored" id="contact-us">
         <div class="container">
@@ -20,48 +21,74 @@
             </div>
             <!-- ***** Section Title End ***** -->
 
-            <div class="row">
-                <!-- ***** Contact Text Start ***** -->
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <h5 class="margin-bottom-30">Keep in touch</h5>
-                    <div class="contact-text">
-                        <p>110-220 Quisque diam odio, maximus ac consectetur eu, 10260
-                        <br>auctor non lorem</p>
-                        <p>You are NOT allowed to re-distribute Softy Pinko template on any template collection websites. Thank you.</p>
-                    </div>
-                </div>
-                <!-- ***** Contact Text End ***** -->
-
                 <!-- ***** Contact Form Start ***** -->
-                <div class="col-lg-8 col-md-6 col-sm-12">
+                <div class="row">
+                    <div class="col-3">
+                    </div>
+                    <div class="col-9">
+                    <div class="col-lg-8 col-md-6 col-sm-12">
                     <div class="contact-form">
-                        <form id="contact" action="" method="get">
-                          <div class="row">
-                            <div class="col-lg-6 col-md-12 col-sm-12">
-                              <fieldset>
-                                <input name="name" type="text" class="form-control" id="name" placeholder="Full Name" required="">
-                              </fieldset>
+                        <form action="{{route('transaksi.store')}}" method="post">
+                        @csrf
+                            <div class="form-group">
+                                <label for="inputAddress">Order ID</label>
+                                <select class="form-control" id="exampleFormControlSelect1" required name="order_id">
+                                    @foreach($order as $order)
+                                    <option value="{{$order->id}}">{{$order->item_id}} - {{$order->item->nama}}</option>
+                                    @endforeach
+                                </select>
                             </div>
-                            <div class="col-lg-6 col-md-12 col-sm-12">
-                              <fieldset>
-                                <input name="email" type="email" class="form-control" id="email" placeholder="E-Mail Address" required="">
-                              </fieldset>
+                            <div class="form-group">
+                                <label for="inputAddress2">Pembayaran</label>
+                                <input type="text" class="form-control" name="pembayaran">
                             </div>
-                            <div class="col-lg-12">
-                              <fieldset>
-                                <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your Message" required=""></textarea>
-                              </fieldset>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                <label for="inputCity">Harga</label>
+                                <input type="text" class="form-control" name="harga" placeholder="Contoh: 2000">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label for="inputCity">Jumlah</label>
+                                <input type="text" class="form-control" name="jumlah" placeholder="Contoh: 2">
+                                </div>
                             </div>
-                            <div class="col-lg-12">
-                              <fieldset>
-                                <button type="submit" id="form-submit" class="main-button">Send Message</button>
-                              </fieldset>
+                            <div class="form-group">
+                                <label for="inputAddress2">Alamat Pengantaran</label>
+                                <input type="text" class="form-control" name="order_address" placeholder="Contoh: Jalan ABCD no 123 rt 1 rw 2 kode pos 12345">
                             </div>
-                          </div>
-                        </form>
+                            <div class="form-group">
+                                <label for="inputAddress2">Email</label>
+                                <input type="text" class="form-control" name="email" placeholder="user@gmail.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAddress2">Tanggal</label>
+                                <input type="text" class="date form-control" name="tanggal">
+                                        <div class="col-sm-4">
+                                            <script type="text/javascript">
+                                                $('.date').datepicker({  
+                                                format: 'yyyy-mm-dd'
+                                                });  
+                                            </script> 
+                                        </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAddress2">Status</label>
+                                    <select class="form-control" name="status">
+                                        <option value="belum diterima">Barang Belum Diterima</option>
+                                        <option value="diterima">Barang Sudah Diterima</option>
+                                    </select>
+                            </div>
+                                <fieldset>
+                                    <button type="submit" id="form-submit"  class="main-button">Kirim</button>
+                                </fieldset>
+                            </form>
                     </div>
                 </div>
                 <!-- ***** Contact Form End ***** -->
+
+                    </div>
+                </div>
+                
             </div>
         </div>
     </section>
