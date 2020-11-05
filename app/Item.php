@@ -12,7 +12,7 @@ class Item extends Model
     }
     public function Category()
     {
-        return $this->belonngsTo('App\Categorie','nama','kategori');
+        return $this->belongsTo('App\Category','kategori_id','id');
     }
     public function Incoming_Item()
     {

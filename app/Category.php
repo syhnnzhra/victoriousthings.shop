@@ -8,6 +8,6 @@ class Category extends Model
 {
     public function Item()
     {
-        return $this->hasMany('App\Item','nama','kategori');
+        return $this->hasMany('App\Item','kategori_id','id');
     }
 }

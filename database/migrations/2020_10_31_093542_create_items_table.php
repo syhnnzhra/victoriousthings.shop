@@ -16,7 +16,7 @@ class CreateItemsTable extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nama');
-            $table->string('kategori');
+            $table->integer('kategori_id');
             $table->integer('stok');
             $table->integer('harga');
             $table->string('keterangan');

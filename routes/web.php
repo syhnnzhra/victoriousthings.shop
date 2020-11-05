@@ -15,7 +15,7 @@ Route::auth();
 Route::group(['middleware'=>['web', 'auth']], function(){ 
 
     //item
-    Route::resource('/item', 'ItemController'); 
+    Route::resource('/item', 'Admin\ItemController'); 
 
     //costumer
     Route::resource('/customer', 'Admin\CustomerController'); 
