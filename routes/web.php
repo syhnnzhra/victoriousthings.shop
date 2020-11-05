@@ -15,7 +15,7 @@ Route::auth();
 Route::group(['middleware'=>['web', 'auth']], function(){ 
 
     //item
-    Route::resource('/item', 'Admin\ItemController'); 
+    Route::resource('/item', 'ItemController'); 
 
     //costumer
     Route::resource('/customer', 'Admin\CustomerController'); 
@@ -42,6 +42,10 @@ Route::group(['middleware'=>['web', 'auth']], function(){
         } else{
             return view('publik.dashboard');
         }
+    });
+
+    Route::get('/homepublik', function () {
+        return view('publik.dashboard');
     });
     
 });
