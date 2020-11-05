@@ -99,7 +99,7 @@
                                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! . . . <a href="#" class="card-link">Detail</a></p>
                               </div>
                               <div class="card-body">
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <a href="#" class="btn btn-primary">Check Out</a>
                             </div>
                     </div>
                 </div>
@@ -116,7 +116,7 @@
                                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! . . . <a href="#" class="card-link">Detail</a></p>
                               </div>
                               <div class="card-body">
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <a href="#" class="btn btn-primary">Check Out</a>
                             </div>
                     </div>
                 </div>
@@ -133,7 +133,7 @@
                                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! . . . <a href="#" class="card-link">Detail</a></p>
                               </div>
                               <div class="card-body">
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <a href="#" class="btn btn-primary">Check Out</a>
                             </div>
                     </div>
                 </div>
@@ -160,7 +160,7 @@
                                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! . . . <a href="#" class="card-link">Detail</a></p>
                               </div>
                               <div class="card-body">
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <a href="#" class="btn btn-primary">Check Out</a>
                             </div>
                     </div>
                 </div>
@@ -177,7 +177,7 @@
                                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! . . . <a href="#" class="card-link">Detail</a></p>
                               </div>
                               <div class="card-body">
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <a href="#" class="btn btn-primary">Check Out</a>
                             </div>
                     </div>
                 </div>
@@ -194,7 +194,7 @@
                                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! . . . <a href="#" class="card-link">Detail</a></p>
                               </div>
                               <div class="card-body">
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <a href="#" class="btn btn-primary">Check Out</a>
                             </div>
                     </div>
                 </div>

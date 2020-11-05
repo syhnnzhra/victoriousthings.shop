@@ -36,6 +36,7 @@ https://templatemo.com/tm-535-softy-pinko
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet" >
 
     </head>
     
