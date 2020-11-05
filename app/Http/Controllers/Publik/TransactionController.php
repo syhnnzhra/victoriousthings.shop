@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Publik;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class CustomerController extends Controller
+class TransactionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        return view ('publik.customer.index');
+        return view ('publik.transaksi.index');
     }
 
     /**

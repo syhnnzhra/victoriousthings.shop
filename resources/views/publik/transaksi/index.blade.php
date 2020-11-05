@@ -1,6 +1,6 @@
 @extends('publik/layout/apps')
 
-      @section('title', 'Item Categories')
+      @section('title', 'My Transaction')
 
       @section('container')
       <section class="section colored" id="contact-us">
@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="center-heading">
-                        <h2 class="section-title">Kategori Barang</h2>
+                        <h2 class="section-title">Transaksi</h2>
                     </div>
                 </div>
                 <div class="offset-lg-3 col-lg-6">

@@ -66,10 +66,9 @@ https://templatemo.com/tm-535-softy-pinko
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li><a href="homepublik">Home</a></li>
-                            <li><a href="">Item</a></li>
-                            <li><a href="/kategori_publik">Category</a></li>
-                            <li><a href="">My Transaction</a></li>
-                            <li><a href="">Profile</a></li>
+                            <li><a href="/item_publik">Item</a></li>
+                            <li><a href="/transaksi">My Transaction</a></li>
+                            <li><a href="/customer_publik">Profile</a></li>
                             @guest
                             <li>
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -111,79 +110,17 @@ https://templatemo.com/tm-535-softy-pinko
     <!-- ***** Header Area End ***** -->
 
     <!-- ***** Welcome Area Start ***** -->
-    <div class="welcome-area" id="welcome">
-
-        <!-- ***** Header Text Start ***** -->
         @yield('header')
-        <!-- ***** Header Text End ***** -->
-    </div>
+    
     <!-- ***** Welcome Area End ***** -->
 
     <!-- ***** Features Small Start ***** -->
-    <section class="section home-feature">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="row">
-                        <!-- ***** Features Small Item Start ***** -->
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.2s">
-                            <div class="features-small-item">
-                                <div class="icon">
-                                    <i><img src="assets/images/featured-item-01.png" alt=""></i>
-                                </div>
-                                <h5 class="features-title">Items</h5>
-                                <p>Customize anything in this template to fit your website needs</p>
-                            </div>
-                        </div>
-                        <!-- ***** Features Small Item End ***** -->
-
-                        <!-- ***** Features Small Item Start ***** -->
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.4s">
-                            <div class="features-small-item">
-                                <div class="icon">
-                                    <i><img src="assets/images/featured-item-01.png" alt=""></i>
-                                </div>
-                                <h5 class="features-title">Item Categories</h5>
-                                <p>Contact us immediately if you have a question in mind</p>
-                            </div>
-                        </div>
-                        <!-- ***** Features Small Item End ***** -->
-
-                        <!-- ***** Features Small Item Start ***** -->
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.6s">
-                            <div class="features-small-item">
-                                <div class="icon">
-                                    <i><img src="assets/images/featured-item-01.png" alt=""></i>
-                                </div>
-                                <h5 class="features-title">My Transaction</h5>
-                                <p>You just need to tell your friends about our free templates</p>
-                            </div>
-                        </div>
-                        <!-- ***** Features Small Item End ***** -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        @yield('small_feature')
     <!-- ***** Features Small End ***** -->
 
     <!-- ***** Features Big Item Start ***** -->
-    <section class="section padding-top-70 padding-bottom-0" id="features">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-5 col-md-12 col-sm-12 align-self-center" data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
-                    <img src="assets/images/left-image.png" class="rounded img-fluid d-block mx-auto" alt="App">
-                </div>
-                <div class="col-lg-1"></div>
                 @yield('container')
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="hr"></div>
-                </div>
-            </div>
-        </div>
-    </section>
+    
     <!-- ***** Features Big Item End ***** -->
 
     <!-- ***** Features Big Item Start ***** -->

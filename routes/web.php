@@ -50,9 +50,16 @@ Route::group(['middleware'=>['web', 'auth']], function(){
 
     //kategori publik
     Route::resource('/kategori_publik', 'Publik\CategoryController'); 
+
+    //item
+    Route::resource('/item_publik', 'Publik\ItemController'); 
     
     //customer
     Route::resource('/customer_publik', 'Publik\CustomerController'); 
+
+    //transaksi
+    Route::resource('/transaksi', 'Publik\TransactionController'); 
+
 });
 
 
