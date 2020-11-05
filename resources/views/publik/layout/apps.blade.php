@@ -16,11 +16,11 @@ https://templatemo.com/tm-535-softy-pinko
 -->
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap.min.css')}}">
 
-    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/font-awesome.css')}}">
 
-    <link rel="stylesheet" href="assets/css/templatemo-softy-pinko.css">
+    <link rel="stylesheet" href="{{asset('assets/css/templatemo-softy-pinko.css')}}">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -65,9 +65,9 @@ https://templatemo.com/tm-535-softy-pinko
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li><a href="">Home</a></li>
+                            <li><a href="homepublik">Home</a></li>
                             <li><a href="">Item</a></li>
-                            <li><a href="">Category</a></li>
+                            <li><a href="/kategori_publik">Category</a></li>
                             <li><a href="">My Transaction</a></li>
                             <li><a href="">Profile</a></li>
                             @guest
@@ -114,16 +114,7 @@ https://templatemo.com/tm-535-softy-pinko
     <div class="welcome-area" id="welcome">
 
         <!-- ***** Header Text Start ***** -->
-        <div class="header-text">
-            <div class="container">
-                <div class="row">
-                    <div class="offset-xl-3 col-xl-6 offset-lg-2 col-lg-8 col-md-12 col-sm-12">
-                        <h1>Welcome to <strong>Victorious Things</strong><br> web penjualan baju <strong>online</strong></h1>
-                        <a href="#features" class="main-button-slider">Discover More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @yield('header')
         <!-- ***** Header Text End ***** -->
     </div>
     <!-- ***** Welcome Area End ***** -->
@@ -659,20 +650,20 @@ https://templatemo.com/tm-535-softy-pinko
     </footer>
     
     <!-- jQuery -->
-    <script src="assets/js/jquery-2.1.0.min.js"></script>
+    <script src="{{asset('assets/js/jquery-2.1.0.min.js')}}"></script>
 
     <!-- Bootstrap -->
-    <script src="assets/js/popper.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="{{asset('assets/js/popper.js')}}"></script>
+    <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
 
     <!-- Plugins -->
-    <script src="assets/js/scrollreveal.min.js"></script>
-    <script src="assets/js/waypoints.min.js"></script>
-    <script src="assets/js/jquery.counterup.min.js"></script>
-    <script src="assets/js/imgfix.min.js"></script> 
+    <script src="{{asset('assets/js/scrollreveal.min.js')}}"></script>
+    <script src="{{asset('assets/js/waypoints.min.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.counterup.min.js')}}"></script>
+    <script src="{{asset('assets/js/imgfix.min.js')}}"></script> 
     
     <!-- Global Init -->
-    <script src="assets/js/custom.js"></script>
+    <script src="{{asset('assets/js/custom.js')}}"></script>
 
   </body>
 </html>

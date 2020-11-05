@@ -15,26 +15,26 @@ Route::auth();
 Route::group(['middleware'=>['web', 'auth']], function(){ 
 
     //item
-    Route::resource('/item', 'ItemController'); 
+    Route::resource('/item', 'Admin\ItemController'); 
 
     //costumer
     Route::resource('/customer', 'Admin\CustomerController'); 
 
     //kategori
     Route::resource('/kategori', 'Admin\CategoryController'); 
-
+    
     //barang masuk
     Route::resource('/barang_masuk', 'Admin\IncomingitemController'); 
-
+    
     //distributor
     Route::resource('/distributor', 'Admin\DistributorController'); 
-
+    
     //order
     Route::resource('/order', 'Admin\OrderController'); 
-
+    
     //order detail
     Route::resource('/Odetail', 'Admin\OdetailController'); 
-
+    
     Route::get('/home', function(){
         //costumer
         if(Auth::user()->level == 'admin'){
@@ -43,11 +43,16 @@ Route::group(['middleware'=>['web', 'auth']], function(){
             return view('publik.dashboard');
         }
     });
-
+    
     Route::get('/homepublik', function () {
         return view('publik.dashboard');
     });
+
+    //kategori publik
+    Route::resource('/kategori_publik', 'Publik\CategoryController'); 
     
+    //customer
+    Route::resource('/customer_publik', 'Publik\CustomerController'); 
 });
 
 
