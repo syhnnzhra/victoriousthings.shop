@@ -11,7 +11,7 @@
                             <div class="content ml-4">
                                 <h3> Tabel Barang </h3>
                                     <div class="new-data">
-                                        <a href="{{url('/item/create')}}" class="btn btn-outline-success btn-lg mt-3"><i class="fa fa-plus"></i> Tambah Data</a>
+                                        <a href="{{url('/item_admin/create')}}" class="btn btn-outline-success btn-lg mt-3"><i class="fa fa-plus"></i> Tambah Data</a>
                                     </div>
                                     <div class="table mt-3">
                                         <table class="table">
@@ -38,8 +38,8 @@
                                                     <td>{{$item->keterangan}}</td>
                                                      <td height="30%" width="20%"><img src="{{ asset('gambar/'.$item->foto) }}" height="40%" width="40%" alt="" srcset=""></td> 
                                                     <td>
-                                                            <a href="{{route('item.edit',$item->id)}}" class="btn btn-outline-warning"><i class="fa fa-edit"></i></a> 
-                                                            <form action="{{route('item.destroy',$item->id)}}" method="post" class="d-inline">
+                                                            <a href="{{route('item_admin.edit',$item->id)}}" class="btn btn-outline-warning"><i class="fa fa-edit"></i></a> 
+                                                            <form action="{{route('item_admin.destroy',$item->id)}}" method="post" class="d-inline">
                                                                 @csrf
                                                                 @method('delete')
                                                                 <button type="submit" class="btn btn-outline-danger">

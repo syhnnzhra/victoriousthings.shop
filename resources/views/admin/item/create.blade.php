@@ -10,7 +10,7 @@
                     <div class="content-panel">
                         <div class="content ml-4">
                             <h3> Form Tambah Data </h3>
-                                <form action="{{route('item.store')}}" method="post" enctype="multipart/form-data">
+                                <form action="{{route('item_admin.store')}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                     <div class="form-group row mt-4 ml-4">
                                         <label for="colFormLabel" class="col-sm-2 col-form-label">Nama </label>

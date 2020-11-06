@@ -10,7 +10,7 @@
                     <div class="content-panel">
                         <div class="content ml-4">
                             <h3> Form Edit Data </h3>
-                                <form action="{{route('item.update',$item->id)}}" method="post" enctype="multipart/form-data">
+                                <form action="{{route('item_admin.update',$item->id)}}" method="post" enctype="multipart/form-data">
                                 @Method('PUT')
                                 @csrf
                                 <div class="form-group row mt-4 ml-4">

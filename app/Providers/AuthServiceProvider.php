@@ -27,11 +27,11 @@ class AuthServiceProvider extends ServiceProvider
 
         //
         //KITA MEMBUAT GATE DENGAN NAMA order-view, DIMANA DIA MEMINTA DUA PARAMETER YAKNI CUSTOMER DAN ORDER
-        Gate::define('order-view', function($customer, $order) {
+        // Gate::define('order-view', function($customer, $order) {
             //KEMUDIAN DICEK, JIKA CUSTOMER ID SAMA DENGAN CUSTOMER_ID YANG ADA PADA TABLE ORDER
             //MAKA RETURN-NYA TRUE
             //GATE INI HANYA AKAN ME-RETURN TRUE/FALSE SEBAGAI TANDA DIIZINKAN ATAU TIDAK
-            return $customer->id == $order->customer_id;
-        });
+        //     return $customer->id == $order->customer_id;
+        // });
     }
 }

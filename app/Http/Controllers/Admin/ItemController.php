@@ -56,7 +56,7 @@ class ItemController extends Controller
         $item->foto = $imageName;
         $item->save();
 
-        return redirect()->route('item.index');
+        return redirect()->route('item_admin.index');
     }
 
     /**
@@ -97,7 +97,7 @@ class ItemController extends Controller
             $item=Item::FindOrFail($id);
             File::delete('gambar/'.$item->image);
             $imageName = time().'.'.$foto->extension();
-            $request->foto->move(public_path('item'), $imageName);
+            $request->foto->move(public_path('gambar/'), $imageName);
     
             $item =Item::FindOrFail($id);
             $item->nama=$request->nama;
@@ -118,7 +118,8 @@ class ItemController extends Controller
             $item->foto=$request->foto;
             $item->save();
         }
-        return view('admin.item.index');
+        return redirect()->route('item_admin.index');
+
     }
     /**
      * Remove the specified resource from storage.
@@ -131,6 +132,6 @@ class ItemController extends Controller
         $item = Item::FindOrFail($id);
         $item->delete();
 
-        return redirect()->route('item.index');
+        return redirect()->route('item_admin.index');
     }
 }

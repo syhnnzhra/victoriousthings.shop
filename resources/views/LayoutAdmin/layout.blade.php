@@ -125,7 +125,7 @@
                           <span>Data Barang</span>
                       </a>
                       <ul class="sub">
-                            <li><a  class="nav-link {{ Request::path() === 'item' ? 'bg-primary' :''}} " href="/item">
+                            <li><a  class="nav-link {{ Request::path() === 'item' ? 'bg-primary' :''}} " href="/item_admin">
                                 <span>Barang</span>
                                 </a>
                             </li>
