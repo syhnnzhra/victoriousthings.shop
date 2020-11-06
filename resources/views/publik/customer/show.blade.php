@@ -43,19 +43,19 @@
                             <table class="table table-borderless">
                                 <tbody>
                                     <tr>
-                                        <th scope="col">Name</th>
+                                        <!-- <th scope="col">Name</th> -->
                                         <th scope="col">{{$customer->nama}}</th>
                                     </tr>
                                     <tr>
-                                        <th scope="col">Telephone</th>
+                                        <!-- <th scope="col">Telephone</th> -->
                                         <th scope="col">{{$customer->no_telp}}</th>
                                     </tr>
                                     <tr>
-                                        <th scope="col">Alamat</th>
+                                        <!-- <th scope="col">Alamat</th> -->
                                         <th scope="col">{{$customer->alamat}}</th>
                                     </tr>
                                     <tr>
-                                        <th scope="col">Jenis Kelamin</th>
+                                        <!-- <th scope="col">Jenis Kelamin</th> -->
                                         <th scope="col">{{$customer->jenis_kelamin}}</th>
                                     </tr>
                                 </tbody>
