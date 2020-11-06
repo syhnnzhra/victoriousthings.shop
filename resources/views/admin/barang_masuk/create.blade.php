@@ -1,6 +1,6 @@
 @extends('layoutAdmin/layout')
 
-      @section('title', 'Edit Data Brang Masuk')
+      @section('title', 'Tambah Barang Masuk')
 
       @section('container')
       <section id="main-content">
@@ -9,7 +9,7 @@
           <div class="col-lg-12">
                     <div class="content-panel">
                         <div class="content ml-4">
-                            <h3> Form Edit Data </h3>
+                            <h3> Tambah Data </h3>
                                 <form action="{{route('barang_masuk.store')}}" method="post">
                                 @csrf
                                     <div class="form-group row mt-4 ml-4">

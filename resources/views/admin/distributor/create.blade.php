@@ -44,11 +44,10 @@
                                   <div class="col-sm-4">
                                   </div>
                               </div>
-                              <div class="form-group row mt-4 ml-4">
-                                  <div class="col-sm-2 col-form-label">
-                                  <button type="submit" class="btn btn-primary"> Update</button>
-                                  </div>
-                              </div>
+                              <div class="button ml-5 mb-4">
+                                <button type="submit" class="btn btn-outline-success">Simpan</button>
+                            </div>
+                        </form>
                           </form>
                         </div>
                     </div><!-- /content-panel -->

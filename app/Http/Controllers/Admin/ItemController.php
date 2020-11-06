@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Item;
 use App\Category;
+use File;
 
 class ItemController extends Controller
 {
@@ -96,9 +97,9 @@ class ItemController extends Controller
             $item=Item::FindOrFail($id);
             File::delete('gambar/'.$item->image);
             $imageName = time().'.'.$foto->extension();
-            $request->foto->move(public_path('gambar'), $imageName);
-
-            $item = Item::FindOrFail($id);
+            $request->foto->move(public_path('item'), $imageName);
+    
+            $item =Item::FindOrFail($id);
             $item->nama=$request->nama;
             $item->kategori_id=$request->kategori_id;
             $item->stok=$request->stok;
@@ -108,7 +109,7 @@ class ItemController extends Controller
             $item->save();
         }
         else{
-            $item = Item::FindOrFail($id);
+            $item =Item::FindOrFail($id);
             $item->nama=$request->nama;
             $item->kategori_id=$request->kategori_id;
             $item->stok=$request->stok;
@@ -116,9 +117,8 @@ class ItemController extends Controller
             $item->keterangan=$request->keterangan;
             $item->foto=$request->foto;
             $item->save();
-            
-        return redirect()->route('order.index');
-    }
+        }
+        return view('admin.item.index');
     }
     /**
      * Remove the specified resource from storage.
