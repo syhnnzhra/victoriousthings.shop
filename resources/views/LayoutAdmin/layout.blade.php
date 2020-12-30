@@ -56,7 +56,7 @@
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
             <!--logo start-->
-            <a href="index.html" class="logo"><b>Victorious Things</b></a>
+            <a href="{{ asset('assets/images/profile.png')}}" class="logo"><b>My Knit</b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
@@ -108,11 +108,11 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-              	  <p class="centered"><a href="profile.html"><img src="{{ asset ('assets/img/ui-sam.jpg') }}" class="img-circle" width="60"></a></p>
+              	  <p class="centered"><a href="/home"><img src="{{ asset('assets/images/profile.png')}}" class="img-circle" width="60"></a></p>
               	  <h5 class="centered">Admin</h5>
               	  	
                   <li class="mt">
-                      <a class="nav-link {{ Request::path() === '/' ? 'bg-primary' :''}} " href="/">
+                      <a class="nav-link {{ Request::path() === '/home' ? 'bg-primary' :''}} " href="/home">
                           <i class="fa fa-dashboard"></i>
                           <span>Dashboard</span>
                       </a>

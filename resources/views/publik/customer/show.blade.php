@@ -11,7 +11,7 @@
                 <div class="col-lg-12">
                     <div class="center-heading">
                         <div class="profil">
-                            <img src="{{asset('assets/images/profile.png')}}" width="175px"></img>
+                            <img src="{{asset('assets/images/profile.png')}}" width="175px" />
                         </div>
                         <div class="nama mt-4">
                             <h2 class="section-title">My Profile</h2>

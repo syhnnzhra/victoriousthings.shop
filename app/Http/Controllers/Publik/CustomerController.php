@@ -5,18 +5,24 @@ namespace App\Http\Controllers\Publik;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Customer;
+use App\User;
+use App\Auth;
 
 class CustomerController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+        public function index()
     {
-        $customer = Customer::all();
-        return view('publik.customer.index', compact('customer'));
+        // $customer = Customer::all();
+        return view('publik.customer.index');
     }
 
     /**
@@ -26,7 +32,8 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        $data['customer']=Customer::all();
+        return view('Publik.item.create', $data);
     }
 
     /**

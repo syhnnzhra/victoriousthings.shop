@@ -45,6 +45,14 @@
                                   </div>
                               </div>
                               <div class="form-group row mt-4 ml-4">
+                                  <label for="status" class="col-sm-2 col-form-label">Status</label>
+                                  <div class="col-sm-6">
+                                  <input type="text" class="form-control" id="status" name="status" placeholder="Masukan status . . .">
+                                  </div>
+                                  <div class="col-sm-4">
+                                  </div>
+                              </div>
+                              <div class="form-group row mt-4 ml-4">
                                   <div class="col-sm-2 col-form-label">
                                   <button type="submit" class="btn btn-primary"> Simpan</button>
                                   </div>

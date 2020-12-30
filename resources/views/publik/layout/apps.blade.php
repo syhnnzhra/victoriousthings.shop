@@ -1,159 +1,114 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="{{asset('assets2/css/style.css')}}">
+	<link rel="stylesheet" href="{{asset('assets2/css/slick.css')}}">
+	<link href="{{asset('assets2/css/bootstrap.css')}}" rel="stylesheet">
+	<link href="{{asset('assets2/js/jequery.js')}}" rel="stylesheet">
 
-  <head>
+	<title>@yield('title')</title>
+	<!-- link online -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,700,900" rel="stylesheet">
-
-    <title>@yield('title')</title>
-<!--
-SOFTY PINKO
-https://templatemo.com/tm-535-softy-pinko
--->
-
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap.min.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/font-awesome.css')}}">
-
-    <link rel="stylesheet" href="{{asset('assets/css/templatemo-softy-pinko.css')}}">
-
+	<!-- end link -->
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet" >
-
-    </head>
+</head>
+<body>
     
-    <body>
-    
-    <!-- ***** Preloader Start ***** -->
-    <div id="preloader">
-        <div class="jumper">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>  
-    <!-- ***** Preloader End ***** -->
-    
-    
-    <!-- ***** Header Area Start ***** -->
-    <header class="header-area header-sticky">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav class="main-nav">
-                        <!-- ***** Logo Start ***** -->
-                        <a href="#" class="logo">
-                            <img src="assets/images/logo.png" alt="Victorious Things"/>
-                        </a>
-                        <!-- ***** Logo End ***** -->
-                        <!-- ***** Menu Start ***** -->
-                        <ul class="nav">
-                            <li><a href="homepublik">Home</a></li>
-                            <li><a href="/item_publik">Item</a></li>
-                            <li><a href="/transaksi">My Transaction</a></li>
-                            <li><a href="/customer_publik">Profile</a></li>
-                            @guest
-                            <li>
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li>
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                            @else
-                            <li>
-                                <a id="" class="" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
+	<!-- Navigation -->
+	<nav class="site-navigation">
+		<div class="site-navigation-inner site-container">
+            @guest
+            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}">
+                @if (Route::has('register'))
+                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                @endif
+                @else
+                    <a id="" class='fas fa-user-circle mt-1 mr-2' style='font-size:25px ;color: #c18f59;' href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    {{ Auth::user()->name }}
+                    </a>
+                <div class="dropdown-menu dropdown-menu-left ml-5" aria-labelledby="">
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                            @endguest
-                        </ul>
-                        <a class='menu-trigger'>
-                            <span>Menu</span>
-                        </a>
-                        <!-- ***** Menu End ***** -->
-                    </nav>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </div>
-            </div>
-        </div>
-    </header>
-    <!-- ***** Header Area End ***** -->
-    
-    <!-- ***** Welcome Area Start ***** -->
-        @yield('header')
-    
-    <!-- ***** Welcome Area End ***** -->
+                @endguest
+			<a href="">
+			<i class='fas fa-shopping-cart mt-2' style='font-size:25px ;color: #c18f59;'></i></a>
+			<div class="demo-2 search mr-auto ml-3">
+				<form>
+					<span class="icon"><i class="fa fa-search" style='font-size:25px ;color: #c18f59;'></i></span>
+					<input type="search" id="search" placeholder=" Search..."/>
+				</form>
+			</div>
+			<div class="main-navigation">
+				<ul class="main-navigation__ul">
+					<li><a href="homepublik">Home</a></li>
+					<li><a href="item_publik">All Product</a></li>
+					<li><a href="customer_publik">My Profile</a></li>
+					
+				</ul>
+			</div>
+			<div id="myBtn" class="burger-container" onclick="myFunction(this)">
+				<div class="bar1"></div>
+				<div class="bar2"></div>
+				<div class="bar3"></div>
+			</div>
+			<script>
+				function myFunction(x) {
+					x.classList.toggle("change");
+				}
+			</script>
 
-        @yield('container')
-    
-    <!-- ***** Footer Start ***** -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                    <ul class="social">
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="#"><i class="fa fa-rss"></i></a></li>
-                        <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p class="copyright">Copyright &copy; 2020 Softy Pinko Company - Design: TemplateMo</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-    
-    <!-- jQuery -->
-    <script src="{{asset('assets/js/jquery-2.1.0.min.js')}}"></script>
+		</div>
+	</nav>
 
-    <!-- Bootstrap -->
-    <script src="{{asset('assets/js/popper.js')}}"></script>
-    <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+	<!-- Navigation end -->
 
-    <!-- Plugins -->
-    <script src="{{asset('assets/js/scrollreveal.min.js')}}"></script>
-    <script src="{{asset('assets/js/waypoints.min.js')}}"></script>
-    <script src="{{asset('assets/js/jquery.counterup.min.js')}}"></script>
-    <script src="{{asset('assets/js/imgfix.min.js')}}"></script> 
-    
-    <!-- Global Init -->
-    <script src="{{asset('assets/js/custom.js')}}"></script>
+	@yield('container')
+	
+	<!-- Footer -->
+	<section class="fh5co-social">
+		<div class="site-container">
+			<div class="social">
+				<h5>Follow me!!</h5>
+				<div class="social-icons">
+					<a href="#" target="_blank"><img src="{{asset('assets2/images/social-twitter.png')}}" alt="social icon"></a>
+					<a href="#" target="_blank"><img src="{{asset('assets2/images/social-pinterest.png')}}" alt="social icon"></a>
+					<a href="#" target="_blank"><img src="{{asset('assets2/images/social-youtube.png')}}" alt="social icon"></a>
+					<a href="#" target="_blank"><img src="{{asset('assets2/images/social-twitter.png')}}" alt="social icon"></a>
+				</div>
+				<h5>Share it!</h5>
+			</div>
+		</div>
+	</section>
+	<!-- end footer -->
 
-  </body>
+	<!-- Scripts -->
+	<script src="{{asset('assets2/js/jquery.min.js')}}"></script>
+	<script src="{{asset('assets2/js/slick.min.js')}}"></script>
+	<script src="{{asset('assets2/js/main.js')}}"></script>
+
+</body>
 </html>

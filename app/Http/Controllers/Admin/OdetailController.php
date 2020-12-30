@@ -47,7 +47,6 @@ class OdetailController extends Controller
         $orderdetail->order_address=$request->order_address;
         $orderdetail->email=$request->email;
         $orderdetail->tanggal=$request->tanggal;
-        $orderdetail->status=$request->status;
         $orderdetail->save();
         return redirect()->route('Odetail.index');
     }
@@ -93,7 +92,6 @@ class OdetailController extends Controller
         $orderdetail->order_address=$request->order_address;
         $orderdetail->email=$request->email;
         $orderdetail->tanggal=$request->tanggal;
-        $orderdetail->status=$request->status;
         $orderdetail->save();
         return redirect()->route('Odetail.index');
     }

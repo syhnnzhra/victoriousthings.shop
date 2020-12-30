@@ -25,7 +25,6 @@
                                                     <th>Order Address</th>
                                                     <th>Email</th>
                                                     <th>Tanggal</th>
-                                                    <th>Status</th>
                                                     <th>Aksi</th>
                                                 </tr>
                                             </thead>
@@ -40,7 +39,6 @@
                                                     <td>{{$orderdetail->order_address}}</td>
                                                     <td>{{$orderdetail->email}}</td>
                                                     <td>{{$orderdetail->tanggal}}</td>
-                                                    <td>{{$orderdetail->status}}</td>
                                                     <td>
                                                         <a href="{{route('Odetail.edit',$orderdetail->id)}}" class="btn btn-outline-warning"><i class="fa fa-edit"></i></a> 
                                                         <form action="{{route('Odetail.destroy',$orderdetail->id)}}" method="post" class="d-inline">

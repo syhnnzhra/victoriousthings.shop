@@ -9,7 +9,7 @@
         <div class="row mt">
           <div class="col-lg-12">
             <div class="content-panel">
-              <h4>Welcome to Victorious Things</h4>
+              <h4>Welcome to My Knit</h4>
               </div>
             </div>
           </div>

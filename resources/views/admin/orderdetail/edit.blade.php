@@ -78,14 +78,7 @@
                                             </script> 
                                         </div>
                                     </div>
-                                    <div class="form-group row mt-4 ml-4">
-                                        <label for="colFormLabel" class="col-sm-2 col-form-label">Status</label>
-                                        <div class="col-sm-6">
-                                        <input type="text" class="form-control" name="status" placeholder="Masukan Status . . ." required value="{{$orderdetail->status}}">
-                                        </div>
-                                        <div class="col-sm-4">
-                                        </div>
-                                    </div>
+                            
                                     <div class="button ml-5 mb-4">
                                         <button type="submit" class="btn btn-outline-success">Simpan</button>
                                     </div>

@@ -21,6 +21,7 @@
                                                     <th>Customer</th>
                                                     <th>Barang</th>
                                                     <th>Qty</th>
+                                                    <th>Status</th>
                                                     <th>Aksi</th>
                                                 </tr>
                                             </thead>
@@ -31,6 +32,7 @@
                                                     <td>{{$order->customer->id}} - {{$order->customer->nama}}</td>
                                                     <td>{{$order->item_id}} - {{$order->item->nama}}</td>
                                                     <td>{{$order->quantity}}</td>
+                                                    <td>{{$order->status}}</td>
                                                     <td>
                                                         <a href="{{route('order.edit',$order->id)}}" class="btn btn-outline-warning"><i class="fa fa-edit"></i></a> 
                                                         <form action="{{route('order.destroy',$order->id)}}" method="post" class="d-inline">

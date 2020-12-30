@@ -47,6 +47,7 @@ class OrderController extends Controller
         $order->customer_id=$request->customer_id;
         $order->item_id=$request->item_id;
         $order->quantity=$request->quantity;
+        $order->status=$request->status;
         $order->save();
 
         return redirect()->route('order.index');
@@ -90,6 +91,7 @@ class OrderController extends Controller
         $order->customer_id=$request->customer_id;
         $order->item_id=$request->item_id;
         $order->quantity=$request->quantity;
+        $order->status=$request->status;
         $order->save();
         return redirect()->route('order.index');
     }

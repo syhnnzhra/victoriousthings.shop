@@ -22,7 +22,6 @@ class CreateOrderDetailsTable extends Migration
             $table->string('order_address');
             $table->string('email');
             $table->date('tanggal');
-            $table->string('status');
             $table->timestamps();
         });
     }

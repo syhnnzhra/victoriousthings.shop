@@ -46,6 +46,14 @@
                                         <div class="col-sm-4">
                                         </div>
                                     </div>
+                                    <div class="form-group row mt-4 ml-4">
+                                        <label for="status" class="col-sm-2 col-form-label">Status</label>
+                                        <div class="col-sm-6">
+                                        <input type="text" class="form-control" name="status"  placeholder="Masukan status . . ." required value="{{$order->status}}">
+                                        </div>
+                                        <div class="col-sm-4">
+                                        </div>
+                                    </div>
                                     <div class="button ml-5 mb-4">
                                         <button type="submit" class="btn btn-outline-success">Update</button>
                                     </div>

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Publik;
+use App\Item;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -14,7 +15,8 @@ class ItemController extends Controller
      */
     public function index()
     {
-        return view ('publik.item.index');
+        $items = Item::all();
+        return view ('publik.item.index',compact('items'));
     }
 
     /**

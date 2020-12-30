@@ -2,207 +2,80 @@
 
     @section('title', 'Shirt')
 
-    @section('header')
-    <div class="welcome-area" id="welcome">
-    <div class="header-text">
-    <section class="mini" id="work-process">
-        <div class="mini-content">
-            <div class="container">
-                <div class="row">
-                    <div class="offset-lg-3 col-lg-6 mt-5">
-                        <div class="info">
-                            <h1>Welcome to <b>Victorious Things</b></h1>
-                            <p>Pilihan Kategori </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ***** Mini Box Start ***** -->
-                 <div class="row">
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-6">
-                        <a href="/dress" class="mini-box">
-                            <i><img src="assets/images/work-process-item-01.png" alt=""></i>
-                            <strong>Dress</strong>
-                            <span>Godard pabst prism fam cliche.</span>
-                        </a>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-6">
-                        <a href="/sweater" class="mini-box">
-                            <i><img src="assets/images/work-process-item-01.png" alt=""></i>
-                            <strong>Sweater</strong>
-                            <span>Godard pabst prism fam cliche.</span>
-                        </a>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-6">
-                        <a href="/jacket" class="mini-box">
-                            <i><img src="assets/images/work-process-item-01.png" alt=""></i>
-                            <strong>Jacket</strong>
-                            <span>Godard pabst prism fam cliche.</span>
-                        </a>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-6">
-                        <a href="/celana" class="mini-box">
-                            <i><img src="assets/images/work-process-item-01.png" alt=""></i>
-                            <strong>Celana</strong>
-                            <span>Godard pabst prism fam cliche.</span>
-                        </a>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-6">
-                        <a href="/shirt" class="mini-box">
-                            <i><img src="assets/images/work-process-item-01.png" alt=""></i>
-                            <strong>Shirt</strong>
-                            <span>Godard pabst prism fam cliche.</span>
-                        </a>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-6">
-                        <a href="/cardigan" class="mini-box">
-                            <i><img src="assets/images/work-process-item-01.png" alt=""></i>
-                            <strong>Cardigan</strong>
-                            <span>Godard pabst prism fam cliche.</span>
-                        </a>
-                    </div>
-                </div>
-                <!-- ***** Mini Box End ***** -->
-            </div>
-        </div>
-    </section>
-        </div>
-    </div>
-    
     @section('container')
-<!-- ** Testimonials Start ** -->
-<section class="section" id="testimonials">
-    <div class="container">
-        <!-- ** Section Title Start ** -->
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="center-heading">
-                    <h2 class="section-title">Shirt</h2>
-                </div>
+	<!-- container-->
+	<section class="fh5co-books">
+		<div class="site-container mt-5">
+            <div class="kategori">
+            <a href="aksesoris" class="universal-h2 mt-5 mr-3 " style="font-size: 20px">Accessories</h2></a>
+            <a href="sweater" class="universal-h2 mt-5 mr-3 " style="font-size: 20px">Sweater</h2></a>
+            <a href="shirt" class="universal-h2 mt-5 mr-3 " style="font-size: 20px">Shirt</h2></a>
+            <a href="cardigan"  class="universal-h2 mt-5 mr-3 " style="font-size: 20px">Cardigan</h2></a>
             </div>
-            <div class="offset-lg-3 col-lg-6">
-                <div class="center-text">
-                    <p>Donec tempus, sem non rutrum imperdiet, lectus orci fringilla nulla, at accumsan elit eros a turpis. Ut sagittis lectus libero.</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="team-item">
-                    <div class="team-content">
-                              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                              <div class="card-body">
-                                <h4 class="card-title">
-                                  <a href="#">Item One</a>
-                                </h4>
-                                <h5>$24.99</h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! . . . <a href="#" class="card-link">Detail</a></p>
-                              </div>
-                              <div class="card-body">
-                                <a href="#" class="btn btn-primary">Check Out</a>
-                            </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="team-item">
-                    <div class="team-content">
-                              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                              <div class="card-body">
-                                <h4 class="card-title">
-                                  <a href="#">Item Two</a>
-                                </h4>
-                                <h5>$24.99</h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! . . . <a href="#" class="card-link">Detail</a></p>
-                              </div>
-                              <div class="card-body">
-                                <a href="#" class="btn btn-primary">Check Out</a>
-                            </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="team-item">
-                    <div class="team-content">
-                              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                              <div class="card-body">
-                                <h4 class="card-title">
-                                  <a href="#">Item One</a>
-                                </h4>
-                                <h5>$24.99</h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! . . . <a href="#" class="card-link">Detail</a></p>
-                              </div>
-                              <div class="card-body">
-                                <a href="#" class="btn btn-primary">Check Out</a>
-                            </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="section" id="testimonials">
-    <div class="container">
-        <!-- ** Section Title Start ** -->
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="center-heading">
-        <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="team-item">
-                    <div class="team-content">
-                              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                              <div class="card-body">
-                                <h4 class="card-title">
-                                  <a href="#">Item One</a>
-                                </h4>
-                                <h5>$24.99</h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! . . . <a href="#" class="card-link">Detail</a></p>
-                              </div>
-                              <div class="card-body">
-                                <a href="#" class="btn btn-primary">Check Out</a>
-                            </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="team-item">
-                    <div class="team-content">
-                              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                              <div class="card-body">
-                                <h4 class="card-title">
-                                  <a href="#">Item One</a>
-                                </h4>
-                                <h5>$24.99</h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! . . . <a href="#" class="card-link">Detail</a></p>
-                              </div>
-                              <div class="card-body">
-                                <a href="#" class="btn btn-primary">Check Out</a>
-                            </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="team-item">
-                    <div class="team-content">
-                              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                              <div class="card-body">
-                                <h4 class="card-title">
-                                  <a href="#">Item One</a>
-                                </h4>
-                                <h5>$24.99</h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! . . . <a href="#" class="card-link">Detail</a></p>
-                              </div>
-                              <div class="card-body">
-                                <a href="#" class="btn btn-primary">Check Out</a>
-                            </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>
-</section>
-
+			<div class="books">
+				<div class="single-book">
+					<a href="#" class="single-book__img">
+						<img src="{{asset('assets2/images/books-1.jpg')}}" alt="single book and cd">
+						<div class="single-book_download">
+							<img src="{{asset('assets2/images/download.svg')}}" alt="book image">
+						</div>
+					</a>
+					<h4 class="single-book__title">Olivani</h4>
+					<span class="single-book__price">$15.00</span>
+					<!-- star button -->
+					<div class="books-brand-button mt-3">
+						<a href="#" class="brand-button">Check Out</a>
+					</div>
+					<!-- star button end -->
+				</div>
+				<div class="single-book">
+					<a href="#" class="single-book__img">
+						<img src="{{asset('assets2/images/books-2.jpg')}}" alt="single book and cd">
+						<div class="single-book_download">
+							<img src="{{asset('assets2/images/download.svg')}}" alt="book image">
+						</div>
+					</a>
+					<h4 class="single-book__title">Molleon’s Life</h4>
+					<span class="single-book__price">$22.00</span>
+					<!-- star button -->
+					<div class="books-brand-button mt-3">
+						<a href="#" class="brand-button">Check Out</a>
+					</div>
+					<!-- star button end -->
+				</div>
+				<div class="single-book">
+					<a href="#" class="single-book__img">
+						<img src="{{asset('assets2/images/books-3.jpg')}}" alt="single book and cd">
+						<div class="single-book_download">
+							<img src="{{asset('assets2/images/download.svg')}}" alt="book image">
+						</div>
+					</a>
+					<h4 class="single-book__title">Love is Love</h4>
+					<span class="single-book__price">$25.00</span>
+					<!-- star button -->
+					<div class="books-brand-button mt-3">
+						<a href="#" class="brand-button">Check Out</a>
+					</div>
+					<!-- star button end -->
+				</div>
+				<div class="single-book">
+					<a href="#" class="single-book__img">
+						<img src="{{asset('assets2/images/books-4.jpg')}}" alt="single book and cd">
+						<div class="single-book_download">
+							<img src="{{asset('assets2/images/download.svg')}}" alt="book image">
+						</div>
+					</a>
+					<h4 class="single-book__title">Give Me Also</h4>
+					<span class="single-book__price">$30.00</span>
+					<!-- star button -->
+					<div class="books-brand-button mt-3">
+						<a href="#" class="brand-button">Check Out</a>
+					</div>
+					<!-- star button end -->
+				</div>
+			</div>
+	</section>
+	<!-- endcontainer  -->
         
             
 @endsection

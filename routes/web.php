@@ -44,13 +44,15 @@ Route::group(['middleware'=>['web', 'auth']], function(){
             return view('publik.dashboard');
         }
     });
-    
+
     Route::get('/homepublik', function () {
         return view('publik.dashboard');
+
     });
-    
-    //kategori publik
-    Route::resource('/kategori_publik', 'Publik\CategoryController'); 
+    Route::resource('/dashboard', 'Publik\dashboardController');
+     
+    // //kategori publik
+    // Route::resource('/kategori_publik', 'Publik\CategoryController'); 
     
     //item
     Route::resource('/item_publik', 'Publik\ItemController'); 
@@ -58,21 +60,21 @@ Route::group(['middleware'=>['web', 'auth']], function(){
     //customer
     Route::resource('/customer_publik', 'Publik\CustomerController'); 
 
+    // detail produk
+    Route::resource('/detail', 'Publik\DetailprodukController');
+    
+    // pesan
+    Route::resource('/pesan', 'PesanController');
+
     //transaksi
     Route::resource('/transaksi', 'Publik\TransactionController'); 
     
     //publik
-    Route::get('/dress', function () {
-        return view('publik.category.dress');
+    Route::get('/aksesoris', function () {
+        return view('publik.category.aksesoris');
     });
     Route::get('/sweater', function () {
         return view('publik.category.sweater');
-    });
-    Route::get('/jacket', function () {
-        return view('publik.category.jacket');
-    });
-    Route::get('/celana', function () {
-        return view('publik.category.celana');
     });
     Route::get('/shirt', function () {
         return view('publik.category.shirt');
