@@ -52,7 +52,7 @@ Route::group(['middleware'=>['web', 'auth']], function(){
     Route::resource('/dashboard', 'Publik\dashboardController');
      
     // //kategori publik
-    // Route::resource('/kategori_publik', 'Publik\CategoryController'); 
+    Route::resource('/kategori_publik', 'Publik\CategoryController'); 
     
     //item
     Route::resource('/item_publik', 'Publik\ItemController'); 

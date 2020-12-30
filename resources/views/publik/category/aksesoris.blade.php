@@ -7,10 +7,10 @@
 	<section class="fh5co-books">
 		<div class="site-container mt-5">
             <div class="kategori">
-            <a href="aksesoris" class="universal-h2 mt-5 mr-3 " style="font-size: 20px">Accessories</h2></a>
-            <a href="sweater" class="universal-h2 mt-5 mr-3 " style="font-size: 20px">Sweater</h2></a>
-            <a href="shirt" class="universal-h2 mt-5 mr-3 " style="font-size: 20px">Shirt</h2></a>
-            <a href="cardigan"  class="universal-h2 mt-5 mr-3 " style="font-size: 20px">Cardigan</h2></a>
+            <a href="aksesoris" class="universal-h2 mt-5 mr-3 " style='font-size: 20px ;color: #c18f59;'>Accessories</h2></a>
+            <a href="sweater" class="universal-h2 mt-5 mr-3 " style='font-size: 20px ;color: #c18f59;'>Sweater</h2></a>
+            <a href="shirt" class="universal-h2 mt-5 mr-3 " style='font-size: 20px ;color: #c18f59;'>Shirt</h2></a>
+            <a href="cardigan"  class="universal-h2 mt-5 mr-3 " style='font-size: 20px ;color: #c18f59;'>Cardigan</h2></a>
             </div>
 			<div class="books">
 				<div class="single-book">
