@@ -618,7 +618,7 @@
   margin: 0 15px; }
 
 .blog-slider .slick-list {
-  margin: 0 -15px; }
+  margin: 0; }
 
 .single-blog {
   display: flex !important; }
@@ -933,3 +933,10 @@
       .footer-bottom-inner p {
         font-size: 14px;
         margin-bottom: 20px; } }
+        /* Make the image fully responsive */
+      .carousel-inner img {
+            width: 100%;
+            height: auto;
+            /* margin-left: 125px;
+            margin-top: 70px; */
+        }

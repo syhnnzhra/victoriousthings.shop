@@ -3,17 +3,36 @@
     @section('title', 'Welcome to My Knit')
 
     @section('container')
-    <section class="fh5co-blog">
-		<div class="site-container mt-5">
-			<h2 class="universal-h2 universal-h2-bckg mt-5">Welcome</h2>
-			<div class="blog-slider blog-inner">
-				<div class="single-blog">
-					<div class="about-me-slider">
-						<div >
-							<img src="{{asset('assets/images/blog-item-01.png')}}" height="250px" width="500px" >
-						</div>
+			<div id="demo" class="carousel slide" data-ride="carousel">
+
+				<!-- Indicators -->
+				<ul class="carousel-indicators">
+				<li data-target="#demo" data-slide-to="0" class="active"></li>
+				<li data-target="#demo" data-slide-to="1"></li>
+				<li data-target="#demo" data-slide-to="2"></li>
+				</ul>
+				
+				<!-- The slideshow -->
+				<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img src="{{asset('assets/images/blog-item-01.png')}}" alt="Gambar - 1" width="100" height="75">
+				</div>
+				<div class="carousel-item">
+					<img src="{{asset('assets/images/blog-item-02.png')}}" alt="Gambar - 2" width="100" height="75">
+				</div>
+				<div class="carousel-item">
+					<img src="{{asset('assets/images/blog-item-01.png')}}" alt="Gambar - 3" width="100" height="75">
+				</div>
+				</div>
+				
+				<!-- Left and right controls -->
+				<a class="carousel-control-prev" href="#demo" data-slide="prev">
+				<span class="carousel-control-prev-icon"></span>
+				</a>
+				<a class="carousel-control-next" href="#demo" data-slide="next">
+				<span class="carousel-control-next-icon"></span>
+				</a>
 			</div>
-		</div>
 	</section>
 	<!-- Blog end -->
 	<!-- Books and CD -->

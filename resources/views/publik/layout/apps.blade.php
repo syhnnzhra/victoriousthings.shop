@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="{{asset('assets2/css/slick.css')}}">
 	<link href="{{asset('assets2/css/bootstrap.css')}}" rel="stylesheet">
 	<link href="{{asset('assets2/js/jequery.js')}}" rel="stylesheet">
+	
 
 	<title>@yield('title')</title>
 	<!-- link online -->
@@ -20,6 +21,13 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	
 
 	<!-- end link -->
     <!-- CSRF Token -->
@@ -44,8 +52,8 @@
                     </a>
                 <div class="dropdown-menu dropdown-menu-left ml-5" aria-labelledby="">
                     <a class="dropdown-item" href="{{ route('logout') }}"
-                       onclick="event.preventDefault();
-                                     document.getElementById('logout-form').submit();">
+                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
                     </a>
 
