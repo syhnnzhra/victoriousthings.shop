@@ -50,8 +50,8 @@
                     </a>
                 <div class="dropdown-menu dropdown-menu-left ml-5" aria-labelledby="">
                     <a class="dropdown-item" href="{{ route('logout') }}"
-                       onclick="event.preventDefault();
-                                     document.getElementById('logout-form').submit();">
+                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
                     </a>
 
