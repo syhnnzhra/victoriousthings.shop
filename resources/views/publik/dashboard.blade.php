@@ -3,36 +3,32 @@
     @section('title', 'Welcome to My Knit')
 
     @section('container')
-			<div id="demo" class="carousel slide" data-ride="carousel">
+	<div id="demo" class="carousel slide" data-ride="carousel" style="">
+			<!-- Indicators -->
+			<ul class="carousel-indicators">
+			<li data-target="#demo" data-slide-to="0" class="active"></li>
+			<li data-target="#demo" data-slide-to="1"></li>
+			<li data-target="#demo" data-slide-to="2"></li>
+			</ul>
 
-				<!-- Indicators -->
-				<ul class="carousel-indicators">
-				<li data-target="#demo" data-slide-to="0" class="active"></li>
-				<li data-target="#demo" data-slide-to="1"></li>
-				<li data-target="#demo" data-slide-to="2"></li>
-				</ul>
-				
-				<!-- The slideshow -->
-				<div class="carousel-inner">
+			<!-- The slideshow -->
+			<div class="carousel-inner">
 				<div class="carousel-item active">
-					<img src="{{asset('assets/images/blog-item-01.png')}}" alt="Gambar - 1" width="100" height="75">
+					<img src="{{asset('gambar/banner-1.png')}}" alt="Gambar - 1" width="100" height="75">
 				</div>
 				<div class="carousel-item">
-					<img src="{{asset('assets/images/blog-item-02.png')}}" alt="Gambar - 2" width="100" height="75">
+					<img src="{{asset('gambar/banner-2.png')}}" alt="Gambar - 2" width="100" height="75">
 				</div>
-				<div class="carousel-item">
-					<img src="{{asset('assets/images/blog-item-01.png')}}" alt="Gambar - 3" width="100" height="75">
-				</div>
-				</div>
-				
-				<!-- Left and right controls -->
-				<a class="carousel-control-prev" href="#demo" data-slide="prev">
-				<span class="carousel-control-prev-icon"></span>
-				</a>
-				<a class="carousel-control-next" href="#demo" data-slide="next">
-				<span class="carousel-control-next-icon"></span>
-				</a>
 			</div>
+
+			<!-- Left and right controls -->
+			<a class="carousel-control-prev" href="#demo" data-slide="prev">
+			<span class="carousel-control-prev-icon"></span>
+			</a>
+			<a class="carousel-control-next" href="#demo" data-slide="next">
+			<span class="carousel-control-next-icon"></span>
+			</a>
+		</div>
 	</section>
 	<!-- Blog end -->
 	<!-- Books and CD -->

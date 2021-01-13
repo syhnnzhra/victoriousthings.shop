@@ -44,7 +44,7 @@
                                                 <td> : </td>
                                                 <td><form method="post" action="{{ url('/pesan') }}/{{ $item->id }}">
                                                     @csrf
-                                                    <input type="text" name="jumlah_pesan" class="form-control" required="">
+                                                    <input type="text" name="jumlah_pesan" class="form-control col-2" required="" id="sst" maxlength="12" value="1">
                                                 </td>
                                             </tr>
                                             <tr>

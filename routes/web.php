@@ -4,10 +4,11 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
+Route::resource('/', 'WelcomeController'); 
 
 
 Route::auth();
@@ -41,14 +42,15 @@ Route::group(['middleware'=>['web', 'auth']], function(){
         if(Auth::user()->level == 'admin'){
             return view('admin.homeAdmin');
         } else{
+            // Route::resource('/homepublik', 'Publik\dashboardController');
             return view('publik.dashboard');
         }
     });
 
     Route::get('/homepublik', function () {
         return view('publik.dashboard');
-
     });
+
     Route::resource('/dashboard', 'Publik\dashboardController');
      
     // //kategori publik
@@ -56,6 +58,10 @@ Route::group(['middleware'=>['web', 'auth']], function(){
     
     //item
     Route::resource('/item_publik', 'Publik\ItemController'); 
+    
+    // cart
+    // Route::get('/cart', 'Publik\CartController@cart'); 
+    // Route::get('/cart/tambah/{id}', 'Publik\CartController@do_tambah_cart')->where("id","[0-9]+"); 
     
     //customer
     Route::resource('/customer_publik', 'Publik\CustomerController'); 

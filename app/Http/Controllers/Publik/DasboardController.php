@@ -15,7 +15,8 @@ class DasboardController extends Controller
      */
     public function index()
     {
-        return view('publik.dashboard');
+        $item = Item::latest()->limit(8)->get();
+        return view('publik.dashboard', compact('item'));
     }
 
     /**
