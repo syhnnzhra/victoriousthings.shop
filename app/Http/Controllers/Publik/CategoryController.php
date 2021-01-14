@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Publik;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Category;
+use App\Item;
 
 class CategoryController extends Controller
 {
@@ -14,7 +16,19 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view ('publik.category.index');
+        $categori = Category::all();
+        $item = Item::latest()->get();
+        return view ('publik.category.index',compact('categori','item'));
+    }
+
+    public function kategori(Category $Category)
+    {
+        $Item = $Category->Item()->get();
+        return $Item;
+        // $categori = $id->Item()->get();
+        // $categori = Category::all();
+        // $item = Item::latest()->get();
+        // return view ('publik.category.index',compact('categori','item'));
     }
 
     /**

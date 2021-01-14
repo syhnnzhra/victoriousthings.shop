@@ -7,74 +7,34 @@
 	<section class="fh5co-books">
 		<div class="site-container mt-5">
             <div class="kategori">
-            <a href="aksesoris" class="universal-h2 mt-5 mr-3 " style='font-size: 20px ;color: #c18f59;'>Accessories</h2></a>
-            <a href="sweater" class="universal-h2 mt-5 mr-3 " style='font-size: 20px ;color: #c18f59;'>Sweater</h2></a>
-            <a href="shirt" class="universal-h2 mt-5 mr-3 " style='font-size: 20px ;color: #c18f59;'>Shirt</h2></a>
-            <a href="cardigan"  class="universal-h2 mt-5 mr-3 " style='font-size: 20px ;color: #c18f59;'>Cardigan</h2></a>
+				@foreach ($categori as $ct)
+			<a href="{{ route('kategorip',$ct->id) }}" class="universal-h2 mt-5 mr-3 " style='font-size: 20px ;color: #c18f59;'>{{$ct->nama}}</h2></a>
+				@endforeach
             </div>
-			<div class="books">
-				<div class="single-book">
-					<a href="#" class="single-book__img">
-						<img src="{{asset('assets2/images/books-1.jpg')}}" alt="single book and cd">
-						<div class="single-book_download">
-							<img src="{{asset('assets2/images/download.svg')}}" alt="book image">
-						</div>
-					</a>
-					<h4 class="single-book__title">Olivani</h4>
-					<span class="single-book__price">$15.00</span>
-					<!-- star button -->
-					<div class="books-brand-button mt-3">
-						<a href="#" class="brand-button">Check Out</a>
-					</div>
-					<!-- star button end -->
-				</div>
-				<div class="single-book">
-					<a href="#" class="single-book__img">
-						<img src="{{asset('assets2/images/books-2.jpg')}}" alt="single book and cd">
-						<div class="single-book_download">
-							<img src="{{asset('assets2/images/download.svg')}}" alt="book image">
-						</div>
-					</a>
-					<h4 class="single-book__title">Molleon’s Life</h4>
-					<span class="single-book__price">$22.00</span>
-					<!-- star button -->
-					<div class="books-brand-button mt-3">
-						<a href="#" class="brand-button">Check Out</a>
-					</div>
-					<!-- star button end -->
-				</div>
-				<div class="single-book">
-					<a href="#" class="single-book__img">
-						<img src="{{asset('assets2/images/books-3.jpg')}}" alt="single book and cd">
-						<div class="single-book_download">
-							<img src="{{asset('assets2/images/download.svg')}}" alt="book image">
-						</div>
-					</a>
-					<h4 class="single-book__title">Love is Love</h4>
-					<span class="single-book__price">$25.00</span>
-					<!-- star button -->
-					<div class="books-brand-button mt-3">
-						<a href="#" class="brand-button">Check Out</a>
-					</div>
-					<!-- star button end -->
-				</div>
-				<div class="single-book">
-					<a href="#" class="single-book__img">
-						<img src="{{asset('assets2/images/books-4.jpg')}}" alt="single book and cd">
-						<div class="single-book_download">
-							<img src="{{asset('assets2/images/download.svg')}}" alt="book image">
-						</div>
-					</a>
-					<h4 class="single-book__title">Give Me Also</h4>
-					<span class="single-book__price">$30.00</span>
-					<!-- star button -->
-					<div class="books-brand-button mt-3">
-						<a href="#" class="brand-button">Check Out</a>
-					</div>
-					<!-- star button end -->
-				</div>
-			</div>
-	</section>
+			<div class="row">
+				<div class="books">
+					@foreach ($item as $item)
+					<div class="col-lg-3 col-md- col-sm-12">
+					<div class="single-book">
+						<a href="{{route('detail.show',$item->id)}}" class="single-book__img" >
+					 <img src="{{ asset('gambar/'.$item->foto) }}" alt="single book and cd" height="300px" >
+					 <div class="single-book_download">
+						 <span style="font-size:14px; color:#c18f59" alt="book image">{{$item->keterangan}} <p>Klik for Detail</p></span>
+					 </div>
+				 </a>
+				 <h4 class="single-book__title">{{$item->nama}}</h4>
+				 <span class="single-book__price">Rp.{{$item->harga}}</span>
+				 <!-- star button -->
+				 <div class="books-brand-button mt-3">
+					 <a href="{{route('pesan.show',$item->id)}}" class="brand-button">Pesan</a>
+				 </div>
+			 </div>
+		 </div>
+			 @endforeach
+				  </div>
+			 </div>
+		 </div>
+	 </section>
 	<!-- endcontainer  -->
         
             
