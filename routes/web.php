@@ -60,12 +60,16 @@ Route::group(['middleware'=>['web', 'auth']], function(){
     Route::resource('/item_publik', 'Publik\ItemController'); 
     
     // cart
+    Route::resource('/cart', 'Publik\CartController');
+    Route::post('cart', 'Publik\CartController@addToCart')->name('front.cart');
+    Route::get('/cart', 'Publik\CartController@listCart')->name('front.list_cart');
+    Route::post('/cart/update', 'Publik\CartController@updateCart')->name('front.update_cart');
     // Route::get('/cart', 'Publik\CartController@cart'); 
     // Route::get('/cart/tambah/{id}', 'Publik\CartController@do_tambah_cart')->where("id","[0-9]+"); 
     
     //customer
     Route::resource('/customer_publik', 'Publik\CustomerController'); 
-
+    
     // detail produk
     Route::resource('/detail', 'Publik\DetailprodukController');
     

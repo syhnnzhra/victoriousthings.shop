@@ -26,7 +26,7 @@
                                         <tr>
                                             <td>Harga</td>
                                             <td> : </td>
-                                            <td>Rp.{{$item->harga}} </td>
+                                            <td>Rp {{number_format($item->harga)}} </td>
                                         </tr>
                                         <tr>
                                             <td>Stok</td>
@@ -42,10 +42,27 @@
                                             <tr>
                                                 <td>Jumlah Pesan</td>
                                                 <td> : </td>
-                                                <td><form method="post" action="{{ url('/pesan') }}/{{ $item->id }}">
-                                                    @csrf
-                                                    <input type="text" name="jumlah_pesan" class="form-control col-2" required="" id="sst" maxlength="12" value="1">
-                                                </td>
+                                                <td>
+                                                <div class="row">
+                                                    <div class="col-2 tambah">
+                                                        <form method="post" action="{{ route('front.cart') }}" >
+                                                            @csrf
+                                                            @method('PUT')
+                                                            <input type="text" name="jumlah_pesan" class="form-control" required="" id="sst" maxlength="2" min="1" pattern="[0-9]*" disabled="" value="1">
+                                                    </div>
+
+                                                    <div class="col">
+                                                    <input type="hidden" name="id" value="{{ $item->id }}" class="form-control" >
+                                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
+                                                        class="reduced items-count brand-button" type="button">
+                                                        <i class="fa fa-minus"></i>
+                                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+                                                        class="increase items-count brand-button" type="button">
+                                                        <i class="fa fa-plus"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                    </td>
                                             </tr>
                                             <tr>
                                                 <td> </td>

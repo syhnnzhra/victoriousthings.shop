@@ -26,7 +26,8 @@
                     </span>
 					<!-- star button -->
 					<div class="books-brand-button mt-3">
-						<a href="{{url('/pesan',$item->id)}}" class="brand-button">Pesan</a>
+						<a href="{{url('/cart',$item->id)}}" class="brand-button">Pesan</a>
+						<!-- <a href="{{url('/pesan',$item->id)}}" class="brand-button">Pesan</a> -->
                     </div>
                 </div>
             </div>
