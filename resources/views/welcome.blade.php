@@ -19,7 +19,12 @@
 	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	
     
 
 	<!-- end link -->
@@ -98,6 +103,11 @@
 				<div class="carousel-inner">
 					<div class="carousel-item active">
 						<img src="{{asset('gambar/banner-1.png')}}" alt="Gambar - 1" width="100" height="75">
+						<div class="carousel-caption">
+							<h3>Slide 1</h3>
+							<p>Deskripsi Slide 1</p>
+							<button>Button</button>
+						</div>
 					</div>
 					<div class="carousel-item">
 						<img src="{{asset('gambar/banner-2.png')}}" alt="Gambar - 2" width="100" height="75">
