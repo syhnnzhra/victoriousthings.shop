@@ -93,11 +93,11 @@
 	<div id="demo" class="carousel slide" data-ride="carousel" style="">
 
 				<!-- Indicators -->
-				<ul class="carousel-indicators">
+				{{-- <ul class="carousel-indicators">
 				<li data-target="#demo" data-slide-to="0" class="active"></li>
 				<li data-target="#demo" data-slide-to="1"></li>
 				<li data-target="#demo" data-slide-to="2"></li>
-				</ul>
+				</ul> --}}
 				
 				<!-- The slideshow -->
 				<div class="carousel-inner">
@@ -154,11 +154,11 @@
 	<!-- Books and CD end -->
 	
 	<!-- Diskon -->
-	<section class="fh5co-books">
+	{{-- <section class="fh5co-books">
 		<div class="site-container text-center">
 			<img src="{{asset('gambar/diskon.jpg')}}" alt="">
 		</div>
-	</section>
+	</section> --}}
 
 
 	<!-- Footer -->
