@@ -14,10 +14,16 @@ class Item extends Model
     {
         return $this->belongsTo('App\Category','kategori_id','id');
     }
+    public function Cart()
+    {
+        return $this->belongsTo(Cart::class);
+    }
     public function Incoming_Item()
     {
         return $this->hasMany('App\Incoming_Item','item_id','id');
     }
+
+
 
     static function list_produk(){
         $data=Item::all();

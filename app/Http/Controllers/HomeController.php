@@ -25,4 +25,9 @@ class HomeController extends Controller
     {
         return view('admin.homeAdmin');
     }
+    
+    public function publik()
+    {
+        return view('publik.dashboard');
+    }
 }

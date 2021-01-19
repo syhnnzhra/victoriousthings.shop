@@ -23,10 +23,10 @@
 					 </div>
 				 </a>
 				 <h4 class="single-book__title">{{$item->nama}}</h4>
-				 <span class="single-book__price">Rp.{{$item->harga}}</span>
+				 <span class="single-book__price">Rp {{number_format($item->harga)}}</span>
 				 <!-- star button -->
 				 <div class="books-brand-button mt-3">
-					 <a href="{{route('pesan.show',$item->id)}}" class="brand-button">Pesan</a>
+					 <a href="{{url('/cart',$item->id)}}" class="brand-button">Pesan</a>
 				 </div>
 			 </div>
 		 </div>

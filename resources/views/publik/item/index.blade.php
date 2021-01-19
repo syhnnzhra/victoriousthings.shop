@@ -7,9 +7,24 @@
        <!-- Container -->
        <section class="fh5co-books">
            <div class="site-container">
-               <h2 class="universal-h2 universal-h2-bckg mt-5" style="color:#c18f59">All Items</h2>
+               <h2 class="universal-h2 universal-h2-bckg mt-5" style='color: #c18f59;'>All Items</h2>
                
-               <div class="row">
+               <!-- <div class="row"> -->
+               <div class="">
+                <div class="input-group icons demo-2 mb-5">
+                    <div class="form col-5">
+                        <form action="searchpublikitem" method="get">
+                        {{csrf_field()}}
+                            <input type="search" name="searchp" class="form-control" placeholder="Search here!">
+                            <!-- <label class="form-label" for="form1">Search</label> -->
+                    </div>
+                            <button type="submit" class="brand-button">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                </div>
+                        
+               </div>
                    <div class="books">
                        @foreach ($items as $item)
                        <div class="col-lg-3 col-md- col-sm-12">

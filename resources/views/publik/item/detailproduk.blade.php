@@ -26,7 +26,7 @@
                                         <tr>
                                             <td>Harga</td>
                                             <td> : </td>
-                                            <td>Rp.{{$item->harga}} </td>
+                                            <td>Rp {{number_format($item->harga)}} </td>
                                         </tr>
                                         <tr>
                                             <td>Stok</td>

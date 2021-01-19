@@ -45,10 +45,10 @@
                                                 <td>
                                                 <div class="row">
                                                     <div class="col-2 tambah">
-                                                        <form method="post" action="{{ route('front.cart') }}" >
+                                                        <form method="post" action="{{ route('front.cart',$item->id) }}" >
                                                             @csrf
                                                             @method('PUT')
-                                                            <input type="text" name="jumlah_pesan" class="form-control" required="" id="sst" maxlength="2" min="1" pattern="[0-9]*" disabled="" value="1">
+                                                            <input type="text" name="qty" class="form-control" required="" id="sst" maxlength="2" min="1" pattern="[0-9]*" readonly value="1" style="border:0;">
                                                     </div>
 
                                                     <div class="col">
