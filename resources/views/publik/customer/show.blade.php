@@ -1,10 +1,10 @@
 @extends('publik/layout/apps')
 
-      @section('title', 'My Profile')
+    @section('title', 'My Profile')
 
 
-      @section('container')
-      <section class="section colored" id="contact-us">
+    @section('container')
+    <section class="section colored" id="contact-us">
         <div class="container">
             <!-- ***** Section Title Start ***** -->
             <div class="row">
@@ -33,11 +33,11 @@
                     <div class="col-9">
                     <div class="col-lg-8 col-md-6 col-sm-12">
                     <div class="contact-form">
-                      <div class="table-responsive">
+                    <div class="table-responsive">
                         @if (session('error'))
                         <div class="alert alert-danger">{{ session('error') }}</div>
                         @endif
-                      </div>
+                    </div>
 
                         <div class="table text-center">
                             <table class="table table-borderless">
@@ -71,4 +71,4 @@
             </div>
         </div>
     </section>
-      @endsection
+    @endsection

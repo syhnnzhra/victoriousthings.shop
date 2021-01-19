@@ -36,7 +36,6 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                                <input type="checkbox" onclick="myFunction()">show password
                             </div>
                         </div>
 
