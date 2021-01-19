@@ -34,7 +34,7 @@
 	<!-- Books and CD -->
 	<section class="fh5co-books">
 		<div class="site-container">
-			<h2 class="universal-h2 universal-h2-bckg mt-5">Latest Update</h2>
+			<h2 class="universal-h2 universal-h2-bckg mt-5" style="color:#c18f59">Latest Update</h2>
 			<div class="books">
 				<div class="single-book">
 					<a href="#" class="single-book__img">

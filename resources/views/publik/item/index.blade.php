@@ -7,7 +7,7 @@
        <!-- Container -->
        <section class="fh5co-books">
            <div class="site-container">
-               <h2 class="universal-h2 universal-h2-bckg mt-5">All Items</h2>
+               <h2 class="universal-h2 universal-h2-bckg mt-5" style="color:#c18f59">All Items</h2>
                
                <div class="row">
                    <div class="books">

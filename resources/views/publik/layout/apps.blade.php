@@ -73,10 +73,10 @@
 			</div>
 			<div class="main-navigation">
 				<ul class="main-navigation__ul">
-					<li><a href="homepublik">Home</a></li>
-					<li><a href="item_publik">All Product</a></li>
-					<li><a href="kategori_publik">Category</a></li>
-					<li><a href="customer_publik">My Profile</a></li>
+					<li><a href="/homepublik">Home</a></li>
+					<li><a href="/item_publik">All Product</a></li>
+					<li><a href="/kategori_publik">Category</a></li>
+					<li><a href="/customer_publik">My Profile</a></li>
 					
 				</ul>
 			</div>

@@ -17,4 +17,5 @@ class DetailprodukController extends Controller
         $data['item']=Item::findOrFail($id);
         return view('publik.item.detailproduk', $data);
     }
+    
 }

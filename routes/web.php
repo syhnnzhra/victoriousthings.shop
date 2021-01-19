@@ -55,7 +55,7 @@ Route::group(['middleware'=>['web', 'auth']], function(){
      
     //kategori publik
     Route::get('/kategori_publik', 'Publik\CategoryController@index');
-
+    Route::resource('/detailkat', 'Publik\CategoryController'); 
     Route::get('/kategorip/{id}', 'Publik\CategoryController@kategori')->name('kategorip'); 
     
     //item
