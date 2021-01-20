@@ -13,8 +13,8 @@
     <link href="{{asset('assets/css/bootstrap.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <!--external css-->
-    <link href="{{asset('assets/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/zabuto_calendar.css')}}">
+<link href="{{asset('assets/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
+    <    link rel="stylesheet" type="text/css" href="{{asset('assets/css/zabuto_calendar.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/js/gritter/css/jquery.gritter.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/lineicons/style.css')}}">    
     
@@ -32,8 +32,8 @@
     
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9] -->
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
     <style>
