@@ -37,7 +37,7 @@
 <body>
     
 	<!-- Navigation -->
-	<nav class="site-navigation">
+	<nav class="navigation">
 		<div class="site-navigation-inner site-container">
             @guest
             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}">
@@ -61,15 +61,11 @@
                 </div>
                 @endguest
 			<a href="">
-				<a href="{{ route('front.list_cart') }}" class="icons">
+				<a href="/cartp" class="icons">
 					<i class="fas fa-shopping-cart mt-2" style='font-size:25px ;color: #c18f59;'></i>
 				</a>
-				<!-- <i class='fas fa-shopping-cart mt-2' style='font-size:25px ;color: #c18f59;'></i></a> -->
 			<div class="demo-2 search mr-auto ml-3">
-				<form>
-					<span class="icon"><i class="fa fa-search" style='font-size:25px ;color: #c18f59;'></i></span>
-					<input type="search" id="search" placeholder=" Search..."/>
-				</form>
+				
 			</div>
 			<div class="main-navigation">
 				<ul class="main-navigation__ul">
@@ -119,6 +115,5 @@
 	<script src="{{asset('assets2/js/jquery.min.js')}}"></script>
 	<script src="{{asset('assets2/js/slick.min.js')}}"></script>
 	<script src="{{asset('assets2/js/main.js')}}"></script>
-
 </body>
 </html>

@@ -145,7 +145,7 @@
                     </span>
 					<!-- star button -->
 					<div class="books-brand-button mt-3">
-						<a href="{{route('pesan.show',$items->id)}}" class="brand-button">Pesan</a>
+						<a href="{{url('/cart',$items->id)}}" class="brand-button">Pesan</a>
                     </div>
                 </div>
             </div>
@@ -183,6 +183,11 @@
 	<script src="{{asset('assets2/js/jquery.min.js')}}"></script>
 	<script src="{{asset('assets2/js/slick.min.js')}}"></script>
 	<script src="{{asset('assets2/js/main.js')}}"></script>
+	<script>
+		$(window).scroll(function(){
+		$('nav').toggleClass('scrolled', $(this).scrollTop()> 500);
+		});
+	</script>
 
 </body>
 </html>

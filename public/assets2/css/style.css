@@ -113,12 +113,23 @@
       color: #93a2ad;
     }
   
-.site-navigation {
-  position: fixed;
-  background-color: #fff;
-  top: 0%;
-  width: 100%;
-  z-index: 2; }
+    .site-navigation {
+      position: fixed;
+      background-color: transparent !important;
+      top: 0%;
+      width: 100%;
+      z-index: 2; }
+
+    .navigation{
+        position: fixed;
+        background-color: rgb(230, 202, 160) ;
+        top: 0%;
+        width: 100%;
+        z-index: 2; }
+    
+  .site-navigation.scrolled {
+    background:  rgb(230, 202, 160)  !important;
+  }
   
   .site-navigation-inner {
     display: flex;
@@ -468,6 +479,7 @@
   .fh5co-books .universal-h2 {
     margin-bottom: 50px;
     padding-bottom: 20px; }
+    
   .fh5co-books .books-brand-button {
     text-align: center; }
     .fh5co-books .books-brand-button .brand-button {

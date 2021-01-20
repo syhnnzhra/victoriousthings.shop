@@ -132,6 +132,11 @@
 	<script src="{{asset('assets2/js/jquery.min.js')}}"></script>
 	<script src="{{asset('assets2/js/slick.min.js')}}"></script>
 	<script src="{{asset('assets2/js/main.js')}}"></script>
+	<script>
+		$(window).scroll(function(){
+		$('nav').toggleClass('scrolled', $(this).scrollTop()> 500);
+		});
+	</script>
 
 </body>
 </html>

@@ -10,10 +10,10 @@ class PesanController extends Controller
     {
         $this->middleware('auth');
     }
-    public function show($id)
-    {
-        $data['item']=Item::findOrFail($id);
-        return view('publik.item.pesan', $data);
-    }
+    // public function show($id)
+    // {
+    //     $data['item']=Item::findOrFail($id);
+    //     return view('publik.category.pesan', $data);
+    // }
     
 }

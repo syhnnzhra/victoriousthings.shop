@@ -69,11 +69,13 @@ Route::group(['middleware'=>['App\Http\Middleware\Publik']], function(){
     //kategori publik
     Route::get('/kategori_publik', 'Publik\CategoryController@index');
     Route::resource('/detailkat', 'Publik\CategoryController'); 
+    // Route::resource('/pesankat', 'PesanController');
     Route::get('/kategorip/{id}', 'Publik\CategoryController@kategori')->name('kategorip');
     
     //item
     Route::resource('/item_publik', 'Publik\ItemController'); 
     Route::get('/searchpublikitem', 'Publik\ItemController@searchp');
+    // Route::resource('/pesan', 'Publik\ItemController');
     
     // cart
     Route::resource('/cart', 'Publik\CartController');
@@ -91,9 +93,6 @@ Route::group(['middleware'=>['App\Http\Middleware\Publik']], function(){
     
     // detail produk
     Route::resource('/detail', 'Publik\DetailprodukController');
-    
-    // pesan
-    Route::resource('/pesan', 'PesanController');
 
     //transaksi
     Route::resource('/transaksi', 'Publik\TransactionController'); 

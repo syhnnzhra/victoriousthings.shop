@@ -1,4 +1,4 @@
-@extends('publik/layout/apps')
+@extends('publik/layout/layout')
 
     @section('title', 'Pesan')
 
