@@ -109,7 +109,7 @@
               <ul class="sidebar-menu" id="nav-accordion">
               
               	  <p class="centered"><a href="/home"><img src="{{ asset('assets/images/profile.png')}}" class="img-circle" width="60"></a></p>
-              	  <h5 class="centered">Admin</h5>
+              	  <h5 class="centered">{{Auth::user()->name}}</h5>
               	  	
                   <li class="mt">
                       <a class="nav-link {{ Request::path() === '/home' ? 'bg-primary' :''}} " href="/home">

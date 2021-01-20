@@ -61,7 +61,10 @@
                 </div>
                 @endguest
 			<a href="">
-			<i class='fas fa-shopping-cart mt-2' style='font-size:25px ;color: #c18f59;'></i></a>
+				<a href="{{ route('front.list_cart') }}" class="icons">
+					<i class="fas fa-shopping-cart mt-2" style='font-size:25px ;color: #c18f59;'></i>
+				</a>
+				<!-- <i class='fas fa-shopping-cart mt-2' style='font-size:25px ;color: #c18f59;'></i></a> -->
 			<div class="demo-2 search mr-auto ml-3">
 				<form>
 					<span class="icon"><i class="fa fa-search" style='font-size:25px ;color: #c18f59;'></i></span>
@@ -70,10 +73,10 @@
 			</div>
 			<div class="main-navigation">
 				<ul class="main-navigation__ul">
-					<li><a href="homepublik">Home</a></li>
-					<li><a href="item_publik">All Product</a></li>
-					<li><a href="kategori_publik">Category</a></li>
-					<li><a href="customer_publik">My Profile</a></li>
+					<li><a href="/homepublik">Home</a></li>
+					<li><a href="/item_publik">All Product</a></li>
+					<li><a href="/kategori_publik">Category</a></li>
+					<li><a href="/customer_publik">My Profile</a></li>
 					
 				</ul>
 			</div>

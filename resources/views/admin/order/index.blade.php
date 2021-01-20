@@ -29,7 +29,7 @@
                                             @foreach($order as $order)
                                                 <tr>
                                                     <td>{{$order->id}}</td>
-                                                    <td>{{$order->customer->id}} - {{$order->customer->nama}}</td>
+                                                    <td>{{$order->customer_id}}</td>
                                                     <td>{{$order->item_id}} - {{$order->item->nama}}</td>
                                                     <td>{{$order->quantity}}</td>
                                                     <td>{{$order->status}}</td>

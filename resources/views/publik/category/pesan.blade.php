@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-12 mb-3">
                 <div class="books-brand-button " style="text-align : left">
-                <a href="/item_publik" class="brand-button"><i class="fa fa-arrow-left"> Kembali</i></a>
+                <a href="/kategori_publik" class="brand-button"><i class="fa fa-arrow-left"> Kembali</i></a>
                 </div>
             </div>
             <div class="col-md-12">
@@ -45,10 +45,10 @@
                                                 <td>
                                                 <div class="row">
                                                     <div class="col-2 tambah">
-                                                        <form method="post" action="{{ route('front.cart',$item->id) }}" >
+                                                        <form method="post" action="{{ route('front.cart') }}" >
                                                             @csrf
                                                             @method('PUT')
-                                                            <input type="text" name="qty" class="form-control" required="" id="sst" maxlength="2" min="1" pattern="[0-9]*" readonly value="1" style="border:0;">
+                                                            <input type="text" name="jumlah_pesan" class="form-control" required="" id="sst" maxlength="2" min="1" pattern="[0-9]*" disabled="" value="1">
                                                     </div>
 
                                                     <div class="col">

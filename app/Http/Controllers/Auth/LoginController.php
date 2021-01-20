@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -27,6 +28,40 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+
+    protected function authenticated(Request $request)
+    {
+        if ($request->user()->level == 'admin') { // do your magic here
+            $credentials = $request->only($this->username(), 'password');
+            
+            return redirect('/home');
+        }
+        elseif ($request->user()->level == 'user') { // do your magic here
+            $credentials = $request->only($this->username(), 'password');
+            return redirect('/homepublik');
+        }
+        // if ($request->user()->level == "admin") { // do your magic here
+        //     $credentials = $request->only($this->username(), 'password');
+            
+        //     return redirect('/home');
+            // if($request->user()->alamat_lengkap == null){
+            //     return redirect()->route('detail.user');
+            // }
+            // else{
+            //     return redirect()->route('home.guest');
+            // }
+        // }
+        // elseif ($request->user()->level == "user") { // do your magic here
+        //     $credentials = $request->only($this->username(), 'password');
+        //     return redirect('/homepublik');
+        //     // if($request->user()->alamat_lengkap == null){
+        //     //     return redirect()->route('detail.user');
+        //     // }
+        //     // else{
+        //     //     return redirect()->route('home.guest');
+        //     // }
+        // }
+    }
 
     /**
      * Create a new controller instance.

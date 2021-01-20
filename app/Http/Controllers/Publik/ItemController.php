@@ -84,4 +84,11 @@ class ItemController extends Controller
     {
         //
     }
+
+    public function searchp(Request $request)
+    {
+        $searchp = $request->searchp;
+        $items = Item::where('nama', 'like', '%'.$searchp.'%')->paginate(5);
+            return view('publik.item.index', compact('items'));
+    }
 }

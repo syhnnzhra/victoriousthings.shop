@@ -5,22 +5,28 @@ use Illuminate\Support\Facades\Route;
 
 
 // Route::get('/', function () {
-//     return view('welcome');
-// });
+    //     return view('welcome');
+    // });
+    
+    Route::resource('/', 'WelcomeController'); 
+    
+    
+    Route::auth();
+    // Route::get('/home', 'HomeController@index');
 
-Route::resource('/', 'WelcomeController'); 
 
 
-Route::auth();
-// Route::get('/home', 'HomeController@index');
-Route::group(['middleware'=>['web', 'auth']], function(){ 
-
+    // halaman awal admin
+Route::group(['middleware' => 'App\Http\Middleware\isAdmin'], function () {
+    // Route::resource('/home', 'Admin\HomeController')->middleware('isAdmin');
+    Route::resource('/home', 'Admin\HomeController');
+    
     //item
     Route::resource('/item_admin', 'Admin\ItemController'); 
-
+    
     //costumer
     Route::resource('/customer', 'Admin\CustomerController'); 
-
+    
     //kategori
     Route::resource('/kategori', 'Admin\CategoryController'); 
     
@@ -35,36 +41,47 @@ Route::group(['middleware'=>['web', 'auth']], function(){
     
     //order detail
     Route::resource('/Odetail', 'Admin\OdetailController'); 
+});
 
+
+// halaman awal publik
+Route::group(['middleware'=>['App\Http\Middleware\Publik']], function(){ 
+    Route::resource('/homepublik', 'Publik\HomeController');
+    // Route::resource('/homepublik', 'Admin\HomeController')->middleware('Publik');
     
-    Route::get('/home', function(){
-        //costumer
-        if(Auth::user()->level == 'admin'){
-            return view('admin.homeAdmin');
-        } else{
-            // Route::resource('/homepublik', 'Publik\dashboardController');
-            return view('publik.dashboard');
-        }
-    });
+    // Route::get('/home', function(){
+        //     return view('publik.dashboard');
+    // });
+    
+    // if(Auth::user()->level == 'admin'){
+    //     Route::resource('/home', 'Admin\HomeController');
+    //     return view('admin.homeAdmin');
+    // } else{
+    //     Route::resource('/homepublik', 'Publik\dashboardController');
+    // }
 
-    Route::get('/homepublik', function () {
-        return view('publik.dashboard');
-    });
+    // Route::get('/homepublik', function () {
+    //     return view('publik.dashboard');
+    // });
 
     Route::resource('/dashboard', 'Publik\dashboardController');
      
     //kategori publik
     Route::get('/kategori_publik', 'Publik\CategoryController@index');
-
-    Route::get('/kategorip/{id}', 'Publik\CategoryController@kategori')->name('kategorip'); 
+    Route::resource('/detailkat', 'Publik\CategoryController'); 
+    Route::get('/kategorip/{id}', 'Publik\CategoryController@kategori')->name('kategorip');
     
     //item
     Route::resource('/item_publik', 'Publik\ItemController'); 
+    Route::get('/searchpublikitem', 'Publik\ItemController@searchp');
     
     // cart
     Route::resource('/cart', 'Publik\CartController');
-    Route::post('cart', 'Publik\CartController@addToCart')->name('front.cart');
-    Route::get('/cart', 'Publik\CartController@listCart')->name('front.list_cart');
+    Route::get('/cart_tampil', 'Publik\CartController@cart_tampil');
+    Route::get('/cartp', 'Publik\CartController@cart_tampil');
+    Route::post('cart', 'Publik\PesanController@addToCart')->name('front.cart');
+    // Route::post('cart', 'Publik\CartController@addToCart')->name('front.cart');
+    Route::get('/cart_p', 'Publik\CartController@listCart')->name('front.list_cart');
     Route::post('/cart/update', 'Publik\CartController@updateCart')->name('front.update_cart');
     // Route::get('/cart', 'Publik\CartController@cart'); 
     // Route::get('/cart/tambah/{id}', 'Publik\CartController@do_tambah_cart')->where("id","[0-9]+"); 

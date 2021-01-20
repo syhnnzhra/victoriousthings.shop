@@ -65,6 +65,7 @@
 				<ul class="main-navigation__ul">
 					<li><a href="/">Home</a></li>
 					<li><a href="item_publik">All Product</a></li>
+					<li><a href="/kategori_publik">Category</a></li>
 					<li>
 						@auth
 						@else
@@ -131,7 +132,7 @@
 
 	<section class="fh5co-books">
 		<div class="site-container">
-			<h2 class="universal-h2 universal-h2-bckg mt-5">Popular Items</h2>
+			<h2 class="universal-h2 universal-h2-bckg mt-5" style="color:#c18f59">Popular Items</h2>
 			<div class="books">
 			@foreach ($item as $items)
 			<div class="col-lg-3 col-md- col-sm-12">

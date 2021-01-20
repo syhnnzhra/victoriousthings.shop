@@ -1,43 +1,17 @@
 <?php
 
 namespace App\Http\Controllers\Publik;
-use Illuminate\Support\Facades\Auth;
-use App\Item;
-use App\Cart;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class CartController extends Controller
+class PesanController extends Controller
 {
-    //
-    function cart_tampil(){
-        $carts = Cart::where('user_id',Auth::user()->id)->get();
-        $item = Item::first();
-        // $subtotal = Cart::where('user_id',Auth::user()->id)->groupBy('item_id')->count();
-        // return $subtotal;
-        return view('publik.cart.index', compact('carts','item'));
-    }
-
-    function index(){
-        return view('publik.item.pesan');
-    }
-
-    public function update(Request $request, $id){
-        Cart::create([
-            'user_id' => Auth::user()->id,
-            'item_id' => $id,
-            'qty' => $request->qty
-        ]);
-        return redirect('/cart_tampil');
-    }
-
-    public function show($id)
-    {
-        $data['item']=Item::findOrFail($id);
-        return view('publik.item.pesan', $data);
-    }
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     function addToCart(Request $request){
         //VALIDASI DATA YANG DIKIRIM
         $this->validate($request, [
@@ -105,25 +79,74 @@ class CartController extends Controller
         // return 'hi';
         return redirect()->back()->cookie($cookie);
     }
-
-    function do_tambah_cart($id){
-        $cart = session("cart");
-        $item = Item::detail_produk($id);
-        $cart["id"]=[
-            "nama"=>$item->$nama,
-            "kategori_id"=>$item->$kategori_id,
-            "stok"=>$item->$stok,
-            "harga"=>$item->$harga,
-            "keterangan"=>$item->$keterangan,
-            "foto"=>$item->$foto,
-            "jumlah"=>1
-        ];
-        session(["cart"=>$cart]);
-        return redirect("/cart");
+    public function index()
+    {
+        //
     }
-    
-    function cart(){
-        $cart = session("cart");
-        return view('publik.cart.index')->with("cart",$cart);
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
     }
 }

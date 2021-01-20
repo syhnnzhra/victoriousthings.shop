@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-12 mb-3">
                 <div class="books-brand-button " style="text-align : left">
-                <a href="/item_publik" class="brand-button"><i class="fa fa-arrow-left"> Kembali</i></a>
+                <a href="/kategori_publik" class="brand-button"><i class="fa fa-arrow-left"> Kembali</i></a>
                 </div>
             </div>
             <div class="col-md-12">
