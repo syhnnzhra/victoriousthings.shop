@@ -10,6 +10,6 @@ class Cart extends Model
     protected $guarded =[];
     public function Item()
     {
-        return $this->hasMany(Item::class);
+        return $this->belongsTo('App\Item','item_id','id');
     }
 }

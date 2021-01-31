@@ -1,11 +1,11 @@
-@extends('publik/layout/layout')
+@extends('publik/layout/apps')
 
     @section('title', 'Cart')
 
 
     @section('container')
        <!-- Container -->
-       <section class="fh5co-books">
+       <section class="fh5co-books" style="font-family: 'Calisto-MT';">
            <div class="site-container">
                <h2 class="universal-h2 universal-h2-bckg mt-5" style='color: #c18f59;'>Keranjang Belanja</h2>
                 <!--================Home Banner Area =================-->
@@ -15,8 +15,22 @@
                                 <div class="banner_content text-center">
                                     <!-- <h2>Keranjang Belanja</h2> -->
                                     <div class="page_link">
-                                        <a href="{{ url('/') }}">Home</a>
-                                        <a href="{{ route('front.list_cart') }}">Cart</a>
+										<div class="card mb-5">
+											<div class="card-body" style="color: #C18F59;">
+														<h4 class="card-title text-left">Alamat Pemesanan</h4>
+												<div class="row">
+													<div class="col-sm-10 text-left">
+														<p class="card-text text-left">{{Auth::user()->name}} | +62876543210 | Jln Raya no 123 Bandung, Jawa Barat, 40001 </p>
+														<!-- <a href="#" class="btn btn-info btn-sm"><span>Ubah</span></a></p> -->
+													</div>
+													<div class="col-sm-2" style="color:#212529;">
+														<a href="">EDIT</a>
+													</div>
+												</div>
+											</div>
+										</div>
+                                        <!-- <a href="{{ url('/') }}">Home</a>
+                                        <a href="{{ route('front.list_cart') }}">Cart</a> -->
                                     </div>
                                 </div>
                             </div>
@@ -24,9 +38,9 @@
                     </section>
                 <!--================End Home Banner Area =================-->
                 <!--================Cart Area =================-->
-	            <section class="cart_area">
-                    <div class="container">
-                        <div class="cart_inner">
+	            <section class="cart_area" style="font-family: 'Calisto-MT';">
+                    <!-- <div class="container">
+                        <div class="cart_inner"> -->
                     
                     <!-- DISABLE BAGIAN INI JIKA INGIN MELIHAT HASILNYA TERLEBIH DAHULU -->
                     <!-- KARENA MODULENYA AKAN DIKERJAKAN PADA SUB BAB SELANJUTNYA -->
@@ -34,14 +48,16 @@
                             <form action="{{ route('front.update_cart') }}" method="post">
                                 @csrf
                     <!-- DISABLE BAGIAN INI JIKA INGIN MELIHAT HASILNYA TERLEBIH DAHULU -->
+					<div class="card mb-5">
+						<div class="card-body">
                     <div class="table-responsive">
 					<table class="table">
 						<thead>
-							<tr>
+							<tr style='color: #c18f59;'>
 								<th scope="col">Product</th>
-								<th scope="col">Category</th>
-								<th scope="col">Price</th>
-								<th scope="col">Description</th>
+								<th scope="col"></th>
+								<th scope="col">Harga</th>
+								<th scope="col">Jumlah</th>
 								<th scope="col">Total</th>
 							</tr>
 						</thead>
@@ -56,25 +72,31 @@
 								<td>
 									<div class="media">
 										<div class="d-flex">
-                                            <img src="{{ asset('gambar/' . $row['foto']) }}" width="100px" height="100px" alt="{{ $row['nama'] }}">
+                                            <img src="{{ asset('gambar/' . $row->item->foto) }}" width="100px" height="100px">
 										</div>
-										<div class="media-body">
-                                            <p>{{ $row['nama'] }}</p>
+										<!-- <div class="media-body"> -->
+										<div class="">
+                                            <!-- <p>{{$row->item->nama}}</p> -->
 										</div>
 									</div>
 								</td>
 								<td>
-                                    <h5>Rp {{ number_format($row['harga']) }}</h5>
+                                    <h6>{{$row->item->nama}}</h6>
+								</td>
+								<td>
+                                    <p>Rp {{ number_format($row->item->harga) }}</p>
 								</td>
 								<td>
 									<div class="product_count">
 
                                     <!-- PERHATIKAN BAGIAN INI, NAMENYA KITA GUNAKAN ARRAY AGAR BISA MENYIMPAN LEBIH DARI 1 DATA -->
-                                    <input type="text" name="qty[]" id="sst{{ $row['id'] }}" maxlength="12" value="{{ $row['qty'] }}" title="Quantity:" class="input-text qty">
-                                                <input type="hidden" name="id[]" value="{{ $row['id'] }}" class="form-control">
-                                    <!-- PERHATIKAN BAGIAN INI, NAMENYA KITA GUNAKAN ARRAY AGAR BISA MENYIMPAN LEBIH DARI 1 DATA -->
-
-                                        <button onclick="var result = document.getElementById('sst{{ $row['product_id'] }}'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button">
+                                    <input type="text" name="qty[]" id="sst{{ $row['product_id'] }}" maxlength="12" value="{{ $row['qty'] }}" title="Quantity:" class="input-text qty">
+                                        <input type="hidden" name="product_id[]" value="{{ $row['product_id'] }}" class="form-control">
+                    				<!-- PERHATIKAN BAGIAN INI, NAMENYA KITA GUNAKAN ARRAY AGAR BISA MENYIMPAN LEBIH DARI 1 DATA -->
+                    
+                    
+										<button onclick="var result = document.getElementById('sst{{ $row['product_id'] }}'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+										 class="increase items-count" type="button">
 											<i class="lnr lnr-chevron-up"></i>
 										</button>
 										<button onclick="var result = document.getElementById('sst{{ $row['product_id'] }}'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
@@ -84,7 +106,7 @@
 									</div>
 								</td>
 								<td>
-                                    <h5>Rp {{ number_format($row['product_price'] * $row['qty']) }}</h5>
+                                    <p>Rp {{ number_format($row->item->harga * $row->qty) }}</p>
                                 </td>
                             </tr>
                                 @empty
@@ -92,16 +114,19 @@
                                 <td colspan="4">Tidak ada belanjaan</td>
                             </tr>
                             @endforelse
-                            <tr class="bottom_button">
+                            <!-- <tr class="bottom_button">
 								<td>
 									<button class="gray_btn">Update Cart</button>
 								</td>
 								<td></td>
 								<td></td>
 								<td></td>
-                            </tr>
+                            </tr> -->
                             </form>
-                            <tr>
+                            <!-- <tr>
+								<td>
+
+								</td>
 								<td>
 
 								</td>
@@ -112,64 +137,58 @@
 									<h5>Subtotal</h5>
 								</td>
 								<td>
-                                   
-								</td>
-							</tr>
-                            <!-- <tr class="shipping_area">
-								<td></td>
-								<td></td>
-								<td>
-									<h5>Shipping</h5>
-								</td>
-								<td>
-									<div class="shipping_box">
-										<ul class="list">
-											<li>
-												<a href="#">Flat Rate: $5.00</a>
-											</li>
-											<li>
-												<a href="#">Free Shipping</a>
-											</li>
-											<li>
-												<a href="#">Flat Rate: $10.00</a>
-											</li>
-											<li class="active">
-												<a href="#">Local Delivery: $2.00</a>
-											</li>
-										</ul>
-										<h6>Calculate Shipping
-											<i class="fa fa-caret-down" aria-hidden="true"></i>
-										</h6>
-										<select class="shipping_select">
-											<option value="1">Bangladesh</option>
-											<option value="2">India</option>
-											<option value="4">Pakistan</option>
-										</select>
-										<select class="shipping_select">
-											<option value="1">Select a State</option>
-											<option value="2">Select a State</option>
-											<option value="4">Select a State</option>
-										</select>
-										<input type="text" placeholder="Postcode/Zipcode">
-										<a class="gray_btn" href="#">Update Details</a>
-									</div>
+										Rp sekian
 								</td>
 							</tr> -->
-                            <tr class="out_button_area">
-								<td></td>
-								<td></td>
-								<td></td>
-								<td>
-									<div class="checkout_btn_inner">
-										<a class="gray_btn" href="#">Continue Shopping</a>
-										<a class="main_btn" href="#">Proceed to checkout</a>
-									</div>
-								</td>
-							</tr>
 						</tbody>
 					</table>
+					</div>
+					</div>
+
 		    </div>
         </section>
+					<div class="card" style="font-family: 'Calisto-MT';">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-sm-2">
+									<p> Opsi Pengiriman</p>
+									<!-- <label for=""> Pesan</label>
+									<input type="text"> -->
+								</div>
+								<div class="col-sm-4">
+										<select class="form-select col-6" id="inputGroupSelect01">
+											<option selected>Pilih...</option>
+											<option value="1">One</option>
+											<option value="2">Two</option>
+											<option value="3">Three</option>
+										</select>
+									<!-- <p> Opsi Pengiriman</p> -->
+									<!-- <label class="input-group-text">Op</label> -->
+								</div>
+								<div class="col-sm-3">
+									<label> Total Pesanan</label>
+								</div>
+								<div class="col-sm-3">
+									<p> Rp</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+						<section>
+						<div class="mt-4 ">
+							<div class="row">
+								<div class="col-8">
+								</div>
+								<div class="col-4">
+									<a type="submit" href="/checkout" class="brand-button"><i class="fas fa-cash-register"> Check Out</i></a>
+								</div>
+							</div>
+						</div>
+						</section>
+
+
         </section>
 	<!-- Container end -->
 

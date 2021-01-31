@@ -79,6 +79,7 @@ Route::group(['middleware'=>['App\Http\Middleware\Publik']], function(){
     
     // cart
     Route::resource('/cart', 'Publik\CartController');
+    Route::resource('/checkout', 'Publik\CheckoutController');
     Route::get('/cart_tampil', 'Publik\CartController@cart_tampil');
     Route::get('/cartp', 'Publik\CartController@cart_tampil');
     Route::post('cart', 'Publik\PesanController@addToCart')->name('front.cart');

@@ -16,7 +16,7 @@ class Item extends Model
     }
     public function Cart()
     {
-        return $this->belongsTo(Cart::class);
+        return $this->hasMany('App\Cart','item_id','id');
     }
     public function Incoming_Item()
     {

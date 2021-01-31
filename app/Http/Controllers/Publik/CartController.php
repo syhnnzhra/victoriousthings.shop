@@ -15,7 +15,7 @@ class CartController extends Controller
         $carts = Cart::where('user_id',Auth::user()->id)->get();
         $item = Item::first();
         // $subtotal = Cart::where('user_id',Auth::user()->id)->groupBy('item_id')->count();
-        // return $subtotal;
+        // return $subtotal;z
         return view('publik.cart.index', compact('carts','item'));
     }
 
