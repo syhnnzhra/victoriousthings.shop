@@ -9,7 +9,7 @@ class welcomeController extends Controller
 {
     public function index()
     {
-        $item = Item::orderBy('kategori_id')->limit(8)->get();
+        $item = Item::latest()->limit(4)->get();
         return view('welcome', compact('item'));
     }
 }

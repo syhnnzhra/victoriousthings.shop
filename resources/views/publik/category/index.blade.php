@@ -13,7 +13,7 @@
             </div>
 			<div class="row">
 		<div class="books">
-		@foreach ($item as $item)
+		@forelse ($item as $item)
 		  <div class="col-lg-3 col-md- col-sm-12">
 			  <div class="single-book">
 				  <a href="{{route('detailkat.show',$item->id)}}" class="single-book__img" >
@@ -30,7 +30,11 @@
 				 </div>
 			 </div>
 		 </div>
-			 @endforeach
+		 @empty
+                            <tr>
+                                <td colspan="4">Tidak ada belanjaan</td>
+                            </tr>
+			 @endforelse
 		 </div>
 			 </div>
 		 </div>

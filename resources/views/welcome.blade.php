@@ -137,7 +137,7 @@
 			@foreach ($item as $items)
 			<div class="col-lg-3 col-md- col-sm-12">
                     <div class="single-book">
-						<img src="{{ asset('gambar/'.$items->foto) }}" alt="single book and cd" height="300px" >
+						<img src="{{ asset('gambar/'.$items->foto) }}" alt="single book and cd" height="300px" width="235px">
 					</a>
                     <h4 class="single-book__title">{{$items->nama}}</h4>
 					<span class="single-book__price">

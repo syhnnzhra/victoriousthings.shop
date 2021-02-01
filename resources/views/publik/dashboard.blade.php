@@ -5,11 +5,11 @@
     @section('container')
 	<div id="demo" class="carousel slide" data-ride="carousel" style="">
 			<!-- Indicators -->
-			<ul class="carousel-indicators">
+			<!-- <ul class="carousel-indicators">
 			<li data-target="#demo" data-slide-to="0" class="active"></li>
 			<li data-target="#demo" data-slide-to="1"></li>
 			<li data-target="#demo" data-slide-to="2"></li>
-			</ul>
+			</ul> -->
 
 			<!-- The slideshow -->
 			<div class="carousel-inner">

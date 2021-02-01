@@ -97,20 +97,7 @@ Route::group(['middleware'=>['App\Http\Middleware\Publik']], function(){
 
     //transaksi
     Route::resource('/transaksi', 'Publik\TransactionController'); 
-    
-    //publik
-    Route::get('/aksesoris', function () {
-        return view('publik.category.aksesoris');
-    });
-    Route::get('/sweater', function () {
-        return view('publik.category.sweater');
-    });
-    Route::get('/shirt', function () {
-        return view('publik.category.shirt');
-    });
-    Route::get('/cardigan', function () {
-        return view('publik.category.cardigan');
-    });
+
 });
 
 

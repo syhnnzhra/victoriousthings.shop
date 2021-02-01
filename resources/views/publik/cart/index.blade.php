@@ -1,4 +1,4 @@
-@extends('publik/layout/apps')
+@extends('publik/layout/layout')
 
     @section('title', 'Cart')
 
@@ -51,9 +51,9 @@
 					<div class="card mb-5">
 						<div class="card-body">
                     <div class="table-responsive">
-					<table class="table">
+					<table class="table" style='color: #c18f59;'>
 						<thead>
-							<tr style='color: #c18f59;'>
+							<tr>
 								<th scope="col">Product</th>
 								<th scope="col"></th>
 								<th scope="col">Harga</th>
@@ -84,10 +84,10 @@
                                     <h6>{{$row->item->nama}}</h6>
 								</td>
 								<td>
-                                    <p>Rp {{ number_format($row->item->harga) }}</p>
+                                    <h6>Rp {{ number_format($row->item->harga) }}</h6>
 								</td>
 								<td>
-									<div class="product_count">
+									<div class="product_count mt-2">
 
                                     <!-- PERHATIKAN BAGIAN INI, NAMENYA KITA GUNAKAN ARRAY AGAR BISA MENYIMPAN LEBIH DARI 1 DATA -->
                                     <input type="text" name="qty[]" id="sst{{ $row['product_id'] }}" maxlength="12" value="{{ $row['qty'] }}" title="Quantity:" class="input-text qty">
@@ -106,9 +106,10 @@
 									</div>
 								</td>
 								<td>
-                                    <p>Rp {{ number_format($row->item->harga * $row->qty) }}</p>
+                                    <h6>Rp {{ number_format($row->item->harga * $row->qty) }}</h6>
                                 </td>
-                            </tr>
+							</tr>
+								
                                 @empty
                             <tr>
                                 <td colspan="4">Tidak ada belanjaan</td>
@@ -147,7 +148,7 @@
 
 		    </div>
         </section>
-					<div class="card" style="font-family: 'Calisto-MT';">
+					<div class="card" style="font-family: 'Calisto-MT';color: #c18f59;">
 						<div class="card-body">
 							<div class="row">
 								<div class="col-sm-2">
@@ -169,7 +170,9 @@
 									<label> Total Pesanan</label>
 								</div>
 								<div class="col-sm-3">
-									<p> Rp</p>
+									<p> Rp
+										
+									</p>
 								</div>
 							</div>
 						</div>

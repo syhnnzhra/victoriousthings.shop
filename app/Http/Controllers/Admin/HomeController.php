@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     //
     public function index(){
-        $item = Item::latest()->get();
+        $item = Item::latest()->limit(5)->get();
         return view('admin.homeAdmin', compact('item'));
     }
 }

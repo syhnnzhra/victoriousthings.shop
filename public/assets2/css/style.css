@@ -78,6 +78,10 @@
     transition: width .30s ease;
     
   }
+
+  .product_count{
+    color: #c18f59;
+  }
   
   .demo-2 input#search::-webkit-input-placeholder {
      color: #fff;

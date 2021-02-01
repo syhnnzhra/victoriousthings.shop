@@ -1,4 +1,4 @@
-@extends('publik/layout/apps')
+@extends('publik/layout/layout')
 
     @section('title', 'Cart')
 
@@ -22,13 +22,13 @@
                     <div class="col-sm-6 mb-4">
                         <div class="card">
                             <div class="card-body">
-                                    <table class="table table-borderless table-responsive">
+                                    <table class="table table-borderless table-responsive" style='color: #c18f59;'>
                                         <thead>
-                                            <tr style='color: #c18f59;'>
-                                                <td> Produk</td>
+                                            <tr>
+                                                <td> <b> Produk </b></td>
                                                 <td> </td>
                                                 <td> </td>
-                                                <td> Harga</td>
+                                                <td> <b> Harga </b></td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -97,6 +97,12 @@
                                     </div>
                                     <div class="col-12 mt-3">
                                         <input type="text" class="form-control" placeholder="Alamat">
+                                    </div>
+                                    <div class="col-md-6 mt-3">
+                                        <input type="text" class="form-control" placeholder="Kelurahan">
+                                    </div>
+                                    <div class="col-md-6 mt-3">
+                                        <input type="text" class="form-control" placeholder="Kecamatan" name="">
                                     </div>
                                     <div class="col-md-6 mt-3">
                                         <input type="text" class="form-control" placeholder="Provinsi">
