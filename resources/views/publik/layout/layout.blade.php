@@ -34,7 +34,7 @@
 	</style>
 
 </head>
-<body>
+<body style="background-color:#E3DED8;">
     
 	<!-- Navigation -->
 	<nav class="navigation">

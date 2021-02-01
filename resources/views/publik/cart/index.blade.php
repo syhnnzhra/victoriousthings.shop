@@ -1,4 +1,4 @@
-@extends('publik/layout/layout')
+@extends('publik/layout/bgputih')
 
     @section('title', 'Cart')
 
@@ -7,7 +7,7 @@
        <!-- Container -->
        <section class="fh5co-books" style="font-family: 'Calisto-MT';">
            <div class="site-container">
-               <h2 class="universal-h2 universal-h2-bckg mt-5" style='color: #c18f59;'>Keranjang Belanja</h2>
+               <h2 class="universal-h2 universal-h2-bckg mt-5" style='font-size:35px ;color: #c18f59;'>Keranjang Belanja</h2>
                 <!--================Home Banner Area =================-->
                     <section class="banner_area">
                         <div class="banner_inner d-flex align-items-center">

@@ -20,19 +20,6 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<!---baru nambah-->
-<meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>Simple Sidebar - Start Bootstrap Template</title>
-
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
-  <link href="css/simple-sidebar.css" rel="stylesheet">
 
 	<!-- end link -->
     <!-- CSRF Token -->
@@ -40,17 +27,11 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-	<style>
-		.body{
-			background-color: #E3DED8;
-		}
-	</style>
-
 </head>
-<body style="background-color:#E3DED8;">
+<body >
     
 	<!-- Navigation -->
-	<nav class="site-navigation">
+	<nav class="navigation">
 		<div class="site-navigation-inner site-container">
             @guest
             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}">
@@ -77,12 +58,8 @@
 				<a href="/cartp" class="icons">
 					<i class="fas fa-shopping-cart mt-2" style='font-size:25px ;color: #c18f59;'></i>
 				</a>
-				<!-- <i class='fas fa-shopping-cart mt-2' style='font-size:25px ;color: #c18f59;'></i></a> -->
 			<div class="demo-2 search mr-auto ml-3">
-				<!-- <form>
-					<span class="icon"><i class="fa fa-search" style='font-size:25px ;color: #c18f59;'></i></span>
-					<input type="search" id="search" placeholder=" Search..."/>
-				</form> -->
+				
 			</div>
 			<div class="main-navigation">
 				<ul class="main-navigation__ul">
@@ -132,11 +109,5 @@
 	<script src="{{asset('assets2/js/jquery.min.js')}}"></script>
 	<script src="{{asset('assets2/js/slick.min.js')}}"></script>
 	<script src="{{asset('assets2/js/main.js')}}"></script>
-	<script>
-		$(window).scroll(function(){
-		$('nav').toggleClass('scrolled', $(this).scrollTop()> 500);
-		});
-	</script>
-
 </body>
 </html>

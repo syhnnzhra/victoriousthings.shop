@@ -1,4 +1,4 @@
-@extends('publik/layout/layout')
+@extends('publik/layout/bgputih')
 
     @section('title', 'All Items')
 

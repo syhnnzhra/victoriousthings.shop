@@ -1,11 +1,11 @@
-@extends('publik/layout/layout')
+@extends('publik/layout/bgputih')
 
     @section('title', 'Pesan')
 
     @section('container')
     <section class="fh5co-books">
-	<div class="site-container">
-        <h2 class="universal-h2 universal-h2-bckg mt-5">Pesan</h2>
+	<div class="site-container zw   ">
+        <h2 class="universal-h2 universal-h2-bckg mt-5 " style='font-size: 35px ;color: #c18f59;'>Pesan</h2>
         <div class="row">
             <div class="col-md-12 mb-3">
                 <div class="books-brand-button " style="text-align : left">
