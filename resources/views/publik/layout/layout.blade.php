@@ -20,6 +20,7 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	
 
 	<!-- end link -->
     <!-- CSRF Token -->
@@ -29,12 +30,12 @@
 
 	<style>
 		.body{
-			background-color: #E3DED8;
+			background-color: rgb(255, 255, 255);
 		}
 	</style>
 
 </head>
-<body style="background-color:#E3DED8;">
+<body style="background-color:rgb(255, 255, 255)">
     
 	<!-- Navigation -->
 	<nav class="navigation">

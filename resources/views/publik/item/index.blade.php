@@ -1,4 +1,4 @@
-@extends('publik/layout/bgputih')
+@extends('publik/layout/layout')
 
     @section('title', 'All Items')
 
@@ -38,7 +38,7 @@
                         Rp {{number_format($item->harga)}}
                     </span>
 					<!-- star button -->
-					<div class="books-brand-button mt-3">
+					<div class="books-brand-button mt-3 mb-5">
 						<a href="{{url('/cart',$item->id)}}" class="brand-button">Pesan</a>
 						<!-- <a href="{{url('/pesan',$item->id)}}" class="brand-button">Pesan</a> -->
                     </div>

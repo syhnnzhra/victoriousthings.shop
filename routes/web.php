@@ -74,6 +74,7 @@ Route::group(['middleware'=>['App\Http\Middleware\Publik']], function(){
     
     //item
     Route::resource('/item_publik', 'Publik\ItemController'); 
+    Route::resource('/dashboarditem', 'Publik\ItemController');
     Route::get('/searchpublikitem', 'Publik\ItemController@searchp');
     // Route::resource('/pesan', 'Publik\ItemController');
     
