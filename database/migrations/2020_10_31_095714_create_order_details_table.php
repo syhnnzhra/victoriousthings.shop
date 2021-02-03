@@ -16,12 +16,20 @@ class CreateOrderDetailsTable extends Migration
         Schema::create('order_details', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('order_id');
-            $table->integer('harga');
-            $table->integer('jumlah');
-            $table->string('pembayaran');
-            $table->string('order_address');
-            $table->string('email');
-            $table->date('tanggal');
+            $table->string('nama');
+            $table->string('telephone');
+            $table->string('alamat');
+            $table->string('kota');
+            $table->string('provinsi');
+            $table->string('kode_pos');
+            $table->string('rincian_opsional');
+            $table->string('bank');
+            // $table->integer('harga');
+            // $table->integer('jumlah');
+            // $table->string('pembayaran');
+            // $table->string('order_address');
+            // $table->string('email');
+            // $table->date('tanggal');
             $table->timestamps();
         });
     }

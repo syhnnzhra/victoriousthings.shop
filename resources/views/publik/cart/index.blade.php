@@ -7,7 +7,7 @@
        <!-- Container -->
        <section class="fh5co-books" style="font-family: 'Calisto-MT';">
            <div class="site-container">
-               <h2 class="universal-h2 universal-h2-bckg mt-5" style='font-size:35px ;color: #c18f59;'>Keranjang Belanja</h2>
+		   <h2 class="universal-h2 universal-h2-bckg mt-5" style='font-size:35px ;color: #c18f59;'>Keranjang Belanja</h2>
                 <!--================Home Banner Area =================-->
                     <section class="banner_area">
                         <div class="banner_inner d-flex align-items-center">
@@ -56,9 +56,11 @@
 							<tr>
 								<th scope="col">Product</th>
 								<th scope="col"></th>
+								<th scope="col">Ukuran</th>
 								<th scope="col">Harga</th>
 								<th scope="col">Jumlah</th>
 								<th scope="col">Total</th>
+								<th scope="col"></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -84,6 +86,9 @@
                                     <h6>{{$row->item->nama}}</h6>
 								</td>
 								<td>
+                                    <h6>{{$row->pesan}}</h6>
+								</td>
+								<td>
                                     <h6>Rp {{ number_format($row->item->harga) }}</h6>
 								</td>
 								<td>
@@ -106,10 +111,29 @@
 									</div>
 								</td>
 								<td>
+									@php
+										$subtotal=0;
+										$total = $row->item->harga * $row->qty;
+										$total + $total = $subtotal;
+										echo $subtotal;
+									@endphp
                                     <h6>Rp {{ number_format($row->item->harga * $row->qty) }}</h6>
                                 </td>
+								<td>
+                                    <p>
+											<form action="{{route('cart.destroy',$row->id)}}" method="post" class="d-inline">
+                                                @csrf
+                                                @method('delete')
+                                                    <button type="submit" class="brand-button btn-sm">
+                                                        <i class="fa fa-trash"></i>
+														Hapus
+                                                    </button>
+                                            </form>
+										<!-- <a href="cart" class="brand-button btn-sm"><i class="fa fa-trash"></i> Hapus</a> -->
+									</p>
+                                </td>
 							</tr>
-								
+							
                                 @empty
                             <tr>
                                 <td colspan="4">Tidak ada belanjaan</td>

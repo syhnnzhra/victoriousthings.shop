@@ -65,6 +65,11 @@
                                                     </td>
                                             </tr>
                                             <tr>
+                                                <td>Ukuran</td>
+                                                <td> : </td>
+                                                <td><input type="text" name="pesan" class="form-control" placeholder="Masukan ukuran"></td>
+                                            </tr>
+                                            <tr>
                                                 <td> </td>
                                                 <td> </td>
                                                 <td>

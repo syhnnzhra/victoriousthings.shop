@@ -9,22 +9,24 @@
               <div class="col-lg-12">
                         <div class="content-panel">
                             <div class="content ml-4">
-                                <h3> Tabel Order Detail </h3>
-                                    <div class="new-data">
+                                <h3 class="mt-4"> Tabel Order Detail </h3>
+                                    <!-- <div class="new-data">
                                         <a href="/Odetail/create" class="btn btn-outline-success btn-lg mt-3"><i class="fa fa-plus"></i> Tambah Data</a>
-                                    </div>
-                                    <div class="table mt-3">
+                                    </div> -->
+                                    <div class="table mt-5">
                                         <table class="table">
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
                                                     <th>ID Order</th>
-                                                    <th>Harga</th>
-                                                    <th>Jumlah</th>
-                                                    <th>Pembayaran/Payment</th>
-                                                    <th>Order Address</th>
-                                                    <th>Email</th>
-                                                    <th>Tanggal</th>
+                                                    <th>Nama</th>
+                                                    <th>Telephone</th>
+                                                    <th>Alamat</th>
+                                                    <th>Kota</th>
+                                                    <th>Provinsi</th>
+                                                    <th>Kode Pos</th>
+                                                    <th>Rincian Opsional</th>
+                                                    <th>Payment</th>
                                                     <th>Aksi</th>
                                                 </tr>
                                             </thead>
@@ -33,12 +35,14 @@
                                                 <tr>
                                                     <td>{{$orderdetail->id}}</td>
                                                     <td>{{$orderdetail->order_id}}</td>
-                                                    <td>{{$orderdetail->harga}}</td>
-                                                    <td>{{$orderdetail->jumlah}}</td>
-                                                    <td>{{$orderdetail->pembayaran}}</td>
-                                                    <td>{{$orderdetail->order_address}}</td>
-                                                    <td>{{$orderdetail->email}}</td>
-                                                    <td>{{$orderdetail->tanggal}}</td>
+                                                    <td>{{$orderdetail->nama}}</td>
+                                                    <td>{{$orderdetail->telephone}}</td>
+                                                    <td>{{$orderdetail->alamat}}</td>
+                                                    <td>{{$orderdetail->kota}}</td>
+                                                    <td>{{$orderdetail->provinsi}}</td>
+                                                    <td>{{$orderdetail->kode_pos}}</td>
+                                                    <td>{{$orderdetail->rincian_opsional}}</td>
+                                                    <td>{{$orderdetail->bank}}</td>
                                                     <td>
                                                         <a href="{{route('Odetail.edit',$orderdetail->id)}}" class="btn btn-outline-warning"><i class="fa fa-edit"></i></a> 
                                                         <form action="{{route('Odetail.destroy',$orderdetail->id)}}" method="post" class="d-inline">

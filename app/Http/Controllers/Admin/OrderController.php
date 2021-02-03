@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Order;
+use App\Cart;
 use App\Customer;
 use App\Item;
 use Illuminate\Http\Request;
@@ -20,6 +21,7 @@ class OrderController extends Controller
         $data['customer']=Customer::all();
         $data['item']=Item::all();
         $data['order']=Order::all();
+        $data['cart']=Cart::all();
         return view('admin.order.index', $data);
     }
 

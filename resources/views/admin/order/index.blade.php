@@ -9,19 +9,18 @@
               <div class="col-lg-12">
                         <div class="content-panel">
                             <div class="content ml-4">
-                                <h3> Tabel Order </h3>
-                                    <div class="new-data">
+                                <h3 class="mt-4"> Tabel Order </h3>
+                                    <!-- <div class="new-data">
                                         <a href="/order/create" class="btn btn-outline-success btn-lg mt-3"><i class="fa fa-plus"></i> Tambah Data</a>
-                                    </div>
-                                    <div class="table mt-3">
+                                    </div> -->
+                                    <div class="table mt-5">
                                         <table class="table">
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>Customer</th>
-                                                    <th>Barang</th>
-                                                    <th>Qty</th>
-                                                    <th>Status</th>
+                                                    <th>User</th>
+                                                    <th>Product</th>
+                                                    <th>SubTotal</th>
                                                     <th>Aksi</th>
                                                 </tr>
                                             </thead>
@@ -29,10 +28,10 @@
                                             @foreach($order as $order)
                                                 <tr>
                                                     <td>{{$order->id}}</td>
-                                                    <td>{{$order->customer_id}} - {{$order->customer->nama}}</td>
-                                                    <td>{{$order->item_id}} - {{$order->item->nama}}</td>
-                                                    <td>{{$order->quantity}}</td>
-                                                    <td>{{$order->status}}</td>
+                                                    <td>{{$order->user_id}}</td>
+                                                    <!-- <td>{{$order->cart->item_id}}</td> -->
+                                                    <!-- <td></td> -->
+                                                    <td>{{$order->subtotal}}</td>
                                                     <td>
                                                         <a href="{{route('order.edit',$order->id)}}" class="btn btn-outline-warning"><i class="fa fa-edit"></i></a> 
                                                         <form action="{{route('order.destroy',$order->id)}}" method="post" class="d-inline">

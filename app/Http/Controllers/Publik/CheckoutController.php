@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Item;
 use App\Cart;
+use App\City;
+use App\Province;
 
 class CheckoutController extends Controller
 {
@@ -19,7 +21,9 @@ class CheckoutController extends Controller
     {
         $carts = Cart::where('user_id',Auth::user()->id)->get();
         $item = Item::first();
-        return view('publik.cart.checkout', compact('carts','item'));
+        $kota = City::all();
+        $pro = Province::all();
+        return view('publik.cart.checkout', compact('carts','item','kota','pro'));
     }
 
     /**

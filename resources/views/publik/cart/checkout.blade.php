@@ -1,13 +1,13 @@
 @extends('publik/layout/layout')
 
-    @section('title', 'Cart')
+    @section('title', 'Check Out')
 
 
     @section('container')
        <!-- Container -->
        <section class="fh5co-books" style="font-family: 'Calisto-MT';">
            <div class="site-container">
-               <h2 class="universal-h2 universal-h2-bckg mt-5" style='font-size:35px ;color: #c18f59;'>Check Out</h2>
+           <h2 class="universal-h2 universal-h2-bckg mt-5" style='font-size:35px ;color: #c18f59;'>Check Out</h2>
                 <nav style="--bs-breadcrumb-divider: '>';" class="col-6 responsive" aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/cartp">Cart</a></li>
@@ -27,8 +27,9 @@
                                             <tr>
                                                 <td> <b> Produk </b></td>
                                                 <td> </td>
-                                                <td> </td>
-                                                <td> <b> Harga </b></td>
+                                                <td> Ukuran</td> 
+                                                <td> Jumlah</td> 
+                                                <td class="text-right"> <b> Harga </b></td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -36,7 +37,8 @@
                                             <tr>
                                                 <td> <img src="{{ asset('gambar/' . $p->item->foto) }}" width="100px" height="100px" alt="{{$p->item->nama}}"></td>
                                                 <td class="text-left"> {{$p->item->nama}}</td>
-                                                <td class="text-left"> XL, {{$p->qty}}</td>
+                                                <td class="text-center">{{$p->pesan}}</td>
+                                                <td class="text-center">{{$p->qty}}</td>
                                                 <td class="text-right">Rp {{ number_format($p->item->harga * $p->qty) }}</td>
                                             </tr>
                                 @endforeach
@@ -46,17 +48,20 @@
                                                 <td></td>
                                                 <td>Subtotal</td>
                                                 <td></td>
-                                                <td>Rp</td>
+                                                <td></td>
+                                                <td>Rp hjgfdtredtf</td>
                                             </tr>
                                             <tr>
                                                 <td></td>
                                                 <td>Ongkos Kirim</td>
+                                                <td></td>
                                                 <td></td>
                                                 <td>Rp</td>
                                             </tr>
                                             <tr>
                                                 <td></td>
                                                 <td>Total</td>
+                                                <td></td>
                                                 <td></td>
                                                 <td>Rp</td>
                                             </tr>
@@ -87,37 +92,42 @@
 
                                 <form class="row g-3 mt-4">
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control" placeholder="Nama Depan">
+                                        <input type="text" class="form-control" placeholder="Nama" name="nama" required>
                                     </div>
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control" placeholder="Nama Belakang">
+                                        <input type="text" class="form-control" placeholder="Telephone" name="telephone" required>
                                     </div>
                                     <div class="col-12 mt-3">
-                                        <input type="text" class="form-control" placeholder="Telephone">
+                                        <input type="text" class="form-control" placeholder="Alamat Lengkap" name="alamat" required>
                                     </div>
-                                    <div class="col-12 mt-3">
-                                        <input type="text" class="form-control" placeholder="Alamat">
+                                    <div class="col-md-4 mt-3">
+                                             <select class="form-control" id="exampleFormControlSelect1" required name="kota" placeholder="Kota">
+                                                @foreach($kota as $p)
+                                                <option value="{{$p->nama}}">{{$p->nama}}</option>
+                                                @endforeach
+                                            </select>
+                                        <!-- <input type="text" class="form-control" placeholder="Kota" name="kota"> -->
                                     </div>
-                                    <div class="col-md-6 mt-3">
-                                        <input type="text" class="form-control" placeholder="Kelurahan">
+                                    <div class="col-md-4 mt-3">
+                                            <select class="form-control" id="exampleFormControlSelect1" required name="provinsi" placeholder="Provinsi">
+                                                @foreach($kota as $p)
+                                                <option value="{{$p->province_id}}">{{$p->province->nama}}</option>
+                                                @endforeach
+                                            </select>
+                                        <!-- <input type="text" class="form-control" placeholder="Provinsi" name="provinsi"> -->
                                     </div>
-                                    <div class="col-md-6 mt-3">
-                                        <input type="text" class="form-control" placeholder="Kecamatan" name="">
-                                    </div>
-                                    <div class="col-md-6 mt-3">
-                                        <input type="text" class="form-control" placeholder="Provinsi">
-                                    </div>
-                                    <div class="col-md-6 mt-3">
-                                        <input type="text" class="form-control" placeholder="Kode Pos">
+                                    <div class="col-md-4 mt-3">
+                                            <select class="form-control" id="exampleFormControlSelect1" required name="kode_pos" placeholder="Kode Pos">
+                                                @foreach($kota as $p)
+                                                <option value="{{$p->postal_code}}">{{$p->postal_code}}</option>
+                                                @endforeach
+                                            </select>
                                     </div>
                                     <div class="col-md-12 mt-3">
-                                        <input type="text" class="form-control" placeholder="Rincian Alamat Tambahan (Opsional)">
+                                        <input type="text" class="form-control" placeholder="Rincian Alamat Tambahan (Opsional)" name="rincian_opsional">
                                     </div>
                                     <div class="col-md-12 mt-3">
-                                        <input type="text" class="form-control" placeholder="Bank">
-                                    </div>
-                                    <div class="col-md-12 mt-3">
-                                        <input type="text" class="form-control" placeholder="Pesan Sampaikan Kepada Penjual">
+                                        <input type="text" class="form-control" placeholder="Bank" name="bank" required>
                                     </div>
 
                                     <!-- <div class="col-md-4">

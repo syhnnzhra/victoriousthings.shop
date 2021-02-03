@@ -34,7 +34,7 @@
                                                     <td>{{$item->nama}}</td>
                                                     <td>{{$item->category->nama}}</td>
                                                     <td>{{$item->stok}}</td>
-                                                    <td>{{$item->harga}}</td>
+                                                    <td>Rp {{number_format($item->harga)}}</td>
                                                     <td>{{$item->keterangan}}</td>
                                                      <td height="20%" width="20%"><img src="{{ asset('gambar/'.$item->foto) }}" height="150px" width="150px" alt="" srcset=""></td> 
                                                     <td>

@@ -36,9 +36,9 @@
                                                     <th>{{$brng->distributor_id}}</th>
                                                     <th>{{$brng->tanggal}}</th>
                                                     <th>{{$brng->jumlah}}</th>
-                                                    <th>Rp {{$brng->harga}}</th>
-                                                    <th>Rp {{$brng->subtotal}}</th>
-                                                    <th>Rp {{$brng->total}}</th>
+                                                    <th>Rp {{number_format($brng->harga)}}</th>
+                                                    <th>Rp {{number_format($brng->subtotal)}}</th>
+                                                    <th>Rp {{number_format($brng->total)}}</th>
                                                     <th>
                                                         <a href="{{route('barang_masuk.edit',$brng->id)}}" class="btn btn-warning"><i class="fa fa-edit"></i> </a> 
                                                             

@@ -23,10 +23,18 @@ class CartController extends Controller
         return view('publik.item.pesan');
     }
 
+    function destroy($id){
+        $cart = Cart::FindOrFail($id);
+        $cart->delete();
+
+        return redirect('/cart_tampil');
+    }
+
     public function update(Request $request, $id){
         Cart::create([
             'user_id' => Auth::user()->id,
             'item_id' => $id,
+            'pesan' => $request->pesan,
             'qty' => $request->qty
         ]);
         return redirect('/cart_tampil');
