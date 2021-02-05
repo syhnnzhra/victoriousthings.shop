@@ -102,9 +102,8 @@
 				<h5>Follow me!!</h5>
 				<div class="social-icons">
 					<a href="#" target="_blank"><img src="{{asset('assets2/images/social-twitter.png')}}" alt="social icon"></a>
-					<a href="#" target="_blank"><img src="{{asset('assets2/images/social-pinterest.png')}}" alt="social icon"></a>
-					<a href="#" target="_blank"><img src="{{asset('assets2/images/social-youtube.png')}}" alt="social icon"></a>
-					<a href="#" target="_blank"><img src="{{asset('assets2/images/social-twitter.png')}}" alt="social icon"></a>
+					<a href="#" target="_blank"><img src="{{asset('assets2/images/social-instagram.png')}}" alt="social icon"></a>
+					<a href="#" target="_blank"><img src="{{asset('assets2/images/social-whatsapp.png')}}" alt="social icon"></a>
 				</div>
 				<h5>Share it!</h5>
 			</div>
