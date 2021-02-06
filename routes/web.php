@@ -92,6 +92,9 @@ Route::group(['middleware'=>['App\Http\Middleware\Publik']], function(){
     
     //customer
     Route::resource('/customer_publik', 'Publik\CustomerController'); 
+
+    //profile
+    Route::resource('/Profile', 'Publik\ProfileController'); 
     
     // detail produk
     Route::resource('/detail', 'Publik\DetailprodukController');
