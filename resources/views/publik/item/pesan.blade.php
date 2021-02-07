@@ -20,8 +20,8 @@
                             <img src="{{ asset('gambar/'.$item->foto) }}" width="240px" hight="300px" alt="">
                             </div>
                             <div class="col-sm-8 mt-5">
-                                <h3>{{ $item->nama}}</h3> 
-                                <table class="table">
+                                <h3>{{ $item->nama}}</h3>
+                                <table class="table" name="cart">
                                     <tbody>
                                         <tr>
                                             <td>Harga</td>
@@ -38,12 +38,12 @@
                                             <td> : </td>
                                             <td>{{$item->keterangan}}</td>
                                         </tr>
-                                        <form action="" method="post">
-                                            <tr>
+                                        <form action="" method="post" name="cart">
+                                            <tr name="line_items">
                                                 <td>Jumlah Pesan</td>
                                                 <td> : </td>
                                                 <td>
-                                                <div class="row">
+                                                    <div class="row">
                                                     <div class="col-2 tambah">
                                                         <form method="post" action="{{ route('front.cart',$item->id) }}" >
                                                             @csrf
@@ -52,19 +52,35 @@
                                                     </div>
 
                                                     <div class="col">
-                                                    <input type="hidden" name="id" value="{{ $item->id }}" class="form-control" >
+                                                        <input type="hidden" name="id" value="{{ $item->id }}" class="form-control">
+                                                        <input type="hidden" name="harga" value="{{ $item->harga }}" class="form-control">
+
                                                         <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
                                                         class="reduced items-count brand-button" type="button">
                                                         <i class="fa fa-minus"></i>
                                                         <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
                                                         class="increase items-count brand-button" type="button">
                                                         <i class="fa fa-plus"></i>
-                                                        </button>
+                                                    </button>
+
+                                                </div>
+                                                <tr>
+                                                    </tr>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <!-- <tr>
+                                            <td>Total</td>
+                                            <td> : </td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <input type="text" name="total"  value="" script="$('form').jAutoCalc();" jAutoCalc="{qty} * {harga}" class="form-control">
                                                     </div>
                                                 </div>
-                                                    </td>
-                                            </tr>
-                                            <tr>
+                                            </td>
+                                        </tr> -->
+                                        <tr class="col-4">
                                                 <td>Ukuran</td>
                                                 <td> : </td>
                                                 <td><input type="text" name="pesan" class="form-control" placeholder="Masukan ukuran"></td>
@@ -79,7 +95,6 @@
                                                 </td>
                                             </form>
                                             </tr>
-                                        </form>
                                     </tbody>
                                 </table>
                             </div>
@@ -91,3 +106,36 @@
     </section>
 
 @endsection
+@push('addon-script')
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-36251023-1']);
+        _gaq.push(['_setDomainName', 'jqueryscript.net']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <script>
+        $('form').jAutoCalc();
+            $('form').jAutoCalc({
+                attribute: 'jAutoCalc',
+                thousandOpts: [',', '.', ' '],
+                decimalOpts: ['.', ','],
+                decimalPlaces: -1,
+                initFire: true,
+                chainFire: true,
+                keyEventsFire: false,
+                readOnlyResults: true,
+                showParseError: true,
+                emptyAsZero: false,
+                smartIntegers: false,
+                onShowResult: null,
+                funcs: {},
+                vars: {}
+            });
+    </script>
+@endpush

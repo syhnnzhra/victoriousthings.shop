@@ -10,4 +10,8 @@ class City extends Model
     {
         return $this->belongsTo('App\Province','province_id','id');
     }
+    public function User()
+    {
+        return $this->hasMany('App\User','user_id','id');
+    }
 }

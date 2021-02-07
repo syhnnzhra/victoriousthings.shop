@@ -20,7 +20,7 @@
 														<h4 class="card-title text-left">Alamat Pemesanan</h4>
 												<div class="row">
 													<div class="col-sm-10 text-left">
-														<p class="card-text text-left">{{Auth::user()->name}} | +62876543210 | Jln Raya no 123 Bandung, Jawa Barat, 40001 </p>
+														<p class="card-text text-left">{{Auth::user()->name}} | {{ Auth::user()->alamat }}, {{ Auth::user()->city->nama }}, {{ Auth::user()->province->nama }} | {{ Auth::user()->city->postal_code }}</p>
 														<!-- <a href="#" class="btn btn-info btn-sm"><span>Ubah</span></a></p> -->
 													</div>
 													<div class="col-sm-2" style="color:#212529;">
@@ -41,12 +41,10 @@
 	            <section class="cart_area" style="font-family: 'Calisto-MT';">
                     <!-- <div class="container">
                         <div class="cart_inner"> -->
-                    
+
                     <!-- DISABLE BAGIAN INI JIKA INGIN MELIHAT HASILNYA TERLEBIH DAHULU -->
                     <!-- KARENA MODULENYA AKAN DIKERJAKAN PADA SUB BAB SELANJUTNYA -->
                     <!-- HANYA SAJA DEMI KEMUDAHAN PENULISAN MAKA SAYA MASUKKAN PADA BAGIAN INI -->
-                            <form action="{{ route('front.update_cart') }}" method="post">
-                                @csrf
                     <!-- DISABLE BAGIAN INI JIKA INGIN MELIHAT HASILNYA TERLEBIH DAHULU -->
 					<div class="card mb-5">
 						<div class="card-body">
@@ -66,7 +64,7 @@
 						<tbody>
                         @forelse ($carts as $row)
 						@if($item->id > 1)
-							
+
 						@else
 
 						@endif
@@ -92,32 +90,26 @@
                                     <h6>Rp {{ number_format($row->item->harga) }}</h6>
 								</td>
 								<td>
-									<div class="product_count mt-2">
+									<div class="product_count mt-2" id="only-number">
 
                                     <!-- PERHATIKAN BAGIAN INI, NAMENYA KITA GUNAKAN ARRAY AGAR BISA MENYIMPAN LEBIH DARI 1 DATA -->
-                                    <input type="text" name="qty[]" id="sst{{ $row['product_id'] }}" maxlength="12" value="{{ $row['qty'] }}" title="Quantity:" class="input-text qty">
-                                        <input type="hidden" name="product_id[]" value="{{ $row['product_id'] }}" class="form-control">
+                                    <input type="number" name="qty[]" id="number" maxlength="12" value="{{ $row['qty'] }}" title="Quantity" class="form-input col-sm-4" min="1">
+                                        <!-- <input type="hidden" name="product_id[]" value="{{ $row['product_id'] }}" class="form-control"> -->
                     				<!-- PERHATIKAN BAGIAN INI, NAMENYA KITA GUNAKAN ARRAY AGAR BISA MENYIMPAN LEBIH DARI 1 DATA -->
-                    
-                    
-										<button onclick="var result = document.getElementById('sst{{ $row['product_id'] }}'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+
+
+										<!-- <button onclick="var result = document.getElementById('sst{{ $row['product_id'] }}'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
 										 class="increase items-count" type="button">
 											<i class="lnr lnr-chevron-up"></i>
 										</button>
 										<button onclick="var result = document.getElementById('sst{{ $row['product_id'] }}'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
 										 class="reduced items-count" type="button">
 											<i class="lnr lnr-chevron-down"></i>
-										</button>
+										</button> -->
 									</div>
 								</td>
 								<td>
-									@php
-										$subtotal=0;
-										$total = $row->item->harga * $row->qty;
-										$total + $total = $subtotal;
-										echo $subtotal;
-									@endphp
-                                    <h6>Rp {{ number_format($row->item->harga * $row->qty) }}</h6>
+                                    <h6>Rp {{ number_format($row->qty * $row->item->harga) }}</h6>
                                 </td>
 								<td>
                                     <p>
@@ -129,25 +121,27 @@
 														Hapus
                                                     </button>
                                             </form>
-										<!-- <a href="cart" class="brand-button btn-sm"><i class="fa fa-trash"></i> Hapus</a> -->
 									</p>
                                 </td>
 							</tr>
-							
+
                                 @empty
                             <tr>
                                 <td colspan="4">Tidak ada belanjaan</td>
                             </tr>
                             @endforelse
-                            <!-- <tr class="bottom_button">
-								<td>
-									<button class="gray_btn">Update Cart</button>
+                            <tr class="bottom_button text-center">
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td colspan="2">
+									<div class="books-brand-button">
+										<button class="brand-button">Update Cart</button>
+									</div>
 								</td>
-								<td></td>
-								<td></td>
-								<td></td>
-                            </tr> -->
-                            </form>
+                            </tr>
                             <!-- <tr>
 								<td>
 
@@ -181,12 +175,20 @@
 									<input type="text"> -->
 								</div>
 								<div class="col-sm-4">
-										<select class="form-select col-6" id="inputGroupSelect01">
-											<option selected>Pilih...</option>
-											<option value="1">One</option>
-											<option value="2">Two</option>
-											<option value="3">Three</option>
-										</select>
+                                    <?php
+                                        $ongkir = 0;
+                                        $jne = 12000;
+                                        $jnt =15000;
+                                        if ($ongkir == $jne) {
+                                            $jne;
+                                        }else{
+                                            $jnt;
+                                        }
+                                    ?>
+                                    <select class="form-control col-sm-6" id="exampleFormControlSelect1" required name="ongkir">
+                                        <option value="{{$jne}}">JNE Rp {{number_format($jne)}}</option>
+                                        <option value="{{$jnt}}">JNT Rp {{number_format($jnt)}}</option>
+                                    </select>
 									<!-- <p> Opsi Pengiriman</p> -->
 									<!-- <label class="input-group-text">Op</label> -->
 								</div>
@@ -194,8 +196,17 @@
 									<label> Total Pesanan</label>
 								</div>
 								<div class="col-sm-3">
-									<p> Rp
-										
+                                <!-- itungan subtotal -->
+                                    <?php
+                                        $subtotal = 0;
+                                        foreach($carts as $key=>$value)
+                                        {
+                                            $hasil = $value->qty * $value->item->harga;
+                                            $subtotal+= $hasil;
+                                            $grandtot=$ongkir+$subtotal;
+                                        }
+                                    ?>
+									<p> Rp {{number_format($subtotal)}}
 									</p>
 								</div>
 							</div>
@@ -206,10 +217,14 @@
 						<section>
 						<div class="mt-4 ">
 							<div class="row">
-								<div class="col-8">
+								<div class="col-4">
 								</div>
 								<div class="col-4">
-									<a type="submit" href="/checkout" class="brand-button"><i class="fas fa-cash-register"> Check Out</i></a>
+									<div class="books-brand-button text-center">
+										<a type="submit" href="/checkout" class="brand-button"><i class="fas fa-cash-register"> Check Out</i></a>
+									</div>
+								</div>
+								<div class="col-4">
 								</div>
 							</div>
 						</div>
@@ -218,5 +233,17 @@
 
         </section>
 	<!-- Container end -->
+
+	<script>
+        $(function() {
+        $('#only-number').on('keydown', '#number', function(e){
+            -1!==$
+            .inArray(e.keyCode,[46,8,9,27,13,110,190]) || /65|67|86|88/
+            .test(e.keyCode) && (!0 === e.ctrlKey || !0 === e.metaKey)
+            || 35 <= e.keyCode && 40 >= e.keyCode || (e.shiftKey|| 48 > e.keyCode || 57 < e.keyCode)
+            && (96 > e.keyCode || 105 < e.keyCode) && e.preventDefault()
+        });
+        })
+    </script>
 
     @endsection

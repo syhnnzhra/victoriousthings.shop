@@ -27,13 +27,13 @@
                                             <tr>
                                                 <td> <b> Produk </b></td>
                                                 <td> </td>
-                                                <td> Ukuran</td> 
-                                                <td> Jumlah</td> 
+                                                <td> Ukuran</td>
+                                                <td> Jumlah</td>
                                                 <td class="text-right"> <b> Harga </b></td>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                @foreach($carts as $p)
+                                @forelse($carts as $p)
                                             <tr>
                                                 <td> <img src="{{ asset('gambar/' . $p->item->foto) }}" width="100px" height="100px" alt="{{$p->item->nama}}"></td>
                                                 <td class="text-left"> {{$p->item->nama}}</td>
@@ -41,32 +41,62 @@
                                                 <td class="text-center">{{$p->qty}}</td>
                                                 <td class="text-right">Rp {{ number_format($p->item->harga * $p->qty) }}</td>
                                             </tr>
-                                @endforeach
+                                            @empty
+                                    <tr>
+                                        <td colspan="5">Tidak ada belanjaan</td>
+                                    </tr>
+                                @endforelse
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <td></td>
-                                                <td>Subtotal</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>Rp hjgfdtredtf</td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td>Ongkos Kirim</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>Rp</td>
-                                            </tr>
-                                            <tr>
+                                                <?php
+                                                    $Total = 0;
+                                                    foreach($carts as $key=>$value)
+                                                    {
+                                                        $hasil = $value->qty * $value->item->harga;
+                                                        $Total+= $hasil;
+                                                    }
+                                                ?>
                                                 <td></td>
                                                 <td>Total</td>
                                                 <td></td>
+                                                <td colspan="2">Rp {{number_format($Total)}}</td>
+                                            </tr>
+                                            <tr>
+                                                <?php
+                                                    $ongkir = 1000;
+                                                ?>
                                                 <td></td>
-                                                <td>Rp</td>
+                                                <td>Ongkos Kirim</td>
+                                                <td></td>
+                                                <td  colspan="2">
+                                                    Rp {{number_format($ongkir)}}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <?php
+                                                $grandtot=0;
+                                                    foreach($carts as $key=>$value)
+                                                    {
+                                                        $grandtot = $Total + $ongkir;
+                                                    }
+                                                ?>
+                                                <td></td>
+                                                <td>Subtotal</td>
+                                                <td></td>
+                                                <td colspan="2">Rp {{number_format($grandtot)}}</td>
+                                                <input type="hidden" name="subtotal">
                                             </tr>
                                         </tfoot>
                                     </table>
+                                    <!-- @foreach ($carts as $list)
+                                    <form method="post" action="{{ route('checkout.store')}}" >
+                                        @csrf
+                                        <input type="hidden" name="user_id" value="{{Auth::user()->name}}">{{$list->nama}}</td>
+                                        <input type="hidden" name="cart_id" value="{{$list->cart_id}}">
+                                        <input type="hidden" name="subtotal" value="{{$grandtot}}"> -->
+                                    <!-- </form> -->
+                                    <!-- @endforeach -->
                             </div>
                         </div>
                     </div>
@@ -90,44 +120,46 @@
 
                                 <h6 style='color: #c18f59;'>Shipping Address</h6>
 
-                                <form class="row g-3 mt-4">
+                                <form class="row g-3 mt-4" action="{{route('checkout.store')}}" method="post">
+                                @csrf
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control" placeholder="Nama" name="nama" required>
+                                        <input type="text" class="form-control" placeholder="Nama" name="nama" value="{{ Auth::user()->name }}" required>
                                     </div>
-                                    <div class="col-md-6">
-                                        <input type="text" class="form-control" placeholder="Telephone" name="telephone" required>
+                                    <div class="col-md-6" id="only-number">
+                                        <input type="text" id="number" class="form-control" placeholder="Telephone" name="telephone" required maxlength="13" minlength="12">
                                     </div>
-                                    <div class="col-12 mt-3">
-                                        <input type="text" class="form-control" placeholder="Alamat Lengkap" name="alamat" required>
+                                    <div class="col-sm-12 mt-3">
+                                        <input type="text" class="form-control" placeholder="Alamat Lengkap" name="alamat" value="{{ Auth::user()->alamat }}" required>
                                     </div>
-                                    <div class="col-md-4 mt-3">
-                                             <select class="form-control" id="exampleFormControlSelect1" required name="kota" placeholder="Kota">
+                                    <!-- <div class="col-md-4 mt-3">
+                                             <select class="form-control" id="exampleFormControlSelect1"  name="kota" placeholder="Kota">
                                                 @foreach($kota as $p)
-                                                <option value="{{$p->nama}}">{{$p->nama}}</option>
+                                                <option value="{{ Auth::user()->city_id }}">{{ Auth::user()->city->nama }}</option>
                                                 @endforeach
-                                            </select>
+                                            </select> -->
                                         <!-- <input type="text" class="form-control" placeholder="Kota" name="kota"> -->
-                                    </div>
-                                    <div class="col-md-4 mt-3">
-                                            <select class="form-control" id="exampleFormControlSelect1" required name="provinsi" placeholder="Provinsi">
+                                    <!-- </div> -->
+                                    <!-- <div class="col-md-4 mt-3">
+                                            <select class="form-control" id="exampleFormControlSelect1"  name="provinsi" placeholder="Provinsi">
                                                 @foreach($kota as $p)
                                                 <option value="{{$p->province_id}}">{{$p->province->nama}}</option>
                                                 @endforeach
-                                            </select>
+                                            </select> -->
                                         <!-- <input type="text" class="form-control" placeholder="Provinsi" name="provinsi"> -->
-                                    </div>
-                                    <div class="col-md-4 mt-3">
-                                            <select class="form-control" id="exampleFormControlSelect1" required name="kode_pos" placeholder="Kode Pos">
+                                    <!-- </div> -->
+                                    <div class="col-md-3 mt-3">
+                                        <input type="text" class="form-control" placeholder="Masukan Kode Pos" name="kode_pos" value="{{ Auth::user()->city->postal_code }}" required>
+                                            <!-- <select class="form-control" id="exampleFormControlSelect1"  name="kode_pos" placeholder="Kode Pos">
                                                 @foreach($kota as $p)
                                                 <option value="{{$p->postal_code}}">{{$p->postal_code}}</option>
                                                 @endforeach
-                                            </select>
+                                            </select> -->
                                     </div>
-                                    <div class="col-md-12 mt-3">
+                                    <div class="col-md-9 mt-3">
                                         <input type="text" class="form-control" placeholder="Rincian Alamat Tambahan (Opsional)" name="rincian_opsional">
                                     </div>
                                     <div class="col-md-12 mt-3">
-                                        <input type="text" class="form-control" placeholder="Bank" name="bank" required>
+                                        <input type="text" class="form-control" placeholder="Bank" name="bank" required >
                                     </div>
 
                                     <!-- <div class="col-md-4">
@@ -153,7 +185,6 @@
                                         <button type="submit" class="brand-button"> Continue To Payment</button>
                                     </div>
                                 </form>
-
                             </div>
                         </div>
                     </div>
@@ -167,6 +198,16 @@
 
             </div>
         </section>
-	<!-- Container end -->
-
+    <!-- Container end -->
+    <script>
+        $(function() {
+        $('#only-number').on('keydown', '#number', function(e){
+            -1!==$
+            .inArray(e.keyCode,[46,8,9,27,13,110,190]) || /65|67|86|88/
+            .test(e.keyCode) && (!0 === e.ctrlKey || !0 === e.metaKey)
+            || 35 <= e.keyCode && 40 >= e.keyCode || (e.shiftKey|| 48 > e.keyCode || 57 < e.keyCode)
+            && (96 > e.keyCode || 105 < e.keyCode) && e.preventDefault()
+        });
+        })
+    </script>
     @endsection
