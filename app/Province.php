@@ -10,4 +10,8 @@ class Province extends Model
     {
         return $this->hasMany('App\City','province_id','id');
     }
+    public function User()
+    {
+        return $this->hasMany('App\User','user_id','id');
+    }
 }

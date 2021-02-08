@@ -35,50 +35,21 @@ class CartController extends Controller
             'user_id' => Auth::user()->id,
             'item_id' => $id,
             'pesan' => $request->pesan,
+            // 'total' => $request->total,
             'qty' => $request->qty
         ]);
-        return redirect('/cart_tampil');
-    }
-
-    public function show($id)
-    {
-        $data['item']=Item::findOrFail($id);
-        return view('publik.item.pesan', $data);
-    }
-
-    function addToCart(Request $request){
-        //VALIDASI DATA YANG DIKIRIM
-        $this->validate($request, [
-        'id' => 'required|exists:item,id', //PASTIKAN PRODUCT_IDNYA ADA DI DB
-        'qty' => 'required|integer' //PASTIKAN QTY YANG DIKIRIM INTEGER
-    ]);
-        //AMBIL DATA CART DARI COOKIE, KARENA BENTUKNYA JSON MAKA KITA GUNAKAN JSON_DECODE UNTUK MENGUBAHNYA MENJADI ARRAY
-        $carts = json_decode($request->cookie('dw-carts'), true); 
-
-        //CEK JIKA CARTS TIDAK NULL DAN PRODUCT_ID ADA DIDALAM ARRAY CARTS
-        if ($carts && array_key_exists($request->id, $carts)) {
-            //MAKA UPDATE QTY-NYA BERDASARKAN PRODUCT_ID YANG DIJADIKAN KEY ARRAY
-            $carts[$request->id]['qty'] += $request->qty;
-        } else {
-            //SELAIN ITU, BUAT QUERY UNTUK MENGAMBIL PRODUK BERDASARKAN PRODUCT_ID
-            $item = Item::find($request->id);
-            //TAMBAHKAN DATA BARU DENGAN MENJADIKAN PRODUCT_ID SEBAGAI KEY DARI ARRAY CARTS
-            $carts[$request->id] = [
-                'qty' => $request->qty,
-                'nama' => $item->nama,
-                'kategori_id' => $item->kategori_id,
-                'stok' => $item->stok,
-                'harga' => $item->harga,
-                'keterangan' => $item->keterangan,
-                'foto' => $item->foto
-            ];
+            return redirect('/cart_tampil');
         }
-        //BUAT COOKIE-NYA DENGAN NAME DW-CARTS
-        //JANGAN LUPA UNTUK DI-ENCODE KEMBALI, DAN LIMITNYA 2800 MENIT ATAU 48 JAM
-        $cookie = cookie('dw-carts', json_encode($carts), 2880);
-        //STORE KE BROWSER UNTUK DISIMPAN
-        return redirect()->back()->cookie($cookie);
-    }
+
+        public function show($id)
+        {
+            $carts = Cart::where('user_id',Auth::user()->id)->get();
+            $item = Item::findOrFail($id);
+            // $subtotal = collect($carts)->sum(function($q) {
+            //     return $q['qty'] * $q['harga']; //SUBTOTAL TERDIRI DARI QTY * PRICE
+            // });
+            return view('publik.item.pesan', compact('carts','item'));
+        }
 
     public function listCart(){
         //MENGAMBIL DATA DARI COOKIE
@@ -129,7 +100,7 @@ class CartController extends Controller
         session(["cart"=>$cart]);
         return redirect("/cart");
     }
-    
+
     function cart(){
         $cart = session("cart");
         return view('publik.cart.index')->with("cart",$cart);

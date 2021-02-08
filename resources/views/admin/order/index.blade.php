@@ -29,6 +29,7 @@
                                                 <tr>
                                                     <td>{{$order->id}}</td>
                                                     <td>{{$order->user_id}}</td>
+                                                    <td>{{$order->cart->item->nama}}</td>
                                                     <!-- <td>{{$order->cart->item_id}}</td> -->
                                                     <!-- <td></td> -->
                                                     <td>{{$order->subtotal}}</td>

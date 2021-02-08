@@ -18,4 +18,8 @@ class Order extends Model
     {
         return $this->belongsTo('App\Item','item_id','id');
     }
+    public function Cart()
+    {
+        return $this->belongsTo('App\Cart','cart_id','id');
+    }
 }

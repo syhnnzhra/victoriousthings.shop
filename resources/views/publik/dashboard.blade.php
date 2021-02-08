@@ -11,7 +11,7 @@
 		<li data-target="#demo" data-slide-to="1"></li>
 		<li data-target="#demo" data-slide-to="2"></li>
 		</ul> --}}
-		
+
 		<!-- The slideshow -->
 		<div class="carousel-inner">
 			<div class="carousel-item active">
@@ -89,8 +89,8 @@
 		</div>
 		</div>
 	</section>-->
-	
-  
+
+
 	<!-- Selection end -->
 
 	<section class="fh5co-about-me">
@@ -191,5 +191,5 @@
 			</div>
 	</section>
 	<!-- Books and CD end -->
-            
+
 @endsection

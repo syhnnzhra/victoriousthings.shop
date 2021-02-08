@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Item;
 use App\Cart;
+use App\Order;
+use App\Order_Detail;
+use App\User;
 use App\City;
 use App\Province;
 
@@ -22,8 +25,10 @@ class CheckoutController extends Controller
         $carts = Cart::where('user_id',Auth::user()->id)->get();
         $item = Item::first();
         $kota = City::all();
+        $order = Order::all();
+        $user = User::all();
         $pro = Province::all();
-        return view('publik.cart.checkout', compact('carts','item','kota','pro'));
+        return view('publik.cart.checkout', compact('carts','item','kota','pro','user','order'));
     }
 
     /**
@@ -44,7 +49,23 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        // Cart::create([
+        //     'user_id' => Auth::user()->id,
+        //     'cart_id' => $cart_id,
+        //     'subtotal' => $request->subtotal
+        // ]);
+        $odetail=new Order_Detail;
+        $category->order_id=$request->order_id;
+        $category->nama=$request->nama;
+        $category->telephone=$request->telephone;
+        $category->alamat=$request->alamat;
+        $category->kode_pos=$request->kode_pos;
+        $category->rincian_opsional=$request->rincian_opsional;
+        $category->bank=$request->bank;
+        $category->save();
+        return 'data masuk';
+        // return redirect()->route('checkout.show');
     }
 
     /**

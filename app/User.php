@@ -13,6 +13,15 @@ class User extends Authenticatable
         return $this->hasOne('User');
         return $this->belongsTo('User');
     }
+
+    public function City()
+    {
+        return $this->belongsTo('App\City','city_id','id');
+    }
+    public function Province()
+    {
+        return $this->belongsTo('App\Province','province_id','id');
+    }
       
     /**
      * The attributes that are mass assignable.
