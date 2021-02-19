@@ -44,16 +44,17 @@
                                                 <td> : </td>
                                                 <td>
                                                     <div class="row">
-                                                    <div class="col-2 tambah">
+                                                    <div class="col-3 tambah">
                                                         <form method="post" action="{{ route('front.cart',$item->id) }}" >
                                                             @csrf
                                                             @method('PUT')
-                                                            <input type="text" name="qty" class="form-control" required="" id="sst" maxlength="2" min="1" pattern="[0-9]*" readonly value="1" style="border:0;">
+                                                            <input type="text" name="qty" class="form-control-plaintext" required="" id="sst" maxlength="2" min="1" pattern="[0-9]*" readonly value="1" style="border:0;">
                                                     </div>
 
-                                                    <div class="col">
+                                                    <div class="col-sm">
                                                         <input type="hidden" name="id" value="{{ $item->id }}" class="form-control">
                                                         <input type="hidden" name="harga" value="{{ $item->harga }}" class="form-control">
+                                                        <input type="hidden" name="status" value="Belum Dibayar" class="form-control">
 
                                                         <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
                                                         class="reduced items-count brand-button" type="button">
@@ -61,9 +62,8 @@
                                                         <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
                                                         class="increase items-count brand-button" type="button">
                                                         <i class="fa fa-plus"></i>
-                                                    </button>
-
-                                                </div>
+                                                        </button>
+                                                    </div>
                                                 <tr>
                                                     </tr>
                                                 </div>
@@ -89,6 +89,7 @@
                                                 <td> </td>
                                                 <td> </td>
                                                 <td>
+                                                
                                                     <div class="books-brand-button mt-2">
                                                     <button type="submit" class="brand-button"><i class="fa fa-shopping-cart"> Add To Cart</i></button>
                                                     </div>

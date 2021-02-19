@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
+    protected $fillable = ['user_id','status','note','subtotal'];
     public function Customer()
     {
         return $this->belongsTo('App\Customer','customer_id','id');
@@ -21,5 +22,9 @@ class Order extends Model
     public function Cart()
     {
         return $this->belongsTo('App\Cart','cart_id','id');
+    }
+    public function User()
+    {
+        return $this->belongsTo('App\User','user_id','id');
     }
 }

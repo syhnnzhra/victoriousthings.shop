@@ -29,8 +29,6 @@
 												</div>
 											</div>
 										</div>
-                                        <!-- <a href="{{ url('/') }}">Home</a>
-                                        <a href="{{ route('front.list_cart') }}">Cart</a> -->
                                     </div>
                                 </div>
                             </div>
@@ -42,10 +40,6 @@
                     <!-- <div class="container">
                         <div class="cart_inner"> -->
 
-                    <!-- DISABLE BAGIAN INI JIKA INGIN MELIHAT HASILNYA TERLEBIH DAHULU -->
-                    <!-- KARENA MODULENYA AKAN DIKERJAKAN PADA SUB BAB SELANJUTNYA -->
-                    <!-- HANYA SAJA DEMI KEMUDAHAN PENULISAN MAKA SAYA MASUKKAN PADA BAGIAN INI -->
-                    <!-- DISABLE BAGIAN INI JIKA INGIN MELIHAT HASILNYA TERLEBIH DAHULU -->
 					<div class="card mb-5">
 						<div class="card-body">
                     <div class="table-responsive">
@@ -90,14 +84,12 @@
                                     <h6>Rp {{ number_format($row->item->harga) }}</h6>
 								</td>
 								<td>
+                                    <h6>{{$row->qty}}</h6>
+								</td>
+								<!-- <td>
 									<div class="product_count mt-2" id="only-number">
 
-                                    <!-- PERHATIKAN BAGIAN INI, NAMENYA KITA GUNAKAN ARRAY AGAR BISA MENYIMPAN LEBIH DARI 1 DATA -->
-                                    <input type="number" name="qty[]" id="number" maxlength="12" value="{{ $row['qty'] }}" title="Quantity" class="form-input col-sm-4" min="1">
-                                        <!-- <input type="hidden" name="product_id[]" value="{{ $row['product_id'] }}" class="form-control"> -->
-                    				<!-- PERHATIKAN BAGIAN INI, NAMENYA KITA GUNAKAN ARRAY AGAR BISA MENYIMPAN LEBIH DARI 1 DATA -->
-
-
+                                    <input type="number" name="qty[]" id="number" maxlength="12" value="{{ $row['qty'] }}" title="Quantity" class="form-input col-sm-4" min="1" readonly> -->
 										<!-- <button onclick="var result = document.getElementById('sst{{ $row['product_id'] }}'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
 										 class="increase items-count" type="button">
 											<i class="lnr lnr-chevron-up"></i>
@@ -106,8 +98,8 @@
 										 class="reduced items-count" type="button">
 											<i class="lnr lnr-chevron-down"></i>
 										</button> -->
-									</div>
-								</td>
+									<!-- </div>
+								</td> -->
 								<td>
                                     <h6>Rp {{ number_format($row->qty * $row->item->harga) }}</h6>
                                 </td>
@@ -130,7 +122,7 @@
                                 <td colspan="4">Tidak ada belanjaan</td>
                             </tr>
                             @endforelse
-                            <tr class="bottom_button text-center">
+                            <!-- <tr class="bottom_button text-center">
 								<td></td>
 								<td></td>
 								<td></td>
@@ -141,24 +133,7 @@
 										<button class="brand-button">Update Cart</button>
 									</div>
 								</td>
-                            </tr>
-                            <!-- <tr>
-								<td>
-
-								</td>
-								<td>
-
-								</td>
-								<td>
-
-								</td>
-								<td>
-									<h5>Subtotal</h5>
-								</td>
-								<td>
-										Rp sekian
-								</td>
-							</tr> -->
+                            </tr> -->
 						</tbody>
 					</table>
 					</div>
@@ -221,7 +196,7 @@
 								</div>
 								<div class="col-4">
 									<div class="books-brand-button text-center">
-										<a type="submit" href="/checkout" class="brand-button"><i class="fas fa-cash-register"> Check Out</i></a>
+											<a href="{{route('checkout.index')}}" type="submit" class="brand-button"><i class="fas fa-cash-register"> Check Out</i></a>
 									</div>
 								</div>
 								<div class="col-4">

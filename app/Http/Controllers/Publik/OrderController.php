@@ -18,18 +18,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $order = Order::with(['district.city.province', 'details', 'details.product', 'payment'])
-        ->where('invoice', $invoice)->first();
-
-        //JADI KITA CEK, VALUE forUser() NYA ADALAH CUSTOMER YANG SEDANG LOGIN
-        //DAN ALLOW NYA MEMINTA DUA PARAMETER
-        //PERTAMA ADALAH NAMA GATE YANG DIBUAT SEBELUMNYA DAN YANG KEDUA ADALAH DATA ORDER DARI QUERY DI ATAS
-        if (\Gate::forUser(auth()->guard('customer')->user())->allows('order-view', $order)) {
-            //JIKA HASILNYA TRUE, MAKA KITA TAMPILKAN DATANYA
-            return view('publik.customer.index', compact('order'));
-        }
-        //JIKA FALSE, MAKA REDIRECT KE HALAMAN YANG DIINGINKAN
-        return redirect(route('/customer_publik'))->with(['error' => 'Anda Tidak Diizinkan Untuk Mengakses Order Orang Lain']);
+        //
     }
 
     /**
@@ -84,7 +73,33 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'cart_id' => 'required|exists:carts,id',
+            'qty' => 'required|integer'
+        ]);
+
+        try {
+            $invoice = Invoice::find($id);
+            $product = Product::find($request->product_id);
+
+            $invoice_detail = $invoice->detail()->where('product_id', $product->id)->first();
+            if ($invoice_detail) {
+                $invoice_detail->update([
+                    'qty' => $invoice_detail->qty + $request->qty
+                ]);
+            } else {
+                Invoice_detail::create([
+                    'invoice_id' => $invoice->id,
+                    'product_id' => $request->product_id,
+                    'price' => $product->price,
+                    'qty' => $request->qty
+                ]);
+            }
+            
+            return redirect()->back()->with(['success' => 'Product Telah Ditambahkan']);
+        } catch (\Exception $e) {
+            return redirect()->back()->with(['error' => $e->getMessage()]);
+        }
     }
 
     /**

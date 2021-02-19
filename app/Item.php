@@ -6,10 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Item extends Model
 {
-    public function Order()
-    {
-        return $this->hasMany('App\Order','item_id','id');
-    }
     public function Category()
     {
         return $this->belongsTo('App\Category','kategori_id','id');
@@ -21,6 +17,10 @@ class Item extends Model
     public function Incoming_Item()
     {
         return $this->hasMany('App\Incoming_Item','item_id','id');
+    }
+    public function Transaction()
+    {
+        return $this->hasMany('App\Transaction','trans_id','id');
     }
 
 

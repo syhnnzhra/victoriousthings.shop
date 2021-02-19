@@ -3,7 +3,12 @@
 namespace App\Http\Controllers\Publik;
 use Illuminate\Support\Facades\Auth;
 use App\Item;
+use App\Order_Detail;
 use App\Cart;
+use App\Transaction;
+use App\User;
+use App\City;
+use App\Province;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -14,9 +19,14 @@ class CartController extends Controller
     function cart_tampil(){
         $carts = Cart::where('user_id',Auth::user()->id)->get();
         $item = Item::first();
+        $brng = Item::all();
         // $subtotal = Cart::where('user_id',Auth::user()->id)->groupBy('item_id')->count();
-        // return $subtotal;z
-        return view('publik.cart.index', compact('carts','item'));
+        // return $subtotal;
+        return view('publik.cart.index', compact('carts','item', 'brng'));
+    }
+
+    public function updateCart(Request $request, $id){
+        //
     }
 
     function index(){
@@ -30,16 +40,61 @@ class CartController extends Controller
         return redirect('/cart_tampil');
     }
 
+    public function store(Request $request){
+        // $order = Order::create([
+        //     'user_id' => Auth::user()->id,
+        //     'status' => $request->status,
+        //     'note' => $request->note,
+        //     'subtotal' => $request->subtotal
+        // ]);
+    }
+
+    public function ckbrngedit($id){
+        $carts = Cart::where('user_id',Auth::user()->id)->get();
+        $item = Item::first();
+        $brng = Item::all();
+        $kota = City::all();
+        $user = User::all();
+        $pro = Province::all();
+        return view('publik.cart.checkout', compact('carts','brng', 'item','kota','pro','user'));
+    }
+    
+    public function ckbrngshow($id){
+        return 'ini ckbrng show';
+    }
+
+    function odetail($id){
+        $carts = Cart::where('user_id',Auth::user()->id)->get();
+        $item = Item::first();
+        $user = User::all();
+        return view('publik.cart.checkout', compact('carts','item','user'));
+    }
+
+    public function saveodetail(Request $request, $id){
+        $odet = Order_Detail::create([
+            'order_id' => $request->order_id,
+            'nama' => $request->nama,
+            'telephone' => $request->telephone,
+            'alamat' => $request->alamat,
+            'kota' => $request->kota,
+            'provinsi' => $request->provinsi,
+            'kode_pos' => $request->kode_pos,
+            'rincian_opsional' => $request->rincian_opsional,
+            'bank' => $request->bank
+        ]);
+        return redirect(route('ckbrng.show', ['id' => $odet->id]));
+    }
+
     public function update(Request $request, $id){
         Cart::create([
             'user_id' => Auth::user()->id,
             'item_id' => $id,
             'pesan' => $request->pesan,
-            // 'total' => $request->total,
+            'status' => $request->status,
             'qty' => $request->qty
         ]);
-            return redirect('/cart_tampil');
-        }
+        return redirect('/cart_tampil');
+    }
 
         public function show($id)
         {
@@ -63,27 +118,6 @@ class CartController extends Controller
         return view('publik.cart.index', compact('carts','subtotal'));
     }
 
-    public function updateCart(Request $request){
-        //AMBIL DATA DARI COOKIE
-        $carts = json_decode(request()->cookie('dw-carts'), true);
-        //KEMUDIAN LOOPING DATA PRODUCT_ID, KARENA NAMENYA ARRAY PADA VIEW SEBELUMNYA
-        //MAKA DATA YANG DITERIMA ADALAH ARRAY SEHINGGA BISA DI-LOOPING
-        foreach ($request->id as $key => $row) {
-            //DI CHECK, JIKA QTY DENGAN KEY YANG SAMA DENGAN PRODUCT_ID = 0
-            if ($request->qty[$key] == 0) {
-                //MAKA DATA TERSEBUT DIHAPUS DARI ARRAY
-                unset($carts[$row]);
-            } else {
-                //SELAIN ITU MAKA AKAN DIPERBAHARUI
-                $carts[$row]['qty'] = $request->qty[$key];
-            }
-        }
-        //SET KEMBALI COOKIE-NYA SEPERTI SEBELUMNYA
-        $cookie = cookie('dw-carts', json_encode($carts), 2880);
-        //DAN STORE KE BROWSER.
-        // return 'hi';
-        return redirect()->back()->cookie($cookie);
-    }
 
     function do_tambah_cart($id){
         $cart = session("cart");

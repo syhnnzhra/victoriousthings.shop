@@ -6,10 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Item;
-use App\Cart;
-use App\Order;
-use App\Order_Detail;
 use App\User;
+use App\Cart;
+use App\Order_Detail;
 use App\City;
 use App\Province;
 
@@ -25,10 +24,9 @@ class CheckoutController extends Controller
         $carts = Cart::where('user_id',Auth::user()->id)->get();
         $item = Item::first();
         $kota = City::all();
-        $order = Order::all();
         $user = User::all();
         $pro = Province::all();
-        return view('publik.cart.checkout', compact('carts','item','kota','pro','user','order'));
+        return view('publik.cart.checkout', compact('carts','item','kota','pro','user'));
     }
 
     /**
@@ -49,23 +47,22 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        
-        // Cart::create([
-        //     'user_id' => Auth::user()->id,
-        //     'cart_id' => $cart_id,
-        //     'subtotal' => $request->subtotal
-        // ]);
-        $odetail=new Order_Detail;
-        $category->order_id=$request->order_id;
-        $category->nama=$request->nama;
-        $category->telephone=$request->telephone;
-        $category->alamat=$request->alamat;
-        $category->kode_pos=$request->kode_pos;
-        $category->rincian_opsional=$request->rincian_opsional;
-        $category->bank=$request->bank;
-        $category->save();
-        return 'data masuk';
-        // return redirect()->route('checkout.show');
+        $odet = Order_Detail::create([
+            // 'cart_id' => $request->cart_id,
+            'nama' => $request->nama,
+            'telephone' => $request->telephone,
+            'alamat' => $request->alamat,
+            'kota' => $request->kota,
+            'provinsi' => $request->provinsi,
+            'kode_pos' => $request->kode_pos,
+            'rincian_opsional' => $request->rincian_opsional,
+            'bank' => $request->bank
+        ]);
+        return redirect(route('ckbrng.show', ['id' => $odet->id]));
+    }
+
+    public function trans(){
+        return redirect('transaction.index');
     }
 
     /**
@@ -76,7 +73,13 @@ class CheckoutController extends Controller
      */
     public function show($id)
     {
-        //
+        return 'hi';
+        // $carts = Cart::where('user_id',Auth::user()->id)->get();
+        // $item = Item::first();
+        // $kota = City::all();
+        // $user = User::all();
+        // $pro = Province::all();
+        // return view('publik.cart.checkout', compact('carts','item','kota','pro','user'));
     }
 
     /**
@@ -87,7 +90,12 @@ class CheckoutController extends Controller
      */
     public function edit($id)
     {
-        //
+        $carts = Cart::where('user_id',Auth::user()->id)->get();
+        $item = Item::first();
+        $kota = City::all();
+        $user = User::all();
+        $pro = Province::all();
+        return view('publik.cart.invoice', compact('carts','item','kota','pro','user'));
     }
 
     /**
@@ -111,5 +119,12 @@ class CheckoutController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function generateInvoice($id)
+    {
+        $cart = Cart::findOrFail($id);
+        $pdf = PDF::loadView('publik.cart.print', compact('cart'))->setPaper('a4', 'landscape');
+        return $pdf->stream();
     }
 }

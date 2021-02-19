@@ -23,8 +23,8 @@ class CreateUsersTable extends Migration
             $table->string('jeniskelamin')->nullable();
             $table->date('tanggal_lahir')->nullable();
             $table->string('alamat')->nullable();
-            $table->string('kota')->nullable();
-            $table->string('provinsi')->nullable();
+            $table->string('city_id')->nullable();
+            $table->string('province_id')->nullable();
             $table->string('kode_pos')->nullable();
             $table->rememberToken();
             $table->timestamps();

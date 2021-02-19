@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Order_Detail extends Model
 {
     protected $table='Order_Details';
-    public function Order()
+    protected $guarded =[];
+    public function Cart()
     {
-        return $this->belongsTo('App\Order','order_id','id');
+        return $this->belongsTo('App\Cart','cart_id','id');
     }
 }

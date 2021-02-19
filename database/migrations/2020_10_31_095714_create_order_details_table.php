@@ -15,14 +15,14 @@ class CreateOrderDetailsTable extends Migration
     {
         Schema::create('order_details', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('order_id');
+            $table->integer('cart_id');
             $table->string('nama');
             $table->string('telephone');
             $table->string('alamat');
             $table->string('kota');
             $table->string('provinsi');
             $table->string('kode_pos');
-            $table->string('rincian_opsional');
+            $table->string('rincian_opsional')->nullable();
             $table->string('bank');
             // $table->integer('harga');
             // $table->integer('jumlah');

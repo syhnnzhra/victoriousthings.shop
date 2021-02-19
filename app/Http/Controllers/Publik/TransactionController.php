@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Publik;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Order;
-use App\Customer;
+use App\Cart;
 use App\Item;
+use App\User;
 use App\Order_Detail;
 
 class TransactionController extends Controller
@@ -18,10 +19,10 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        $data['customer']=Customer::all();
-        $data['item']=Item::all();
-        $data['order']=Order::all();
-        return view ('publik.transaksi.index', $data);
+        $odetail = Order_Detail::where('user_id', Auth::user()->id)->get();
+        $item = Item::all();
+        $carts = Cart::where('status', 'Dibayar')->where('user_id',Auth::user()->id)->get();
+        return view('publik.invoice.index', compact('carts','odetail','item'));
     }
 
     /**
@@ -42,17 +43,36 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        $ud=new Order_Detail;
-        $ud->order_id=$request->order_id;
-        $ud->harga=$request->harga;
-        $ud->jumlah=$request->jumlah;
-        $ud->pembayaran=$request->pembayaran;
-        $ud->order_address=$request->order_address;
-        $ud->email=$request->email;
-        $ud->tanggal=$request->tanggal;
-        $ud->status=$request->status;
-        $ud->save();
-        return redirect()->route('transaksi.index');
+        // $this->validate($request, [
+        //     'item' => 'required',
+        // ]);
+        // $user = Auth::user()->id;
+        // $item = Item::findOrFail($request->item_id);
+        // // cek dulu apakah sudah ada produk di shopping cart
+        // $trans = Transaction::where('cart_id', 'item_id')->first();
+        // $qty = 1;// diisi 1, karena kita set ordernya 1
+        // $harga = $item->harga;//ambil harga produk
+        // // $diskon = $itemproduk->promo != null ? $itemproduk->promo->diskon_nominal: 0;
+        // $subtotal = ($qty * $harga) - $diskon;
+        // // diskon diambil kalo produk itu ada promo, cek materi sebelumnya
+        // if ($trans) {
+        //     // update detail di table cart_detail
+        //     $trans->updatedetail($trans, $qty, $harga);
+        //     // update subtotal dan total di table cart
+        //     $trans->cart->updatetotal($trans->order, $subtotal);
+        // } else {
+        //     $inputan = $request->all();
+        //     $inputan['cart_id'] = $itemcart->id;
+        //     $inputan['produk_id'] = $itemproduk->id;
+        //     $inputan['qty'] = $qty;
+        //     $inputan['harga'] = $harga;
+        //     $inputan['diskon'] = $diskon;
+        //     $inputan['subtotal'] = ($harga * $qty) - $diskon;
+        //     $itemdetail = CartDetail::create($inputan);
+        //     // update subtotal dan total di table cart
+        //     $itemdetail->cart->updatetotal($itemdetail->cart, $subtotal);
+        // }
+        // return redirect()->route('cart.index')->with('success', 'Produk berhasil ditambahkan ke cart');
     }
 
     /**
@@ -63,9 +83,14 @@ class TransactionController extends Controller
      */
     public function show($id)
     {
-        //
+        $order = Order_Detail::where('user_id',Auth::user()->id)->get();
+        // $p = Cart::where('status', 1)->first();
+        $det = Order_Detail::findOrFail($id);
+        $item = Item::all();
+        $carts = Cart::where('status', 'Sudah Dibayar')->where('user_id',Auth::user()->id)->get();
+        return view('publik.invoice.edit', compact('item', 'det', 'carts'));
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      *
@@ -74,7 +99,11 @@ class TransactionController extends Controller
      */
     public function edit($id)
     {
-        //
+        // $order = Order_Detail::where('user_id',Auth::user()->id)->get();
+        // $det = Order_Detail::findOrFail($id);
+        // $item = Item::all();
+        // $carts = Cart::where('user_id',Auth::user()->id)->get();
+        // return view('publik.invoice.edit', compact('item', 'det', 'carts'));
     }
 
     /**
