@@ -48,7 +48,7 @@ class CheckoutController extends Controller
     public function store(Request $request)
     {
         $odet = Order_Detail::create([
-            // 'cart_id' => $request->cart_id,
+            'user_id' => $request->user_id,
             'nama' => $request->nama,
             'telephone' => $request->telephone,
             'alamat' => $request->alamat,

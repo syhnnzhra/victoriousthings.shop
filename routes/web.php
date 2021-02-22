@@ -69,6 +69,7 @@ Route::group(['middleware'=>['App\Http\Middleware\Publik']], function(){
     // Route::post('cart', 'Publik\CartController@addToCart')->name('front.cart');
     // Route::get('/cart', 'Publik\CartController@cart'); 
     // Route::get('/cart/tambah/{id}', 'Publik\CartController@do_tambah_cart')->where("id","[0-9]+"); 
+
     
     // invoice
     Route::get('/invoice', function () {

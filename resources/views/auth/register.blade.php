@@ -74,6 +74,10 @@
                         <label for="name" class="col-md-4 col-form-label text-md-right"></label>
                         <div class="col-md-6">
                             <input type="hidden" name="level" value="user">
+                            <!-- <select name="level" class="form-control">
+                                    <option value="admin">Admin</option>
+                                    <option value="user">Member</option>
+                                </select> -->
                         </div>
                     </div>      
                     

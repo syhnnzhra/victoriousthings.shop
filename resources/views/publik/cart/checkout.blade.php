@@ -112,6 +112,7 @@
                                 <h6 style='color: #c18f59;'>Shipping Address</h6>
                                 <form method="post" action="{{route('checkout.store')}}">
                                 @csrf
+                                        <input type="hidden" name="user_id" value="{{Auth::user()->id }}">
                                         <input type="hidden" name="kota" value="{{Auth::user()->city->id }}">
                                         <input type="hidden" name="provinsi" value="{{Auth::user()->province->id }}">
                                     <div class="row">

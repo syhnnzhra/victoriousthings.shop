@@ -145,9 +145,7 @@
 						<div class="card-body">
 							<div class="row">
 								<div class="col-sm-2">
-									<p> Opsi Pengiriman</p>
-									<!-- <label for=""> Pesan</label>
-									<input type="text"> -->
+									<!-- <p> Opsi Pengiriman</p> -->
 								</div>
 								<div class="col-sm-4">
                                     <?php
@@ -160,12 +158,10 @@
                                             $jnt;
                                         }
                                     ?>
-                                    <select class="form-control col-sm-6" id="exampleFormControlSelect1" required name="ongkir">
+                                    <!-- <select class="form-control col-sm-6" id="exampleFormControlSelect1" required name="ongkir">
                                         <option value="{{$jne}}">JNE Rp {{number_format($jne)}}</option>
                                         <option value="{{$jnt}}">JNT Rp {{number_format($jnt)}}</option>
-                                    </select>
-									<!-- <p> Opsi Pengiriman</p> -->
-									<!-- <label class="input-group-text">Op</label> -->
+                                    </select> -->
 								</div>
 								<div class="col-sm-3">
 									<label> Total Pesanan</label>
