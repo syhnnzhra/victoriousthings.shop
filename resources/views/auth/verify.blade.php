@@ -54,6 +54,7 @@
 					<span class="login100-form-title">
 						Verify Your Email Address
 					</span>
+                    <div class="wrap-input100">
                     @if (session('resent'))
                         <div class="alert alert-success" role="alert">
                             {{ __('A fresh verification link has been sent to your email address.') }}
@@ -68,14 +69,13 @@
 						<button class="login100-form-btn" type="submit">
 							{{ __('click here to request another') }}
 						</button>
-					</div>
-                    </form>
-					
+					</div>				
 					<div class="text-center p-t-12">
 						<a class="txt2" href="{{ route('login') }}">
 							Back
 						</a>
 					</div>
+                    </div>
 				</form>
 			</div>
 		</div>

@@ -112,7 +112,7 @@
 						<h2 class="universal-h2 universal-h2-bckg">Check This Out</h2>
 						<p><span>H</span> e has work appearing or forthcoming in over a dozen venues, including Buzzy Mag, The Spirit of Poe, and the British Fantasy Society journal Dark Horizons. He is also CEO of a company, specializing in custom book publishing and social media marketing services, have created a community for authors to learn and connect.He has work appearing or forthcoming in over a dozen venues, including Buzzy Mag, The Spirit of Poe, and have created a community for authors to learn and connect.</p>
 						<div class="books-brand-button mt-3">
-							<a href="#" class="brand-button" style="color:#ffff">Check</a>
+							<a href="#" class="brand-button">Check</a>
 						</div>
 					</div>
 					</div>
@@ -128,67 +128,29 @@
 		<div class="site-container">
 			<h2 class="universal-h2 universal-h2-bckg" style="font-size:35px; color:#c18f59">Latest Update</h2>
 			<div class="books">
+				@foreach ($items as $item)
+				<div class="col-lg-3 col-md- col-sm-12">
 				<div class="single-book">
-					<a href="#" class="single-book__img">
-						<img src="{{asset('assets/images/09076fdb830cdc5a2940743255786e84.jpg')}}" alt="single book and cd" height="300px">
-						<div class="single-book_download">
-							<img src="{{asset('assets2/images/download.svg')}}" alt="book image">
-						</div>
-					</a>
-					<h4 class="single-book__title">SweatShirts Rajut Cream</h4>
-					<span class="single-book__price">Rp.400000</span>
-					<!-- star button -->
-					<div class="books-brand-button mt-3">
-						<a href="#" class="brand-button">Pesan</a>
-					</div>
-					<!-- star button end -->
-				</div>
-				<div class="single-book">
-					<a href="#" class="single-book__img">
-						<img src="{{asset('assets/images/27c777790c081384f7751822c26906da.jpg')}}" alt="single book and cd" height="300px">
-						<div class="single-book_download">
-							<img src="{{asset('assets2/images/download.svg')}}" alt="book image">
-						</div>
-					</a>
-					<h4 class="single-book__title">Knit Baby Blue</h4>
-					<span class="single-book__price">Rp.299000</span>
-					<!-- star button -->
-					<div class="books-brand-button mt-3">
-						<a href="#" class="brand-button">Pesan</a>
-					</div>
-					<!-- star button end -->
-				</div>
-				<div class="single-book">
-					<a href="#" class="single-book__img">
-						<img src="{{asset('assets/images/a25278eaf9d71e1e2ef4bb2a58ae8218.jpg')}}" alt="single book and cd" height="300px">
-						<div class="single-book_download">
-							<img src="{{asset('assets2/images/download.svg')}}" alt="book image">
-						</div>
-					</a>
-					<h4 class="single-book__title">SweatShirts Light Blue Milk</h4>
-					<span class="single-book__price">Rp.269600</span>
-					<!-- star button -->
-					<div class="books-brand-button mt-3">
-						<a href="#" class="brand-button">Pesan</a>
-					</div>
-					<!-- star button end -->
-				</div>
-				<div class="single-book">
-					<a href="#" class="single-book__img">
-						<img src="{{asset('assets/images/b59188389855c6d087ccfe12e45d03a8.jpg')}}" alt="single book and cd" height="300px">
-						<div class="single-book_download">
-							<img src="{{asset('assets2/images/download.svg')}}" alt="book image">
-						</div>
-					</a>
-					<h4 class="single-book__title">SweatShirts Cream</h4>
-					<span class="single-book__price">Rp.350000</span>
-					<!-- star button -->
-					<div class="books-brand-button mt-3">
-						<a href="#" class="brand-button">Pesan</a>
-					</div>
-					<!-- star button end -->
-				</div>
-			</div>
+					<a href="{{route('detail.show',$item->id)}}" class="single-book__img" >
+				 <img src="{{ asset('gambar/'.$item->foto) }}" alt="single book and cd" height="300px">
+				 <div class="single-book_download">
+					 <span style="font-size:14px; color:#c18f59" alt="book image">{{$item->keterangan}} <p>Klik for Detail</p></span>
+				 </div>
+			 </a>
+			 <h4 class="single-book__title">{{$item->nama}}</h4>
+			 <span class="single-book__price">
+				 Rp {{number_format($item->harga)}}
+			 </span>
+			 <!-- star button -->
+			 <div class="books-brand-button mt-3 mb-5">
+				 <a href="{{url('/cart',$item->id)}}" class="brand-button">Pesan</a>
+				 <!-- <a href="{{url('/pesan',$item->id)}}" class="brand-button">Pesan</a> -->
+			 </div>
+		 </div>
+	    </div>
+		 @endforeach
+		</div>
+	</div>
 	</section>
 	<!-- Books and CD end -->
 

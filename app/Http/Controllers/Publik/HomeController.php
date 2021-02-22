@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Publik;
+use App\Item;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -14,7 +15,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('publik.dashboard');
+        $items = Item::latest()->limit(4)->get();
+        return view ('publik.dashboard',compact('items'));
     }
 
     /**
