@@ -24,11 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.homeAdmin');
-    }
-    
-    public function publik()
-    {
-        return view('publik.dashboard');
+        return view('auth.verify');
     }
 }

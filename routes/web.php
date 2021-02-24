@@ -49,6 +49,7 @@ Route::group(['middleware' => 'App\Http\Middleware\isAdmin'], function () {
 // halaman awal publik
 Route::group(['middleware'=>['App\Http\Middleware\Publik']], function(){ 
     Route::resource('/homepublik', 'Publik\HomeController');
+    Route::resource('/verify', 'HomeController');
 
     //kategori publik
     Route::get('/kategori_publik', 'Publik\CategoryController@index');

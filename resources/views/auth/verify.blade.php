@@ -60,9 +60,10 @@
                             {{ __('A fresh verification link has been sent to your email address.') }}
                         </div>
                     @endif
-
+                    <div style="color: aliceblue">
                     {{ __('Before proceeding, please check your email for a verification link.') }}
-                    {{ __('If you did not receive the email') }},
+                    {{ __('If you did not receive the email') }}
+                    </div>
                     <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
                         @csrf
                     <div class="container-login100-form-btn ">
@@ -71,7 +72,7 @@
 						</button>
 					</div>				
 					<div class="text-center p-t-12">
-						<a class="txt2" href="{{ route('login') }}">
+						<a class="txt2" href="{{ route('register') }}">
 							Back
 						</a>
 					</div>

@@ -41,7 +41,7 @@
 				<section class="fh5co-top-banner">
 					<div class="top-banner__inner site-container">
 						<div class="top-banner__image">
-							<img src="{{asset('assets2/images/bg2.jpg')}}" alt="author image">
+							<img src="{{asset('assets2/images/bg1.jpg')}}" alt="author image">
 						</div>
 						<div class="top-banner__text">
 							<div class="top-banner__text-up">
