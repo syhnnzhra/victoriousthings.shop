@@ -21,21 +21,24 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $categori = Category::all();
+        $kat = Category::all();
         $item = Item::latest()->get();
-        return view ('publik.category.index',compact('categori','item'));
+        return view ('publik.category.index',compact('kat','item'));
     }
 
-    public function kategori(Category $id)
+    public function kategori($category_id)
     {
-        $categori = Category::all();
-        $item = $id->Item()->get();
-        return view ('publik.category.index',compact('categori','item'));
+        $categori = Category::find($category_id);
+        $item = Item::where('kategori_id', $category_id)->get();
+        $kat = Category::all();
+        return view ('publik.category.index',compact('categori','item', 'kat'));
+        // $item = $category_id->Item()->get();
+        // return $item;
     }
     
-    public function show($id)
+    public function show($item_id)
     {
-        $data['item']=Item::findOrFail($id);
+        $data['item']=Item::findOrFail($item_id);
         return view('publik.category.detailproduk', $data);
     }
 

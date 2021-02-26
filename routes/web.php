@@ -11,6 +11,13 @@ use Illuminate\Support\Facades\Route;
     Route::resource('/', 'WelcomeController');
     Route::auth();
     Auth::routes(['verify' => true]);
+
+    Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
+    Route::get('email/verify/{user_id}', 'Auth\VerificationController@verify')->name('verification.verify');
+    Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
+
+
+
     // Route::get('/home', 'HomeController@index');
     // halaman awal admin
 Route::group(['middleware' => 'App\Http\Middleware\isAdmin'], function () {

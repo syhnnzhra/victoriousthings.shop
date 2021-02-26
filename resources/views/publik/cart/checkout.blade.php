@@ -8,7 +8,7 @@
        <section class="fh5co-books" style="font-family: 'Calisto-MT';">
            <div class="site-container">
            <h2 class="universal-h2 universal-h2-bckg mt-5" style='font-size:35px ;color: #c18f59;'>Check Out</h2>
-                <nav style="--bs-breadcrumb-divider: '>';" class="" aria-label="breadcrumb">
+                <nav style="--bs-breadcrumb-divider: '>'; bg-color: white;" class="" aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/cartp">Cart</a></li>
                         <!-- <li class="breadcrumb-item"><a href="#">Check Out</a></li> -->

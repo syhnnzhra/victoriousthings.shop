@@ -7,7 +7,7 @@
 	<section class="fh5co-books">
 		<div class="site-container mt-5">
             <div class="kategori">
-				@foreach ($categori as $ct)
+				@foreach ($kat as $ct)
 			<a href="{{ route('kategorip',$ct->category_id) }}" class="universal-h2 mt-5 mr-3 " style='font-size: 20px ;color: #c18f59;'>{{$ct->nama}}</h2></a>
 				@endforeach
             </div>
