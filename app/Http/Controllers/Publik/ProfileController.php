@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Order;
+use App\Cart;
+use App\Item;
 
 class ProfileController extends Controller
 {
@@ -16,8 +19,11 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $user = User::where('user_id',Auth::user()->user_id);
-        return view('publik.profile.index', compact('user'));
+        $odetail = Order::where('user_id', Auth::user()->user_id)->get();
+        $item = Item::all();
+        $carts = Cart::where('status', 'Sudah Dibayar')->where('user_id',Auth::user()->user_id)->get();
+        $user = User::where('user_id',Auth::user()->user_id)->first();
+        return view('publik.profile.index', compact('user','odetail','item','carts'));
     }
 
     /**
@@ -60,7 +66,7 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('publik.profile.edit');
     }
 
     /**
@@ -72,7 +78,13 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $user = User::FindOrFail($user_id);
+        $user->nama=$request->nama;
+        $user->deskripsi=$request->deskripsi;
+        $user->save();
+        return redirect()->route('kategori.index');
+    
     }
 
     /**

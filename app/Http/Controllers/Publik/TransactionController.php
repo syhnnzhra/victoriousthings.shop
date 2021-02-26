@@ -19,8 +19,8 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        $odetail = Order::where('user_id', Auth::user()->user_id)->get();
         // $odetail = Order::orderBy('updated_at', 'desc')->get();
+        $odetail = Order::where('user_id', Auth::user()->user_id)->get();
         $item = Item::all();
         $carts = Cart::where('status', 'Sudah Dibayar')->where('user_id',Auth::user()->user_id)->get();
         return view('publik.invoice.index', compact('carts','odetail','item'));

@@ -352,6 +352,12 @@
         .about-me-bckg {
           width: 100%;
           padding-bottom: 15px; } }
+
+          .poto-wrapper {
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            background-color: #fff; }
     
     .about-me-inner {
       display: flex;
@@ -502,7 +508,7 @@
   @media (max-width: 1250px) {
     .fh5co-books {
       margin-bottom: 60px; } }
-
+      
 .books {
   display: flex;
   justify-content: space-between;

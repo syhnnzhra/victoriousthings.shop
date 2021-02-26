@@ -1,4 +1,4 @@
-@extends('layoutAdmin/layout')
+ @extends('layoutAdmin/layout')
 
       @section('title', 'Tambah Data Customer')
 
