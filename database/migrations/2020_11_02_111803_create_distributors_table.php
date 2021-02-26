@@ -14,7 +14,7 @@ class CreateDistributorsTable extends Migration
     public function up()
     {
         Schema::create('distributors', function (Blueprint $table) {
-            $table->id();
+            $table->bigInteger('distributor_id');
             $table->string('nama');
             $table->string('alamat');
             $table->string('email');

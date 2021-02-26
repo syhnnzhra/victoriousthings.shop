@@ -20,7 +20,7 @@
 														<h4 class="card-title text-left">Alamat Pemesanan</h4>
 												<div class="row">
 													<div class="col-sm-10 text-left">
-														<p class="card-text text-left">{{Auth::user()->name}} | {{ Auth::user()->alamat }}, {{ Auth::user()->city->nama }}, {{ Auth::user()->province->nama }} | {{ Auth::user()->city->postal_code }}</p>
+														<p class="card-text text-left">{{Auth::user()->name}}
 														<!-- <a href="#" class="btn btn-info btn-sm"><span>Ubah</span></a></p> -->
 													</div>
 													<div class="col-sm-2" style="color:#212529;">
@@ -57,11 +57,6 @@
 						</thead>
 						<tbody>
                         @forelse ($carts as $row)
-						@if($item->id > 1)
-
-						@else
-
-						@endif
 							<tr>
 								<td>
 									<div class="media">
@@ -105,7 +100,7 @@
                                 </td>
 								<td>
                                     <p>
-											<form action="{{route('cart.destroy',$row->id)}}" method="post" class="d-inline">
+											<form action="{{route('cart.destroy',$row->cart_id)}}" method="post" class="d-inline">
                                                 @csrf
                                                 @method('delete')
                                                     <button type="submit" class="brand-button btn-sm">

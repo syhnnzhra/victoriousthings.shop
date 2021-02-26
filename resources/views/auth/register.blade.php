@@ -71,10 +71,14 @@
 						<i class="fa fa-lock" aria-hidden="true"></i>
 					</div>      
                     <div class="form-group {{$errors->has('level') ? 'has-error' : ''}}">
-                        {{-- <label for="name" class="col-md-4 col-form-label text-md-right"></label>
-                        <div class="col-md-6"> --}}
-                            <input type="hidden" name="level" value="user">
-                        {{-- </div> --}}
+                        <label for="name" class="col-md-4 col-form-label text-md-right"></label>
+                        <div class="col-md-6">
+							<select name="level" id="">
+								<option value="user">User</option>
+								<option value="admin">Admin</option>
+							</select>
+                            <!-- <input type="hidden" name="level" value="user"> -->
+                        </div>
                     </div>      
                     
 					<div class="container-login100-form-btn ">

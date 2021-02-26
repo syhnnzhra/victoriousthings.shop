@@ -27,14 +27,14 @@
                                             <tbody>
                                             @foreach($distributor as $distributor)
                                                 <tr>
-                                                    <td>{{$distributor->id}}</td>
+                                                    <td>{{$distributor->distributor_id}}</td>
                                                     <td>{{$distributor->nama}}</td>
                                                     <td>{{$distributor->alamat}}</td>
                                                     <td>{{$distributor->email}}</td>
                                                     <td>{{$distributor->telephone}}</td>
                                                     <td>
-                                                        <a href="{{route('distributor.edit',$distributor->id)}}" class="btn btn-outline-warning"><i class="fa fa-edit"></i></a> 
-                                                            <form action="{{route('distributor.destroy',$distributor->id)}}" method="post" class="d-inline">
+                                                        <a href="{{route('distributor.edit',$distributor->distributor_id)}}" class="btn btn-outline-warning"><i class="fa fa-edit"></i></a> 
+                                                            <form action="{{route('distributor.destroy',$distributor->distributor_id)}}" method="post" class="d-inline">
                                                                 @csrf
                                                                 @method('delete')
                                                                 <button type="submit" class="btn btn-outline-danger"><i class="fa fa-trash-o"></i></button>

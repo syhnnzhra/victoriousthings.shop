@@ -10,7 +10,7 @@
                     <div class="content-panel">
                         <div class="content ml-4">
                             <h3> Form Edit Data </h3>
-                                <form action="{{route('item_admin.update',$item->id)}}" method="post" enctype="multipart/form-data">
+                                <form action="{{route('item_admin.update',$item->item_id)}}" method="post" enctype="multipart/form-data">
                                 @Method('PUT')
                                 @csrf
                                 <div class="form-group row mt-4 ml-4">
@@ -26,7 +26,7 @@
                                         <div class="col-sm-6">
                                             <select class="form-control" id="exampleFormControlSelect1" required name="kategori_id">
                                                 @foreach($category as $category)
-                                                <option value="{{$category->id}}">{{$category->id}} - {{$category->nama}}</option>
+                                                <option value="{{$category->category_id}}">{{$category->id}} - {{$category->nama}}</option>
                                                 @endforeach
                                             </select></div>
                                         <div class="col-sm-4">
@@ -60,7 +60,7 @@
                                     <div class="form-group row mt-4 ml-4">
                                         <label for="colFormLabel" class="col-sm-2 col-form-label">Foto</label>
                                         <div class="col-sm-6">
-                                        <input type="file" id="foto" name="foto">
+                                        <input type="file" id="foto" name="foto" value="{{$item->foto}}">
                                         </div>
                                         <div class="col-sm-6">
                                             <img src="{{ asset('gambar/'. $item->foto )}}" height="70%" width="30%" alt="" srcset="" >

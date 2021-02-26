@@ -9,6 +9,8 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
+    protected $primaryKey = 'user_id';
+    public $incrementing = false;
     public function users() {
         return $this->hasOne('User');
         return $this->belongsTo('User');
@@ -16,11 +18,11 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function City()
     {
-        return $this->belongsTo('App\City','city_id','id');
+        return $this->belongsTo('App\City','city_id');
     }
     public function Province()
     {
-        return $this->belongsTo('App\Province','province_id','id');
+        return $this->belongsTo('App\Province','province_id');
     }
       
     /**
@@ -38,7 +40,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 
     ];
 
     /**

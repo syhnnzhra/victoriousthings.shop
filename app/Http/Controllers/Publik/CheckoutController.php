@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Item;
 use App\User;
 use App\Cart;
-use App\Order_Detail;
+use App\Order;
 use App\City;
 use App\Province;
 
@@ -21,7 +21,7 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        $carts = Cart::where('user_id',Auth::user()->id)->get();
+        $carts = Cart::where('user_id',Auth::user()->user_id)->where('status', 'Belum Dibayar')->get();
         $item = Item::first();
         $kota = City::all();
         $user = User::all();
@@ -47,7 +47,7 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        $odet = Order_Detail::create([
+        $odet = Order::create([
             'user_id' => $request->user_id,
             'nama' => $request->nama,
             'telephone' => $request->telephone,
@@ -56,9 +56,10 @@ class CheckoutController extends Controller
             'provinsi' => $request->provinsi,
             'kode_pos' => $request->kode_pos,
             'rincian_opsional' => $request->rincian_opsional,
-            'bank' => $request->bank
-        ]);
-        return redirect(route('ckbrng.show', ['id' => $odet->id]));
+            'bank' => $request->bank,
+            'subtotal' => $request->subtotal
+            ]);
+        return redirect(route('ckbrng.show', ['id' => $odet->order_id]));
     }
 
     public function trans(){
@@ -90,12 +91,13 @@ class CheckoutController extends Controller
      */
     public function edit($id)
     {
-        $carts = Cart::where('user_id',Auth::user()->id)->get();
-        $item = Item::first();
-        $kota = City::all();
-        $user = User::all();
-        $pro = Province::all();
-        return view('publik.cart.invoice', compact('carts','item','kota','pro','user'));
+        return 'edit';
+        // $carts = Cart::where('user_id',Auth::user()->id)->get();
+        // $item = Item::first();
+        // $kota = City::all();
+        // $user = User::all();
+        // $pro = Province::all();
+        // return view('publik.cart.invoice', compact('carts','item','kota','pro','user'));
     }
 
     /**

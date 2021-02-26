@@ -40,9 +40,9 @@
                                                     <th>Rp {{number_format($brng->subtotal)}}</th>
                                                     <th>Rp {{number_format($brng->total)}}</th>
                                                     <th>
-                                                        <a href="{{route('barang_masuk.edit',$brng->id)}}" class="btn btn-warning"><i class="fa fa-edit"></i> </a> 
+                                                        <a href="{{route('barang_masuk.edit',$brng->incoming_id)}}" class="btn btn-warning"><i class="fa fa-edit"></i> </a> 
                                                             
-                                                            <form action="{{route('barang_masuk.destroy',$brng->id)}}" method="post" class="d-inline">
+                                                            <form action="{{route('barang_masuk.destroy',$brng->incoming_id)}}" method="post" class="d-inline">
                                                                 @csrf
                                                                 @method('delete')
                                                                 <button type="submit" class="btn btn-danger">

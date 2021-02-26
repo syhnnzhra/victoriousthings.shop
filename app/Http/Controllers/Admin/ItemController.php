@@ -90,16 +90,14 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $item_id)
     {
         $foto =$request->foto;
         if($foto != NULL){
-            $item=Item::FindOrFail($id);
+            $item=Item::FindOrFail($item_id);
             File::delete('gambar/'.$item->image);
             $imageName = time().'.'.$foto->extension();
             $request->foto->move(public_path('gambar/'), $imageName);
-    
-            $item =Item::FindOrFail($id);
             $item->nama=$request->nama;
             $item->kategori_id=$request->kategori_id;
             $item->stok=$request->stok;
@@ -109,7 +107,7 @@ class ItemController extends Controller
             $item->save();
         }
         else{
-            $item =Item::FindOrFail($id);
+            $item =Item::FindOrFail($item_id);
             $item->nama=$request->nama;
             $item->kategori_id=$request->kategori_id;
             $item->stok=$request->stok;

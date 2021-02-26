@@ -139,12 +139,12 @@
                             </li>
                       </ul>
                     </li>
-                            <li class="sub-menu">
+                            <!-- <li class="sub-menu">
                                 <a class="nav-link {{ Request::path() === 'customer' ? 'bg-primary' :''}} " href="/customer">
                                     <i class="glyphicon glyphicon-user"></i>
                                     <span>Customer</span>
                                 </a>
-                            </li>
+                            </li> -->
                             <li class="sub-menu">
                                 <a class="nav-link {{ Request::path() === 'distributor' ? 'bg-primary' :''}} " href="/distributor">
                                 <i class="fa fa-book"></i>
@@ -152,6 +152,12 @@
                                 </a>
                             </li>
                             <li class="sub-menu">
+                                <a class="nav-link {{ Request::path() === 'transaksi' ? 'bg-primary' :''}} " href="/transaksi">
+                                <i class="glyphicon glyphicon-stats"></i>
+                                    <span>Transaksi</span>
+                                </a>
+                            </li>
+                            <!-- <li class="sub-menu">
                                 <a href="javascript:;" >
                                     <i class="glyphicon glyphicon-stats"></i>
                                     <span>Transaksi</span>
@@ -166,7 +172,7 @@
                                       </a>
                                   </li>
                                 </ul>
-                              </li>
+                              </li> -->
               </ul>
               <!-- sidebar menu end-->
           </div>

@@ -25,8 +25,9 @@
                                         <label for="colFormLabel" class="col-sm-2 col-form-label">Distributor ID</label>
                                         <div class="col-sm-6">
                                             <select class="form-control" id="exampleFormControlSelect1" required name="distributor_id">
-                                                @foreach($distributor as $ds)
-                                                <option value="{{$ds->nama}}">{{$ds->nama}}</option>
+                                                <option value="">Pilih Distributor</option>
+                                                @foreach($distributor as $dist)
+                                                <option value="{{$dist->distributor_id}}">{{$dist->nama}}</option>
                                                 @endforeach
                                             </select>
                                         </div>

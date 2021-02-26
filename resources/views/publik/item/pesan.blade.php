@@ -53,8 +53,8 @@
 
                                                     <div class="col-sm">
                                                         <input type="hidden" name="id" value="{{ $item->id }}" class="form-control">
-                                                        <input type="hidden" name="harga" value="{{ $item->harga }}" class="form-control">
                                                         <input type="hidden" name="status" value="Belum Dibayar" class="form-control">
+                                                        <input type="hidden" name="order_id" value="0" class="form-control">
 
                                                         <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
                                                         class="reduced items-count brand-button" type="button">

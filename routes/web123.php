@@ -7,12 +7,13 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
     //     return view('welcome');
     // });
-
-    Route::resource('/', 'WelcomeController');
-    Route::auth();
+    
+    Route::resource('/', 'WelcomeController'); 
+    Auth::routes();
     Auth::routes(['verify' => true]);
-    // Route::get('/home', 'HomeController@index');
+
     // halaman awal admin
+    // Route::group([array('prefix'=>'admin')], function () {
 Route::group(['middleware' => 'App\Http\Middleware\isAdmin'], function () {
     // Route::resource('/home', 'Admin\HomeController')->middleware('isAdmin');
     Route::resource('/home', 'Admin\HomeController');
@@ -42,12 +43,9 @@ Route::group(['middleware' => 'App\Http\Middleware\isAdmin'], function () {
 
 // halaman awal publik
 Route::group(['middleware'=>['App\Http\Middleware\Publik']], function(){ 
+    // Route::resource('/homepublik', 'Publik\HomeController')->middleware('Publik');
     Route::resource('/homepublik', 'Publik\HomeController');
-    Route::resource('/verify', 'HomeController');
-    
-    //profile
-    Route::resource('/prof', 'Publik\ProfileController'); 
-    
+
     //kategori publik
     Route::get('/kategori_publik', 'Publik\CategoryController@index');
     Route::resource('/detailkat', 'Publik\CategoryController'); 
@@ -88,8 +86,8 @@ Route::group(['middleware'=>['App\Http\Middleware\Publik']], function(){
 
     //customer
     Route::resource('/customer_publik', 'Publik\CustomerController'); 
-    
 
+    //profile
     
     // detail produk
     Route::resource('/detail', 'Publik\DetailprodukController');

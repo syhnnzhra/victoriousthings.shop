@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Publik;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Item;
+use Illuminate\Support\Facades\Auth;
+use App\User;
 
-class HomeController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $items = Item::latest()->limit(4)->get();
-        return view ('publik.dashboard',compact('items'));
+        $user = User::where('user_id',Auth::user()->user_id);
+        return view('publik.profile.index', compact('user'));
     }
 
     /**

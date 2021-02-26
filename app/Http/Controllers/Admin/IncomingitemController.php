@@ -69,10 +69,10 @@ class IncomingitemController extends Controller
      * @param  \App\Incoming_Item  $incoming_Item
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($incoming_id)
     {
         $distributor = Distributor::all();
-        $brng_msk = Incoming_Item::FindOrFail($id);
+        $brng_msk = Incoming_Item::FindOrFail($incoming_id);
         return view('admin.barang_masuk.edit', compact('brng_msk', 'distributor'));
     }
 
@@ -103,9 +103,9 @@ class IncomingitemController extends Controller
      * @param  \App\Incoming_Item  $incoming_Item
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($incoming_id)
     {
-        $msk = Incoming_Item::FindOrFail($id);
+        $msk = Incoming_Item::FindOrFail($incoming_id);
         $msk->delete();
 
         return redirect()->route('barang_masuk.index');

@@ -64,9 +64,9 @@ class DistributorController extends Controller
      * @param  \App\Distributor  $distributor
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($distributor_id)
     {
-        $distributor = Distributor::FindOrFail($id);
+        $distributor = Distributor::FindOrFail($distributor_id);
         return view('admin.distributor.edit', compact('distributor'));
     }
 
@@ -77,9 +77,9 @@ class DistributorController extends Controller
      * @param  \App\Distributor  $distributor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $distributor_id)
     {
-        $distributor = Distributor::FindOrFail($id);
+        $distributor = Distributor::FindOrFail($distributor_id);
         $distributor->nama=$request->nama;
         $distributor->alamat=$request->alamat;
         $distributor->email=$request->email;
@@ -94,9 +94,9 @@ class DistributorController extends Controller
      * @param  \App\Distributor  $distributor
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($distributor_id)
     {
-        $distributor = Distributor::FindOrFail($id);
+        $distributor = Distributor::FindOrFail($distributor_id);
         $distributor->delete();
 
         return redirect()->route('distributor.index');

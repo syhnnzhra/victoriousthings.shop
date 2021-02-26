@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Publik;
 use Illuminate\Support\Facades\Auth;
 use App\Item;
-use App\Order_Detail;
+use App\Order;
 use App\Cart;
 use App\Transaction;
 use App\User;
@@ -17,11 +17,10 @@ class CartController extends Controller
 {
     //
     function cart_tampil(){
-        $carts = Cart::where('user_id',Auth::user()->id)->get();
+        $carts = Cart::where('user_id',Auth::user()->user_id)->where('status', 'Belum Dibayar')->get();
         $item = Item::first();
         $brng = Item::all();
-        // $subtotal = Cart::where('user_id',Auth::user()->id)->groupBy('item_id')->count();
-        // return $subtotal;
+        // dd($carts);
         return view('publik.cart.index', compact('carts','item', 'brng'));
     }
 
@@ -33,8 +32,8 @@ class CartController extends Controller
         return view('publik.item.pesan');
     }
 
-    function destroy($id){
-        $cart = Cart::FindOrFail($id);
+    function destroy($cart_id){
+        $cart = Cart::FindOrFail($cart_id);
         $cart->delete();
 
         return redirect('/cart_tampil');
@@ -71,8 +70,8 @@ class CartController extends Controller
     }
 
     public function saveodetail(Request $request, $id){
-        $odet = Order_Detail::create([
-            'order_id' => $request->order_id,
+        $odet = Order::create([
+            'user_id' => Auth::user()->user_id,
             'nama' => $request->nama,
             'telephone' => $request->telephone,
             'alamat' => $request->alamat,
@@ -87,8 +86,9 @@ class CartController extends Controller
 
     public function update(Request $request, $id){
         Cart::create([
-            'user_id' => Auth::user()->id,
+            'user_id' => Auth::user()->user_id,
             'item_id' => $id,
+            'order_id' => $request->order_id,
             'pesan' => $request->pesan,
             'status' => $request->status,
             'qty' => $request->qty

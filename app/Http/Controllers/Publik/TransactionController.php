@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Cart;
 use App\Item;
 use App\User;
-use App\Order_Detail;
+use App\Order;
 
 class TransactionController extends Controller
 {
@@ -19,9 +19,10 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        $odetail = Order_Detail::where('user_id', Auth::user()->id)->get();
+        $odetail = Order::where('user_id', Auth::user()->user_id)->get();
+        // $odetail = Order::orderBy('updated_at', 'desc')->get();
         $item = Item::all();
-        $carts = Cart::where('status', 'Dibayar')->where('user_id',Auth::user()->id)->get();
+        $carts = Cart::where('status', 'Sudah Dibayar')->where('user_id',Auth::user()->user_id)->get();
         return view('publik.invoice.index', compact('carts','odetail','item'));
     }
 
@@ -81,13 +82,13 @@ class TransactionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($order_id)
     {
-        $order = Order_Detail::where('user_id',Auth::user()->id)->get();
         // $p = Cart::where('status', 1)->first();
-        $det = Order_Detail::findOrFail($id);
+        $order = Order::where('user_id',Auth::user()->user_id)->get();
+        $det = Order::findOrFail($order_id);
         $item = Item::all();
-        $carts = Cart::where('status', 'Sudah Dibayar')->where('user_id',Auth::user()->id)->get();
+        $carts = Cart::where('status', 'Sudah Dibayar')->where('user_id',Auth::user()->user_id)->where('order_id', $order_id)->get();
         return view('publik.invoice.edit', compact('item', 'det', 'carts'));
     }
     
@@ -99,8 +100,8 @@ class TransactionController extends Controller
      */
     public function edit($id)
     {
-        // $order = Order_Detail::where('user_id',Auth::user()->id)->get();
-        // $det = Order_Detail::findOrFail($id);
+        // $order = Order::where('user_id',Auth::user()->id)->get();
+        // $det = Order::findOrFail($id);
         // $item = Item::all();
         // $carts = Cart::where('user_id',Auth::user()->id)->get();
         // return view('publik.invoice.edit', compact('item', 'det', 'carts'));

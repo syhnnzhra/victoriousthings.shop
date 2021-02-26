@@ -15,10 +15,15 @@ class Publik
      */
     public function handle($request, Closure $next)
     {
-        if (auth()->check() && $request->user()->level == 'user'){
+        if (Auth()->check() && $request->user()->level == 'user'){
             return $next($request);
+            // return redirect()->guest('/homepublik');
         }
-        return "hi";
+        abort(403);
+        // if (auth()->check() && $request->user()->level == 'user'){
+        //     return $next($request);
+        // }
+        // return "hi";
         // return new Response(view('unauthorized')->with('level', 'user'));
 
         // return redirect()->guest('welcome');

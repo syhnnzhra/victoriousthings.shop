@@ -74,7 +74,7 @@
 					<li><a href="/item_publik">All Product</a></li>
 					<li><a href="/kategori_publik">Category</a></li>
 					<li><a href="/transaction">Transaction</a></li>
-					<li><a href="/Profile">My Profile</a></li>
+					<li><a href="/prof">My Profile</a></li>
 					<li><a href="{{ route('logout') }}"
 						onclick="event.preventDefault();
 										document.getElementById('logout-form').submit();">

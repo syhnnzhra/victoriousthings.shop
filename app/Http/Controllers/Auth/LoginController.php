@@ -31,6 +31,13 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request)
     {
+        // if (auth()->user()->level == 'admin') {
+        //     return redirect('/home');
+
+        // }
+        // elseif (auth()->user()->level == 'user') {
+        //     return redirect('/homepublik');
+        // }
         if ($request->user()->level == 'admin') { // do your magic here
             $credentials = $request->only($this->username(), 'password');
             

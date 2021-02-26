@@ -10,7 +10,7 @@
                     <div class="content-panel">
                         <div class="content ml-4">
                             <h3> Form Edit Data </h3>
-                                <form action="{{route('barang_masuk.update',$brng_msk->id)}}" method="post">
+                                <form action="{{route('barang_masuk.update',$brng_msk->incoming_id)}}" method="post">
                                 @Method('PUT')
                                 @csrf
                                     <div class="form-group row mt-4 ml-4">
@@ -26,6 +26,7 @@
                                         <label for="colFormLabel" class="col-sm-2 col-form-label">Distributor ID</label>
                                         <div class="col-sm-6">
                                             <select class="form-control" id="exampleFormControlSelect1" required name="distributor_id">
+                                                <option value="{{$brng_msk->distributor_id}}">{{$brng_msk->distributor->nama}}</option>
                                                 @foreach($distributor as $ds)
                                                 <option value="{{$ds->nama}}">{{$ds->nama}}</option>
                                                 @endforeach

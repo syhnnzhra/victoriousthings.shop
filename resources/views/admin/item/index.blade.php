@@ -38,8 +38,8 @@
                                                     <td>{{$item->keterangan}}</td>
                                                      <td height="20%" width="20%"><img src="{{ asset('gambar/'.$item->foto) }}" height="150px" width="150px" alt="" srcset=""></td> 
                                                     <td>
-                                                            <a href="{{route('item_admin.edit',$item->id)}}" class="btn btn-outline-warning"><i class="fa fa-edit"></i></a> 
-                                                            <form action="{{route('item_admin.destroy',$item->id)}}" method="post" class="d-inline">
+                                                            <a href="{{route('item_admin.edit',$item->item_id)}}" class="btn btn-outline-warning"><i class="fa fa-edit"></i></a> 
+                                                            <form action="{{route('item_admin.destroy',$item->item_id)}}" method="post" class="d-inline">
                                                                 @csrf
                                                                 @method('delete')
                                                                 <button type="submit" class="btn btn-outline-danger">

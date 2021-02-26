@@ -27,7 +27,7 @@
                                     <!-- <td>{{$o->subtotal}}</td> -->
                                     <td>{{$o->created_at}}</td>
                                     <td>
-                                        <a href="{{ route('transaction.show', $o->id) }}" class="btn btn-warning btn-sm">Detail</a>
+                                        <a href="{{ route('transaction.show', $o->order_id) }}" class="btn btn-warning btn-sm">Detail</a>
                                     </td>
                                 </tr>
                                 @empty

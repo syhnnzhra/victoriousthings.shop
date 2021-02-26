@@ -25,7 +25,7 @@
                                         <div class="col-sm-6">
                                             <select class="form-control" id="exampleFormControlSelect1" required name="kategori_id">
                                                 @foreach($category as $category)
-                                                <option value="{{$category->id}}">{{$category->nama}}</option>
+                                                <option value="{{$category->category_id}}">{{$category->nama}}</option>
                                                 @endforeach
                                             </select>
                                         </div>

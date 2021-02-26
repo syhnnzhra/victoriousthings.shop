@@ -15,9 +15,10 @@ class IsAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (auth()->check() && $request->user()->level == 'admin'){
+        if (Auth()->check() && $request->user()->level == 'admin'){
             return $next($request);
+            // return redirect()->guest('/homepublik');
         }
-        return redirect()->guest('/homepublik');
+        abort(403);
     }
 }

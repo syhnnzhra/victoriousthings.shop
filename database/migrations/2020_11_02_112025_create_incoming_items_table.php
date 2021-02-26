@@ -14,7 +14,7 @@ class CreateIncomingItemsTable extends Migration
     public function up()
     {
         Schema::create('incoming_items', function (Blueprint $table) {
-            $table->id();
+            $table->bigInteger('incoming_id');
             $table->string('item_id');
             $table->string('distributor_id');
             $table->date('tanggal');

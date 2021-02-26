@@ -22,7 +22,7 @@
                                             <tr>
                                                <td> Order ID </td>
                                                <td> : </td>
-                                               <td> {{$det->id}} </td>
+                                               <td> {{$det->order_id}} </td>
                                             </tr>
                                                 <tr>
                                                 <td> Tanggal </td>
@@ -55,7 +55,8 @@
                                     <tr>
                                         <td> Alamat </td>
                                         <td> :</td>
-                                        <td> {{Auth::user()->alamat}}, {{Auth::user()->city->nama}}, {{Auth::user()->province->nama}}, {{Auth::user()->kode_pos}}</td>
+                                        <td> {{$det->alamat}}, {{$det->kota}}, {{$det->provinsi}}, {{$det->kode_pos}} </td>
+                                        <!-- <td> {{Auth::user()->alamat}}, {{Auth::user()->city->nama}}, {{Auth::user()->province->nama}}, {{Auth::user()->kode_pos}}</td> -->
                                     </tr>
                                     <tr>
                                         <td> Kontak </td>
@@ -111,14 +112,14 @@
                                                     <button class="btn btn-primary btn-sm">Tambahkan</button>
                                                 </td>
                                             </tr> -->
-                                            <tr>
+                                            <!-- <tr>
                                                 <td> </td>
                                                 <td> </td>
                                                 <td> </td>
                                                 <td> </td>
                                                 <td> Ongkos Kirim</td>
                                                 <td> Rp 20.000</td>
-                                            </tr>
+                                            </tr> -->
                                             <!-- <tr>
                                                 <td> </td>
                                                 <td> </td>
@@ -130,7 +131,7 @@
                                             <tr>
                                                 <td colspan="4"> </td>
                                                 <td> Subtotal</td>
-                                                <td> Rp 0</td>
+                                                <td> Rp {{number_format($det->subtotal)}}</td>
                                                 </tr>
                                         </tfoot>
                                     </table>

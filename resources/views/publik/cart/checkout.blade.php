@@ -8,7 +8,7 @@
        <section class="fh5co-books" style="font-family: 'Calisto-MT';">
            <div class="site-container">
            <h2 class="universal-h2 universal-h2-bckg mt-5" style='font-size:35px ;color: #c18f59;'>Check Out</h2>
-                <nav style="--bs-breadcrumb-divider: '>';" class="col-6 responsive" aria-label="breadcrumb">
+                <nav style="--bs-breadcrumb-divider: '>';" class="" aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/cartp">Cart</a></li>
                         <!-- <li class="breadcrumb-item"><a href="#">Check Out</a></li> -->
@@ -112,9 +112,8 @@
                                 <h6 style='color: #c18f59;'>Shipping Address</h6>
                                 <form method="post" action="{{route('checkout.store')}}">
                                 @csrf
-                                        <input type="hidden" name="user_id" value="{{Auth::user()->id }}">
-                                        <input type="hidden" name="kota" value="{{Auth::user()->city->id }}">
-                                        <input type="hidden" name="provinsi" value="{{Auth::user()->province->id }}">
+                                        <input type="hidden" name="user_id" value="{{Auth::user()->user_id }}">
+                                        <input type="hidden" name="subtotal" value="{{($grandtot)}}">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <input type="text" class="form-control" placeholder="Nama" name="nama" value="{{ Auth::user()->name }}" required>
@@ -124,6 +123,12 @@
                                         </div>
                                         <div class="col-md-12 mt-3">
                                             <input type="text" class="form-control" placeholder="Alamat Lengkap" name="alamat" value="{{ Auth::user()->alamat }}" required>
+                                        </div>
+                                        <div class="col-md-6 mt-3">
+                                            <input type="text" class="form-control" placeholder="Kota" name="kota" value="{{ Auth::user()->city->nama }}" required>
+                                        </div>
+                                        <div class="col-md-6 mt-3">
+                                            <input type="text" id="number" class="form-control" placeholder="Telephone" name="provinsi" required value="{{Auth::user()->province->nama}}">
                                         </div>
                                         <div class="col-md-3 mt-3">
                                             <input type="text" class="form-control" placeholder="Masukan Kode Pos" name="kode_pos" value="{{ Auth::user()->city->postal_code }}" required>

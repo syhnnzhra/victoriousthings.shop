@@ -27,12 +27,12 @@
                                         <tbody>
                                         @foreach($category as $kat)
                                             <tr>
-                                                <th>{{$kat->id}}</th>
+                                                <th>{{$kat->category_id}}</th>
                                                 <th>{{$kat->nama}}</th>
                                                 <th>{{$kat->deskripsi}}</th>
                                                 <td>
-                                                    <a href="{{route('kategori.edit',$kat->id)}}" class="btn btn-outline-warning"><i class="fa fa-edit"></i> </a> 
-                                                            <form action="{{route('kategori.destroy',$kat->id)}}" method="post" class="d-inline">
+                                                    <a href="{{route('kategori.edit',$kat->category_id)}}" class="btn btn-outline-warning"><i class="fa fa-edit"></i> </a> 
+                                                            <form action="{{route('kategori.destroy',$kat->category_id)}}" method="post" class="d-inline">
                                                                 @csrf
                                                                 @method('delete')
                                                                 <button type="submit" class="btn btn-outline-danger">
