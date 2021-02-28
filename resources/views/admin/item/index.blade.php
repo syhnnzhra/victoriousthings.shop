@@ -30,9 +30,9 @@
                                             <tbody>
                                             @foreach($item as $item)
                                                 <tr>
-                                                    <td>{{$item->id}}</td>
+                                                    <td>{{$item->item_id}}</td>
                                                     <td>{{$item->nama}}</td>
-                                                    <td>{{$item->category->nama}}</td>
+                                                    <td>{{$item->kategori_id}}</td>
                                                     <td>{{$item->stok}}</td>
                                                     <td>Rp {{number_format($item->harga)}}</td>
                                                     <td>{{$item->keterangan}}</td>

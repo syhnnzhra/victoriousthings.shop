@@ -56,7 +56,7 @@ class ItemController extends Controller
         $item->foto = $imageName;
         $item->save();
 
-        return redirect()->route('item_admin.index');
+        return redirect()->route('admin.item.index');
     }
 
     /**
@@ -116,7 +116,7 @@ class ItemController extends Controller
             $item->foto=$request->foto;
             $item->save();
         }
-        return redirect()->route('item_admin.index');
+        return redirect()->route('admin.item.index');
 
     }
     /**
@@ -130,6 +130,6 @@ class ItemController extends Controller
         $item = Item::FindOrFail($id);
         $item->delete();
 
-        return redirect()->route('item_admin.index');
+        return redirect()->route('admin.item.index');
     }
 }

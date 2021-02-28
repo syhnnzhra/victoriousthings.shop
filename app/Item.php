@@ -14,7 +14,7 @@ class Item extends Model
     // }
     public function Category()
     {
-        return $this->belongsTo('App\Category', 'kategori_id');
+        return $this->belongsTo('App\Category', 'kategori_id','item_id');
     }
     public function Cart()
     {

@@ -35,8 +35,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        $data['item']=Item::all();
-        return view('admin.order.create', $data);
+        //
     }
 
     /**
@@ -47,13 +46,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        $order=new Order;
-        $order->item_id=$request->item_id;
-        $order->quantity=$request->quantity;
-        $order->status=$request->status;
-        $order->save();
-
-        return redirect()->route('order.index');
+        //
     }
 
     /**
@@ -78,9 +71,7 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        $item = Item::all();
-        $order = Order::FindOrFail($id);
-        return view('admin.order.edit', compact('order', 'item'));
+        //
     }
 
     /**
@@ -92,12 +83,7 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $order = Order::FindOrFail($id);
-        $order->item_id=$request->item_id;
-        $order->quantity=$request->quantity;
-        $order->status=$request->status;
-        $order->save();
-        return redirect()->route('order.index');
+        //
     }
 
     /**
@@ -108,9 +94,21 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        $order = Order::FindOrFail($id);
-        $order->delete();
-
-        return redirect()->route('order.index');
+        //
     }
+
+    public function orderStatusUpdate(Request $request){
+        if(isset($request->order_id) && isset($request->order_status)){
+          //save order status
+          $uptStatus =DB::table('order')->where('id',$request->order_id)
+          ->update(['status' => $request->order_status]);
+  
+          if($uptStatus){
+            echo "Order " . $request->order_status;
+          }
+          else{
+            echo "error";
+          }
+        }
+      }
 }
