@@ -45,22 +45,33 @@ class CheckoutController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $odet = Order::create([
-            'user_id' => $request->user_id,
-            'nama' => $request->nama,
-            'telephone' => $request->telephone,
-            'alamat' => $request->alamat,
-            'kota' => $request->kota,
-            'provinsi' => $request->provinsi,
-            'kode_pos' => $request->kode_pos,
-            'rincian_opsional' => $request->rincian_opsional,
-            'bank' => $request->bank,
-            'subtotal' => $request->subtotal
-            ]);
-        return redirect(route('ckbrng.show', ['id' => $odet->order_id]));
+    public function store(Request $request){
+        //
     }
+    // public function store(Request $request)
+    // {
+    //     $odet = Order::create([
+    //         'user_id' => $request->user_id,
+    //         'nama' => $request->nama,
+    //         'telephone' => $request->telephone,
+    //         'alamat' => $request->alamat,
+    //         'kota' => $request->kota,
+    //         'provinsi' => $request->provinsi,
+    //         'kode_pos' => $request->kode_pos,
+    //         'rincian_opsional' => $request->rincian_opsional,
+    //         'bank' => $request->bank,
+    //         'subtotal' => $request->subtotal
+    //         ]);
+    //     $cart = Cart::where('user_id', Auth::user()->user_id)->where('order_id', 0)->where('status', 'Belum Dibayar')->get();
+    //     if ($cart) {
+    //         $cart->update([
+    //             'order_id' => $odet->order_id,
+    //             'status' => $request->status
+    //         ]);
+    //     }
+    //     return $cart;
+    //     return redirect(route('ckbrng.show', ['id' => $odet->order_id]));
+    // }
 
     public function trans(){
         return redirect('transaction.index');
@@ -91,13 +102,7 @@ class CheckoutController extends Controller
      */
     public function edit($id)
     {
-        return 'edit';
-        // $carts = Cart::where('user_id',Auth::user()->id)->get();
-        // $item = Item::first();
-        // $kota = City::all();
-        // $user = User::all();
-        // $pro = Province::all();
-        // return view('publik.cart.invoice', compact('carts','item','kota','pro','user'));
+        //return 'edit';
     }
 
     /**
@@ -107,9 +112,41 @@ class CheckoutController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $user_id)
     {
-        //
+        $cart = Cart::where('status', 'Belum Dibayar')->where('user_id', Auth::user()->user_id)->get();
+        if ($cart) {
+            $order = Order::where('user_id', Auth::user()->user_id)->first();
+            if ($order) {
+                // buat variabel inputan order
+                $order = Order::create([
+                    'user_id' => $request->user_id,
+                    'nama' => $request->nama,
+                    'telephone' => $request->telephone,
+                    'alamat' => $request->alamat,
+                    'kota' => $request->kota,
+                    'provinsi' => $request->provinsi,
+                    'kode_pos' => $request->kode_pos,
+                    'rincian_opsional' => $request->rincian_opsional,
+                    'bank' => $request->bank,
+                    'subtotal' => $request->subtotal
+                    ]);
+                    // update status cart
+                    foreach($cart as $c){
+                        $c->order_id=$order->order_id;
+                        $c->status="Sudah Dibayar";
+                        $c->save();
+                    }
+                    return 'data masuk';
+                // return redirect()->route('transaksi.index')->with('success', 'Order berhasil disimpan');
+            } else {
+                return 'eroor';
+                // return back()->with('error', 'Alamat pengiriman belum diisi');
+            }
+        } else {
+            return 'error';
+            // return abort('404');//kalo ternyata ga ada shopping cart, maka akan menampilkan error halaman tidak ditemukan
+        }
     }
 
     /**

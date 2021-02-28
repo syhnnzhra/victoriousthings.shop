@@ -20,10 +20,11 @@ class ProfileController extends Controller
     public function index()
     {
         $odetail = Order::where('user_id', Auth::user()->user_id)->get();
+        $sum = Order::where('user_id', Auth::user()->user_id)->sum('user_id');
         $item = Item::all();
         $carts = Cart::where('status', 'Sudah Dibayar')->where('user_id',Auth::user()->user_id)->get();
         $user = User::where('user_id',Auth::user()->user_id)->first();
-        return view('publik.profile.index', compact('user','odetail','item','carts'));
+        return view('publik.profile.index', compact('user','odetail','item','carts','sum'));
     }
 
     /**

@@ -24,6 +24,10 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsTo('App\Province','province_id');
     }
+    public function Order()
+    {
+        return $this->belongsTo('App\Order','order_id');
+    }
       
     /**
      * The attributes that are mass assignable.

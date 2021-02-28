@@ -19,7 +19,7 @@
                                                 <tr>
                                                     <th>ID</th>
                                                     <th>User</th>
-                                                    <th>Product</th>
+                                                    <th>Item</th>
                                                     <th>SubTotal</th>
                                                     <th>Aksi</th>
                                                 </tr>
@@ -27,19 +27,18 @@
                                             <tbody>
                                             @foreach($order as $order)
                                                 <tr>
-                                                    <td>{{$order->id}}</td>
-                                                    <td>{{$order->user_id}}</td>
-                                                    <td>{{$order->cart->item->nama}}</td>
-                                                    <!-- <td>{{$order->cart->item_id}}</td> -->
-                                                    <!-- <td></td> -->
-                                                    <td>{{$order->subtotal}}</td>
+                                                    <td>{{$order->order_id}}</td>
+                                                    <td>{{$order->user->name}}</td>
+                                                    <td> <span class="badge badge-success">{{ $sum }} Item</span> </td>
+                                                    <td>Rp {{number_format($order->subtotal)}}</td>
                                                     <td>
-                                                        <a href="{{route('order.edit',$order->id)}}" class="btn btn-outline-warning"><i class="fa fa-edit"></i></a> 
-                                                        <form action="{{route('order.destroy',$order->id)}}" method="post" class="d-inline">
+                                                        <a href="{{route('order.show',$order->order_id)}}" class="btn btn-outline-warning">Show</a> 
+                                                        <!-- <a href="{{route('order.edit',$order->order_id)}}" class="btn btn-outline-warning"><i class="fa fa-edit"></i></a> 
+                                                        <form action="{{route('order.destroy',$order->order_id)}}" method="post" class="d-inline">
                                                             @csrf
                                                             @method('delete')
                                                             <button type="submit" class="btn btn-outline-danger"><i class="fa fa-trash-o"></i></button>
-                                                        </form>
+                                                        </form> -->
                                                     </td>
                                                 </tr>
                                             @endforeach

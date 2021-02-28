@@ -152,7 +152,7 @@
                                 </a>
                             </li>
                             <li class="sub-menu">
-                                <a class="nav-link {{ Request::path() === 'transaksi' ? 'bg-primary' :''}} " href="/transaksi">
+                                <a class="nav-link {{ Request::path() === 'order' ? 'bg-primary' :''}} " href="/order">
                                 <i class="glyphicon glyphicon-stats"></i>
                                     <span>Transaksi</span>
                                 </a>

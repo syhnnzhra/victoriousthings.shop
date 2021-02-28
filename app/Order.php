@@ -21,4 +21,8 @@ class Order extends Model
     {
         return $this->belongsTo('App\Province','provinsi','order_id');
     }
+    public function User()
+    {
+        return $this->belongsTo('App\User','user_id');
+    }
 }

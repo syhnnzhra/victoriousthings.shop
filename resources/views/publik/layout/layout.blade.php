@@ -46,20 +46,9 @@
                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                 @endif
                 @else
-                    <a id="" class='fas fa-user-circle mt-1 mr-2' style='font-size:25px ;color: #c18f59;' href="/Profile" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    <a id="" class='fas fa-user-circle mt-1 mr-2' style='font-size:25px ;color: #c18f59;' href="/prof" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     {{ Auth::user()->name }}
                     </a>
-                {{-- <div class="dropdown-menu dropdown-menu-left ml-5" aria-labelledby="">
-                    <a class="dropdown-item" href="{{ route('logout') }}"
-                    onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
-                    </a>
-
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                </div> --}}
                 @endguest
 			<a href="">
 				<a href="/cartp" class="icons">
@@ -73,7 +62,7 @@
 					<li><a href="/homepublik">Home</a></li>
 					<li><a href="/item_publik">All Product</a></li>
 					<li><a href="/kategori_publik">Category</a></li>
-					<li><a href="/transaction">Transaction</a></li>
+					<li><a href="/prof">Transaction</a></li>
 					<li><a href="/prof">My Profile</a></li>
 					<li><a href="{{ route('logout') }}"
 						onclick="event.preventDefault();

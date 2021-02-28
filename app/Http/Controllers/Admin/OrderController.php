@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Order;
 use App\Cart;
-use App\Customer;
+use App\Category;
 use App\Item;
+use App\User;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -18,11 +20,12 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $data['customer']=Customer::all();
-        $data['item']=Item::all();
-        $data['order']=Order::all();
-        $data['cart']=Cart::all();
-        return view('admin.order.index', $data);
+        $carts = Cart::where('status', 'Sudah Dibayar')->get();
+        $order = Order::all();
+        $sum = Cart::where('status', 'Sudah Dibayar')->where('order_id', $order)->count();
+        $item = Item::all();
+        $cat = Category::all();
+        return view('admin.order.index', compact('carts','order','item','cat','sum'));
     }
 
     /**
@@ -32,7 +35,6 @@ class OrderController extends Controller
      */
     public function create()
     {
-        $data['customer']=Customer::all();
         $data['item']=Item::all();
         return view('admin.order.create', $data);
     }
@@ -46,7 +48,6 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $order=new Order;
-        $order->customer_id=$request->customer_id;
         $order->item_id=$request->item_id;
         $order->quantity=$request->quantity;
         $order->status=$request->status;
@@ -61,9 +62,12 @@ class OrderController extends Controller
      * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show($order_id)
     {
-        //
+        $det = Order::findOrFail($order_id);
+        $item = Item::all();
+        $carts = Cart::where('status', 'Sudah Dibayar')->where('order_id', $order_id)->get();
+        return view('admin.order.show', compact('det','item','carts'));
     }
 
     /**
@@ -74,10 +78,9 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        $customer = Customer::all();
         $item = Item::all();
         $order = Order::FindOrFail($id);
-        return view('admin.order.edit', compact('order', 'customer', 'item'));
+        return view('admin.order.edit', compact('order', 'item'));
     }
 
     /**
@@ -90,7 +93,6 @@ class OrderController extends Controller
     public function update(Request $request, $id)
     {
         $order = Order::FindOrFail($id);
-        $order->customer_id=$request->customer_id;
         $order->item_id=$request->item_id;
         $order->quantity=$request->quantity;
         $order->status=$request->status;
