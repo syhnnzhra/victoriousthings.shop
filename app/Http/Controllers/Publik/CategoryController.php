@@ -35,6 +35,13 @@ class CategoryController extends Controller
         // $item = $category_id->Item()->get();
         // return $item;
     }
+
+    public function searchp(Request $request)
+    {
+        $searchp = $request->searchp;
+        $item = Item::where('nama', 'like', '%'.$searchp.'%')->paginate(5);
+            return view('publik.category.index', compact('item'));
+    }
     
     public function show($item_id)
     {
