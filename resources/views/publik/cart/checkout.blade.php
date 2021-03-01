@@ -110,10 +110,10 @@
                                     </a>
                                 </div>
                                 <h6 style='color: #c18f59;'>Shipping Address</h6>
-                                <form method="post" action="{{route('checkout.update', Auth::user()->user_id)}}">
+                                <form method="post" action="{{route('checkout.update', Auth::user()->id)}}">
                                 @Method('PUT')
                                 @csrf
-                                        <input type="hidden" name="user_id" value="{{Auth::user()->user_id }}">
+                                        <input type="hidden" name="user_id" value="{{Auth::user()->id }}">
                                         <input type="hidden" name="status" value="Sudah Dibayar">
                                         <input type="hidden" name="subtotal" value="{{($grandtot)}}">
                                     <div class="row">

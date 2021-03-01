@@ -9,8 +9,6 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
-    protected $primaryKey = 'user_id';
-    public $incrementing = false;
     public function users() {
         return $this->hasOne('User');
         return $this->belongsTo('User');

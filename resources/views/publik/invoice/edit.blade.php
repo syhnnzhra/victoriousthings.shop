@@ -11,42 +11,13 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                                <div class="col-sm-8">
-                                    <h3> Logo</h3>
-                                </div>
                                 <div class="col-sm-4">
-                                    <h3> Transaction</h3>
-                                    <div class="table table-responsive">
-                                    <table class="table table-borderless">
-                                        <tbody>
-                                            <tr>
-                                               <td> Order ID </td>
-                                               <td> : </td>
-                                               <td> {{$det->order_id}} </td>
-                                            </tr>
-                                                <tr>
-                                                <td> Tanggal </td>
-                                                <td> : </td>
-                                                <td> {{$det->updated_at}} </td>
-                                            </tr>
-                                            <tr>
-                                                <td> Status </td>
-                                                <td> : </td>
-                                                <td> {{$det->status}} </td>
-                                            </tr>
-                                            <tr>
-                                                <td> Payment </td>
-                                                <td> : </td>
-                                                <td> {{$det->bank}}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    </div>
+                                    <h3> Logo</h3>
                                 </div>
                             </div>
 
-                            <div class="table table-borderless">
-                                <table>
+                            <div class="table table-borderless mt-3 col-sm-5">
+                                <table class="">
                                     <tr>
                                         <td> Nama </td>
                                         <td> :</td>
@@ -62,6 +33,11 @@
                                         <td> Kontak </td>
                                         <td> :</td>
                                         <td> {{$det->telephone}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td> Payment </td>
+                                        <td> :</td>
+                                        <td> {{$det->bank}}</td>
                                     </tr>
                                 </table>
                             </div>
@@ -130,9 +106,14 @@
                                             </tr> -->
                                             <tr>
                                                 <td colspan="4"> </td>
+                                                <td> Ongkos Kirim</td>
+                                                <td> Rp </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4"> </td>
                                                 <td> Subtotal</td>
                                                 <td> Rp {{number_format($det->subtotal)}}</td>
-                                                </tr>
+                                            </tr>
                                         </tfoot>
                                     </table>
                                 

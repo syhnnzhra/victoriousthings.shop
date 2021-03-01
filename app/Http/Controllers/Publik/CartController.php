@@ -17,7 +17,7 @@ class CartController extends Controller
 {
     //
     function cart_tampil(){
-        $carts = Cart::where('user_id',Auth::user()->user_id)->where('status', 'Belum Dibayar')->get();
+        $carts = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->get();
         $item = Item::first();
         $brng = Item::all();
         // dd($carts);
@@ -71,7 +71,7 @@ class CartController extends Controller
 
     public function saveodetail(Request $request, $id){
         $odet = Order::create([
-            'user_id' => Auth::user()->user_id,
+            'user_id' => Auth::user()->id,
             'nama' => $request->nama,
             'telephone' => $request->telephone,
             'alamat' => $request->alamat,
@@ -86,7 +86,7 @@ class CartController extends Controller
 
     public function update(Request $request, $id){
         Cart::create([
-            'user_id' => Auth::user()->user_id,
+            'user_id' => Auth::user()->id,
             'item_id' => $id,
             'order_id' => $request->order_id,
             'pesan' => $request->pesan,

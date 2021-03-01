@@ -22,7 +22,7 @@
                     <h5  style="color:#c18f59;"> Order Saya ({{$sum}})</h5>
                       <div class="mt-4">
                         @forelse ($odetail as $det)
-                        <h5> {{$det->nama}} </h5>
+                        <h5> {{$det->nama}} <a href="{{ route('transaction.show', $det->order_id) }}"><span class="badge badge-warning">Show</span></a> </h5>
                         @empty 
                         <p> Anda Belum Melakukan Transaksi</p>
                         @endforelse

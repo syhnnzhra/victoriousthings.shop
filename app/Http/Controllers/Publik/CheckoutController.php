@@ -21,7 +21,7 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        $carts = Cart::where('user_id',Auth::user()->user_id)->where('status', 'Belum Dibayar')->get();
+        $carts = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->get();
         $item = Item::first();
         $kota = City::all();
         $user = User::all();
@@ -112,15 +112,15 @@ class CheckoutController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $user_id)
+    public function update(Request $request, $id)
     {
-        $cart = Cart::where('status', 'Belum Dibayar')->where('user_id', Auth::user()->user_id)->get();
+        $cart = Cart::where('status', 'Belum Dibayar')->where('user_id', Auth::user()->id)->get();
         if ($cart) {
-            $order = Order::where('user_id', Auth::user()->user_id)->first();
+            $order = Order::where('user_id', Auth::user()->id)->first();
             if ($order) {
                 // buat variabel inputan order
                 $order = Order::create([
-                    'user_id' => $request->user_id,
+                    'user_id' => Auth::user()->id,
                     'nama' => $request->nama,
                     'telephone' => $request->telephone,
                     'alamat' => $request->alamat,
