@@ -49,10 +49,10 @@
                                                 <tr>
                                                     <td>{{$order->order_id}}</td>
                                                     <td>{{$order->user->name}}</td>
-                                                    <td> <span class="badge badge-success">{{ $sum }} Item</span> </td>
+                                                    <td> <span class="badge badge-success"> Item</span> </td>
                                                     <td>Rp {{number_format($order->subtotal)}}</td>
                                                     <td>
-                                                        <input type="hidden" id="order_id<?php echo $countOrder;?>" value="{{$order->id}}"/>
+                                                        <input type="hidden" id="order_id<?php echo $countOrder;?>" value="{{$order->order_id}}"/>
                                                         <select class="form-control" id="order_status<?php echo $countOrder;?>">
                                                             <option value="pending"
                                                             <?php if($order->status=='pending'){?> selected="selected"<?php }?>>pending</option>

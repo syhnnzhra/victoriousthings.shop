@@ -22,10 +22,9 @@ class OrderController extends Controller
     {
         $carts = Cart::where('status', 'Sudah Dibayar')->get();
         $order = Order::all();
-        $sum = Cart::where('status', 'Sudah Dibayar')->where('order_id', $order)->count();
         $item = Item::all();
         $cat = Category::all();
-        return view('admin.order.index', compact('carts','order','item','cat','sum'));
+        return view('admin.order.index', compact('carts','order','item','cat'));
     }
 
     /**
