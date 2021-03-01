@@ -11,6 +11,17 @@
 			<a href="{{ route('kategorip',$ct->category_id) }}" class="universal-h2 mt-5 mr-3 " style='font-size: 20px ;color: #c18f59;'>{{$ct->nama}}</h2></a>
 				@endforeach
             </div>
+			<div class="">
+				<div class="input-group icons demo-2 mb-5">
+                    <div class="demo-2 search mr-auto ml-3">
+                        <form action="searchpublikkat" method="get">
+                            {{csrf_field()}}
+                            <span class="icon"><i class="fa fa-search" style='font-size:25px ;color: #c18f59;'></i></span>
+                            <input type="search" name="searchp" id="search" placeholder=" Search here!"/>
+                        </form>
+                    </div>
+				</div>
+			</div>
 			<div class="row">
 		<div class="books">
 		@forelse ($item as $item)

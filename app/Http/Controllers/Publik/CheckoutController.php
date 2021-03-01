@@ -116,11 +116,9 @@ class CheckoutController extends Controller
     {
         $cart = Cart::where('status', 'Belum Dibayar')->where('user_id', Auth::user()->id)->get();
         if ($cart) {
-            $order = Order::where('user_id', Auth::user()->id)->first();
-            if ($order) {
                 // buat variabel inputan order
                 $order = Order::create([
-                    'user_id' => Auth::user()->id,
+                    'user_id' => $request->user_id,
                     'nama' => $request->nama,
                     'telephone' => $request->telephone,
                     'alamat' => $request->alamat,
@@ -140,10 +138,6 @@ class CheckoutController extends Controller
                     return 'data masuk';
                 // return redirect()->route('transaksi.index')->with('success', 'Order berhasil disimpan');
             } else {
-                return 'eroor';
-                // return back()->with('error', 'Alamat pengiriman belum diisi');
-            }
-        } else {
             return 'error';
             // return abort('404');//kalo ternyata ga ada shopping cart, maka akan menampilkan error halaman tidak ditemukan
         }

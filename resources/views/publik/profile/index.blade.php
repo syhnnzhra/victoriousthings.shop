@@ -12,7 +12,7 @@
                     <img src="{{ asset('assets/images/profile.png')}}" width="150px" class="logo text-center img-rounded" style="align: center">
                     <h4 class="mt-3" style="color:#c18f59;">{{Auth::user()->name}} </h4>
                     <div class="books-brand-button">
-                      <a href="{{route('prof.edit', Auth::user()->user_id )}}" class="brand-button" style="width: 65%;">Edit Profile</a>
+                      <a href="{{route('prof.edit', Auth::user()->id )}}" class="brand-button" style="width: 65%;">Edit Profile</a>
                     </div>
                   </div>
               </div>
