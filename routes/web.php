@@ -12,11 +12,11 @@ use Illuminate\Support\Facades\Route;
     Route::auth();
     Auth::routes(['verify' => true]);
 
-    Route::get('/email/verify/{user_id}/{hash}', function (EmailVerificationRequest $request) {
-        $request->fulfill();
+    // Route::get('/email/verify/{user_id}/{hash}', function (EmailVerificationRequest $request) {
+    //     $request->fulfill();
     
-        return redirect('/verify', 'HomeController');
-    })->middleware(['auth', 'signed'])->name('verification.verify');
+    //     return redirect('/verify', 'HomeController');
+    // })->middleware(['auth', 'signed'])->name('verification.verify');
     
     // Route::get('/home', 'HomeController@index');
     // halaman awal admin
