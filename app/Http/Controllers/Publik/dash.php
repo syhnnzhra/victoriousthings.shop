@@ -1,15 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Publik;
+use App\Item;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\User;
-use App\Province;
-use App\City;
 
-class DashboardController extends Controller
+class DasboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +15,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $prov = Province::all();
-        $city = City::all();
-        return view('publik.data', compact('prov','city'));
+        return 'dashboard';
+        // $item = Item::latest()->limit(8)->get();
+        // return view('publik.dashboard', compact('item'));
     }
 
     /**
@@ -52,7 +49,8 @@ class DashboardController extends Controller
      */
     public function show($id)
     {
-        //
+        $items = Item::paginate(4);
+        return view ('publik.dasboard',compact('items'));
     }
 
     /**
@@ -75,15 +73,7 @@ class DashboardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $us = User::findOrFail($id);
-        $us->jeniskelamin=$request->jeniskelamin;
-        $us->tanggal_lahir=$request->tanggal_lahir;
-        $us->alamat=$request->alamat;
-        $us->city_id=$request->city_id;
-        $us->province_id=$request->province_id;
-        $us->kode_pos=$request->kode_pos;
-        $us->save();
-        return redirect('homepublik');
+        //
     }
 
     /**

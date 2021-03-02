@@ -85,10 +85,10 @@ class TransactionController extends Controller
     public function show($order_id)
     {
         // $p = Cart::where('status', 1)->first();
-        $order = Order::where('user_id',Auth::user()->user_id)->get();
+        $order = Order::where('user_id',Auth::user()->id)->get();
         $det = Order::findOrFail($order_id);
         $item = Item::all();
-        $carts = Cart::where('status', 'Sudah Dibayar')->where('user_id',Auth::user()->user_id)->where('order_id', $order_id)->get();
+        $carts = Cart::where('status', 'Sudah Dibayar')->where('user_id',Auth::user()->id)->where('order_id', $order_id)->get();
         return view('publik.invoice.edit', compact('item', 'det', 'carts'));
     }
     
