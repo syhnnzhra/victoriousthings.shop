@@ -21,7 +21,7 @@ class OrderController extends Controller
     public function index()
     {
         $carts = Cart::where('status', 'Sudah Dibayar')->get();
-        $order = Order::all();
+        $order = Order::all()->paginate(5);
         $item = Item::all();
         $cat = Category::all();
         return view('admin.order.index', compact('carts','order','item','cat'));
@@ -94,6 +94,12 @@ class OrderController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function searchp(Request $request)
+    {
+        $searchp = $request->searchp;
+        $order = Order::where('order_id', 'like', '%'.$searchp.'%')->paginate(5);
+        return view('admin.order.index', compact('order'));
     }
 
     public function orderStatusUpdate(Request $request){

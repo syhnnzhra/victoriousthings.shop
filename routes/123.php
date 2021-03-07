@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
     //     return view('welcome');
     // });
-
+    
     Route::resource('/', 'WelcomeController');
     Route::auth();
     Auth::routes(['verify' => true]);
@@ -21,8 +21,6 @@ Route::group(['middleware' => 'App\Http\Middleware\isAdmin'], function () {
     //item
     Route::resource('/item_admin', 'Admin\ItemController'); 
     
-    //costumer
-    Route::resource('/customer', 'Admin\CustomerController'); 
     
     //kategori
     Route::resource('/kategori', 'Admin\CategoryController'); 
@@ -36,6 +34,7 @@ Route::group(['middleware' => 'App\Http\Middleware\isAdmin'], function () {
     //order
     Route::resource('/order', 'Admin\OrderController'); 
     Route::get('orderStatusUpdate','Admin\OrderController@orderStatusUpdate');
+    Route::get('/searchorder', 'Admin\OrderController@searchp');
     
     //order detail
     Route::resource('/Odetail', 'Admin\OdetailController'); 
@@ -50,6 +49,12 @@ Route::group(['middleware'=>['App\Http\Middleware\Publik']], function(){
     
     //profile
     Route::resource('/prof', 'Publik\ProfileController'); 
+    
+    //payment
+    // Route::get('/payments/notification', 'Publik\PaymentController@notification');
+    Route::get('/payments/complited', 'Publik\PaymentController@complited');
+    Route::get('/payments/failed', 'Publik\PaymentController@failed');
+    Route::get('/payments/unfinish', 'Publik\PaymentController@unfinish');
     
     //kategori publik
     Route::get('/kategori_publik', 'Publik\CategoryController@index');
@@ -69,20 +74,10 @@ Route::group(['middleware'=>['App\Http\Middleware\Publik']], function(){
     Route::get('/cartp', 'Publik\CartController@cart_tampil');
     Route::post('cart', 'Publik\CartController@addToCart')->name('front.cart');
     Route::post('/cart/update', 'Publik\CartController@updateCart')->name('front.update_cart');
-    // Route::get('/cart_p', 'Publik\CartController@listCart')->name('front.list_cart');
-    // Route::post('cart', 'Publik\CartController@addToCart')->name('front.cart');
-    // Route::get('/cart', 'Publik\CartController@cart'); 
-    // Route::get('/cart/tambah/{id}', 'Publik\CartController@do_tambah_cart')->where("id","[0-9]+"); 
 
-    
-    // invoice
-    Route::get('/invoice', function () {
-        return view('publik.invoice.index');
-    });
     Route::resource('/transaction', 'Publik\TransactionController');
     Route::resource('/checkout', 'Publik\CheckoutController');
-    Route::get('/{id}', 'Publik\CheckoutController@edit')->name('checkout.edit');
-    // Route::post('/checkoutcart', 'Publik\CartController@checkout')->name('checkoutcart.ck');
+    Route::get('/received/{order_id}', 'Publik\CheckoutController@received');
     
     // odetail
     Route::get('/ckbrng/{id}', 'Publik\CartController@odetail')->name('ckbrng.tampil');
@@ -95,31 +90,8 @@ Route::group(['middleware'=>['App\Http\Middleware\Publik']], function(){
         $orderData = App\Order::where('order_id',$order_id)->get();
         return view('publik.profile.track',['data' => $orderData]);
       });
-      
-
-    //customer
-    Route::resource('/customer_publik', 'Publik\CustomerController'); 
-    
-
     
     // detail produk
     Route::resource('/detail', 'Publik\DetailprodukController');
 
-
 });
-
-
-
-
-// Route::get('level',['middleware'=>['web','auth','level']], function(){
-//     return 'gatau';
-// });
-
-// Auth::routes();
-// Route::get('/', 'PagesController@index');
-
-// Route::group(['middleware'=>'web'], function(){
-//     // redirect login
-//     Route::auth();
-// });
-// Route::get('/home', 'HomeController@index', function(){

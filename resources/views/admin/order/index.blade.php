@@ -31,7 +31,16 @@
                         <div class="content-panel">
                             <div class="content ml-4">
                                 <h3 class="mt-4"> Tabel Order </h3>
-                                    <div class="table mt-5">
+                                    <div class="input-group mt-5 col-sm-4">
+                                        <!-- <div class="input-group-text"> <i class="fa fa-search"></i> </div> -->
+                                        <form action="searchorder" method="get">
+                                            {{csrf_field()}}
+                                            <!-- <span class="icon"><i class="fa fa-search" style='font-size:25px ;color: #c18f59;'></i></span> -->
+                                            <!-- <input type="search" name="searchp" id="search" placeholder=" Search here!"/> -->
+                                            <input type="search" name="searchp" class="form-control" id="search" placeholder="Search here!">
+                                        </form>
+                                    </div>
+                                    <div class="table table-responsive mt-5">
                                         <table class="table">
                                             <thead>
                                                 <tr>

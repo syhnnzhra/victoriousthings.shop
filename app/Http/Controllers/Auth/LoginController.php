@@ -45,6 +45,7 @@ class LoginController extends Controller
         }
         elseif ($request->user()->level == 'user') { // do your magic here
             $credentials = $request->only($this->username(), 'password');
+            // return $request;
             return redirect('/homepublik');
         }
         // if ($request->user()->level == "admin") { // do your magic here

@@ -65,13 +65,16 @@
                                             </tr>
                                             <tr>
                                                 <?php
-                                                    $ongkir = 1000;
+                                                    $ongkir = 11000;
                                                 ?>
                                                 <td></td>
                                                 <td>Ongkos Kirim</td>
                                                 <td></td>
                                                 <td  colspan="2">
-                                                    Rp {{number_format($ongkir)}}
+                                                    <select name="">
+                                                        <option value="" id="ongkir"></option>
+                                                    </select>
+                                                    <!-- Rp {{number_format($ongkir)}} -->
                                                 </td>
                                             </tr>
                                             <tr>
@@ -89,6 +92,36 @@
                                             </tr>
                                         </tfoot>
                                     </table>
+                                    <form action="{{url('/ongkir')}}" method="post" role="form">
+                                    @csrf
+                                        <div class="col-md-6 mt-3">
+                                            <select class="form-control provinsi-tujuan" name="province_destination" id="provinsi-tujuan">
+                                                <option value="0">Pilih Provinsi</option>
+                                                @foreach ($provinces as $province => $value)
+                                                    <option value="{{$province}}">{{$value}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 mt-3">
+                                            <select class="form-control kota-tujuan" name="city_destination" id="kota-tujuan">
+                                                <option value="">Pilih Kota</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 mt-3">
+                                            <input type="hidden" id="number" class="form-control" name="weight" value="1000">
+                                        </div>
+                                        <div class="col-md-8 mt-3">
+                                            <select class="form-control kurir" id="courier" name="courier">
+                                                <option value="0">Pilih Kurir</option>
+                                                @foreach($couriers as $courier => $value)
+                                                <option value="{{$courier}}">{{$value}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4 mt-3">
+                                            <button type="submit" class="brand-button btn-check" id="btn-check"> Check Ongkir </button>
+                                        </div>
+                                    </form>
                                 </div>
                         </div>
                     </div>
@@ -116,28 +149,41 @@
                                         <input type="hidden" name="user_id" value="{{Auth::user()->id }}">
                                         <input type="hidden" name="status" value="Sudah Dibayar">
                                         <input type="hidden" name="subtotal" value="{{($grandtot)}}">
+
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <input type="text" class="form-control" placeholder="Nama" name="nama" value="{{ Auth::user()->name }}" required>
+                                            <input type="text" class="form-control" placeholder="Nama" name="first_name" value="{{ Auth::user()->name }}" required>
                                         </div>
-                                        <div class="col-md-6" id="only-number">
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" placeholder="Nama" name="last_name" value="" required>
+                                        </div>
+                                        <div class="col-md-12 mt-3" id="only-number">
                                             <input type="text" id="number" class="form-control" placeholder="Telephone" name="telephone" required maxlength="13" minlength="12">
                                         </div>
                                         <div class="col-md-12 mt-3">
                                             <input type="text" class="form-control" placeholder="Alamat Lengkap" name="alamat" value="{{ Auth::user()->alamat }}" required>
                                         </div>
                                         <div class="col-md-6 mt-3">
-                                            <input type="text" class="form-control" placeholder="Kota" name="kota" value="{{ Auth::user()->city->nama }}" required>
+                                            <select class="form-control kota-tujuan" name="city_destination">
+                                                <option value="">Pilih Kota</option>
+                                            </select>
                                         </div>
                                         <div class="col-md-6 mt-3">
-                                            <input type="text" id="number" class="form-control" placeholder="Telephone" name="provinsi" required value="{{Auth::user()->province->nama}}">
+                                            <select class="form-control provinsi-tujuan" name="province_destination" id="">
+                                                <option value="0">Pilih Provinsi</option>
+                                                <!-- <option value="{{Auth::user()->province_id}}">{{Auth::user()->province->nama}}</option> -->
+                                                @foreach ($provinces as $province => $value)
+                                                    <option value="{{$province}}">{{$value}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                         <div class="col-md-3 mt-3">
-                                            <input type="text" class="form-control" placeholder="Masukan Kode Pos" name="kode_pos" value="{{ Auth::user()->city->postal_code }}" required>
+                                            <input type="text" class="form-control" placeholder="Kode Pos" name="kode_pos" value="{{ Auth::user()->kode_pos }}" required>
                                         </div>
                                         <div class="col-md-9 mt-3">
                                             <input type="text" class="form-control" placeholder="Rincian Alamat Tambahan (Opsional)" name="rincian_opsional">
                                         </div>
+                                        
                                         <div class="col-md-12 mt-3">
                                             <input type="text" class="form-control" placeholder="Bank" name="bank" required >
                                         </div>
@@ -182,64 +228,30 @@
         });
         })
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" ></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
     <script>
-        sendOrder() {
-        //Mengosongkan var errorMessage dan message
-        this.errorMessage = ''
-        this.message = ''
-        
-        //jika var customer.email dan kawan-kawannya tidak kosong
-        if (this.customer.email != '' && this.customer.name != '' && this.customer.phone != '' && this.customer.address != '') {
-            //maka akan menampilkan kotak dialog konfirmasi
-            this.$swal({
-                title: 'Kamu Yakin?',
-                text: 'Kamu Tidak Dapat Mengembalikan Tindakan Ini!',
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Iya, Lanjutkan!',
-                cancelButtonText: 'Tidak, Batalkan!',
-                showCloseButton: true,
-                showLoaderOnConfirm: true,
-                preConfirm: () => {
-                    return new Promise((resolve) => {
-                        setTimeout(() => {
-                            resolve()
-                        }, 2000)
-                    })
-                },
-                allowOutsideClick: () => !this.$swal.isLoading()
-            }).then ((result) => {
-                //jika di setujui
-                if (result.value) {
-                    //maka submitForm akan di-set menjadi true sehingga menciptakan efek loading
-                    this.submitForm = true
-                    //mengirimkan data dengan uri /checkout
-                    axios.post('/checkout', this.customer)
-                    .then((response) => {
-                        setTimeout(() => {
-                            //jika responsenya berhasil, maka cart di-reload
-                            this.getCart();
-                            //message di-set untuk ditampilkan
-                            this.message = response.data.message
-                            //form customer dikosongkan
-                            this.customer = {
-                                name: '',
-                                phone: '',
-                                address: ''
-                            }
-                            //submitForm kembali di-set menjadi false
-                            this.submitForm = false
-                        }, 1000)
-                    })
-                    .catch((error) => {
-                        console.log(error)
-                    })
-                }
-            })
-        } else {
-            //jika form kosong, maka error message ditampilkan
-            this.errorMessage = 'Masih ada inputan yang kosong!'
-        }
-    }
+        $('select[name="province_destination"]').on('change', function () {
+            let provindeId = $('#province_destination').val();
+            if (provindeId) {
+                jQuery.ajax({
+                    url: "{{url('/cities/')}}"+provindeId,
+                    type: "GET",
+                    dataType: "json",
+                    data:{destination: $('#province_destination').val(), weight: $('#weight').val()},
+                    success: function (response) {
+                        $('select[name="city_destination"]').empty();
+                        $('select[name="city_destination"]').append('<option value="">-- pilih kota tujuan --</option>');
+                        $.each(response, function (key, value) {
+                            $('select[name="city_destination"]').append('<option value="' + key + '">' + value + '</option>');
+                        });
+                    },
+                });
+            } else {
+                $('select[name="city_destination"]').append('<option value="">-- pilih kota tujuan --</option>');
+            }
+        });
     </script>
     @endsection

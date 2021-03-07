@@ -18,8 +18,8 @@ class Publik
         if (Auth()->check() && $request->user()->level == 'user'){
             return $next($request);
         }
-        // return redirect()->guest('/homepublik');
         abort(403);
+        // return redirect()->guest('/homepublik');
         // if (auth()->check() && $request->user()->level == 'user'){
         //     return $next($request);
         // }

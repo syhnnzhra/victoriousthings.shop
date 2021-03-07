@@ -21,7 +21,7 @@
                                     <tr>
                                         <td> Nama </td>
                                         <td> :</td>
-                                        <td> {{$det->nama}}</td>
+                                        <td> {{$det->first_name}} {{$det->last_name}}</td>
                                     </tr>
                                     <tr>
                                         <td> Alamat </td>
