@@ -164,12 +164,14 @@
                                             <input type="text" class="form-control" placeholder="Alamat Lengkap" name="alamat" value="{{ Auth::user()->alamat }}" required>
                                         </div>
                                         <div class="col-md-6 mt-3">
-                                            <select class="form-control kota-tujuan" name="city_destination">
-                                                <option value="">Pilih Kota</option>
+                                            <select class="form-control provinsi-tujuan" name="kota" id="">
+                                                @foreach ($city as $p)
+                                                    <option value="{{$p->city_id}}">{{$p->title}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="col-md-6 mt-3">
-                                            <select class="form-control provinsi-tujuan" name="province_destination" id="">
+                                            <select class="form-control provinsi-tujuan" name="provinsi" id="">
                                                 <option value="0">Pilih Provinsi</option>
                                                 <!-- <option value="{{Auth::user()->province_id}}">{{Auth::user()->province->nama}}</option> -->
                                                 @foreach ($provinces as $province => $value)

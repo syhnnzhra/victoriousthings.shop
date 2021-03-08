@@ -26,9 +26,10 @@ class CheckoutController extends Controller
         $carts = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->get();
         $item = Item::first();
         $user = User::all();
+        $city = City::all();
         $couriers = Courier::pluck('title', 'code');
         $provinces = Province::pluck('title', 'province_id');
-        return view('publik.cart.checkout', compact('carts','item','couriers','provinces','user'));
+        return view('publik.cart.checkout', compact('carts','item','couriers','provinces','user','city'));
     }
 
     /**
