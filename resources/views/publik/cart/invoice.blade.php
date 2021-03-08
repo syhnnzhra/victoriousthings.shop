@@ -53,7 +53,7 @@
                                     <tr>
                                         <td> Alamat </td>
                                         <td> :</td>
-                                        <td> {{Auth::user()->alamat}}, {{Auth::user()->city->nama}}, {{Auth::user()->province->nama}}, {{Auth::user()->kode_pos}}</td>
+                                        <td> {{Auth::user()->alamat}}, {{Auth::user()->city->title}}, {{Auth::user()->province->title}}, {{Auth::user()->kode_pos}}</td>
                                     </tr>
                                     <tr>
                                         <td> Kontak </td>

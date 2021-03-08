@@ -26,6 +26,7 @@ class CreateOrdersTable extends Migration
             $table->string('rincian_opsional')->nullable();
             $table->string('bank');
             $table->integer('subtotal');
+            $table->string('status');
             // $table->string('payment');
             $table->string('payment_status')->nullable();
             $table->string('payment_token')->nullable();

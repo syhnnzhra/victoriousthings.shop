@@ -1018,4 +1018,9 @@
   clear: both;
   display: table;
 }
+.detailwrapper {
+  width: 500px;
+  padding: 8px;
+  text-align: center;
+  background-color: #fff; }
 }

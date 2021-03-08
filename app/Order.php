@@ -15,11 +15,11 @@ class Order extends Model
     }
     public function City()
     {
-        return $this->belongsTo('App\City','kota','order_id');
+        return $this->belongsTo('App\City','kota');
     }
     public function Province()
     {
-        return $this->belongsTo('App\Province','provinsi','order_id');
+        return $this->belongsTo('App\Province','provinsi');
     }
     public function User()
     {

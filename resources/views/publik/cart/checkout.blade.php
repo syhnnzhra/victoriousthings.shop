@@ -8,13 +8,13 @@
        <section class="fh5co-books" style="font-family: 'Calisto-MT';">
            <div class="site-container">
            <h2 class="universal-h2 universal-h2-bckg mt-5" style='font-size:35px ;color: #c18f59;'>Check Out</h2>
-                <nav style="--bs-breadcrumb-divider: '>'; bg-color: white;" class="" aria-label="breadcrumb">
+                <!-- <nav style="--bs-breadcrumb-divider: '>'; bg-color: white;" class="" aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/cartp">Cart</a></li>
-                        <!-- <li class="breadcrumb-item"><a href="#">Check Out</a></li> -->
+                        <li class="breadcrumb-item"><a href="#">Check Out</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Check Out</li>
                     </ol>
-                </nav>
+                </nav> -->
                 <h6></h6>
                <div class="row">
 
@@ -152,10 +152,10 @@
 
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <input type="text" class="form-control" placeholder="Nama" name="first_name" value="{{ Auth::user()->name }}" required>
+                                            <input type="text" class="form-control" placeholder="First Name" name="first_name" value="{{ Auth::user()->name }}" required>
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="text" class="form-control" placeholder="Nama" name="last_name" value="" required>
+                                            <input type="text" class="form-control" placeholder="Last Name" name="last_name" value="" required>
                                         </div>
                                         <div class="col-md-12 mt-3" id="only-number">
                                             <input type="text" id="number" class="form-control" placeholder="Telephone" name="telephone" required maxlength="13" minlength="12">
@@ -241,7 +241,6 @@
                 jQuery.ajax({
                     url: "{{url('/cities/')}}"+provindeId,
                     type: "GET",
-                    dataType: "json",
                     data:{destination: $('#province_destination').val(), weight: $('#weight').val()},
                     success: function (response) {
                         $('select[name="city_destination"]').empty();

@@ -59,9 +59,10 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($order_id)
     {
-        //
+        $orderData = Order::where('order_id',$order_id)->get();
+        return view('publik.profile.track',['data' => $orderData]);
     }
 
     /**

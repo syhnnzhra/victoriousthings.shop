@@ -26,7 +26,7 @@
                                     <tr>
                                         <td> Alamat </td>
                                         <td> :</td>
-                                        <td> {{$det->alamat}}, {{$det->kota}}, {{$det->provinsi}}, {{$det->kode_pos}} </td>
+                                        <td> {{$det->alamat}}, {{$det->city->title}}, {{$det->province->title}}, {{$det->kode_pos}} </td>
                                         <!-- <td> {{Auth::user()->alamat}}, {{Auth::user()->city->nama}}, {{Auth::user()->province->nama}}, {{Auth::user()->kode_pos}}</td> -->
                                     </tr>
                                     <tr>

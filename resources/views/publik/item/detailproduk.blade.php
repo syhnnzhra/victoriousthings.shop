@@ -7,18 +7,20 @@
 	<div class="site-container">
         <h2 class="universal-h2 universal-h2-bckg mt-5">Detail</h2>
         <div class="row">
-            <div class="col-md-12 mb-3">
+            {{-- <div class="col-md-12 mb-3">
                 <div class="books-brand-button " style="text-align : left">
                 <a href="/item_publik" class="brand-button"><i class="fa fa-arrow-left"> Kembali</i></a>
                 </div>
-            </div>
+            </div> --}}
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
+                    <div class="detailwrapper">
                         <div class="row">
                             <div class="col-sm-4">
                             <img src="{{ asset('gambar/'.$item->foto) }}" width="240px" hight="300px" alt="">
                             </div>
+                        </div>
                             <div class="col-sm-8 mt-5">
                                 <h3>{{ $item->nama}}</h3> 
                                 <table class="table">

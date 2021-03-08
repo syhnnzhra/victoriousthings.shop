@@ -84,12 +84,10 @@ Route::group(['middleware'=>['App\Http\Middleware\Publik']], function(){
     // Route::get('/ckbrng/{id}', 'Publik\CartController@ckbrngedit')->name('ckbrng.edit');
     Route::get('/ckbrng/{id}', 'Publik\CheckoutController@trans')->name('ckbrng.show');
     Route::post('/ckbrng/{id}', 'Publik\CartController@saveodetail')->name('ckbrng.saveodetail');
-
+    
     // Track
-    Route::get('trackOrder/{order_id}',function($order_id){
-        $orderData = App\Order::where('order_id',$order_id)->get();
-        return view('publik.profile.track',['data' => $orderData]);
-      });
+    Route::get('trackOrder/{order_id}', 'Publik\OrderController@edit');
+    Route::post('trackOrder/{order_id}', 'Publik\OrderController@edit');
     
     // detail produk
     Route::resource('/detail', 'Publik\DetailprodukController');
