@@ -48,18 +48,23 @@ Route::group(['middleware'=>['App\Http\Middleware\Publik']], function(){
     Route::resource('/dashboard', 'Publik\DashboardController');
     
     //profile
-    Route::resource('/prof', 'Publik\ProfileController'); 
+    Route::resource('/prof', 'Publik\ProfileController');
     
     //payment
-    // Route::get('/payments/notification', 'Publik\PaymentController@notification');
+    Route::get('/payments/notification', 'Publik\PaymentController@notification');
     Route::get('/payments/complited', 'Publik\PaymentController@complited');
     Route::get('/payments/failed', 'Publik\PaymentController@failed');
     Route::get('/payments/unfinish', 'Publik\PaymentController@unfinish');
     
+    // ongkir
+    Route::resource('/ongkir', 'Publik\CheckOngkirController');
+    Route::post('/cekongkir', 'Publik\CheckOngkirController@check_ongkir');
+    Route::get('/getCity/{province_id}', 'Publik\CheckOngkirController@getCities');
+    
     //kategori publik
     Route::get('/kategori_publik', 'Publik\CategoryController@index');
     Route::resource('/detailkat', 'Publik\CategoryController'); 
-    Route::get('/kategorip/{id}', 'Publik\CategoryController@kategori')->name('kategorip');
+    Route::get('/kategorip/{category_id}', 'Publik\CategoryController@kategori')->name('kategorip');
     Route::get('/searchpublikkat', 'Publik\CategoryController@searchp');
     
     //item

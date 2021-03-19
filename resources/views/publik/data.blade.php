@@ -44,7 +44,7 @@
                             <select class="input100" required name="city_id" id="">
                                 <option value="">Pilih Kota</option>
                                 @foreach($city as $c)
-                                <option value="{{$c->city_id}}">{{$c->title}}</option>
+                                <option value="{{$c->city_id}}">{{$c->type}} {{$c->title}}</option>
                                 @endforeach
                             </select>
                         </div>

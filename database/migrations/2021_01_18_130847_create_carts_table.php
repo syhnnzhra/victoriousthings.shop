@@ -17,7 +17,7 @@ class CreateCartsTable extends Migration
             $table->bigInteger('cart_id');
             $table->bigInteger('item_id');
             $table->integer('user_id');
-            $table->string('detail_id');
+            $table->string('order_id');
             $table->integer('qty');
             $table->string('status');
             $table->string('pesan')->nullable();

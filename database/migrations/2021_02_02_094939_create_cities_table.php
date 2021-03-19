@@ -17,6 +17,8 @@ class CreateCitiesTable extends Migration
             $table->bigInteger('city_id');
             $table->string('province_id');
             $table->string('title');
+            $table->string('type');
+            $table->string('postal_code',10);
             $table->timestamps();
         });
     }

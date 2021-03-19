@@ -20,7 +20,7 @@ class CartController extends Controller
         $carts = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->get();
         $item = Item::first();
         $brng = Item::all();
-        // dd($carts);
+        // dd($carts); 
         return view('publik.cart.index', compact('carts','item', 'brng'));
     }
 

@@ -20,7 +20,7 @@
 														<h4 class="card-title text-left">Alamat Pemesanan</h4>
 												<div class="row">
 													<div class="col-sm-10 text-left">
-														<p class="card-text text-left">{{Auth::user()->name}} | {{Auth::user()->alamat}}, {{Auth::user()->city->nama}}, {{Auth::user()->province->nama}} | {{Auth::user()->kode_pos}}
+														<p class="card-text text-left">{{Auth::user()->name}} | {{Auth::user()->alamat}}, {{Auth::user()->city->title}}, {{Auth::user()->province->title}} | {{Auth::user()->kode_pos}}
 														<!-- <a href="#" class="btn btn-info btn-sm"><span>Ubah</span></a></p> -->
 													</div>
 													<div class="col-sm-2" style="color:#212529;">

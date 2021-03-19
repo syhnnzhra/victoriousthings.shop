@@ -19,7 +19,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $odetail = Order::where('user_id', Auth::user()->id)->get();
+        $odetail = Order::where('user_id', Auth::user()->id)->where('payment_status', 'Checkout')->get();
         $sum = Order::where('user_id', Auth::user()->id)->count('user_id');
         $item = Item::all();
         $carts = Cart::where('status', 'Sudah Dibayar')->where('user_id',Auth::user()->id)->get();

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Kavist\RajaOngkir\Facades\RajaOngkir;
+use Illuminate\Support\Facades\Http;
 use App\Item;
 use App\User;
 use App\Cart;
@@ -27,9 +28,22 @@ class CheckoutController extends Controller
         $item = Item::first();
         $user = User::all();
         $city = City::all();
-        $couriers = Courier::pluck('title', 'code');
-        $provinces = Province::pluck('title', 'province_id');
-        return view('publik.cart.checkout', compact('carts','item','couriers','provinces','user','city'));
+        $provinces = Province::all();
+        $origin = 501;
+        $destination = 114;
+        $weight = 1700;
+        $courier = "jne";
+        $response = Http::asForm()->withHeaders([
+            'key' => 'b102635f70187c8e0d6f02db01cc5c94'
+        ])->post('https://api.rajaongkir.com/starter/cost',[
+            'origin' => $origin,
+            'destination' => $destination,
+            'weight' => $weight,
+            'courier' => $courier
+        ]);
+        return view('publik.cart.checkout', compact('carts','item','provinces','user','city','response'));
+        // $couriers = Courier::pluck('title', 'code');
+        // $provinces = Province::pluck('title', 'province_id');
     }
 
     /**
@@ -137,7 +151,7 @@ class CheckoutController extends Controller
                     // update status cart
                     foreach($cart as $c){
                         $c->order_id=$order->order_id;
-                        $c->status="Sudah Dibayar";
+                        // $c->status="Pending";
                         $c->save();
                     }
                     // return 'data masuk';
@@ -183,7 +197,7 @@ class CheckoutController extends Controller
         $det = Order::where('user_id',Auth::user()->id)->get();
         $order = Order::findOrFail($order_id);
         $item = Item::all();
-        $carts = Cart::where('status', 'Sudah Dibayar')->where('user_id',Auth::user()->id)->where('order_id', $order_id)->get();
+        $carts = Cart::where('status', 'Belum Dibayar')->where('user_id',Auth::user()->id)->where('order_id', $order_id)->get();
         return view('publik.cart.received', compact('item', 'order', 'carts'));
     }
 

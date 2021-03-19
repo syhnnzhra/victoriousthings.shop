@@ -71,8 +71,9 @@
                                                 <td>Ongkos Kirim</td>
                                                 <td></td>
                                                 <td  colspan="2">
-                                                    <!-- <input class="form-control" type="text" id="ongkos_kirim" name="ongkos_kirim">
-                                                    <input class="form-control" type="text" id="ongkos_kirim" name="ongkos_kirim"> -->
+                                                    <!-- <select name=""> -->
+                                                        <!-- <option value="" id="ongkir"></option> -->
+                                                    <!-- </select> -->
                                                     Rp {{number_format($ongkir)}}
                                                 </td>
                                             </tr>
@@ -91,15 +92,14 @@
                                             </tr>
                                         </tfoot>
                                     </table>
-                                    <form action="{{url('/cekongkir')}}" method="post">
-                                    <!-- <form action="" method="post"> -->
+                                    <form action="{{url('/ongkir')}}" method="post">
                                     @csrf
                                         <input type="hidden" value="9" name="province_from">
                                         <input type="hidden" value="23" name="origin" id="origin">
-                                        <input type="hidden" value="500" name="weight" id="weight">
+                                        <input type="hidden" value="1700" name="weight" id="weight">
                                         
                                         <div class="col-sm-6">
-                                            <select class="form-control" required name="province" id="province_to">
+                                            <select class="form-control" required name="province_to" id="province_to">
                                                 <option value="">Pilih Provinsi</option>
                                                 @foreach ($provinces as $p)
                                                     <option value="{{$p->province_id}}">{{$p->title}}</option>
@@ -109,13 +109,10 @@
                                         <div class="col-sm-6">
                                             <select class="form-control" required name="destination" id="destination">
                                                 <option value="">Pilih Kota</option>
-                                                @foreach ($city as $p)
-                                                    <option value="{{$p->city_id}}">{{$p->type}} {{$p->title}}</option>
-                                                @endforeach
                                             <select>
                                         </div>
                                         <div class="col-sm-8">
-                                            <select class="form-control mt-3" required name="courier" id="courier">
+                                            <select class="form-control mt-3" required name="" id="">
                                                 <option value="">Pilih Kurir</option>
                                                 <option value="jne">JNE</option>
                                                 <option value="pos">POS</option>
@@ -123,7 +120,7 @@
                                             </select>
                                         </div> 
                                         <div class="col-sm-4">
-                                            <button class="brand-button mt-3" id="">Cek Ongkir</button>
+                                            <button class="brand-button mt-3">Cek Ongkir</button>
                                         </div>
                                     </form>
                                 </div>
@@ -153,7 +150,6 @@
                                         <input type="hidden" name="user_id" value="{{Auth::user()->id }}">
                                         <input type="hidden" name="status" value="Sudah Dibayar">
                                         <input type="hidden" name="subtotal" value="{{($grandtot)}}">
-                                        <input type="hidden" name="weight" value="1000">
 
                                     <div class="row">
                                         <div class="col-md-6">
@@ -192,19 +188,8 @@
                                         </div>
                                         
                                         <div class="col-md-12 mt-3">
-                                            <input type="text" class="form-control" placeholder="Pesan Untuk Penjual" name="bank" required >
+                                            <input type="text" class="form-control" placeholder="Bank" name="bank" required >
                                         </div>
-                                        <!-- <div class="col-md-8 mt">
-                                            <select class="form-control mt-3" required name="courier" id="courier">
-                                                <option value="">Pilih Kurir</option>
-                                                <option value="jne">JNE</option>
-                                                <option value="pos">POS</option>
-                                                <option value="tiki">TIKI</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-4 mt-3">
-                                            <a href="{{url('/cekongkir')}}" class="brand-button"> Cek Ongkir</a>
-                                        </div> -->
                                         <div class="col-12 text-right mt-3">
                                             <button type="submit" class="brand-button"> Continue To Payment</button>
                                         </div>
@@ -224,10 +209,6 @@
             </div>
         </section>
     <!-- Container end -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function(){
             $('select[name="province_to"]').on('change', function () {
@@ -237,14 +218,14 @@
                         url: '{{url('/getCity')}}' + cityId,
                         type: 'GET',
                         dataType: 'json',
-                        data: { origin: $('#origin').val(), destination: $('#destination').val(), weight: $('#weight').val() },
-                        success: function (data){
-                            $('select[name="destination"]').empty();
-                            $each(data, funtion(key, value){
-                                $('select[name="destination"]').append(
-                                '<option value="' + key + '">' + value + '</option>');
-                            });
-                        }
+                        // data: { origin: $('#origin').val(), destination: $('#destination').val(), weight: $('#weight').val(), 
+                            success: function (data){
+                                $('select[name="destination"]').empty();
+                                $each(data, funtion(key, value){
+                                    $('select[name="destination"]').append(
+                                    '<option value="' + key + '">' + value + '</option>');
+                                });
+                            }
                         // }
                     });
                 } else {

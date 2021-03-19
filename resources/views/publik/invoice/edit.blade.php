@@ -107,7 +107,7 @@
                                             <tr>
                                                 <td colspan="4"> </td>
                                                 <td> Ongkos Kirim</td>
-                                                <td> Rp </td>
+                                                <td> Rp 11,000 </td>
                                             </tr>
                                             <tr>
                                                 <td colspan="4"> </td>
