@@ -56,6 +56,7 @@
 			<a href="">
 				<a href="/cartp" class="icons">
 					<i class="fas fa-shopping-cart mt-2" style='font-size:25px ;color: #c18f59;'></i>
+					<small class="badge badge-primary"> {{$sum}} </small>
 				</a>
 				<!-- <i class='fas fa-shopping-cart mt-2' style='font-size:25px ;color: #c18f59;'></i></a> -->
 			<div class="demo-2 search mr-auto ml-3">

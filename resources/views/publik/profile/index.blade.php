@@ -19,7 +19,7 @@
               <div class="card">
                 <div class="card-body">
                   <div class="mt-2">
-                    <h5  style="color:#c18f59;"> Order Saya ({{$sum}})</h5>
+                    <h5  style="color:#c18f59;"> Order Saya ({{$sums}})</h5>
                       <div class="mt-4">
                         @forelse ($odetail as $det)
                         <h5> {{$det->first_name}} <a href="{{ route('transaction.show', $det->order_id) }}"><span class="badge badge-warning">Show</span></a> 

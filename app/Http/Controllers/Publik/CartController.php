@@ -20,8 +20,9 @@ class CartController extends Controller
         $carts = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->get();
         $item = Item::first();
         $brng = Item::all();
+        $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
         // dd($carts); 
-        return view('publik.cart.index', compact('carts','item', 'brng'));
+        return view('publik.cart.index', compact('carts','item', 'brng','sum'));
     }
 
     public function updateCart(Request $request, $id){
@@ -96,14 +97,15 @@ class CartController extends Controller
         return redirect('/cart_tampil');
     }
 
-        public function show($id)
+        public function show($item_id)
         {
             $carts = Cart::where('user_id',Auth::user()->id)->get();
-            $item = Item::findOrFail($id);
+            $item = Item::findOrFail($item_id);
+            $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
             // $subtotal = collect($carts)->sum(function($q) {
             //     return $q['qty'] * $q['harga']; //SUBTOTAL TERDIRI DARI QTY * PRICE
             // });
-            return view('publik.item.pesan', compact('carts','item'));
+            return view('publik.item.pesan', compact('carts','item','sum'));
         }
 
     public function listCart(){

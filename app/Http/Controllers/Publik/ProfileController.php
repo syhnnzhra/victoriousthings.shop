@@ -20,11 +20,12 @@ class ProfileController extends Controller
     public function index()
     {
         $odetail = Order::where('user_id', Auth::user()->id)->where('payment_status', 'Checkout')->get();
-        $sum = Order::where('user_id', Auth::user()->id)->count('user_id');
+        $sums = Order::where('user_id', Auth::user()->id)->count('user_id');
         $item = Item::all();
+        $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
         $carts = Cart::where('status', 'Sudah Dibayar')->where('user_id',Auth::user()->id)->get();
         $user = User::where('id',Auth::user()->id)->first();
-        return view('publik.profile.index', compact('user','odetail','item','carts','sum'));
+        return view('publik.profile.index', compact('user','odetail','item','carts','sum','sums'));
     }
 
     /**
@@ -67,7 +68,8 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        return view('publik.profile.edit');
+        $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
+        return view('publik.profile.edit', compact('sum'));
     }
 
     /**

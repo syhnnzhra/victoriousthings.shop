@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Publik;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 use App\Item;
+use App\Cart;
 
 class HomeController extends Controller
 {
@@ -15,8 +18,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
         $items = Item::latest()->limit(4)->get();
-        return view ('publik.dashboard',compact('items'));
+        return view ('publik.dashboard',compact('items','sum'));
     }
 
     /**

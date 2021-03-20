@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Publik;
 use App\Item;
+use App\Cart;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ItemController extends Controller
 {
@@ -15,8 +17,9 @@ class ItemController extends Controller
      */
     public function index()
     {
+        $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
         $items = Item::all();
-        return view ('publik.item.index',compact('items'));
+        return view ('publik.item.index',compact('items', 'sum'));
     }
 
     // public function show($id)
@@ -27,8 +30,9 @@ class ItemController extends Controller
    
     public function searchp(Request $request)
     {
+        $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
         $searchp = $request->searchp;
         $items = Item::where('nama', 'like', '%'.$searchp.'%')->paginate(5);
-            return view('publik.item.index', compact('items'));
+            return view('publik.item.index', compact('items','sum'));
     }
 }
