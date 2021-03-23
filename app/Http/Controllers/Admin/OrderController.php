@@ -21,7 +21,7 @@ class OrderController extends Controller
     public function index()
     {
         $carts = Cart::where('status', 'Sudah Dibayar')->get();
-        $order = Order::all()->paginate(5);
+        $order = Order::all();
         $item = Item::all();
         $cat = Category::all();
         return view('admin.order.index', compact('carts','order','item','cat'));

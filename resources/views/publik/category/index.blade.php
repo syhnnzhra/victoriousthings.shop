@@ -27,7 +27,7 @@
 		@forelse ($item as $item)
 		  <div class="col-lg-3 col-md- col-sm-12">
 			  <div class="single-book">
-				  <a href="{{route('detailkat.show',$item->item_id)}}" class="single-book__img" >
+				  <a href="{{url('/cart',$item->item_id)}}" class="single-book__img" >
 					 <img src="{{ asset('gambar/'.$item->foto) }}" alt="single book and cd" height="300px" >
 					 <div class="single-book_download">
 						 <span style="font-size:14px; color:#c18f59" alt="book image">{{$item->keterangan}} <p>Klik for Detail</p></span>

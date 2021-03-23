@@ -94,7 +94,5 @@ Route::group(['middleware'=>['App\Http\Middleware\Publik']], function(){
     Route::get('trackOrder/{order_id}', 'Publik\OrderController@edit');
     Route::post('trackOrder/{order_id}', 'Publik\OrderController@edit');
     
-    // detail produk
-    Route::resource('/detail', 'Publik\DetailprodukController');
 
 });
