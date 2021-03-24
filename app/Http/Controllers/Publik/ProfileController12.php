@@ -5,13 +5,12 @@ namespace App\Http\Controllers\Publik;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\User;
 use App\Order;
-use App\Customer;
 use App\Cart;
 use App\Item;
-use App\Order_Detail;
 
-class OrderController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +19,13 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $odetail = Order::where('user_id', Auth::user()->id)->where('payment_status', 'COMFIRMED')->get();
+        $sums = Order::where('user_id', Auth::user()->id)->where('payment_status', 'COMFIRMED')->count('user_id');
+        $item = Item::all();
+        $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
+        $carts = Cart::where('status', 'Sudah Dibayar')->where('user_id',Auth::user()->id)->get();
+        $user = User::where('id',Auth::user()->id)->first();
+        return view('publik.profile.index', compact('user','odetail','item','carts','sum','sums'));
     }
 
     /**
@@ -61,11 +66,10 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($order_id)
+    public function edit($id)
     {
         $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
-        $data = Order::where('order_id',$order_id)->get();
-        return view('publik.profile.track',compact('sum','data'));
+        return view('publik.profile.edit', compact('sum'));
     }
 
     /**
@@ -77,33 +81,13 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'cart_id' => 'required|exists:carts,id',
-            'qty' => 'required|integer'
-        ]);
-
-        try {
-            $invoice = Invoice::find($id);
-            $product = Product::find($request->product_id);
-
-            $invoice_detail = $invoice->detail()->where('product_id', $product->id)->first();
-            if ($invoice_detail) {
-                $invoice_detail->update([
-                    'qty' => $invoice_detail->qty + $request->qty
-                ]);
-            } else {
-                Invoice_detail::create([
-                    'invoice_id' => $invoice->id,
-                    'product_id' => $request->product_id,
-                    'price' => $product->price,
-                    'qty' => $request->qty
-                ]);
-            }
-            
-            return redirect()->back()->with(['success' => 'Product Telah Ditambahkan']);
-        } catch (\Exception $e) {
-            return redirect()->back()->with(['error' => $e->getMessage()]);
-        }
+        
+        $user = User::FindOrFail($id);
+        $user->nama=$request->nama;
+        $user->deskripsi=$request->deskripsi;
+        $user->save();
+        return redirect()->route('kategori.index');
+    
     }
 
     /**

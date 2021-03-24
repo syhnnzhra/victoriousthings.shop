@@ -21,11 +21,11 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $odetail = Order::where('user_id', Auth::user()->id)->where('payment_status', 'Checkout')->get();
-        $sums = Order::where('user_id', Auth::user()->id)->count('user_id');
+        $odetail = Order::where('user_id', Auth::user()->id)->where('payment_status', 'CONFIRMED')->get();
+        $sums = Order::where('user_id', Auth::user()->id)->where('payment_status', 'CONFIRMED')->count('user_id');
         $item = Item::all();
-        $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
-        $carts = Cart::where('status', 'Sudah Dibayar')->where('user_id',Auth::user()->id)->get();
+        $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Bayar')->count('user_id');
+        $carts = Cart::where('status', 'Conplited')->where('user_id',Auth::user()->id)->get();
         $user = User::where('id',Auth::user()->id)->first();
         return view('publik.profile.index', compact('user','odetail','item','carts','sum','sums'));
     }

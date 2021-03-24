@@ -28,8 +28,8 @@ class CheckoutController extends Controller
         $item = Item::first();
         $user = User::all();
         $city = City::all();
-        $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
         $provinces = Province::all();
+        $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
         $origin = 501;
         $destination = 114;
         $weight = 1700;
@@ -134,7 +134,7 @@ class CheckoutController extends Controller
     {
         $cart = Cart::where('status', 'Belum Dibayar')->where('user_id', Auth::user()->id)->get();
         if ($cart) {
-                // buat variabel inputan order
+            // buat variabel inputan order
                 $order = Order::create([
                     'user_id' => $request->user_id,
                     'first_name' => $request->first_name,
@@ -146,6 +146,7 @@ class CheckoutController extends Controller
                     'kode_pos' => $request->kode_pos,
                     'rincian_opsional' => $request->rincian_opsional,
                     'bank' => $request->bank,
+                    'payment_status'=>"UNPAID",
                     'subtotal' => $request->subtotal
                     ]);
                     $this->_generatePaymentToken($order);
@@ -155,17 +156,16 @@ class CheckoutController extends Controller
                         // $c->status="Pending";
                         $c->save();
                     }
-                    // return 'data masuk';
                     return redirect('received/'. $order->order_id);
                     // return redirect()->route('transaksi.edit')->with('success', 'Order berhasil disimpan');
             } else {
-            return abort('404');//kalo ternyata ga ada shopping cart, maka akan menampilkan error halaman tidak ditemukan
+                return abort('404');//kalo ternyata ga ada shopping cart, maka akan menampilkan error halaman tidak ditemukan
         }
     }
 
     private function _generatePaymentToken($order){
         $this->iniPaymentGateway();
-
+        
         $user = [
             'first_name' => $order->first_name,
             'last_name' => $order->last_name,
@@ -193,13 +193,13 @@ class CheckoutController extends Controller
             $order->save();
         }
     }
-
+    
     public function received($order_id){
         $det = Order::where('user_id',Auth::user()->id)->get();
+        $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
         $order = Order::findOrFail($order_id);
         $item = Item::all();
         $carts = Cart::where('status', 'Belum Dibayar')->where('user_id',Auth::user()->id)->where('order_id', $order_id)->get();
-        $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
         return view('publik.cart.received', compact('item', 'order', 'carts','sum'));
     }
 

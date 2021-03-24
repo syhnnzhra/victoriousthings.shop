@@ -20,11 +20,10 @@ class TransactionController extends Controller
     public function index()
     {
         // $odetail = Order::orderBy('updated_at', 'desc')->get();
-        $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
         $odetail = Order::where('user_id', Auth::user()->user_id)->get();
         $item = Item::all();
         $carts = Cart::where('status', 'Sudah Dibayar')->where('user_id',Auth::user()->user_id)->get();
-        return view('publik.invoice.index', compact('carts','odetail','item','sum'));
+        return view('publik.invoice.index', compact('carts','odetail','item'));
     }
 
     /**
@@ -86,12 +85,12 @@ class TransactionController extends Controller
     public function show($order_id)
     {
         // $p = Cart::where('status', 1)->first();
-        $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
         $order = Order::where('user_id',Auth::user()->id)->get();
         $det = Order::findOrFail($order_id);
         $item = Item::all();
-        $carts = Cart::where('status', 'Sudah Dibayar')->where('user_id',Auth::user()->id)->where('order_id', $order_id)->get();
-        return view('publik.invoice.edit', compact('item', 'det', 'carts', 'sum'));
+        $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
+        $carts = Cart::where('status', 'Completed')->where('user_id',Auth::user()->id)->where('order_id', $order_id)->get();
+        return view('publik.invoice.edit', compact('item', 'det', 'carts','sum'));
     }
     
     /**
