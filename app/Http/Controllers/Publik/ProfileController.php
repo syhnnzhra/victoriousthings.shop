@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Order;
 use App\Cart;
+use App\City;
 use App\Item;
+use App\Province;
 
 class ProfileController extends Controller
 {
@@ -68,8 +70,11 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
+        $prov = Province::all();
+        $city = City::all();
+        $data = User::find(Auth::user()->id);
         $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
-        return view('publik.profile.edit', compact('sum'));
+        return view('publik.profile.edit', compact('sum','city','prov','data'));
     }
 
     /**
@@ -83,10 +88,14 @@ class ProfileController extends Controller
     {
         
         $user = User::FindOrFail($id);
-        $user->nama=$request->nama;
-        $user->deskripsi=$request->deskripsi;
+        $user->name=$request->name;
+        $user->jeniskelamin=$request->jeniskelamin;
+        $user->tanggal_lahir=$request->tanggal_lahir;
+        $user->alamat=$request->alamat;
+        $user->province_id=$request->province_id;
+        $user->city_id=$request->city_id;
         $user->save();
-        return redirect()->route('kategori.index');
+        return redirect()->route('prof.index');
     
     }
 
