@@ -1414,6 +1414,19 @@
      margin-bottom: 20px;
      margin-left: 3px;
    }
+   .vl {
+    border-left: 5px solid green;
+    height: 100%;
+    position: absolute;
+    
+  }
+   .vl2 {
+    border-left: 5px solid rgb(4, 19, 4);
+    height: 100%;
+    position: absolute;
+    right: 50%;
+    top: 0;
+  }
      
     
     

@@ -28,6 +28,7 @@ class CheckoutController extends Controller
         $item = Item::first();
         $user = User::all();
         $city = City::all();
+        $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
         $provinces = Province::all();
         $origin = 501;
         $destination = 114;
@@ -41,7 +42,7 @@ class CheckoutController extends Controller
             'weight' => $weight,
             'courier' => $courier
         ]);
-        return view('publik.cart.checkout', compact('carts','item','provinces','user','city','response'));
+        return view('publik.cart.checkout', compact('carts','item','provinces','user','city','response','sum'));
         // $couriers = Courier::pluck('title', 'code');
         // $provinces = Province::pluck('title', 'province_id');
     }
@@ -198,7 +199,8 @@ class CheckoutController extends Controller
         $order = Order::findOrFail($order_id);
         $item = Item::all();
         $carts = Cart::where('status', 'Belum Dibayar')->where('user_id',Auth::user()->id)->where('order_id', $order_id)->get();
-        return view('publik.cart.received', compact('item', 'order', 'carts'));
+        $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
+        return view('publik.cart.received', compact('item', 'order', 'carts','sum'));
     }
 
     /**

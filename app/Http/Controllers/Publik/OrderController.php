@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Publik;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Order;
+use App\Cart;
 use App\Customer;
 use App\Item;
 use App\Order_Detail;
@@ -61,8 +63,9 @@ class OrderController extends Controller
      */
     public function edit($order_id)
     {
-        $orderData = Order::where('order_id',$order_id)->get();
-        return view('publik.profile.track',['data' => $orderData]);
+        $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
+        $data = Order::where('order_id',$order_id)->get();
+        return view('publik.profile.track',compact('sum','data'));
     }
 
     /**
