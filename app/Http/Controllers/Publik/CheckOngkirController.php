@@ -34,7 +34,7 @@ class CheckOngkirController extends Controller
 
     public function getCities($province_id)
     {
-        $city = City::where('province_id','=', $province_id)->pluck('title', 'city_id');
+        $city = City::where('province_id', $province_id)->pluck('title', 'city_id');
         return json_encode($city);
         // return response()->json($city);
     }
@@ -52,8 +52,8 @@ class CheckOngkirController extends Controller
             'weight' => $weight,
             'courier' => $courier
         ]);
-        // return response()->json($cost);
-        return $cost;
+        return response()->json($cost);
+        // return $cost;
         // $cost = RajaOngkir::ongkosKirim([
         //     'origin'        => 23,
         //     'destination'   => $request->city_destination,

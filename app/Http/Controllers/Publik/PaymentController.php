@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Publik;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Auth;
 use Midtrans\Notification;
 use Midtrans\Config;
 use Midtrans\Snap;
 use App\Order;
+use App\Cart;
 use App\Payment;
 
 class PaymentController extends Controller
@@ -107,7 +109,7 @@ class PaymentController extends Controller
 			'va_number' => $vaNumber,
 			'vendor_name' => "Second Things",
 			// 'biller_code' => $notification->biller_code,
-			// 'bill_key' => $notification->bill_key,
+			// 'bill_key' => $notification->bill_key
 		];
 		
 		$payment = Payment::create($paymentParams);
@@ -132,14 +134,14 @@ class PaymentController extends Controller
 		// return response($response, 200);
 		return redirect('/transaction/show/', $order->order_id);
     }
-    public function conpleted(Request $request){
+    public function complete(Request $request){
         $code = $request->query('order_id');
 		$order = Order::where('order_id', $code)->firstOrFail();
-		$cart = Cart::where('status', 'Belum Dibayar')->where('user_id', Auth::user()->id)->get();
-		foreach($cart as $c){
-			$c->status="Conpleted";
-			$c->save();
-		}
+		// $cart = Cart::where('status', 'Belum Dibayar')->where('user_id', Auth::user()->id)->get();
+		// foreach($cart as $c){
+		// 	$c->status="Confirmed";
+		// 	$c->save();
+		// }
 		
 		if ($order->payment_status == Order::UNPAID) {
 			return redirect('payments/failed?order_id='. $code);
@@ -147,7 +149,7 @@ class PaymentController extends Controller
 
 		\Session::flash('success', "Thank you for completing the payment process!");
 
-		return redirect('received/'. $order->order_id);
+		return redirect('transaction/'. $order->order_id);
     }
     public function failed(Request $request){
         //

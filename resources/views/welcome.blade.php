@@ -55,7 +55,7 @@
 			<div class="main-navigation">
 				<ul class="main-navigation__ul">
 					<li><a href="/">Home</a></li>
-					<li><a href="/login">All Product</a></li>
+					<li><a href="/items">All Product</a></li>
 					<li><a href="/kategori_publik">Category</a></li>
 					<li>
 						@auth

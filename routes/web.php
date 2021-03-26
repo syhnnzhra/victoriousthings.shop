@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
     // });
 
     Route::resource('/', 'WelcomeController');
+    Route::get('/items', 'WelcomeController@item');
     Route::auth();
     Auth::routes(['verify' => true]);
     
@@ -43,8 +44,9 @@ Route::group(['middleware' => 'App\Http\Middleware\isAdmin'], function () {
     Route::resource('/Odetail', 'Admin\OdetailController'); 
 });
 
+//payment
 Route::post('/payments/notification', 'Publik\PaymentController@notification');
-Route::get('/payments/conplited', 'Publik\PaymentController@conplited');
+Route::get('/payments/complete', 'Publik\PaymentController@complete');
 Route::get('/payments/failed', 'Publik\PaymentController@failed');
 Route::get('/payments/unfinish', 'Publik\PaymentController@unfinish');
 
@@ -75,13 +77,15 @@ Route::group(['middleware'=>['App\Http\Middleware\Publik']], function(){
     Route::get('/cartp', 'Publik\CartController@cart_tampil');
     Route::post('cart', 'Publik\CartController@addToCart')->name('front.cart');
     Route::post('/cart/update', 'Publik\CartController@updateCart')->name('front.update_cart');
-
+    
     Route::resource('/transaction', 'Publik\TransactionController');
     Route::resource('/checkout', 'Publik\CheckoutController');
     Route::get('/received/{order_id}', 'Publik\CheckoutController@received');
-
-    //payment
-
+    
+    // ongkir
+    Route::resource('/ongkir', 'Publik\CheckOngkirController');
+    Route::post('/cekongkir', 'Publik\CheckOngkirController@check_ongkir');
+    Route::get('/getCity/{province_id}', 'Publik\CheckOngkirController@getCities');
     
     // invoice
     Route::get('/invoice', function () {

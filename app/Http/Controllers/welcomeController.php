@@ -12,9 +12,9 @@ class welcomeController extends Controller
         $item = Item::latest()->limit(4)->get();
         return view('welcome', compact('item'));
     }
-    public function brng()
+    public function item()
     {
-        $item = Item::all();
-        return view('welcome', compact('item'));
+        $items = Item::all();
+        return view('item', compact('items'));
     }
 }
