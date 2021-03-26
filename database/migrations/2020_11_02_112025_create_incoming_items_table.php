@@ -15,13 +15,15 @@ class CreateIncomingItemsTable extends Migration
     {
         Schema::create('incoming_items', function (Blueprint $table) {
             $table->bigInteger('incoming_id');
-            $table->string('item_id');
-            $table->string('distributor_id');
-            $table->date('tanggal');
-            $table->integer('jumlah');
+            $table->string('distributor_id')->nullable();
+            $table->string('item');
+            $table->string('user_id');
+            $table->string('jumlah');
             $table->integer('harga');
-            $table->integer('subtotal');
-            $table->integer('total');
+            $table->string('subtotal');
+            $table->string('gopay');
+            $table->string('resi')->nullable();
+            $table->string('status');
             $table->timestamps();
         });
     }

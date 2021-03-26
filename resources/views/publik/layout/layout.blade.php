@@ -67,6 +67,7 @@
 					<li><a href="/kategori_publik">Category</a></li>
 					<li><a href="/prof">Transaction</a></li>
 					<li><a href="/prof">My Profile</a></li>
+					<li><a href="/sell">Sell</a></li>
 					<li><a href="{{ route('logout') }}"
 						onclick="event.preventDefault();
 										document.getElementById('logout-form').submit();">
@@ -74,7 +75,6 @@
 							<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
 								@csrf
 							</form></a></li>
-					
 				</ul>
 			</div>
 			<div id="myBtn" class="burger-container" onclick="myFunction(this)">

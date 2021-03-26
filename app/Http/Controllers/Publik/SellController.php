@@ -1,16 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\publik;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use App\Incoming_Item;
 use Illuminate\Http\Request;
-use App\Item;
-use App\Distributor;
+use Illuminate\Support\Facades\Auth;
+use App\Cart;
+use App\Incoming_Item;
 use File;
 
-class IncomingitemController extends Controller
+class SellController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +18,10 @@ class IncomingitemController extends Controller
      */
     public function index()
     {
-        $barang_masuk = Incoming_Item::all();
-        return view('admin.barang_masuk.index', compact('barang_masuk'));
+        $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
+        $incom = Incoming_Item::where('user_id', Auth::user()->id)->get();
+        // return $incom;
+        return view('publik.sell.index', compact('sum','incom'));
     }
 
     /**
@@ -30,8 +31,8 @@ class IncomingitemController extends Controller
      */
     public function create()
     {
-        $data['distributor']=Distributor::all();
-        return view('admin.barang_masuk.create', $data);
+        $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
+        return view('publik.sell.create', compact('sum'));
     }
 
     /**
@@ -44,7 +45,6 @@ class IncomingitemController extends Controller
     {
         $item= new Incoming_Item;
         $item->item=$request->item;
-        $item->distributor_id=$request->distributor_id;
         $item->user_id = Auth::user()->id;
         $item->gopay=$request->gopay;
         $item->jumlah=$request->jumlah;
@@ -59,16 +59,16 @@ class IncomingitemController extends Controller
         $item->foto = $imageName;
         $item->save();
 
-        return redirect()->route('barang_masuk.index');
+        return redirect('/sell');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Incoming_Item  $incoming_Item
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Incoming_Item $incoming_Item)
+    public function show($id)
     {
         //
     }
@@ -76,48 +76,34 @@ class IncomingitemController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Incoming_Item  $incoming_Item
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($incoming_id)
+    public function edit($id)
     {
-        $distributor = Distributor::all();
-        $brng_msk = Incoming_Item::FindOrFail($incoming_id);
-        return view('admin.barang_masuk.edit', compact('brng_msk', 'distributor'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Incoming_Item  $incoming_Item
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $brng = Incoming_Item::FindOrFail($id);
-        $brng->item_id=$request->item_id;
-        $brng->distributor_id=$request->distributor_id;
-        $brng->tanggal=$request->tanggal;
-        $brng->jumlah=$request->jumlah;
-        $brng->harga=$request->harga;
-        $brng->subtotal=$request->subtotal;
-        $brng->total=$request->total;
-        $brng->save();
-        return redirect()->route('barang_masuk.index');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Incoming_Item  $incoming_Item
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($incoming_id)
+    public function destroy($id)
     {
-        $msk = Incoming_Item::FindOrFail($incoming_id);
-        $msk->delete();
-
-        return redirect()->route('barang_masuk.index');
+        //
     }
 }

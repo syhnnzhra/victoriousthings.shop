@@ -78,6 +78,9 @@ Route::group(['middleware'=>['App\Http\Middleware\Publik']], function(){
     Route::post('cart', 'Publik\CartController@addToCart')->name('front.cart');
     Route::post('/cart/update', 'Publik\CartController@updateCart')->name('front.update_cart');
     
+    //sell
+    Route::resource('/sell', 'Publik\SellController');
+
     Route::resource('/transaction', 'Publik\TransactionController');
     Route::resource('/checkout', 'Publik\CheckoutController');
     Route::get('/received/{order_id}', 'Publik\CheckoutController@received');

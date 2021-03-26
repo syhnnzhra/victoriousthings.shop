@@ -18,27 +18,29 @@
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
+                                                    <th>Foto</th>
                                                     <th>Item</th>
-                                                    <th>Distributor</th>
-                                                    <th>Tanggal</th>
-                                                    <th>Jumlah</th>
+                                                    <th>Qty</th>
                                                     <th>Harga</th>
                                                     <th>Subtotal</th>
-                                                    <th>Total</th>
+                                                    <th>Go-Pay</th>
+                                                    <th>No Resi</th>
+                                                    <th>Status</th>
                                                     <th>Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                             @foreach($barang_masuk as $brng)
                                                 <tr>
-                                                    <th>{{$brng->id}}</th>
-                                                    <th>{{$brng->item_id}}</th>
-                                                    <th>{{$brng->distributor_id}}</th>
-                                                    <th>{{$brng->tanggal}}</th>
-                                                    <th>{{$brng->jumlah}}</th>
-                                                    <th>Rp {{number_format($brng->harga)}}</th>
-                                                    <th>Rp {{number_format($brng->subtotal)}}</th>
-                                                    <th>Rp {{number_format($brng->total)}}</th>
+                                                    <th>{{$brng->incoming_id}}</th>
+                                                    <td><img src="{{ asset('incom_item/'.$brng->foto) }}" width="100px" alt=""></td>
+                                                    <td>{{$brng->item}}</td>
+                                                    <td>{{$brng->jumlah}}</td>
+                                                    <td>Rp {{number_format($brng->harga)}}</td>
+                                                    <td>Rp {{number_format($brng->subtotal)}}</td>
+                                                    <td>{{$brng->gopay}}</td>
+                                                    <td>{{$brng->resi}}</td>
+                                                    <td>{{$brng->status}}</td>
                                                     <th>
                                                         <a href="{{route('barang_masuk.edit',$brng->incoming_id)}}" class="btn btn-warning"><i class="fa fa-edit"></i> </a> 
                                                             

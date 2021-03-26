@@ -1,6 +1,6 @@
 @extends('publik/layout/apps')
 
-    @section('title', 'Welcome to My Knit')
+@section('title', 'Second Things - Home')
 
     @section('container')
 	<div id="demo" class="carousel slide" data-ride="carousel" style="">
