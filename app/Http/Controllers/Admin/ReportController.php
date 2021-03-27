@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Report_order;
+use App\Order;
 use App\User;
 use PDF;
 use Illuminate\Support\Facades\DB;
@@ -23,16 +23,17 @@ class ReportController extends Controller
     public function index()
     {   
         $item = Item::all();
-        $report_order = Report_order::all();
+        $report_order = Cart::where('status','Confirmed')->get();
         return view ('admin.laporan.index',compact('report_order','item'));
     }
     public function cetak()
     { 
-        $report_cetak = Report_order::all();
+        $item = Item::all();
+        $report_cetak = Cart::where('status','Confirmed')->get();
         return view ('admin.laporan.print',compact('report_cetak'));
     }
     public function print(){
-        $report_order = Report_order::all();
+        $report_order = Cart::where('status','Confirmed')->get();;
         $pdf = PDF::loadview('admin.laporan.print',compact('report_order'))->setPaper('A4','potrait');
         return $pdf->stream();
     }

@@ -1,6 +1,6 @@
 @extends('layoutAdmin/layout')
 
-      @section('title', 'Edit Data Barang Masuk')
+      @section('title', 'Second Things - Incoming Item')
 
       @section('container')
       <section id="main-content">

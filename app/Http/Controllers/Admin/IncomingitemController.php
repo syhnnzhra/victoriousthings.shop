@@ -50,6 +50,7 @@ class IncomingitemController extends Controller
         $item->jumlah=$request->jumlah;
         $item->harga=$request->harga;
         $item->subtotal=$request->subtotal;
+        $item->resi="0";
         $item->status="Pending";
         
         $foto =$request->foto;
@@ -95,20 +96,17 @@ class IncomingitemController extends Controller
      */
     public function update(Request $request, $incoming_id)
     {
-        $item= new Incoming_Item;
-        $item->resi=$request->resi;
-        $item->status=$request->status;
-        // $brng = Incoming_Item::FindOrFail($id);
-        // $brng->item_id=$request->item_id;
-        // $brng->distributor_id=$request->distributor_id;
-        // $brng->tanggal=$request->tanggal;
-        // $brng->jumlah=$request->jumlah;
-        // $brng->harga=$request->harga;
-        // $brng->subtotal=$request->subtotal;
-        // $brng->total=$request->total;
-        $item->save();
-        return $brng;
-        // return redirect('/barang_masuk');
+        $brng = Incoming_Item::FindOrFail($incoming_id);
+        $brng->item=$request->item;
+        $brng->distributor_id=$request->distributor_id;
+        $brng->user_id=$request->user_id;
+        $brng->jumlah=$request->jumlah;
+        $brng->harga=$request->harga;
+        $brng->subtotal=$request->subtotal;
+        $brng->resi=$request->resi;
+        $brng->status=$request->status;
+        $brng->save();
+        return redirect('/barang_masuk');
     }
 
     /**

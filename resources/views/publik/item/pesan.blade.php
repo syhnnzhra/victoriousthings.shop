@@ -1,6 +1,6 @@
 {{-- @extends('publik/layout/layout')
 
-    @section('title', 'Pesan')
+    @section('title', 'Second Things - Buy Now!')
 
     @section('container')
     <section class="fh5co-books">

@@ -1,6 +1,6 @@
 @extends('layoutAdmin/layout')
 
-      @section('title', 'Tambah Data Distributor')
+      @section('title', 'Second Things - Distributor')
 
       @section('container')
       <section id="main-content">
@@ -9,11 +9,11 @@
           <div class="col-lg-12">
                     <div class="content-panel">
                         <div class="content ml-4">
-                            <h3> Form Tambah Data </h3>
+                            <h3> Form Input Data </h3>
                         <form method="post" action="/distributor">
                           @csrf
                               <div class="form-group row mt-4 ml-4">
-                                  <label for="nama" class="col-sm-2 col-form-label">Nama</label>
+                                  <label for="nama" class="col-sm-2 col-form-label">Company Name</label>
                                   <div class="col-sm-6">
                                   <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukan Nama . . .">
                                   </div>
@@ -21,7 +21,7 @@
                                   </div>
                               </div>
                               <div class="form-group row mt-4 ml-4">
-                                  <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
+                                  <label for="alamat" class="col-sm-2 col-form-label">Address</label>
                                   <div class="col-sm-6">
                                   <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukan Alamat . . .">
                                   </div>
@@ -45,7 +45,7 @@
                                   </div>
                               </div>
                               <div class="button ml-5 mb-4">
-                                <button type="submit" class="btn btn-outline-success">Simpan</button>
+                                <button type="submit" class="btn btn-outline-success">Save</button>
                             </div>
                         </form>
                           </form>

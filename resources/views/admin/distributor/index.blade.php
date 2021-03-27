@@ -1,6 +1,6 @@
 @extends('layoutAdmin/layout')
 
-      @section('title', 'Distributor ')
+      @section('title', 'Second Things - Distributor')
 
       @section('container')
         <section id="main-content">
@@ -9,19 +9,19 @@
             <div class="col-lg-12">
                         <div class="content-panel">
                             <div class="content ml-4">
-                                <h3> Tabel Distributor </h3>
+                                <h3> Distributor </h3>
                                     <div class="new-data">
-                                        <a href="/distributor/create" class="btn btn-outline-success btn-lg mt-3"><i class="fa fa-plus"></i> Tambah Data</a>
+                                        <a href="/distributor/create" class="btn btn-outline-success btn-lg mt-3"><i class="fa fa-plus"></i> Input Data</a>
                                     </div>
                                         <table class="table mt-3">
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>Nama</th>
-                                                    <th>Alamat</th>
+                                                    <th>Company Name</th>
+                                                    <th>Address</th>
                                                     <th>Email</th>
                                                     <th>Telephone</th>
-                                                    <th>Aksi</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>

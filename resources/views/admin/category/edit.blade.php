@@ -1,6 +1,6 @@
 @extends('layoutAdmin/layout')
 
-      @section('title', 'Edit Data Kategori Barang')
+      @section('title', 'Second Things - Items Category')
 
       @section('container')
       <section id="main-content">
@@ -14,16 +14,16 @@
                                 @Method('PUT')
                                 @csrf
                                     <div class="form-group row mt-4 ml-4">
-                                        <label for="colFormLabel" class="col-sm-2 col-form-label">Nama Kategori</label>
+                                        <label for="colFormLabel" class="col-sm-2 col-form-label">Name</label>
                                         <div class="col-sm-6">
-                                        <input type="text" class="form-control" name="nama" placeholder="Masukan Nama" required value="{{$category->nama}}">
+                                        <input type="text" class="form-control" name="nama" required value="{{$category->nama}}">
                                         </div>
                                         <div class="col-sm-4">
                                         
                                         </div>
                                     </div>
                                     <div class="form-group row mt-4 ml-4">
-                                        <label for="colFormLabel" class="col-sm-2 col-form-label">Deskripsi Kategori</label>
+                                        <label for="colFormLabel" class="col-sm-2 col-form-label">Description</label>
                                         <div class="col-sm-6">
                                         <input type="text" class="form-control" name="deskripsi" required value="{{$category->deskripsi}}"></input>
                                         </div>
@@ -32,7 +32,7 @@
                                         </div>
                                     </div>
                                     <div class="button ml-5 mb-4">
-                                        <button type="submit" class="btn btn-outline-success">Simpan</button>
+                                        <button type="submit" class="btn btn-outline-success">Update</button>
                                     </div>
                                 </form>
                         </div>

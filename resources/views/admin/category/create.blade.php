@@ -1,6 +1,6 @@
 @extends('layoutAdmin/layout')
 
-      @section('title', 'Tambah Data Kategori Barang')
+      @section('title', 'Second Things - Items Category')
 
       @section('container')
       <section id="main-content">
@@ -9,29 +9,29 @@
           <div class="col-lg-12">
                     <div class="content-panel">
                         <div class="content ml-4">
-                            <h3> Form Tambah Data </h3>
+                            <h3> Form Create Data </h3>
                                 <form action="{{route('kategori.store')}}" method="post">
                                 @csrf
                                     <div class="form-group row mt-4 ml-4">
-                                        <label for="colFormLabel" class="col-sm-2 col-form-label">Nama Kategori</label>
+                                        <label for="colFormLabel" class="col-sm-2 col-form-label">Name</label>
                                         <div class="col-sm-6">
-                                        <input type="text" class="form-control" name="nama" placeholder="Masukan Nama Kategori Barang" required>
+                                        <input type="text" class="form-control" name="nama" placeholder="Category's Name" required>
                                         </div>
                                         <div class="col-sm-4">
                                         
                                         </div>
                                     </div>
                                     <div class="form-group row mt-4 ml-4">
-                                        <label for="colFormLabel" class="col-sm-2 col-form-label">Deskripsi</label>
+                                        <label for="colFormLabel" class="col-sm-2 col-form-label">Description</label>
                                         <div class="col-sm-6">
-                                        <textarea type="text" class="form-control" name="deskripsi" placeholder="Masukan Nama Deskripsi Barang" required rows="3"></textarea>
+                                        <textarea type="text" class="form-control" name="deskripsi" placeholder="Description" required rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-4">
                                         
                                         </div>
                                     </div>
                                     <div class="button ml-5 mb-4">
-                                        <button type="submit" class="btn btn-outline-success">Simpan</button>
+                                        <button type="submit" class="btn btn-outline-success">Save</button>
                                     </div>
                                 </form>
                         </div>

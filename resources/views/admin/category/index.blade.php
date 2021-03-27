@@ -1,6 +1,6 @@
 @extends('layoutAdmin/layout')
 
-      @section('title', 'Kategori Barang')
+      @section('title', 'Second Things - Items Category')
 
       @section('container')
           <section id="main-content">
@@ -9,18 +9,18 @@
               <div class="col-lg-12">
                         <div class="content-panel">
                             <div class="content ml-4">
-                                <h2> Tabel Kategori Barang </h2>
+                                <h2> Item's Category </h2>
                                     <div class="new-data">
-                                        <a href="/kategori/create" class="btn btn-outline-success btn-lg mt-3"><i class="fa fa-plus"></i> Tambah Data</a>
+                                        <a href="/kategori/create" class="btn btn-outline-success btn-lg mt-3"><i class="fa fa-plus"></i> Input Data</a>
                                     </div>
                                     <div class="table mt-3">
                                     <table class="table">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Nama Kategori</th>
-                                                <th>Deskripsi</th>
-                                                <th>Aksi</th>
+                                                <th>Name</th>
+                                                <th>Description</th>
+                                                <th>Action</th>
                                                 <th></th>
                                             </tr>
                                         </thead>

@@ -1,6 +1,6 @@
 @extends('layoutAdmin/layout')
 
-      @section('title', 'Order/pesanan ')
+      @section('title', 'Second Things - Order')
 
       @section('container')
       <script>
@@ -30,13 +30,11 @@
               <div class="col-lg-12">
                         <div class="content-panel">
                             <div class="content ml-4">
-                                <h3 class="mt-4"> Tabel Order </h3>
+                                <h3 class="mt-4"> Order </h3>
                                     <div class="input-group mt-5 col-sm-4">
                                         <!-- <div class="input-group-text"> <i class="fa fa-search"></i> </div> -->
-                                        <form action="searchorder" method="get">
-                                            {{csrf_field()}}
-                                            <!-- <span class="icon"><i class="fa fa-search" style='font-size:25px ;color: #c18f59;'></i></span> -->
-                                            <!-- <input type="search" name="searchp" id="search" placeholder=" Search here!"/> -->
+                                        <form action="/searchorder" method="get">
+                                            @csrf
                                             <input type="search" name="searchp" class="form-control" id="search" placeholder="Search here!">
                                         </form>
                                     </div>
@@ -46,9 +44,10 @@
                                                 <tr>
                                                     <th>ID</th>
                                                     <th>User</th>
-                                                    <th>Item</th>
-                                                    <th>SubTotal</th>
-                                                    <th>Status</th>
+                                                    <th>Message</th>
+                                                    <th>Total</th>
+                                                    <th>Payment Status</th>
+                                                    <th>Track Status</th>
                                                     <th>Aksi</th>
                                                 </tr>
                                             </thead>
@@ -57,9 +56,11 @@
                                             @foreach($order as $order)
                                                 <tr>
                                                     <td>{{$order->order_id}}</td>
-                                                    <td>{{$order->user->name}}</td>
-                                                    <td> <span class="badge badge-success"> Item</span> </td>
+                                                    <td>{{$order->user_id}}</td>
+                                                    <td>{{$order->bank}}</td>
                                                     <td>Rp {{number_format($order->subtotal)}}</td>
+                                                    <!-- <td> <span class="badge badge-success"> Item</span> </td> -->
+                                                    <td>{{$order->payment_status}}</td>
                                                     <td>
                                                         <input type="hidden" id="order_id<?php echo $countOrder;?>" value="{{$order->order_id}}"/>
                                                         <select class="form-control" id="order_status<?php echo $countOrder;?>">

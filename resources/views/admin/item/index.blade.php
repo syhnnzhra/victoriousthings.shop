@@ -1,6 +1,6 @@
 @extends('layoutAdmin/layout')
 
-      @section('title', 'barang ')
+      @section('title', 'Second Things - Item')
 
       @section('container')
           <section id="main-content">
@@ -11,20 +11,20 @@
                             <div class="content ml-4">
                                 <h3> Tabel Barang </h3>
                                     <div class="new-data">
-                                        <a href="{{url('/item_admin/create')}}" class="btn btn-outline-success btn-lg mt-3"><i class="fa fa-plus"></i> Tambah Data</a>
+                                        <a href="{{url('/item_admin/create')}}" class="btn btn-outline-success btn-lg mt-3"><i class="fa fa-plus"></i> Input Data</a>
                                     </div>
-                                    <div class="table mt-3">
+                                    <div class="table table-responsive mt-3">
                                         <table class="table">
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>Nama</th>
-                                                    <th>Kategori</th>
-                                                    <th>Stok</th>
-                                                    <th>Harga</th>
-                                                    <th>Deskripsi</th>
-                                                    <th>Foto</th>
-                                                    <th>Aksi</th>
+                                                    <th>Item's Name</th>
+                                                    <th>Item's Category</th>
+                                                    <th>Stock</th>
+                                                    <th>Price</th>
+                                                    <th>Description</th>
+                                                    <th>Picture</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>

@@ -18,27 +18,27 @@
                             <input type="hidden" name="{{Auth::user()->id}}" id="">
                             <div class="col-sm-6 mt-3">
                                 <label for="">Item's Name</label>
-                                <input type="text" class="form-control" name="item" placeholder="Item's Name">
+                                <input type="text" class="form-control" name="item" placeholder="Item's Name" required>
                             </div>
                             <div class="col-sm-6 mt-3" id="only-number">
                                 <label for="">Quantity</label>
-                                <input type="number" class="form-control" name="jumlah" placeholder="Quantity"  id="number">
+                                <input type="number" class="form-control" name="jumlah" placeholder="Quantity" required id="qty">
                             </div>
                             <div class="col-sm-6 mt-3"  id="only-number">
                                 <label for="">Price</label>
-                                <input type="number"  id="number" class="form-control" name="harga" placeholder="Price">
+                                <input type="number" required id="harga" class="form-control" name="harga" placeholder="Price">
                             </div>
                             <div class="col-sm-6 mt-3"  id="only-number">
                                 <label for="">Subtotal</label>
-                                <input type="number"  id="number" class="form-control" name="subtotal" placeholder="Subtotal">
+                                <input type="number" required readonly id="subtotal" class="form-control" name="subtotal" placeholder="Subtotal">
                             </div>
                             <div class="col-sm-6 mt-3" id="only-number">
                                 <label for="">Go-pay Number</label>
-                                <input type="text" id="number" class="form-control" placeholder="Go-pay Number" name="gopay" required maxlength="13" minlength="12">
+                                <input type="text" id="number" class="form-control" placeholder="Go-pay Number" required name="gopay" required maxlength="13" minlength="12">
                             </div>
                             <div class="col-sm-6 mt-3">
                                 <label for="">Picture</label>
-                                <input class="form-control" type="file" name="foto" id="formFile">
+                                <input class="form-control" required type="file" name="foto" id="formFile">
                                 <small>*1 pictures</small>
                             </div>
                             <div class="col-sm-10"></div>
@@ -62,5 +62,17 @@
             && (96 > e.keyCode || 105 < e.keyCode) && e.preventDefault()
         });
         })
+    </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            $("#qty, #harga").keyup(function() {
+                var harga  = $("#harga").val();
+                var jumlah = $("#qty").val();
+
+                var total = parseInt(harga) * parseInt(jumlah);
+                $("#subtotal").val(total);
+            });
+        });
     </script>
     @endsection

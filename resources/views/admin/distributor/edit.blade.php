@@ -1,6 +1,6 @@
 @extends('layoutAdmin/layout')
 
-      @section('title', 'Edit Data Distributor')
+      @section('title', 'Second Things - Distributor')
 
       @section('container')
       <section id="main-content">
@@ -14,7 +14,7 @@
                                 @Method('PUT')
                                 @csrf
                                     <div class="form-group row mt-4 ml-4">
-                                        <label for="colFormLabel" class="col-sm-2 col-form-label">Nama </label>
+                                        <label for="colFormLabel" class="col-sm-2 col-form-label">Company Name </label>
                                         <div class="col-sm-6">
                                         <input type="text" class="form-control" name="nama" placeholder="Masukan Nama . . ." required value="{{$distributor->nama}}">
                                         </div>
@@ -23,7 +23,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row mt-4 ml-4">
-                                            <label for="colFormLabel" class="col-sm-2 col-form-label">Alamat</label>
+                                            <label for="colFormLabel" class="col-sm-2 col-form-label">Address</label>
                                             <div class="col-sm-6">
                                             <input type="text" class="form-control" name="alamat" placeholder="Alamat Lengkap . . ." required value="{{$distributor->alamat}}">
                                             </div>
@@ -50,7 +50,7 @@
                                         </div>
                                     </div>
                                     <div class="button ml-5 mb-4">
-                                        <button type="submit" class="btn btn-outline-success">Simpan</button>
+                                        <button type="submit" class="btn btn-outline-success">Update</button>
                                     </div>
                                 </form>
                         </div>

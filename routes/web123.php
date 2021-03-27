@@ -1,48 +1,53 @@
 <?php
 
+use App\Http\Controllers\Publik\ProfileController;
 use Illuminate\Support\Facades\Route;
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\RequestException;
+use Illuminate\Support\Facades\Auth;
+
 
 
 // Route::get('/', function () {
     //     return view('welcome');
     // });
-    
+
     Route::resource('/', 'WelcomeController');
+    Route::get('/items', 'WelcomeController@item');
     Route::auth();
     Auth::routes(['verify' => true]);
     
     // Route::get('/home', 'HomeController@index');
     // halaman awal admin
-Route::group(['middleware' => 'App\Http\Middleware\isAdmin'], function () {
-    // Route::resource('/home', 'Admin\HomeController')->middleware('isAdmin');
-    Route::resource('/home', 'Admin\HomeController');
-    
-    //item
-    Route::resource('/item_admin', 'Admin\ItemController'); 
-    
-    
-    //kategori
-    Route::resource('/kategori', 'Admin\CategoryController'); 
-    
-    //barang masuk
-    Route::resource('/barang_masuk', 'Admin\IncomingitemController'); 
-    
-    //distributor
-    Route::resource('/distributor', 'Admin\DistributorController'); 
-    
-    //order
-    Route::resource('/order', 'Admin\OrderController'); 
-    Route::get('orderStatusUpdate','Admin\OrderController@orderStatusUpdate');
-    Route::get('/searchorder', 'Admin\OrderController@searchp');
-    
-    //order detail
-    Route::resource('/Odetail', 'Admin\OdetailController'); 
+    Route::group(['middleware' => 'App\Http\Middleware\isAdmin'], function () {
+        // Route::resource('/home', 'Admin\HomeController')->middleware('isAdmin');
+        Route::resource('/home', 'Admin\HomeController');
+        
+        //item
+        Route::resource('/item_admin', 'Admin\ItemController'); 
+        
+        //costumer
+        Route::resource('/customer', 'Admin\CustomerController'); 
+        
+        //kategori
+        Route::resource('/kategori', 'Admin\CategoryController'); 
+        
+        //barang masuk
+        Route::resource('/barang_masuk', 'Admin\IncomingitemController'); 
+        
+        //distributor
+        Route::resource('/distributor', 'Admin\DistributorController'); 
+        
+        //order
+        Route::resource('/order', 'Admin\OrderController'); 
+        Route::get('/searchorder', 'Admin\OrderController@searchp');
+        Route::get('orderStatusUpdate','Admin\OrderController@orderStatusUpdate');
+        
+        //order detail
+        Route::resource('/Odetail', 'Admin\OdetailController'); 
 });
 
+//payment
 Route::post('/payments/notification', 'Publik\PaymentController@notification');
-Route::get('/payments/complited', 'Publik\PaymentController@completed');
+Route::get('/payments/complete', 'Publik\PaymentController@complete');
 Route::get('/payments/failed', 'Publik\PaymentController@failed');
 Route::get('/payments/unfinish', 'Publik\PaymentController@unfinish');
 
@@ -54,18 +59,12 @@ Route::group(['middleware'=>['App\Http\Middleware\Publik']], function(){
     
     //profile
     Route::resource('/prof', 'Publik\ProfileController');
-    
-    //payment
-    
-    // ongkir
-    Route::resource('/ongkir', 'Publik\CheckOngkirController');
-    Route::post('/cekongkir', 'Publik\CheckOngkirController@check_ongkir');
-    Route::get('/getCity/{province_id}', 'Publik\CheckOngkirController@getCities');
+    Route::post('/prof{id}', 'ProfileController@update')->name('update');
     
     //kategori publik
     Route::get('/kategori_publik', 'Publik\CategoryController@index');
     Route::resource('/detailkat', 'Publik\CategoryController'); 
-    Route::get('/kategorip/{category_id}', 'Publik\CategoryController@kategori')->name('kategorip');
+    Route::get('/kategorip/{id}', 'Publik\CategoryController@kategori')->name('kategorip');
     Route::get('/searchpublikkat', 'Publik\CategoryController@searchp');
     
     //item
@@ -81,9 +80,26 @@ Route::group(['middleware'=>['App\Http\Middleware\Publik']], function(){
     Route::post('cart', 'Publik\CartController@addToCart')->name('front.cart');
     Route::post('/cart/update', 'Publik\CartController@updateCart')->name('front.update_cart');
     
+    //sell
+    Route::resource('/sell', 'Publik\SellController');
+
     Route::resource('/transaction', 'Publik\TransactionController');
     Route::resource('/checkout', 'Publik\CheckoutController');
     Route::get('/received/{order_id}', 'Publik\CheckoutController@received');
+    
+    // ongkir
+    Route::resource('/ongkir', 'Publik\CheckOngkirController');
+    Route::post('/cekongkir', 'Publik\CheckOngkirController@check_ongkir');
+    Route::get('/getCity/{province_id}', 'Publik\CheckOngkirController@getCities');
+    
+    // invoice
+    Route::get('/invoice', function () {
+        return view('publik.invoice.index');
+    });
+    Route::resource('/transaction', 'Publik\TransactionController');
+    Route::resource('/checkout', 'Publik\CheckoutController');
+    Route::get('/{id}', 'Publik\CheckoutController@edit')->name('checkout.edit');
+    // Route::post('/checkoutcart', 'Publik\CartController@checkout')->name('checkoutcart.ck');
     
     // odetail
     Route::get('/ckbrng/{id}', 'Publik\CartController@odetail')->name('ckbrng.tampil');
@@ -94,8 +110,30 @@ Route::group(['middleware'=>['App\Http\Middleware\Publik']], function(){
     // Track
     Route::get('trackOrder/{order_id}', 'Publik\OrderController@edit');
     Route::post('trackOrder/{order_id}', 'Publik\OrderController@edit');
+
+    //customer
+    Route::resource('/customer_publik', 'Publik\CustomerController'); 
+    
+
     
     // detail produk
     Route::resource('/detail', 'Publik\DetailprodukController');
-    
+
+
 });
+
+
+
+
+// Route::get('level',['middleware'=>['web','auth','level']], function(){
+//     return 'gatau';
+// });
+
+// Auth::routes();
+// Route::get('/', 'PagesController@index');
+
+// Route::group(['middleware'=>'web'], function(){
+//     // redirect login
+//     Route::auth();
+// });
+// Route::get('/home', 'HomeController@index', function(){

@@ -1,6 +1,6 @@
 @extends('publik/layout/layout')
 
-    @section('title', 'Transaction')
+    @section('title', 'Second Things - Transaction')
 
 
     @section('container')
@@ -19,25 +19,25 @@
                             <div class="table table-borderless mt-3 col-sm-5">
                                 <table class="">
                                     <tr>
-                                        <td> Nama </td>
+                                        <td> Name </td>
                                         <td> :</td>
                                         <td> {{$det->first_name}} {{$det->last_name}}</td>
                                     </tr>
                                     <tr>
-                                        <td> Alamat </td>
+                                        <td> Address </td>
                                         <td> :</td>
                                         <td> {{$det->alamat}}, {{$det->city->title}}, {{$det->province->title}}, {{$det->kode_pos}} </td>
                                         <!-- <td> {{Auth::user()->alamat}}, {{Auth::user()->city->nama}}, {{Auth::user()->province->nama}}, {{Auth::user()->kode_pos}}</td> -->
                                     </tr>
                                     <tr>
-                                        <td> Kontak </td>
+                                        <td> Telephone </td>
                                         <td> :</td>
                                         <td> {{$det->telephone}}</td>
                                     </tr>
                                     <tr>
-                                        <td> Payment </td>
+                                        <td> Payment Status </td>
                                         <td> :</td>
-                                        <td> {{$det->bank}}</td>
+                                        <td> {{$det->payment_status}}</td>
                                     </tr>
                                 </table>
                             </div>
@@ -45,11 +45,11 @@
                                     <table class="table">
                                         <thead>
                                             <td>#</td>
-                                            <td>Produk</td>
+                                            <td>Item</td>
                                             <td></td>
                                             <td>Qty</td>
-                                            <td>Harga</td>
-                                            <td>Total</td>
+                                            <td>Price</td>
+                                            <td>Subtotal</td>
                                             <!-- <td>Action</td> -->
                                         </thead>
                                         <tbody>
@@ -106,12 +106,12 @@
                                             </tr> -->
                                             <tr>
                                                 <td colspan="4"> </td>
-                                                <td> Ongkos Kirim</td>
-                                                <td> Rp 11,000 </td>
+                                                <td> Postal Fee</td>
+                                                <td> Rp {{number_format($det->ongkir)}} </td>
                                             </tr>
                                             <tr>
                                                 <td colspan="4"> </td>
-                                                <td> Subtotal</td>
+                                                <td> Total</td>
                                                 <td> Rp {{number_format($det->subtotal)}}</td>
                                             </tr>
                                         </tfoot>

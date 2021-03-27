@@ -21,7 +21,7 @@ class CreateIncomingItemsTable extends Migration
             $table->string('jumlah');
             $table->integer('harga');
             $table->string('subtotal');
-            $table->string('gopay');
+            $table->string('gopay')->nullable();
             $table->string('resi')->nullable();
             $table->string('status');
             $table->timestamps();

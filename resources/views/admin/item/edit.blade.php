@@ -1,9 +1,9 @@
 @extends('layoutAdmin/layout')
 
-      @section('title', 'Edit Data')
+      @section('title', 'Second Things - Item')
 
       @section('container')
-      <section id="main-content">
+      <section id="main-content" style="font-size:12px;">
         <section class="wrapper">
         <div class="row mt-4">
           <div class="col-lg-12">
@@ -14,7 +14,7 @@
                                 @Method('PUT')
                                 @csrf
                                 <div class="form-group row mt-4 ml-4">
-                                    <label for="nama" class="col-sm-2 col-form-label">Nama</label>
+                                    <label for="nama" class="col-sm-2 col-form-label">Item's Name</label>
                                     <div class="col-sm-6">
                                     <input type="text" class="form-control" name="nama"  placeholder="Masukan Nama . . ." required value="{{$item->nama}}">
                                     </div>
@@ -22,7 +22,7 @@
                                     </div>
                                 </div>
                                     <div class="form-group row mt-4 ml-4">
-                                        <label for="colFormLabel" class="col-sm-2 col-form-label">Kategori </label>
+                                        <label for="colFormLabel" class="col-sm-2 col-form-label">Category </label>
                                         <div class="col-sm-6">
                                             <select class="form-control" id="exampleFormControlSelect1" required name="kategori_id">
                                                 @foreach($category as $category)
@@ -34,7 +34,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row mt-4 ml-4">
-                                        <label for="stok" class="col-sm-2 col-form-label">Stok</label>
+                                        <label for="stok" class="col-sm-2 col-form-label">Stock</label>
                                         <div class="col-sm-6">
                                         <input type="text" class="form-control" name="stok"  placeholder="Masukan Stok . . ." required value="{{$item->stok}}">
                                         </div>
@@ -42,7 +42,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row mt-4 ml-4">
-                                        <label for="harga" class="col-sm-2 col-form-label">Harga</label>
+                                        <label for="harga" class="col-sm-2 col-form-label">Price</label>
                                         <div class="col-sm-6">
                                         <input type="text" class="form-control" name="harga"  placeholder="Masukan Harga . . ." required value="{{$item->harga}}">
                                         </div>
@@ -50,7 +50,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row mt-4 ml-4">
-                                        <label for="keterangan" class="col-sm-2 col-form-label">Deskripsi</label>
+                                        <label for="keterangan" class="col-sm-2 col-form-label">Description</label>
                                         <div class="col-sm-6">
                                         <input type="text" class="form-control" name="keterangan"  placeholder="Masukan Deskripsi . . ." required value="{{$item->keterangan}}">
                                         </div>
@@ -58,7 +58,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row mt-4 ml-4">
-                                        <label for="colFormLabel" class="col-sm-2 col-form-label">Foto</label>
+                                        <label for="colFormLabel" class="col-sm-2 col-form-label">Picture</label>
                                         <div class="col-sm-6">
                                         <input type="file" id="foto" name="foto" value="{{$item->foto}}">
                                         </div>

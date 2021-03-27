@@ -56,7 +56,7 @@
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
             <!--logo start-->
-            <a href="{{ asset('assets/images/profile.png')}}" class="logo"><b>My Knit</b></a>
+            <a href="{{ asset('assets/images/profile.png')}}" class="logo"><b>Second Things</b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->

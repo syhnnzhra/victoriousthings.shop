@@ -1,13 +1,13 @@
 @extends('publik/layout/layout')
 
-    @section('title', 'Cart')
+    @section('title', 'Second Things - Cart')
 
 
     @section('container')
        <!-- Container -->
        <section class="fh5co-books" style="font-family: 'Calisto-MT';">
            <div class="site-container">
-		   <h2 class="universal-h2 universal-h2-bckg mt-5" style='font-size:35px ;color: #c18f59;'>Keranjang Belanja</h2>
+		   <h2 class="universal-h2 universal-h2-bckg mt-5" style='font-size:35px ;color: #c18f59;'>Cart</h2>
                 <!--================Home Banner Area =================-->
                     <section class="banner_area">
                         <div class="banner_inner d-flex align-items-center">
@@ -17,7 +17,7 @@
                                     <div class="page_link">
 										<div class="card mb-5">
 											<div class="card-body" style="color: #C18F59;">
-														<h4 class="card-title text-left">Alamat Pemesanan</h4>
+														<h4 class="card-title text-left">Shipping Address</h4>
 												<div class="row">
 													<div class="col-sm-10 text-left">
 														<p class="card-text text-left">{{Auth::user()->name}} | {{Auth::user()->alamat}}, {{Auth::user()->city->title}}, {{Auth::user()->province->title}} | {{Auth::user()->kode_pos}}
@@ -46,12 +46,12 @@
 					<table class="table" style='color: #c18f59;'>
 						<thead>
 							<tr>
-								<th scope="col">Product</th>
+								<th scope="col">Item</th>
 								<th scope="col"></th>
-								<th scope="col">Ukuran</th>
-								<th scope="col">Harga</th>
-								<th scope="col">Jumlah</th>
-								<th scope="col">Total</th>
+								<th scope="col">Size</th>
+								<th scope="col">Price</th>
+								<th scope="col">Qty</th>
+								<th scope="col">Subtotal</th>
 								<th scope="col"></th>
 							</tr>
 						</thead>
@@ -105,7 +105,7 @@
                                                 @method('delete')
                                                     <button type="submit" class="brand-button btn-sm">
                                                         <i class="fa fa-trash"></i>
-														Hapus
+														Delete
                                                     </button>
                                             </form>
 									</p>
@@ -114,7 +114,7 @@
 
                                 @empty
                             <tr>
-                                <td colspan="4">Tidak ada belanjaan</td>
+                                <td colspan="4">You haven't selected an item</td>
                             </tr>
                             @endforelse
                             <!-- <tr class="bottom_button text-center">
@@ -159,7 +159,7 @@
                                     </select> -->
 								</div>
 								<div class="col-sm-3">
-									<label> Total Pesanan</label>
+									<label> Total</label>
 								</div>
 								<div class="col-sm-3">
                                 <!-- itungan subtotal -->

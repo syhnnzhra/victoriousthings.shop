@@ -1,6 +1,6 @@
 @extends('publik/layout/layout')
 
-    @section('title', 'Check Out')
+    @section('title', 'Second Things - Check Out')
 
 
     @section('container')
@@ -25,11 +25,11 @@
                                     <table class="table table-borderless table-responsive" style='color: #c18f59;'>
                                         <thead>
                                             <tr>
-                                                <td> <b> Produk </b></td>
+                                                <td> <b> Item </b></td>
                                                 <td> </td>
-                                                <td> Ukuran</td>
-                                                <td> Jumlah</td>
-                                                <td class="text-right"> <b> Harga </b></td>
+                                                <td> Size</td>
+                                                <td> Qty</td>
+                                                <td class="text-right"> <b> Price </b></td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -69,11 +69,11 @@
                                                     $ongkir = 11000;
                                                 ?>
                                                 <td></td>
-                                                <td>Ongkos Kirim</td>
+                                                <td>Postal Fee</td>
                                                 <td></td>
                                                 <td  colspan="2">
                                                     <select class="form-control" required name="" id="ongkir">
-                                                        <option value="" id="ongkir">-Ongkos Kirim-</option>
+                                                        <option value="" name="ongkir" id="ongkir">-Postal Fee-</option>
                                                     </select>
                                                 </td>
                                             </tr>
@@ -86,7 +86,7 @@
                                                     }
                                                 ?>
                                                 <td></td>
-                                                <td>Subtotal</td>
+                                                <td>Grand Total</td>
                                                 <td></td>
                                                 <td colspan="2">
                                                     Rp <p id="barang"> </p>

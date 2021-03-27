@@ -1,7 +1,7 @@
 
 @extends('publik/layout/layout')
 
-    @section('title', 'My Profile')
+    @section('title', 'Second Things - My Profile')
 
 
     @section('container')

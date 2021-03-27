@@ -20,11 +20,11 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $carts = Cart::where('status', 'Sudah Dibayar')->get();
-        $order = Order::all();
+        // $cartt = Cart::where('status', 'Confirmed')->count('user_id');
+        $order = Order::latest()->get();
         $item = Item::all();
         $cat = Category::all();
-        return view('admin.order.index', compact('carts','order','item','cat'));
+        return view('admin.order.index', compact('order','item','cat'));
     }
 
     /**
@@ -99,7 +99,7 @@ class OrderController extends Controller
     {
         $searchp = $request->searchp;
         $order = Order::where('order_id', 'like', '%'.$searchp.'%')->paginate(5);
-        return view('admin.order.index', compact('order'));
+        return redirect('/order', compact('order'));
     }
 
     public function orderStatusUpdate(Request $request){

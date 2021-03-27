@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Ssecond Things - Profile</title>
+	<title>Second Things - Profile</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="{{ asset('assets2/images/icons/favicon.ico')}}"/>
@@ -29,35 +29,36 @@
                     @csrf
                         <div class="wrap-input100 validate-input">
                             <select class="input100" required name="jeniskelamin" id="">
-                                <option value="">Pilih Jenis Kelamin</option>
-                                <option value="Perempuan">Perempuan</option>
-                                <option value="Laki-Laki">Laki-Laki</option>
+                                <option value="">Select Gender</option>
+                                <option value="Female">Female</option>
+                                <option value="Male">Male</option>
                             </select>
                         </div>
                         <div class="wrap-input100 validate-input">
-                            <input class="input100" required type="date" name="tanggal_lahir" value="" required placeholder="Tanggal Lahir">
+                            <!-- <label for="" style="font-color:white;">Birth Date</label> -->
+                            <input class="input100" required type="date" name="tanggal_lahir" value="" required>
                         </div>
                         <div class="wrap-input100 validate-input">
-                            <input class="input100" required type="text" name="alamat" value="" required placeholder="Alamat">
+                            <input class="input100" required type="text" name="alamat" value="" required placeholder="Adddress">
                         </div>
                         <div class="wrap-input100 validate-input">
-                            <select class="input100" required name="city_id" id="">
-                                <option value="">Pilih Kota</option>
-                                @foreach($city as $c)
-                                <option value="{{$c->city_id}}">{{$c->type}} {{$c->title}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="wrap-input100 validate-input">
-                            <select class="input100" required name="province_id" id="">
+                            <select class="input100" required name="province_id" id="province">
                                 <option value="">Pilih Provinsi</option>
-                                @foreach($prov as $p)
-                                <option value="{{$p->province_id}}">{{$p->title}}</option>
+                                @foreach ($prov as $p)
+                                    <option value="{{$p->province_id}}">{{$p->title}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="wrap-input100 validate-input">
-                            <input class="input100" type="text" name="kode_pos" value="" placeholder="Kode Pos" required>
+                            <select class="input100" required name="city_id" id="destination">
+                                <option value="">Pilih Kota</option>
+                                @foreach ($city as $p)
+                                    <option value="{{$p->city_id}}">{{$p->type}} {{$p->title}}</option>
+                                @endforeach
+                            <select>
+                        </div>
+                        <div class="wrap-input100 validate-input">
+                            <input class="input100" type="text" name="kode_pos" value="" placeholder="Postal Code" required>
                         </div>
                         <div class="container-login100-form-btn ">
                             <button class="login100-form-btn" type="submit">
@@ -92,3 +93,37 @@
 		})
 	</script>
 	<script src="{{ asset('assets2/js/main.js')}}"></script>
+    <script
+          src="https://code.jquery.com/jquery-3.4.1.min.js"
+          integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+          crossorigin="anonymous"></script>
+
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script>
+        jQuery(document).ready(function ()
+        {
+            jQuery('#province').on('change',function(){
+                var provinceID = jQuery(this).val();
+                if(provinceID)
+                {
+                    jQuery.ajax({
+                        url : '/getCity/' +provinceID,
+                        type : "GET",
+                        dataType : "json",
+                        success:function(data)
+                        {
+                            jQuery('select[name="destination"]').empty();
+                            jQuery.each(data, function(key,value){
+                                $('select[name="destination"]').append('<option value="'+ key +'">'+ value +'</option>');
+                            });
+                        }
+                    });
+                }
+                else
+                {
+                    $('select[name="destination"]').empty();
+                }
+            });
+        });
+    </script>

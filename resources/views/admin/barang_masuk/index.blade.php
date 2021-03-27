@@ -1,6 +1,6 @@
 @extends('layoutAdmin/layout')
 
-      @section('title', 'Barang Masuk')
+      @section('title', 'Second Things - Incoming Item')
 
       @section('container')
           <section id="main-content">
@@ -9,26 +9,26 @@
               <div class="col-lg-12">
                         <div class="content-panel">
                             <div class="content ml-4">
-                                <h2> Tabel Barang Masuk</h2>
+                                <h2> Incoming Item</h2>
                                     <div class="new-data">
-                                        <a href="/barang_masuk/create" class="btn btn-outline-success btn-lg mt-3"><i class="fa fa-plus"></i> Tambah Data</a>
+                                        <a href="/barang_masuk/create" class="btn btn-outline-success btn-lg mt-3"><i class="fa fa-plus"></i> Input Data</a>
                                     </div>
                                     <div class="table mt-3">
                                         <table class="table">
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>Foto</th>
+                                                    <th>Picture</th>
                                                     <th>Item</th>
                                                     <th>User ID</th>
                                                     <th>Distributor ID</th>
                                                     <th>Qty</th>
-                                                    <th>Harga</th>
+                                                    <th>Price</th>
                                                     <th>Subtotal</th>
                                                     <th>Go-Pay</th>
                                                     <th>No Resi</th>
                                                     <th>Status</th>
-                                                    <th>Aksi</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -43,12 +43,22 @@
                                                     <td>Rp {{number_format($brng->harga)}}</td>
                                                     <td>Rp {{number_format($brng->subtotal)}}</td>
                                                     <td>{{$brng->gopay}}</td>
+
                                                     <form action="{{route('barang_masuk.update',$brng->incoming_id)}}" method="post">
                                                     @method('PUT')
                                                     @csrf
-                                                    <td><input type="text" class="form-control" value="{{$brng->resi}}" minlenght="12" maxlength="12" name="resi"></td>
+                                                    <input type="hidden" name="item" value="{{$brng->item}}">
+                                                    <input type="hidden" name="user_id" value="{{$brng->user_id}}">
+                                                    <input type="hidden" name="distributor_id" value="{{$brng->distributor_id}}">
+                                                    <input type="hidden" name="jumlah" value="{{$brng->jumlah}}">
+                                                    <input type="hidden" name="harga" value="{{$brng->harga}}">
+                                                    <input type="hidden" name="subtotal" value="{{$brng->subtotal}}">
+                                                    <input type="hidden" name="gopay" value="{{$brng->gopay}}">
+
+                                                    <td><input type="text" required class="form-control" value="{{$brng->resi}}" minlenght="12" maxlength="12" name="resi"></td>
                                                     <td>
-                                                        <select name="status" id="">
+                                                        <select required name="status" id="" value="{{$brng->status}}" class="form-control">
+                                                            <option value="{{$brng->status}}">{{$brng->status}}</option>
                                                             <option value="Pending">Pending</option>
                                                             <option value="Proceed">Proceed</option>
                                                             <option value="Shipping">Shipping</option>

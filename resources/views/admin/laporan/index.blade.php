@@ -1,6 +1,6 @@
 @extends('layoutAdmin/layout')
 
-    @section('title', 'laporan')
+    @section('title', 'Second Things - Report')
 
     @section('container')
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -41,9 +41,9 @@
             <div class="col-lg-12">
                         <div class="content-panel">
                             <div class="content ml-4">
-                                <h3> Tabel Report </h3>
+                                <h3> Report </h3>
                                     <div class="new-data">
-                                        <a href="{{ route('print') }}" class="btn btn-outline-success btn-lg mt-3"><i class="fa fa-print"></i>Cetak </a>
+                                        <a href="{{ route('print') }}" class="btn btn-outline-success btn-lg mt-3"><i class="fa fa-print"></i>Print </a>
                                     </div>
                                         <table class="table mt-3">
                                             <thead>
@@ -51,8 +51,8 @@
                                                     <th>#</th>
                                                     <th>Order ID</th>
                                                     <th>Item ID</th>
-                                                    <th>Nama Barang</th>
-                                                    <th>Jumlah Barang</th>
+                                                    <th>Item's Name</th>
+                                                    <th>Qty</th>
                                                     <th>SubTotal</th>
                                                 </tr>
                                             </thead>
@@ -62,16 +62,26 @@
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{$r->order_id}}</td>
                                                         <td>{{$r->item_id}}</td>
-                                                        <td>{{$r->nama}}</td>
+                                                        <td>{{$r->item->nama}}</td>
                                                         <td>{{$r->qty}}</td>
-                                                        <td>Rp {{$r->subtotal}}</td>
-                                                        {{-- <td>Rp {{number_format($o->qty * $o->item->harga)}}</td> --}}
+                                                        <td>Rp {{number_format($r->item->harga * $r->qty)}}</td>
                                                     </tr>
                                                 @endforeach
                                                 <tr>
-                                                    <td colspan="4"><center>Jumlah Pendapatan</center></td>
-                                                    <td>25</td>
-                                                    <td>20000</td>
+                                                    <?php
+                                                        $subtotal = 0;
+                                                        $jmlh = 0;
+                                                        foreach($report_order as $key=>$value)
+                                                        {
+                                                            $hasil = $value->qty * $value->item->harga;
+                                                            $subtotal+= $hasil;
+
+                                                            $jmlh+= $value->qty;
+                                                        }
+                                                    ?>
+                                                    <td colspan="4"><center>Total Income</center></td>
+                                                    <td>{{number_format($jmlh)}}</td>
+                                                    <td>Rp {{number_format($subtotal)}}</td>
                                                 </tr>
                                             </tbody>
                                         </table>

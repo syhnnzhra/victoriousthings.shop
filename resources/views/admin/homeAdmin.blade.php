@@ -1,6 +1,6 @@
 @extends('layoutAdmin/layout')
 
-      @section('title', 'Dashboard ')
+      @section('title', 'Second Things - Dashboard')
 
       @section('container')
       <section id="main-content">
