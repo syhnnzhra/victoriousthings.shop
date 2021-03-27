@@ -51,9 +51,9 @@ class CheckOngkirController extends Controller
             'destination' => $destination,
             'weight' => $weight,
             'courier' => $courier
-        ]);
-        return response()->json($cost);
-        // return $cost;
+            ]);
+        return $cost['rajaongkir']['results'];
+        // return response()->json($cost);
         // $cost = RajaOngkir::ongkosKirim([
         //     'origin'        => 23,
         //     'destination'   => $request->city_destination,

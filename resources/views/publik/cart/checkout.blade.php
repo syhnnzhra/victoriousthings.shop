@@ -72,7 +72,7 @@
                                                 <td>Ongkos Kirim</td>
                                                 <td></td>
                                                 <td  colspan="2">
-                                                    <select class="form-control" name="" id="ongkir">
+                                                    <select class="form-control" required name="" id="ongkir">
                                                         <option value="" id="ongkir">-Ongkos Kirim-</option>
                                                     </select>
                                                 </td>
@@ -88,9 +88,9 @@
                                                 <td></td>
                                                 <td>Subtotal</td>
                                                 <td></td>
-                                                <td colspan="2" id="total">
-                                                    Rp 
-                                                    <!-- <input type="text" id="total" readonly class="form-control-plaintext col-2" value="aa"> -->
+                                                <td colspan="2">
+                                                    Rp <p id="barang"> </p>
+                                                    <!-- Rp  -->
                                                 </td>
                                             </tr>
                                         </tfoot>
@@ -122,7 +122,7 @@
                                 @csrf
                                         <input type="hidden" name="user_id" value="{{Auth::user()->id }}">
                                         <input type="hidden" name="status" value="Sudah Dibayar">
-                                        <input type="hidden" name="subtotal" value="{{($grandtot)}}">
+                                        <input type="hidden" id="inputan" name="subtotal" value="">
                                         <input type="hidden" value="9" name="province_from">
                                         <input type="hidden" value="23" name="origin" id="origin">
                                         <input type="hidden" value="250" name="weight" id="weight">
@@ -231,7 +231,7 @@
                 {
                     jQuery.ajax({
                         url : '/cekongkir/',
-                        type : "GET",
+                        type : "post",
                         dataType : "json",
                         data:{
                             _token:              token,
@@ -245,7 +245,6 @@
                             jQuery('select[name="ongkir"]').empty();
                             $.each(response[0]['costs'], function (key, value) {
                                 $('#ongkir').append('<option value="'+ value.cost[0].value +'">'+ response[0].code.toUpperCase()+' : <strong>'+value.service+'</strong> - Rp. '+value.cost[0].value+' ('+value.cost[0].etd+' hari)</option>')
-                                alert(costs);
                             });
                         }
                     });
@@ -261,7 +260,8 @@
                 var subtotal           = $('#total').val();
                 
                 var total = parseInt(ongkir) + parseInt(subtotal);
-                $("#total").text(total);
+                $("#barang").text(total);
+                $("#inputan").val(total);
             })
     </script>
     <script>

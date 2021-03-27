@@ -51,7 +51,7 @@ class IncomingitemController extends Controller
         $item->harga=$request->harga;
         $item->subtotal=$request->subtotal;
         $item->status="Pending";
-
+        
         $foto =$request->foto;
         $imageName = time().'.'.
         $foto->extension();
@@ -72,7 +72,7 @@ class IncomingitemController extends Controller
     {
         //
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      *
@@ -93,18 +93,22 @@ class IncomingitemController extends Controller
      * @param  \App\Incoming_Item  $incoming_Item
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $incoming_id)
     {
-        $brng = Incoming_Item::FindOrFail($id);
-        $brng->item_id=$request->item_id;
-        $brng->distributor_id=$request->distributor_id;
-        $brng->tanggal=$request->tanggal;
-        $brng->jumlah=$request->jumlah;
-        $brng->harga=$request->harga;
-        $brng->subtotal=$request->subtotal;
-        $brng->total=$request->total;
-        $brng->save();
-        return redirect()->route('barang_masuk.index');
+        $item= new Incoming_Item;
+        $item->resi=$request->resi;
+        $item->status=$request->status;
+        // $brng = Incoming_Item::FindOrFail($id);
+        // $brng->item_id=$request->item_id;
+        // $brng->distributor_id=$request->distributor_id;
+        // $brng->tanggal=$request->tanggal;
+        // $brng->jumlah=$request->jumlah;
+        // $brng->harga=$request->harga;
+        // $brng->subtotal=$request->subtotal;
+        // $brng->total=$request->total;
+        $item->save();
+        return $brng;
+        // return redirect('/barang_masuk');
     }
 
     /**
