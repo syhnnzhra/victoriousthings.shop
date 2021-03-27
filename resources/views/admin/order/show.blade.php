@@ -21,12 +21,17 @@
                                             <tr>
                                                 <td>Nama Pelanggan</td>
                                                 <td>:</td>
-                                                <td>{{$det->nama}}</td>
+                                                <td>{{$det->first_name}}{{ $det->last_name }}</td>
                                             </tr>
                                             <tr>
                                                 <td>Alamat</td>
                                                 <td>:</td>
                                                 <td>{{$det->alamat}}, {{$det->kota}}, {{$det->provinsi}}, {{$det->kode_pos}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Status Pembayaran</td>
+                                                <td>:</td>
+                                                <td>{{$det->payment_status}}</td>
                                             </tr>
                                         </tbody>
                                     </table>

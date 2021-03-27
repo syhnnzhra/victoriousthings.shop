@@ -157,6 +157,12 @@
                                     <span>Transaksi</span>
                                 </a>
                             </li>
+                            <li class="sub-menu">
+                                <a class="nav-link {{ Request::path() === 'laporan' ? 'bg-primary' :''}} " href="/report">
+                                <i class="fa fa-book"></i>
+                                    <span>Report</span>
+                                </a>
+                            </li>
                             <!-- <li class="sub-menu">
                                 <a href="javascript:;" >
                                     <i class="glyphicon glyphicon-stats"></i>

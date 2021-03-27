@@ -121,21 +121,6 @@ class CartController extends Controller
     }
 
 
-    function do_tambah_cart($id){
-        $cart = session("cart");
-        $item = Item::detail_produk($id);
-        $cart["id"]=[
-            "nama"=>$item->$nama,
-            "kategori_id"=>$item->$kategori_id,
-            "stok"=>$item->$stok,
-            "harga"=>$item->$harga,
-            "keterangan"=>$item->$keterangan,
-            "foto"=>$item->$foto,
-            "jumlah"=>1
-        ];
-        session(["cart"=>$cart]);
-        return redirect("/cart");
-    }
 
     function cart(){
         $cart = session("cart");
