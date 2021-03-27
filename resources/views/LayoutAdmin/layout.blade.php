@@ -122,19 +122,19 @@
                   <li class="sub-menu">
                       <a href="javascript:;" >
                       <i class="fa fa-th"></i>
-                          <span>Data Barang</span>
+                          <span>Items</span>
                       </a>
                       <ul class="sub">
                             <li><a  class="nav-link {{ Request::path() === 'item' ? 'bg-primary' :''}} " href="/item_admin">
-                                <span>Barang</span>
+                                <span>Items</span>
                                 </a>
                             </li>
                             <li><a  class="nav-link {{ Request::path() === 'kategori' ? 'bg-primary' :''}} " href="/kategori">
-                                <span>Kategori Barang</span>
+                                <span>Item's Category</span>
                                 </a>
                             </li>
                             <li><a  class="nav-link {{ Request::path() === 'barang_masuk' ? 'bg-primary' :''}} " href="/barang_masuk">
-                                <span>Barang Masuk</span>
+                                <span>Incoming Items</span>
                                 </a>
                             </li>
                       </ul>
@@ -154,7 +154,7 @@
                             <li class="sub-menu">
                                 <a class="nav-link {{ Request::path() === 'order' ? 'bg-primary' :''}} " href="/order">
                                 <i class="glyphicon glyphicon-stats"></i>
-                                    <span>Transaksi</span>
+                                    <span>Transaction</span>
                                 </a>
                             </li>
                             <li class="sub-menu">

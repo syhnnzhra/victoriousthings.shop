@@ -58,6 +58,7 @@ Route::get('/payments/unfinish', 'Publik\PaymentController@unfinish');
 Route::group(['middleware'=>['App\Http\Middleware\Publik']], function(){ 
     Route::resource('/homepublik', 'Publik\HomeController');
     Route::resource('/verify', 'HomeController');
+    Route::resource('/dashboard', 'Publik\DashboardController');
     
     //profile
     Route::resource('/prof', 'Publik\ProfileController');
