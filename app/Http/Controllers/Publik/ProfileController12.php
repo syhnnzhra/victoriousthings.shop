@@ -25,7 +25,7 @@ class ProfileController extends Controller
         $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
         $carts = Cart::where('status', 'Sudah Dibayar')->where('user_id',Auth::user()->id)->get();
         $user = User::where('id',Auth::user()->id)->first();
-        return view('publik.profile.index', compact('user','odetail','item','carts','sum','sums'));
+        return view('publik.profile.trans', compact('user','odetail','item','carts','sum','sums'));
     }
 
     /**
@@ -66,38 +66,38 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
-        return view('publik.profile.edit', compact('sum'));
-    }
+    // public function edit($id)
+    // {
+    //     $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
+    //     return view('publik.profile.edit', compact('sum'));
+    // }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
+    // /**
+    //  * Update the specified resource in storage.
+    //  *
+    //  * @param  \Illuminate\Http\Request  $request
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function update(Request $request, $id)
+    // {
         
-        $user = User::FindOrFail($id);
-        $user->nama=$request->nama;
-        $user->deskripsi=$request->deskripsi;
-        $user->save();
-        return redirect()->route('kategori.index');
+    //     $user = User::FindOrFail($id);
+    //     $user->nama=$request->nama;
+    //     $user->deskripsi=$request->deskripsi;
+    //     $user->save();
+    //     return redirect()->route('kategori.index');
     
-    }
+    // }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    // /**
+    //  * Remove the specified resource from storage.
+    //  *
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function destroy($id)
+    // {
+    //     //
+    // }
 }

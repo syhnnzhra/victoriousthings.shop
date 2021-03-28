@@ -29,11 +29,11 @@ class ReportController extends Controller
     public function cetak()
     { 
         $item = Item::all();
-        $report_cetak = Cart::where('status','Confirmed')->get();
+        $report_order = Cart::where('status','Confirmed')->get();
         return view ('admin.laporan.print',compact('report_cetak'));
     }
     public function print(){
-        $report_order = Cart::where('status','Confirmed')->get();;
+        $report_order = Cart::where('status','Confirmed')->get();
         $pdf = PDF::loadview('admin.laporan.print',compact('report_order'))->setPaper('A4','potrait');
         return $pdf->stream();
     }

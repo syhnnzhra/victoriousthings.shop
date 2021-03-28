@@ -52,6 +52,7 @@
                                                     <th>Order ID</th>
                                                     <th>Item ID</th>
                                                     <th>Item's Name</th>
+                                                    <th>Harga</th>
                                                     <th>Qty</th>
                                                     <th>SubTotal</th>
                                                 </tr>
@@ -63,6 +64,7 @@
                                                         <td>{{$r->order_id}}</td>
                                                         <td>{{$r->item_id}}</td>
                                                         <td>{{$r->item->nama}}</td>
+                                                        <td>{{ $r->item->harga }}</td>
                                                         <td>{{$r->qty}}</td>
                                                         <td>Rp {{number_format($r->item->harga * $r->qty)}}</td>
                                                     </tr>
@@ -79,7 +81,7 @@
                                                             $jmlh+= $value->qty;
                                                         }
                                                     ?>
-                                                    <td colspan="4"><center>Total Income</center></td>
+                                                    <td colspan="5"><center>Total Income</center></td>
                                                     <td>{{number_format($jmlh)}}</td>
                                                     <td>Rp {{number_format($subtotal)}}</td>
                                                 </tr>
