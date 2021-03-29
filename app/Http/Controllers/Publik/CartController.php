@@ -103,10 +103,13 @@ class CartController extends Controller
             $carts = Cart::where('user_id',Auth::user()->id)->get();
             $item = Item::findOrFail($item_id);
             $sum = Cart::where('user_id',Auth::user()->id)->where('order_id', '0')->count('user_id');
-            // $subtotal = collect($carts)->sum(function($q) {
-            //     return $q['qty'] * $q['harga']; //SUBTOTAL TERDIRI DARI QTY * PRICE
-            // });
-            return view('publik.item.pesan', compact('carts','item','sum'));
+            $sweater = Item::where('kategori_id',2)->first();
+            $aksesoris = Item::where('kategori_id',3)->first();
+            $cardigan = Item::where('kategori_id',4)->first();
+            $shirt = Item::where('kategori_id',5)->first();
+            $sepatu = Item::where('kategori_id',6)->first();
+            $bawahan = Item::where('kategori_id',7)->first();
+            return view('publik.item.pesan', compact('carts','item','sum','sweater','aksesoris','cardigan','shirt','sepatu','bawahan'));
         }
 
     public function listCart(){

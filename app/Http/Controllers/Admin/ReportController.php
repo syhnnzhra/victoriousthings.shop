@@ -8,7 +8,6 @@ use App\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Order;
-use App\Report_order;
 use App\User;
 use PDF;
 use Illuminate\Support\Facades\DB;
@@ -24,11 +23,17 @@ class ReportController extends Controller
     public function index()
     {   
         $item = Item::all();
-        $report_order = Cart::where('order_id','!=',0)->latest()->get();
-        return view ('admin.laporan.index',compact('report_order'));
+        $report_order = Cart::where('order_id','!=', '0')->latest()->get();
+        return view ('admin.laporan.index',compact('report_order','item'));
+    }
+    public function cetak()
+    { 
+        $item = Item::all();
+        $report_order = Cart::where('order_id','!=', '0')->latest()->get();
+        return view ('admin.laporan.print',compact('report_cetak'));
     }
     public function print(){
-        $report_order = Cart::where('order_id','!=',0)->latest()->get();
+        $report_order = Cart::where('order_id','!=', '0')->latest()->get();
         $pdf = PDF::loadview('admin.laporan.print',compact('report_order'))->setPaper('A4','potrait');
         return $pdf->stream();
     }

@@ -169,8 +169,6 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
 	<style>
 		.body{
 			background-color: #ffffff;
@@ -249,6 +247,16 @@
                         <p name="cart">Rp {{number_format($item->harga)}} </p>
                         <p>{{$item->stok}} item</p> 
                         <form action="" method="post" name="cart">
+                            <?php 
+                                $kat = $item->kategori_id;
+                                $sweat = $sweater;
+                                $aksesoris = $aksesoris;
+                                $cardigan = $cardigan;
+                                $shirt = $shirt;
+                                $sepatu = $sepatu;
+                                $bawahan = $bawahan;
+                            ?>
+                            <!-- <tr>{{$kat}}</tr> -->
                             <tr name="line_items">
                                 <div class="row">
                                     <div class="col-sm">
