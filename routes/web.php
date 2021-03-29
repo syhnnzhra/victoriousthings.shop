@@ -38,7 +38,7 @@ Route::group(['middleware' => 'App\Http\Middleware\isAdmin'], function () {
     
     //order
     Route::resource('/order', 'Admin\OrderController'); 
-    Route::get('orderStatusUpdate','Admin\OrderController@orderStatusUpdate');
+    Route::post('orderStatusUpdate','Admin\OrderController@orderStatusUpdate');
     
     //order detail
     Route::resource('/Odetail', 'Admin\OdetailController'); 

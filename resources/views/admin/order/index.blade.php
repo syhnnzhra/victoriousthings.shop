@@ -47,6 +47,7 @@
                                                     <th>Message</th>
                                                     <th>Total</th>
                                                     <th>Payment Status</th>
+                                                    <th>No Resi</th>
                                                     <th>Track Status</th>
                                                     <th>Aksi</th>
                                                 </tr>
@@ -61,9 +62,13 @@
                                                     <td>Rp {{number_format($order->subtotal)}}</td>
                                                     <!-- <td> <span class="badge badge-success"> Item</span> </td> -->
                                                     <td>{{$order->payment_status}}</td>
+                                                    <form action="{{route('order.update', $order->order_id)}}" method="post">
+                                                    @method('PUT')
+                                                    @csrf
+                                                    <td><input type="text" required class="form-control" value="{{$order->no_resi}}" name="no_resi" maxlenght="14"></td>
                                                     <td>
                                                         <input type="hidden" id="order_id<?php echo $countOrder;?>" value="{{$order->order_id}}"/>
-                                                        <select class="form-control" id="order_status<?php echo $countOrder;?>">
+                                                        <select required name="status" class="form-control" id="order_status<?php echo $countOrder;?>">
                                                             <option value="pending"
                                                             <?php if($order->status=='pending'){?> selected="selected"<?php }?>>pending</option>
         
@@ -87,9 +92,10 @@
                                                     <?php $countOrder++;?>
                                                     </td>
                                                     <td>
+                                                        <button class="btn btn-outline-warning"><i class="fa fa-edit"></i></button>
                                                         <a href="{{route('order.show',$order->order_id)}}" class="btn btn-outline-warning">Show</a> 
-                                                        
                                                     </td>
+                                                    </form>
                                                 </tr>
                                             @endforeach
                                             </tbody>

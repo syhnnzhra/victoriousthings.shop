@@ -69,7 +69,7 @@
                                 <tr>
                                     <td colspan="3"></td>
                                     <td>Ongkos Kirim</td>
-                                    <td>Rp 11,000</td>
+                                    <td>Rp {{number_format($order->postal_fee)}}</td>
                                 </tr>
                                 <tr>
                                     <td colspan="3"></td>

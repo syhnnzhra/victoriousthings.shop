@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use App\Order;
 use App\Cart;
 use App\Category;
 use App\Item;
 use App\User;
-use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
@@ -80,9 +80,13 @@ class OrderController extends Controller
      * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $order_id)
     {
-        //
+        $brng = Order::FindOrFail($order_id);
+        $brng->no_resi=$request->no_resi;
+        $brng->status=$request->status;
+        $brng->save();
+        return redirect('/order');
     }
 
     /**
@@ -102,18 +106,26 @@ class OrderController extends Controller
         return redirect('/order', compact('order'));
     }
 
-    public function orderStatusUpdate(Request $request){
-        if(isset($request->order_id) && isset($request->order_status)){
-          //save order status
-          $uptStatus =DB::table('order')->where('id',$request->order_id)
-          ->update(['status' => $request->order_status]);
+    public function orderStatusUpdate(Request $request, $order_id){
+        return 'hi';
+        // $o = Order::where('order_id', $order_id);
+        // $o->no_resi=$request->no_resi;
+        // $o->status=$request->status;
+        // $o->save();
+        // return redirect('/order');
+    }
+    // public function orderStatusUpdate(Request $request){
+    //     if(isset($request->order_id) && isset($request->order_status)){
+    //       //save order status
+    //       $uptStatus =DB::table('order')->where('id',$request->order_id)
+    //       ->update(['status' => $request->order_status]);
   
-          if($uptStatus){
-            echo "Order " . $request->order_status;
-          }
-          else{
-            echo "error";
-          }
-        }
-      }
+    //       if($uptStatus){
+    //         echo "Order " . $request->order_status;
+    //       }
+    //       else{
+    //         echo "error";
+    //       }
+    //     }
+    //   }
 }

@@ -107,7 +107,7 @@
                                             <tr>
                                                 <td colspan="4"> </td>
                                                 <td> Postal Fee</td>
-                                                <td> Rp {{number_format($det->ongkir)}} </td>
+                                                <td> Rp {{number_format($det->postal_fee)}} </td>
                                             </tr>
                                             <tr>
                                                 <td colspan="4"> </td>

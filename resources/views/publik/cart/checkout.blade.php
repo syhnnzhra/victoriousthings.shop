@@ -123,6 +123,7 @@
                                         <input type="hidden" name="user_id" value="{{Auth::user()->id }}">
                                         <input type="hidden" name="status" value="Sudah Dibayar">
                                         <input type="hidden" id="inputan" name="subtotal" value="">
+                                        <input type="hidden" id="postalfee" name="postal_fee" value="">
                                         <input type="hidden" value="9" name="province_from">
                                         <input type="hidden" value="23" name="origin" id="origin">
                                         <input type="hidden" value="250" name="weight" id="weight">
@@ -262,6 +263,7 @@
                 var total = parseInt(ongkir) + parseInt(subtotal);
                 $("#barang").text(total);
                 $("#inputan").val(total);
+                $("#postalfee").val(ongkir);
             })
     </script>
     <script>

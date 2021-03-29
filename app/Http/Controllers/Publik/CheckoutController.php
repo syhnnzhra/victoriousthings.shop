@@ -147,6 +147,7 @@ class CheckoutController extends Controller
                     'kode_pos' => $request->kode_pos,
                     'rincian_opsional' => $request->rincian_opsional,
                     'bank' => $request->bank,
+                    'postal_fee' => $request->postal_fee,
                     'payment_status'=>"UNPAID",
                     'subtotal' => $request->subtotal
                     ]);
