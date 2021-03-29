@@ -151,7 +151,7 @@
 	<link href="{{asset('assets2/css/bootstrap.css')}}" rel="stylesheet">
 	<link href="{{asset('assets2/js/jequery.js')}}" rel="stylesheet">
 
-	<title>Pesan</title>
+	<title>Second Things - Buy Now!</title>
 	<!-- link online -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -190,13 +190,13 @@
                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                 @endif
                 @else
-                    <a id="" class='fas fa-user-circle mt-1 mr-2' style='font-size:25px ;color: #c18f59;' href="/prof" role="button" aria-haspopup="true" aria-expanded="false" v-pre>
+                    <a id="" class='textsite fas fa-user-circle mt-1 mr-2'  href="/prof" role="button" aria-haspopup="true" aria-expanded="false" v-pre>
                     {{ Auth::user()->name }}
                     </a>
                 @endguest
 			<a href="">
 				<a href="/cartp" class="icons">
-					<i class="fas fa-shopping-cart mt-2" style='font-size:25px ;color: #c18f59;'></i>
+					<i class="textsite fas fa-shopping-cart mt-2" ></i>
                     <a class="iconsum" style="color:#c18f59"><b> {{$sum}} </b> </a>
                 </a>
 
@@ -257,7 +257,7 @@
                                         <input type="hidden" name="order_id" value="0" class="form-control">
 
                                         <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                                        class="reduced items-count button-black" type="button">
+                                        class="reduced items-count button-minplus" type="button">
                                         <i class="fa fa-minus"></i>
                                         
                                         
@@ -268,7 +268,7 @@
                                             <i><input name="qty" required id="sst" maxlength="2" min="1" pattern="[0-9]*" readonly value="1" style="border:0; width:14px;text-align: center; background-color: rgb(243, 243, 243)"></i>
                                         
                                         <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                        class="increase items-count button-black" type="button">
+                                        class="increase items-count button-minplus" type="button">
                                         <i class="fa fa-plus"></i>
                                         </button>
                                     </div>

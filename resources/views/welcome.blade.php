@@ -22,6 +22,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
 </head>
 <body style="background-color:rgb(255, 255, 255)">
     
@@ -54,7 +56,7 @@
 				<ul class="main-navigation__ul">
 					<li><a href="/">Home</a></li>
 					<li><a href="/items">All Product</a></li>
-					<li><a href="/kategori_publik">Category</a></li>
+					<li><a href="/login">Category</a></li>
 					<li>
 						@auth
 						@else
@@ -96,7 +98,7 @@
 					<section class="fh5co-top-banner">
 						<div class="top-banner__inner site-container">
 							<div class="top-banner__image">
-								<img src="{{asset('assets2/images/bg1.jpg')}}" alt="author image">
+								<img src="{{asset('assets2/images/bg3.jpg')}}" alt="author image">
 							</div>
 							<div class="top-banner__text">
 								<div class="top-banner__text-up">
@@ -194,7 +196,7 @@
                     </span>
 					<!-- star button -->
 					<div class="books-brand-button mt-3">
-						<a href="{{url('/cart',$items->id)}}" class="brand-button">Pesan</a>
+						<a href="/login" class="brand-button">Pesan</a>
                     </div>
                 </div>
             </div>

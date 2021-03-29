@@ -48,13 +48,13 @@
                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                 @endif
                 @else
-                    <a id="" class='fas fa-user-circle mt-1 mr-2' style='font-size:25px ;color: #c18f59;' href="/prof" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    <a id="" class='textsite fas fa-user-circle mt-1 mr-2'  href="/prof" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     {{ Auth::user()->name }}
                     </a>
                 @endguest
 			<a href="">
 				<a href="/cartp" class="icons">
-					<i class="fas fa-shopping-cart mt-2" style='font-size:25px ;color: #c18f59;'></i>
+					<i class="textsite fas fa-shopping-cart mt-2" ></i>
 					<a class="iconsum" style="color:#c18f59"><b> {{$sum}} </b> </a>
 				</a>
 			<div class="demo-2 search mr-auto ml-3">
@@ -75,6 +75,7 @@
 							<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
 								@csrf
 							</form></a></li>
+					
 				</ul>
 			</div>
 			<div id="myBtn" class="burger-container" onclick="myFunction(this)">

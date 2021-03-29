@@ -360,12 +360,6 @@
         .about-me-bckg {
           width: 100%;
           padding-bottom: 15px; } }
-
-          .poto-wrapper {
-            width: 100%;
-            padding: 20px;
-            text-align: center;
-            background-color: #fff; }
     
     .about-me-inner {
       display: flex;
@@ -434,6 +428,37 @@
             .portfolio-wrapper .portfolio__name span {
               font-size: 65px;
               line-height: 62px; } }
+              
+      .poto-wrapper{
+      width: 100%;
+      padding: 8px;
+      text-align: center;}
+      .poto-wrapper .poto__img {
+        font-size: 0; }
+        .poto-wrapper .poto__img img {
+          width: 280px;
+          height: 360px;
+         border-radius: 50% 50% 0 0; }
+         @media (max-width: 411px) {
+          .poto-wrapper .poto__img img {
+            width: 260px;
+            height: 340px; } }
+         @media (max-width: 375px) {
+          .poto-wrapper .poto__img img {
+            width: 250px;
+            height: 330px; } }
+        @media (max-width: 363px) {
+          .poto-wrapper .poto__img img {
+            width: 200px;
+            height: 250px; } }
+      
+      .poto-wrapper .poto__bottom {
+        padding: 20px 20px 20px;
+        background-color: #f5f5f5; }
+        @media (max-width: 992px) {
+          .poto-wrapper .poto__bottom {
+            padding: 25px 0; } }
+
       .portfolio-wrapper p {
         padding: 0 10%;
         line-height: 25px;
@@ -516,6 +541,7 @@
   @media (max-width: 1250px) {
     .fh5co-books {
       margin-bottom: 60px; } }
+
       
 .books {
   display: flex;
@@ -1083,14 +1109,31 @@
      background-color: #d3bba2;
      background-position: center;
      background-size: cover;
-     height: 400px;
-     top: -75px;
+     height: 500px;
+     top: -100px;
      right: 0;
-     height: calc(100% + 150px);
+     height: calc(100% + 200px);
      width:60%;
      z-index: -1; }
         @media (max-width: 992px) {
           .bckg {
+          width: 100%;
+          margin-top: 30px;
+          padding-bottom: 15px; }
+         }
+    .bckgcart {
+     position: absolute;
+     background-color: #d3bba2;
+     background-position: center;
+     background-size: cover;
+     height: 550px;
+     top: -100px;
+     right: 0;
+     height: calc(100% + 200px);
+     width:35%;
+     z-index: -1; }
+        @media (max-width: 992px) {
+          .bckgcart {
           width: 100%;
           margin-top: 30px;
           padding-bottom: 15px; }
@@ -1260,7 +1303,7 @@
   
       .textrack{
           font-family: "Calisto-MT"; 
-          font-size: 24px;
+          font-size: 20px;
           margin: 50px 50px 50px 50px;
           justify-content: space-between; 
       }
@@ -1361,6 +1404,30 @@
         font-size: 14.5px;
       }
     }
+      .textsitewhite{
+        font-size:25px ; 
+        color: #e5d9cb;
+      }
+      @media (max-width: 729px){
+        .textsitewhite{
+        font-size: 20px;
+      }
+    }
+    @media(max-width:443px){
+      .textsitewhite{
+        font-size: 18px;
+      }
+    }
+    @media(max-width: 390px){
+      .textsitewhite{
+        font-size: 16px;
+      }
+    }
+    @media(max-width: 360px){
+      .textsitewhite{
+        font-size: 14.5px;
+      }
+    }
     .footerdet{
       text-align: right;
       padding-right: 90px;
@@ -1381,6 +1448,20 @@
       padding-bottom: 15px; }
      }
      .button-black{
+        display: inline-block;
+        padding: 10px 33px;
+        font-size: 11px;
+        text-transform: uppercase;
+        background-color: rgb(243, 243, 243);
+        text-decoration: none;
+        color: #000000;
+        border: 1px solid#000000;
+        transition: 0.3s ease;}
+        .button-black:hover, .button-black:focus {
+          color: #ffffff;
+          background-color: rgb(0, 0, 0);
+     }
+     .button-minplus{
         display: inline-block;
         padding: 10px 20px;
         font-size: 11px;
@@ -1414,19 +1495,26 @@
      margin-bottom: 20px;
      margin-left: 3px;
    }
-   .vl {
-    border-left: 5px solid green;
-    height: 100%;
-    position: absolute;
-    
-  }
-   .vl2 {
-    border-left: 5px solid rgb(4, 19, 4);
-    height: 100%;
-    position: absolute;
-    right: 50%;
-    top: 0;
-  }
+   .textname{
+     font-size: 30px;
+     color: #c18f59;
+     margin-bottom: 20px;
+     border-radius: 10px;
+   }
+   .bckgprofil{
+      position: absolute;
+      background-color: rgb(236,196,151);
+      background-position: center;
+      background-size: cover;
+      top: 313px;
+      right: 0;
+      width: 100%;
+      height: 25%;
+      z-index: -1;
+   }
+   .layoutbutton{
+     margin-left: 360px;
+   }
      
     
     

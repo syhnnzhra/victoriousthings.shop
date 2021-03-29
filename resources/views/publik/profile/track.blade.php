@@ -46,6 +46,7 @@
                 <i class="textrack">Order No:  {{$data[0]->order_id}} </i>
                 <i class="textrack">Total: Rp.{{number_format($data[0]->subtotal)}} </i>
                 <i class="textrack"> Status: {{$data[0]->status}}</i>
+                <i class="textrack"> No Resi: {{$data[0]->no_resi}}</i>
                 </div>
 
             @if($data[0]->status=="pending")
@@ -70,7 +71,7 @@
                 <h1 align="center">your order cancelled by admin</h1>
 
                 @endif
-            </div>
+                </div>
                 
         </div>
     </section>

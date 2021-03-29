@@ -27,8 +27,6 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
 	<style>
 		.body{
 			background-color: #ffffff;
@@ -71,6 +69,7 @@
 					<li><a href="/prof">Transaction</a></li>
 					<li><a href="/prof">Profile</a></li>
 					<li><a href="/sell">Sell</a></li>
+					<!-- <li><a href="/dashboard">My Profile</a></li> -->
 					<li><a href="{{ route('logout') }}"
 						onclick="event.preventDefault();
 										document.getElementById('logout-form').submit();">
