@@ -88,8 +88,11 @@ class TransactionController extends Controller
         $order = Order::where('user_id',Auth::user()->id)->get();
         $det = Order::findOrFail($order_id);
         $item = Item::all();
-        $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
-        $carts = Cart::where('status', 'Confirmed')->where('user_id',Auth::user()->id)->where('order_id', $order_id)->get();
+        // $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
+        $sum = Cart::where('user_id',Auth::user()->id)->where('order_id', '0')->count('user_id');
+        // $carts = Cart::where('status', 'Confirmed')->where('order_id', $order_id)->get();
+        $carts = Cart::where('user_id',Auth::user()->id)->where('order_id', $order_id)->get();
+        // return $carts;
         return view('publik.invoice.edit', compact('item', 'det', 'carts','sum'));
     }
     

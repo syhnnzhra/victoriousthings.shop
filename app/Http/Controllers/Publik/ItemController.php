@@ -17,7 +17,8 @@ class ItemController extends Controller
      */
     public function index()
     {
-        $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
+        // $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
+        $sum = Cart::where('user_id',Auth::user()->id)->where('order_id', '0')->count('user_id');
         $items = Item::all();
         return view ('publik.item.index',compact('items', 'sum'));
     }
@@ -30,7 +31,8 @@ class ItemController extends Controller
    
     public function searchp(Request $request)
     {
-        $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
+        // $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
+        $sum = Cart::where('user_id',Auth::user()->id)->where('order_id', '0')->count('user_id');
         $searchp = $request->searchp;
         $items = Item::where('nama', 'like', '%'.$searchp.'%')->paginate(5);
             return view('publik.item.index', compact('items','sum'));

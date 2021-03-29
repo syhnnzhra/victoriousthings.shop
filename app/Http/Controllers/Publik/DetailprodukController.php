@@ -17,7 +17,7 @@ class DetailprodukController extends Controller
     }
     public function show($id)
     {
-        $data['sum'] = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
+        $data['sum'] =Cart::where('user_id',Auth::user()->id)->where('order_id', '0')->count('user_id');
         $data['item']=Item::findOrFail($id);
         return view('publik.item.detailproduk', $data);
     }

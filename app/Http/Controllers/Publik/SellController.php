@@ -18,7 +18,8 @@ class SellController extends Controller
      */
     public function index()
     {
-        $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
+        // $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
+        $sum = Cart::where('user_id',Auth::user()->id)->where('order_id', '0')->count('user_id');
         $incom = Incoming_Item::where('user_id', Auth::user()->id)->get();
         // return $incom;
         return view('publik.sell.index', compact('sum','incom'));

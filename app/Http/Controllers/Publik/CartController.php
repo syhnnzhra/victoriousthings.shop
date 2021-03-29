@@ -17,11 +17,12 @@ class CartController extends Controller
 {
     //
     function cart_tampil(){
-        $carts = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->get();
+        // $carts = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->get();
+        $carts = Cart::where('order_id' , '0')->where('user_id', Auth::user()->id)->get();
+        $sum = Cart::where('user_id',Auth::user()->id)->where('order_id', '0')->count('user_id');
         $item = Item::first();
         $brng = Item::all();
-        $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
-        // dd($carts); 
+        // $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
         return view('publik.cart.index', compact('carts','item', 'brng','sum'));
     }
 
@@ -101,7 +102,7 @@ class CartController extends Controller
         {
             $carts = Cart::where('user_id',Auth::user()->id)->get();
             $item = Item::findOrFail($item_id);
-            $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
+            $sum = Cart::where('user_id',Auth::user()->id)->where('order_id', '0')->count('user_id');
             // $subtotal = collect($carts)->sum(function($q) {
             //     return $q['qty'] * $q['harga']; //SUBTOTAL TERDIRI DARI QTY * PRICE
             // });

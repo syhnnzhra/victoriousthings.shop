@@ -23,7 +23,7 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
+        $sum = Cart::where('user_id',Auth::user()->id)->where('order_id', '0')->count('user_id');
         $kat = Category::all();
         $item = Item::latest()->get();
         return view ('publik.category.index',compact('kat','item','sum'));

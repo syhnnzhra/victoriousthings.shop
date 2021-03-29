@@ -24,12 +24,13 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        $carts = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->get();
+        // $carts = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->get();
+        $carts = Cart::where('user_id',Auth::user()->id)->where('order_id', '0')->get();
         $item = Item::first();
         $user = User::all();
         $city = City::all();
         $provinces = Province::all();
-        $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
+        $sum = Cart::where('user_id',Auth::user()->id)->where('order_id', '0')->count('user_id');
         $origin = 501;
         $destination = 114;
         $weight = 1700;
@@ -132,7 +133,7 @@ class CheckoutController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $cart = Cart::where('status', 'Belum Dibayar')->where('user_id', Auth::user()->id)->get();
+        $cart = Cart::where('order_id', '0')->where('user_id', Auth::user()->id)->get();
         if ($cart) {
             // buat variabel inputan order
                 $order = Order::create([
@@ -196,10 +197,10 @@ class CheckoutController extends Controller
     
     public function received($order_id){
         $det = Order::where('user_id',Auth::user()->id)->get();
-        $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
+        $sum = Cart::where('user_id',Auth::user()->id)->where('order_id', '0')->count('user_id');
         $order = Order::findOrFail($order_id);
         $item = Item::all();
-        $carts = Cart::where('status', 'Belum Dibayar')->where('user_id',Auth::user()->id)->where('order_id', $order_id)->get();
+        $carts = Cart::where('user_id',Auth::user()->id)->where('order_id', $order_id)->get();
         return view('publik.cart.received', compact('item', 'order', 'carts','sum'));
     }
 

@@ -23,7 +23,7 @@ class ReportController extends Controller
     public function index()
     {   
         $item = Item::all();
-        $report_order = Cart::where('status','Confirmed')->get();
+        $report_order = Cart::where('status','!=','0')->get();
         return view ('admin.laporan.index',compact('report_order','item'));
     }
     public function cetak()

@@ -63,7 +63,8 @@ class OrderController extends Controller
      */
     public function edit($order_id)
     {
-        $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
+        // $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
+        $sum = Cart::where('user_id',Auth::user()->id)->where('order_id', '0')->count('user_id');
         $data = Order::where('order_id',$order_id)->get();
         return view('publik.profile.track',compact('sum','data'));
     }

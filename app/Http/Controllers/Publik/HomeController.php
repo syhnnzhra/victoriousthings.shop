@@ -18,7 +18,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
+        // $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
+        $sum = Cart::where('user_id',Auth::user()->id)->where('order_id', '0')->count('user_id');
         $items = Item::latest()->limit(4)->get();
         return view ('publik.dashboard',compact('items','sum'));
     }
