@@ -2,9 +2,9 @@
 <html lang="en">
 <body>
 	<body bgcolor="white">
-		<font face="Arial" color="black"> <p align="center"> PEMERINTAH KOTA CIREBON </p></font>
-		<font face="Arial" color="blue"> <p align="center"> DINAS PENDIDIKAN </p></font>
-		<font face="Arial" color="green"> <p align="center"> SEKOLAH MENENGAH KEJURUAN NEGERI 1 CIREBON </p></font>
+	<font size="3"  color="black"> <p align="center"> LAPORAN HASIL PENJUALAN </p></font>
+		<font size="5" face="Comic Sans" color="black"> <p align="center"> SECONDD THINGS </p></font>
+		<font size="2" color="black"> <p align="center"> Toko Jual Baju Dengan Kualitas High Premium </p></font>
 		<font face="Arial" color="black" size="3"> <p align="center"> JL. Perjuangan By Pass Sunyaragi Telp.(0231) 123456 Cirebon 45141 </p></font>
 		<hr>
 		<br>

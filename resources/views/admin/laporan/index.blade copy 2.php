@@ -9,33 +9,27 @@
             <section class="wrapper">
                 <br>
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Pilih Sesuai Bulan
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">JANUARI</a>
-                        <a class="dropdown-item" href="#">FEBRUARI</a>
-                        <a class="dropdown-item" href="#">MARET</a>
-                        <a class="dropdown-item" href="#">APRIL</a>
-                        <a class="dropdown-item" href="#">MEI</a>
-                        <a class="dropdown-item" href="#">JUNI</a>
-                        <a class="dropdown-item" href="#">JULI</a>
-                        <a class="dropdown-item" href="#">AGUSTUS</a>
-                        <a class="dropdown-item" href="#">SEPETEMBER</a>
-                        <a class="dropdown-item" href="#">OKTOBER</a>
-                        <a class="dropdown-item" href="#">NOVEMBER</a>
+                <div class="col-sm-2 mt-3">
+                        <select class="form-control" required name="province" id="province">
+                            <option value="">JANUARI</option>
+                            <option value="">FEBRUARI</option>
+                            <option value="">MARET</option>
+                            <option value="">APRIL</option>
+                            <option value="">MEI</option>
+                            <option value="">JUNI</option>
+                            <option value="">JULI</option>
+                            <option value="">AGUSTUS</option>
+                            <option value="">SEPTEMBER</option>
+                            <option value="">OKTOBER</option>
+                            <option value="">NOVEMBER</option>
+                            <option value="">DESEMBER</option>
+                        </select>
                     </div>
-                    </div>
-                    <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Pilih Sesuai Tahun
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">2021</a>
-                        <a class="dropdown-item" href="#">2020</a>
-                        <a class="dropdown-item" href="#">2019</a>
-                        <a class="dropdown-item" href="#">2018</a>
-                    </div>
+                    <div class="col-sm-2 mt-3">
+                        <select class="form-control" required name="province" id="province">
+                            <option value="">2021</option>
+                            <option value="">2020</option>
+                        </select>
                     </div>
             <div class="row mt-4">
             <div class="col-lg-12">

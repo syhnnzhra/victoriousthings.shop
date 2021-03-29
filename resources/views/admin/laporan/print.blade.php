@@ -14,22 +14,20 @@
 					<th>#</th>
 					<th>Order ID</th>
 					<th>Item ID</th>
-					<th>Qty</th>
-					<th>Harga</th>
-					{{-- <th>Qty</th>
-					<th>SubTotal</th> --}}
+					<th>Nama Barang</th>
+					<th>Jumlah</th>
+					<th>Total</th>
 				</tr>
 			</thead>
 			<tbody>
 				@foreach($report_order as $r)
 					<tr>
 						<td>{{ $loop->iteration }}</td>
-						<td>{{$r->order_id}}</td>
-						<td>{{$r->item_id}}</td>
-						<td>{{$r->qty}}</td>
-						{{-- <td>{{ $r->item->harga }}</td> --}}
-						<td>Rp {{number_format($r->subtotal)}}</td>
-						{{-- <td>Rp {{number_format($r->item->harga * $r->qty)}}</td> --}}
+						<td><center>{{$r->order_id}}</center></td>
+						<td><center>{{$r->item_id}}</center></td>
+						<td>{{$r->item->nama}}</td>
+						<td><center>{{$r->qty}}</center></td>
+						<td>Rp {{number_format($r->item->harga * $r->qty)}}</td>
 					</tr>
 				@endforeach
 				<tr>
@@ -38,14 +36,14 @@
 						$jmlh = 0;
 						foreach($report_order as $key=>$value)
 						{
-							$hasil = $value->subtotal;
+							$hasil = $value->qty * $value->item->harga;
 							$subtotal+= $hasil;
 
 							$jmlh+= $value->qty;
 						}
 					?>
-					<td colspan="3"><center>Total Income</center></td>
-					<td>{{number_format($jmlh)}}</td>
+					<td colspan="4"><center>Jumlah Pendapatan</center></td>
+					<td> <center> {{number_format($jmlh)}} </center></td>
 					<td>Rp {{number_format($subtotal)}}</td>
 				</tr>
 			</table>

@@ -24,11 +24,11 @@ class ReportController extends Controller
     public function index()
     {   
         $item = Item::all();
-        $report_order = Report_order::all();
+        $report_order = Cart::where('status','confirmed')->get();
         return view ('admin.laporan.index',compact('report_order'));
     }
     public function print(){
-        $report_order = Report_order::all();
+        $report_order = Cart::where('status','confirmed')->get();
         $pdf = PDF::loadview('admin.laporan.print',compact('report_order'))->setPaper('A4','potrait');
         return $pdf->stream();
     }
