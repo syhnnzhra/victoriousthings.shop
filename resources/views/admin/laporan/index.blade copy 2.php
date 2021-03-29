@@ -9,32 +9,9 @@
             <section class="wrapper">
                 <br>
                 <div class="dropdown">
-                    <div class="col-sm-2 mt-3">
-                        <select class="form-control" required name="province" id="province">
-                            <option value="">JANUARI</option>
-                            <option value="">FEBRUARI</option>
-                            <option value="">MARET</option>
-                            <option value="">APRIL</option>
-                            <option value="">MEI</option>
-                            <option value="">JUNI</option>
-                            <option value="">JULI</option>
-                            <option value="">AGUSTUS</option>
-                            <option value="">SEPTEMBER</option>
-                            <option value="">OKTOBER</option>
-                            <option value="">NOVEMBER</option>
-                            <option value="">DESEMBER</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-2 mt-3">
-                        <select class="form-control" required name="province" id="province">
-                            <option value="">2021</option>
-                            <option value="">2020</option>
-                        </select>
-                    </div>
-                    <div href="#" class="btn btn-outline-danger btn-lg mt-3"><i class=""></i>Submit </a> 
-                    {{-- <butt class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Pilih Sesuai Bulan
-                    </div>
+                    </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="#">JANUARI</a>
                         <a class="dropdown-item" href="#">FEBRUARI</a>
@@ -58,7 +35,7 @@
                         <a class="dropdown-item" href="#">2020</a>
                         <a class="dropdown-item" href="#">2019</a>
                         <a class="dropdown-item" href="#">2018</a>
-                    </div> --}}
+                    </div>
                     </div>
             <div class="row mt-4">
             <div class="col-lg-12">
@@ -74,10 +51,10 @@
                                                     <th>#</th>
                                                     <th>Order ID</th>
                                                     <th>Item ID</th>
-                                                    <th>Qty</th>
+                                                    <th>Item's Name</th>
                                                     <th>Harga</th>
-                                                    {{-- <th>Qty</th>
-                                                    <th>SubTotal</th> --}}
+                                                    <th>Qty</th>
+                                                    <th>SubTotal</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -86,10 +63,10 @@
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{$r->order_id}}</td>
                                                         <td>{{$r->item_id}}</td>
+                                                        <td>{{$r->item->nama}}</td>
+                                                        <td>{{ $r->item->harga }}</td>
                                                         <td>{{$r->qty}}</td>
-                                                        {{-- <td>{{ $r->item->harga }}</td> --}}
-                                                        <td>Rp {{number_format($r->subtotal)}}</td>
-                                                        {{-- <td>Rp {{number_format($r->item->harga * $r->qty)}}</td> --}}
+                                                        <td>Rp {{number_format($r->item->harga * $r->qty)}}</td>
                                                     </tr>
                                                 @endforeach
                                                 <tr>
@@ -98,13 +75,13 @@
                                                         $jmlh = 0;
                                                         foreach($report_order as $key=>$value)
                                                         {
-                                                            $hasil = $value->subtotal;
+                                                            $hasil = $value->qty * $value->item->harga;
                                                             $subtotal+= $hasil;
 
                                                             $jmlh+= $value->qty;
                                                         }
                                                     ?>
-                                                    <td colspan="3"><center>Total Income</center></td>
+                                                    <td colspan="5"><center>Total Income</center></td>
                                                     <td>{{number_format($jmlh)}}</td>
                                                     <td>Rp {{number_format($subtotal)}}</td>
                                                 </tr>

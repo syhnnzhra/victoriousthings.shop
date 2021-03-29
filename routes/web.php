@@ -62,7 +62,7 @@ Route::group(['middleware'=>['App\Http\Middleware\Publik']], function(){
     
     //profile
     Route::resource('/prof', 'Publik\ProfileController');
-    Route::resource('/trans', 'Publik\BaruController');
+    Route::resource('/trans', 'Publik\BaruControllergit ');
     Route::post('/prof{id}', 'ProfileController@update')->name('update');
     
     //kategori publik
