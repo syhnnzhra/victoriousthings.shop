@@ -19,11 +19,13 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        // $odetail = Order::orderBy('updated_at', 'desc')->get();
-        $odetail = Order::where('user_id', Auth::user()->user_id)->get();
+        $odetail = Order::where('user_id', Auth::user()->id)->get();
+        $sums = Order::where('user_id', Auth::user()->id)->count('user_id');
         $item = Item::all();
-        $carts = Cart::where('status', 'Sudah Dibayar')->where('user_id',Auth::user()->user_id)->get();
-        return view('publik.invoice.index', compact('carts','odetail','item'));
+        $sum = Cart::where('user_id',Auth::user()->id)->where('order_id', '0')->count('user_id');
+        $carts = Cart::where('status', 'Sudah Dibayar')->where('user_id',Auth::user()->id)->get();
+        $user = User::where('id',Auth::user()->id)->first();
+        return view('publik.profile.trans', compact('user','odetail','item','carts','sum','sums'));
     }
 
     /**

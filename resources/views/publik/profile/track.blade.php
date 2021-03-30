@@ -36,7 +36,7 @@
                         <li><span class="dot">/</span>
                             <a href="/prof"> {{Auth::user()->name}}</a></li>
                         <li><span class="dot">/</span>
-                        <a href="">Track Order</a>
+                        <a href="/">Track Order</a>
                             </ul>
                         </div>
                         </div>
@@ -45,7 +45,6 @@
                 <div class="box" style="color:#efefef">
                 <i class="textrack">Order No:  {{$data[0]->order_id}} </i>
                 <i class="textrack">Total: Rp.{{number_format($data[0]->subtotal)}} </i>
-                <i class="textrack"> Status: {{$data[0]->status}}</i>
                 <i class="textrack"> No Resi: {{$data[0]->no_resi}}</i>
                 </div>
 

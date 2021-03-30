@@ -9,7 +9,7 @@
 	<link href="{{asset('assets2/css/bootstrap.css')}}" rel="stylesheet">
 	<link href="{{asset('assets2/js/jequery.js')}}" rel="stylesheet">
 
-	<title>Profile</title>
+	<title>Second Things - Your Order</title>
 	<!-- link online -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -64,7 +64,7 @@
 					<li><a href="/homepublik">Home</a></li>
 					<li><a href="/item_publik">All Product</a></li>
 					<li><a href="/kategori_publik">Category</a></li>
-					<li><a href="/prof">Transaction</a></li>
+					<li><a href="/trans">Transaction</a></li>
 					<li><a href="/prof">Profile</a></li>
 					<!-- <li><a href="/dashboard">My Profile</a></li> -->
 					<li><a href="{{ route('logout') }}"
@@ -93,8 +93,8 @@
   <!-- Content -->
   <section class="fh5co-books">
 		<div class="site-container">
-        <div class="card">
-          <div class="card-body">
+        <div class="card" style="border: 0; text-align:center;">
+          <div class="card-body" style="background-color: #fffaf4;">
             <div class="mt-2">
               <h5  style="color:#c18f59;"> Order Saya ({{$sums}})</h5>
                 <div class="mt-4">

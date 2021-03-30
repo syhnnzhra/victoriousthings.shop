@@ -53,7 +53,7 @@
 				<ul class="main-navigation__ul">
 					<li><a href="/">Home</a></li>
 					<li><a href="/items">All Product</a></li>
-					<li><a href="/kategori_publik">Category</a></li>
+					<li><a href="/login">Category</a></li>
                     <li>
 						@auth
 						@else

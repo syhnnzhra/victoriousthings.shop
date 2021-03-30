@@ -1,41 +1,4 @@
-{{-- 
-@extends('publik/layout/layout')
-
-    @section('title', 'Second Things - My Profile')
-
-
-    @section('container')
-      <section class="fh5co-books">
-           <div class="site-container">
-                  <div class="poto-wrapper">
-                  <div class="text-center mt-2">
-                    <img src="{{ asset('assets/images/profile.png')}}" width="150px" class="logo text-center img-rounded" style="align: center">
-                    <h4 class="mt-3" style="color:#c18f59;">{{Auth::user()->name}} </h4>
-                    <div class="books-brand-button">
-                      <a href="{{route('prof.edit', Auth::user()->id )}}" class="brand-button" style="width: 65%;">Edit Profile</a>
-                    </div>
-                  </div>
-              </div>
-              <div class="card">
-                <div class="card-body">
-                  <div class="mt-2">
-                    <h5  style="color:#c18f59;"> Order Saya ({{$sums}})</h5>
-                      <div class="mt-4">
-                        @forelse ($odetail as $det)
-                        <h5> {{$det->first_name}} <a href="{{ route('transaction.show', $det->order_id) }}"><span class="badge badge-warning">Show</span></a> 
-                          <a href="{{url('trackOrder')}}/{{$det->order_id}}" class="btn"><i class="fa fa-map-marker"></i> Track Order</a></h5>
-                        @empty 
-                        <p> Anda Belum Melakukan Transaksi</p>
-                        @endforelse
-                      </div>
-                    </div>
-                  </div>
-              </div>
-           </div>
-    </section>
-    @endsection 
-    --}}
-    <!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
 	<!-- Required meta tags -->
@@ -101,7 +64,7 @@
 					<li><a href="/homepublik">Home</a></li>
 					<li><a href="/item_publik">All Product</a></li>
 					<li><a href="/kategori_publik">Category</a></li>
-					<li><a href="/prof">Transaction</a></li>
+					<li><a href="/trans">Transaction</a></li>
 					<li><a href="/prof">Profile</a></li>
 					<!-- <li><a href="/dashboard">My Profile</a></li> -->
 					<li><a href="{{ route('logout') }}"
@@ -134,34 +97,19 @@
         <div class="poto__img">
 					<img src="{{ asset( 'assets2/images/bg-profile3.jpg' )}}" >
               <div class="textname">{{Auth::user()->name}}</div>
-					</div>
+              <div class="textprofil">{{Auth::user()->jeniskelamin}}</div>
+              <div class="textprofil">{{Auth::user()->tanggal_lahir}}</div>
+              <div class="textprofil">{{Auth::user()->alamat}}</div>
+            </div>
           <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
-          <div class="books-brand-button">
+          <div class="books-brand-button mt-4">
             <a href="{{route('prof.edit', Auth::user()->id )}}" class="brand-button" style="width: 65%;">Settings Your Profile</a>
           </div>
-          {{-- <div class="books-brand-button">
-            <a href="/trans" class="brand-button" style="width: 65%;">Your Transaction</a>
-            </div> --}}
-            <div class="col-sm-2"></div>
             </div>
-        </div>
-        <div class="card" style="border: 0;">
-          <div class="card-body" style="background-color: #fffaf4;">
-            <div class="mt-2">
-              <h5  style="color:#c18f59;"> Order Saya ({{$sums}})</h5>
-                <div class="mt-4">
-                  @forelse ($odetail as $det)
-                  <h5> {{$det->first_name}} <a href="{{ route('transaction.show', $det->order_id) }}"><span class="badge badge-warning">Show</span></a> 
-                    <a href="{{url('trackOrder')}}/{{$det->order_id}}" class="btn"><i class="fa fa-map-marker"></i> Track Order</a></h5>
-                  @empty 
-                  <p> Anda Belum Melakukan Transaksi</p>
-                  @endforelse
-                </div>
-              </div>
-            </div>
-        </div>
+          </div>
+      </div>       
 			</div>
   </section>
 

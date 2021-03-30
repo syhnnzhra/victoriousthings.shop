@@ -1,37 +1,35 @@
-@extends('publik/layout/layout')
+@extends('publik/layout/layoutwo')
 
-    @section('title', 'Cart')
-
+    @section('Second Things - Cart')
 
     @section('container')
     <!-- Container -->
         <section class="fh5co-books" style="font-family: 'Calisto-MT';">
             <div class="site-container">
-		        <h2 class="universal-h2 universal-h2-bckg mt-5" style='font-size:35px ;color: #c18f59;'>Detail Transaction</h2>
-                <div class="row">
-						<div class="col-sm-8">
-							<p class="text-dark mb-2" style="font-weight: normal; font-size:16px; text-transform: uppercase;">Billing Address</p>
+		        <div class="textatas">Order Confirmation</div>
+                <div class="layoutbg">
+                <div class="textkiri">
+                    <p class="textmedium">Billing Address</p>
 							<address>
 								{{$order->first_name}} {{$order->last_name}}
 								<br> Email: {{Auth::user()->email}}
 								<br> Phone: {{$order->telephone}}
 								<br> Postcode: {{$order->kode_pos}}
 							</address>
-						</div>
-						<div class="col-sm-4">
-							<p class="text-dark mb-2" style="font-weight: normal; font-size:16px;">Details</p>
+                </div>
+                <div class="textkanan">
+                    <p class="textmedium">Details</p>
 							<address>
 								Invoice ID: 
-								<span class="text-dark"># {{$order->order_id}}</span>
+								<span ># {{$order->order_id}}</span>
 								<br> {{($order->updated_at) }}
-								<br> Status: 
 								<br> Payment Status: {{$order->payment_status}}
 								<br> Shipped by: Calliroe Dev
 							</address>
-						</div>
-					</div>
+                </div>
+                <div class="garisdot"></div>
 					<div class="table-responsive">
-                        <table class="table">
+                        <table class="table" style="color: #99754e;">
                             <thead>
                                 <tr>
                                     <td>Produk</td>
@@ -78,15 +76,18 @@
                                 </tr>
                             </tfoot>
                         </table>
-            </div>
+                    </div>
                     <div class="row">
                         <div class="col-sm-9"></div>
                         <div class="col-sm-3 text-right"> 
                             @if (!$order->isPaid())
-                                <a class="brand-button" href="{{$order->payment_url}}">Proceed to Payment</a>
+                            <div class="books-brand-button">
+                                <a href="{{$order->payment_url}}" class="brand-button" style="width: 200px">Proceed to Payment</a>
+                              </div>
                             @endif 
                         </div>
                     </div>
+                </div>
         </section>
 	<!-- Container end -->
     @endsection

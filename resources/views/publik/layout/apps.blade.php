@@ -66,7 +66,7 @@
 					<li><a href="/homepublik">Home</a></li>
 					<li><a href="/item_publik">All Product</a></li>
 					<li><a href="/kategori_publik">Category</a></li>
-					<li><a href="/prof">Transaction</a></li>
+					<li><a href="/trans">Transaction</a></li>
 					<li><a href="/prof">Profile</a></li>
 					<!-- <li><a href="/sell">Sell</a></li> -->
 					<!-- <li><a href="/dashboard">My Profile</a></li> -->

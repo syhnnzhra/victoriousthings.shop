@@ -22,8 +22,6 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
 </head>
 <body style="background-color:rgb(255, 255, 255)">
     
@@ -57,6 +55,7 @@
 					<li><a href="/">Home</a></li>
 					<li><a href="/items">All Product</a></li>
 					<li><a href="/login">Category</a></li>
+					<li><a href="/login">Profile</a></li>
 					<li>
 						@auth
 						@else

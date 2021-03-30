@@ -1303,11 +1303,11 @@
   
       .textrack{
           font-family: "Calisto-MT"; 
-          font-size: 20px;
+          font-size: 24px;
           margin: 50px 50px 50px 50px;
           justify-content: space-between; 
       }
-      @media (max-width: 992px) {
+      @media (max-width: 1024px) {
           .textrack{
           font-size: 22px;
           margin: 35px 35px 35px 35px;
@@ -1498,23 +1498,189 @@
    .textname{
      font-size: 30px;
      color: #c18f59;
-     margin-bottom: 20px;
+     margin-bottom: 10px;
      border-radius: 10px;
-   }
-   .bckgprofil{
-      position: absolute;
-      background-color: rgb(236,196,151);
-      background-position: center;
-      background-size: cover;
-      top: 313px;
-      right: 0;
-      width: 100%;
-      height: 25%;
-      z-index: -1;
    }
    .layoutbutton{
      margin-left: 360px;
    }
+   .textprofil{
+     font-size: 20px;
+     color: #c18f59;
+     margin: 5px 315px;
+     padding: 5px 20px;
+     border-width: 1.5px;
+     border-style: solid;
+     border-top-color: rgba(255, 0, 0, 0);
+     border-bottom-color: #c18f59;
+     border-left-color: rgba(255, 0, 0, 0);
+     border-right-color: rgba(255, 0, 0, 0);
+   }
+   @media (max-width: 1251px){
+     .textprofil{
+      margin: 5px 300px;
+     }
+   }
+   @media (max-width: 1178px){
+    .textprofil{
+     margin: 5px 280px;
+    }
+  }
+  @media (max-width: 1104px){
+    .textprofil{
+     margin: 5px 260px;
+    }
+  }
+  @media (max-width: 1036px){
+    .textprofil{
+     margin: 5px 240px;
+    }
+  }
+   @media (max-width: 980px){
+    .textprofil{
+     margin: 5px 230px;
+    }
+  }
+  @media (max-width: 901px){
+    .textprofil{
+     margin: 5px 220px;
+     font-size: 17px;
+    }
+  }
+  @media (max-width: 852px){
+    .textprofil{
+     margin: 5px 200px;
+    }
+  }
+  @media (max-width: 787px){
+    .textprofil{
+     margin: 5px 180px;
+     font-size: 15px;
+    }
+  }
+  @media (max-width: 698px){
+    .textprofil{
+     margin: 5px 140px;
+     font-size: 15px;
+    }
+  }
+  @media (max-width: 594px){
+    .textprofil{
+     margin: 5px 100px;
+     font-size: 15px;
+    }
+  }
+  @media (max-width: 540px){
+    .textprofil{
+     margin: 5px 80px;
+     font-size: 15px;
+    }
+  }
+  @media (max-width: 480px){
+    .textprofil{
+     margin: 5px 60px;
+     font-size: 15px;
+    }
+  }
+  @media (max-width: 414px){
+    .textprofil{
+     margin: 5px 40px;
+     font-size: 13px;
+    }
+  }
+  @media (max-width: 320px){
+    .textprofil{
+     margin: 5px 30px;
+     font-size: 12px;
+    }
+  }
+  .garisdot{
+     color: #c18f59;
+     border-width: 2px;
+     border-style: solid;
+     border-top-color: rgba(255, 0, 0, 0);
+     border-bottom-color: #c18f59;
+     border-bottom-style: dotted;
+     border-left-color: rgba(255, 0, 0, 0);
+     border-right-color: rgba(255, 0, 0, 0);
+  }
+  .garis{
+     color: #c18f59;
+     border-width: 3px;
+     border-style: solid;
+     border-top-color: rgba(255, 0, 0, 0);
+     border-bottom-color: #c18f59;
+     border-left-color: rgba(255, 0, 0, 0);
+     border-right-color: rgba(255, 0, 0, 0);
+  }
+  .layoutbg{
+    width: 70% ;
+    margin: auto;
+  }
+  @media (max-width: 600px){
+    .layoutbg{
+      width: 100%;
+    }
+  }
+  .layoutbg .textkiri{
+    float: left;
+    width: 50%;
+    padding: 10px;
+    color: #99754e;
+  }
+  .layoutbg .textkanan{
+    float: right;
+    text-align: right;
+    width: 50%;
+    padding: 10px;
+    color: #99754e;
+  }
+  @media (max-width: 600px){
+    .textkanan{
+      width: 100%;
+      font-size: 14px;
+    }
+  }
+  @media (max-width: 600px){
+    .textkiri{
+    width: 100%;
+    font-size: 14px;
+  }
+}
+  .textmedium{
+    font-size: medium;
+    font-size: 18px;
+    color: #c18f59;
+  }
+  @media (max-width: 600px){
+    .textmedium{
+    width: 100%;
+    font-size: 17px;}
+  }
+  .textmediumbckg{
+    font-size: medium;
+    padding: 20px 20px;
+    font-size: 18px;
+    background-color: #c18f59;
+    color: #ffffff;
+  }
+  @media (max-width: 600px){
+    .textmediumbckg{
+    width: 100%;
+    font-size: 17px;
+  }
+  }
+  .textatas{
+  font-size: 45px;
+  text-align: center;
+  color: #c18f59; 
+}
+  @media (max-width: 668px) {
+    .textatas {
+      font-size: 30px; } 
+  }
+  
+  
      
     
     
