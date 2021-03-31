@@ -139,12 +139,12 @@
                             </li>
                       </ul>
                     </li>
-                            <!-- <li class="sub-menu">
+                            <li class="sub-menu">
                                 <a class="nav-link {{ Request::path() === 'customer' ? 'bg-primary' :''}} " href="/customer">
                                     <i class="glyphicon glyphicon-user"></i>
                                     <span>Customer</span>
                                 </a>
-                            </li> -->
+                            </li>
                             <li class="sub-menu">
                                 <a class="nav-link {{ Request::path() === 'distributor' ? 'bg-primary' :''}} " href="/distributor">
                                 <i class="fa fa-book"></i>

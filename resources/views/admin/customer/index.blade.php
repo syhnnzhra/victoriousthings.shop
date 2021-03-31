@@ -10,39 +10,26 @@
                         <div class="content-panel">
                             <div class="content ml-4">
                                 <h2> Tabel Customer </h2>
-                                    <div class="new-data">
-                                        <a href="{{url('/customer/create')}}" class="btn btn-outline-success btn-lg mt-3"><i class="fa fa-plus"></i> Tambah Data</a>
-                                    </div>
                                     <div class="table mt-3">
                                         <table class="table">
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
                                                     <th>Nama</th>
+                                                    <th>E-Mail</th>
                                                     <th>Telephone</th>
-                                                    <th>Alamat</th>
                                                     <th>Jenis Kelamin</th>
-                                                    <th>Aksi</th>
+                                                    <!-- <th>Aksi</th> -->
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                            @foreach($customer as $pelanggan)
+                                            @foreach($user as $pelanggan)
                                                 <tr>
                                                     <td>{{$pelanggan->id}}</td>
-                                                    <td>{{$pelanggan->nama}}</td>
-                                                    <td>{{$pelanggan->no_telp}}</td>
+                                                    <td>{{$pelanggan->name}}</td>
+                                                    <td>{{$pelanggan->email}}</td>
                                                     <td>{{$pelanggan->alamat}}</td>
-                                                    <td>{{$pelanggan->jenis_kelamin}}</td>
-                                                    <td>
-                                                            <a href="{{route('customer.edit',$pelanggan->id)}}" class="btn btn-outline-warning"><i class="fa fa-edit"></i></a> 
-                                                            <form action="{{route('customer.destroy',$pelanggan->id)}}" method="post" class="d-inline">
-                                                                @csrf
-                                                                @method('delete')
-                                                                <button type="submit" class="btn btn-outline-danger">
-                                                                <i class="fa fa-trash-o"></i>
-                                                                </button>
-                                                            </form>
-                                                    </td>
+                                                    <td>{{$pelanggan->jeniskelamin}}</td>
                                                 </tr>
                                             @endforeach
                                             </tbody>
