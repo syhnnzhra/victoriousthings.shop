@@ -132,12 +132,11 @@ class PaymentController extends Controller
 		];
 
 		// return response($response, 200);
-		return redirect('/transaction/show/', $order->order_id);
+		return redirect('/success');
     }
-    public function complete(Request $request){
+    public function conpleted(Request $request){
         $code = $request->query('order_id');
 		$order = Order::where('order_id', $code)->firstOrFail();
-		// $cart = Cart::where('status', 'Belum Dibayar')->where('user_id', Auth::user()->id)->get();
 		// foreach($cart as $c){
 		// 	$c->status="Confirmed";
 		// 	$c->save();
@@ -149,12 +148,12 @@ class PaymentController extends Controller
 
 		\Session::flash('success', "Thank you for completing the payment process!");
 
-		return redirect('transaction/'. $order->order_id);
+		return redirect('/success');
     }
     public function failed(Request $request){
-        //
+        return redirect('/failed');
     }
     public function unfinish(Request $request){
-        //
+        return redirect('/failed');
     }
 }

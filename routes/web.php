@@ -5,11 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 
-
-// Route::get('/', function () {
-    //     return view('welcome');
-    // });
-
+    
     Route::resource('/', 'WelcomeController');
     Route::get('/items', 'WelcomeController@item');
     Route::auth();
@@ -17,8 +13,8 @@ use Illuminate\Support\Facades\Auth;
     
     // Route::get('/home', 'HomeController@index');
     // halaman awal admin
-Route::group(['middleware' => 'App\Http\Middleware\isAdmin'], function () {
-    // Route::resource('/home', 'Admin\HomeController')->middleware('isAdmin');
+    Route::group(['middleware' => 'App\Http\Middleware\isAdmin'], function () {
+        // Route::resource('/home', 'Admin\HomeController')->middleware('isAdmin');
     Route::resource('/home', 'Admin\HomeController');
     
     //item
@@ -42,17 +38,25 @@ Route::group(['middleware' => 'App\Http\Middleware\isAdmin'], function () {
     
     //order detail
     Route::resource('/Odetail', 'Admin\OdetailController'); 
-
-     //report
+    
+    //report
     Route::get('/report', 'Admin\ReportController@index');
     Route::get('/print', 'Admin\ReportController@print')->name('print');
 });
 
 //payment
 Route::post('/payments/notification', 'Publik\PaymentController@notification');
-Route::get('/payments/complete', 'Publik\PaymentController@complete');
+Route::get('/payments/complete', 'Publik\PaymentController@conpleted');
 Route::get('/payments/failed', 'Publik\PaymentController@failed');
 Route::get('/payments/unfinish', 'Publik\PaymentController@unfinish');
+
+    // kalo berhasil
+    Route::get('/success', function () {
+        return view('publik.sukses');
+    });
+    Route::get('/failed', function () {
+        return view('publik.gagal');
+    });
 
 // halaman awal publik
 Route::group(['middleware'=>['App\Http\Middleware\Publik']], function(){ 
