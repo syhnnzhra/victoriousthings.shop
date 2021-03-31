@@ -25,7 +25,7 @@
 			<div class="row">
 		<div class="books">
 		@forelse ($item as $item)
-		  <div class="col-lg-3 col-md- col-sm-12">
+		  <div class="col-lg-3">
 			  <div class="single-book">
 				  <a href="{{url('/cart',$item->item_id)}}" class="single-book__img" >
 					 <img src="{{ asset('gambar/'.$item->foto) }}" alt="single book and cd" height="300px" >

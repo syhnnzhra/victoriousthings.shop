@@ -31,7 +31,7 @@ class CategoryController extends Controller
 
     public function kategori($category_id)
     {
-        $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
+        $sum = Cart::where('user_id',Auth::user()->id)->where('order_id', '0')->count('user_id');
         $categori = Category::find($category_id);
         $item = Item::where('kategori_id', $category_id)->get();
         $kat = Category::all();
@@ -45,12 +45,13 @@ class CategoryController extends Controller
         $sum = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
         $searchp = $request->searchp;
         $item = Item::where('nama', 'like', '%'.$searchp.'%')->paginate(5);
-            return view('publik.category.index', compact('item','sum'));
+        $kat = Category::all();
+            return view('publik.category.index', compact('kat','item','sum'));
     }
     
     public function show($item_id)
     {
-        $data['sum'] = Cart::where('user_id',Auth::user()->id)->where('status', 'Belum Dibayar')->count('user_id');
+        $data['sum'] = Cart::where('user_id',Auth::user()->id)->where('order_id', '0')->count('user_id');
         $data['item']=Item::findOrFail($item_id);
         return view('publik.category.detailproduk', $data);
     }

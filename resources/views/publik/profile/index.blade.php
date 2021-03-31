@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="{{asset('assets2/css/slick.css')}}">
 	<link href="{{asset('assets2/css/bootstrap.css')}}" rel="stylesheet">
 	<link href="{{asset('assets2/js/jequery.js')}}" rel="stylesheet">
+	<link rel="icon" type="image/png" href="{{ asset('assets2/images/icons/logo1.png')}}"/>
 
 	<title>Second Things - My Profile</title>
 	<!-- link online -->
