@@ -1679,6 +1679,26 @@
     .textatas {
       font-size: 30px; } 
   }
+  .bgprof{
+    width: 54%;
+    height: 570px;
+    background-color: #d0aa82;
+    margin: auto;
+
+  }
+  @media (max-width: 600px){
+    .bgprof{
+      width: 100%;
+    }
+  }
+  .borderprof{
+    position: absolute;
+    border-width: 1.5px;
+    border-style: solid;
+    padding: 20px 20px;
+    margin: 30px 30px;
+    border-color: #000;
+  }
   
   
      

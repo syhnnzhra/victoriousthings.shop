@@ -27,18 +27,20 @@
 					<th>#</th>
 					<th>Order ID</th>
 					<th>Item ID</th>
-					<th>Nama Barang</th>
-					<th>Jumlah</th>
-					<th>Total</th>
+					<th>Item's Name</th>
+					<th>Harga</th>
+					<th>Qty</th>
+					<th>SubTotal</th>
 				</tr>
 			</thead>
 			<tbody>
 				@foreach($report_order as $r)
 					<tr>
 						<td>{{ $loop->iteration }}</td>
-						<td><center>{{$r->order_id}}</center></td>
-						<td><center>{{$r->item_id}}</center></td>
+						<td>{{$r->order_id}}</td>
+						<td>{{$r->item_id}}</td>
 						<td>{{$r->item->nama}}</td>
+						<td>Rp {{number_format($r->item->harga) }}</td>
 						<td><center>{{$r->qty}}</center></td>
 						<td>Rp {{number_format($r->item->harga * $r->qty)}}</td>
 					</tr>
@@ -55,7 +57,7 @@
 							$jmlh+= $value->qty;
 						}
 					?>
-					<td colspan="4"><center>Jumlah Pendapatan</center></td>
+					<td colspan="5"><center>Jumlah Pendapatan</center></td>
 					<td> <center> {{number_format($jmlh)}} </center></td>
 					<td>Rp {{number_format($subtotal)}}</td>
 				</tr>

@@ -1,4 +1,4 @@
-
+{{-- 
 @extends('publik/layout/layout')
 
 @section('title', 'Second Things - My Profile')
@@ -7,27 +7,13 @@
 @section('container')
 <section class="fh5co-books">
     <div class="site-container">
-        <h2 class="universal-h2 universal-h2-bckg mt-5" style='font-size: 35px ; color: #c18f59;'>Profile</h2>
+        <h2 class="textatas" >Profile</h2>
         <form action="{{route('prof.update',$data->id)}}" method="post">
             @Method('PUT')
             @csrf
                 <div class="container">
                     <div class="main-body">
                         <div class="row gutters-sm">
-                            <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                <div class="d-flex flex-column align-items-center text-center">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
-                                    <div class="mt-3">
-                                        <a id="" style='font-size:25px ;color: #c18f59;' href="/prof" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                            {{ Auth::user()->name }}
-                                            </a>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                            </div>
                             <div class="col-md-8">
                             <div class="card mb-3">
                                 <div class="card-body">
@@ -109,4 +95,225 @@
                     </div>
     </div>
 </section>
-@endsection
+@endsection --}}
+<!doctype html>
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="{{asset('assets2/css/style.css')}}">
+	<link rel="stylesheet" href="{{asset('assets2/css/slick.css')}}">
+	<link href="{{asset('assets2/css/bootstrap.css')}}" rel="stylesheet">
+	<link href="{{asset('assets2/js/jequery.js')}}" rel="stylesheet">
+
+	<title>Second Things - My Profile</title>
+	<!-- link online -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+
+  <!-- Bootstrap core CSS -->
+  <link href="{{asset('assets2/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+
+
+	<!-- end link -->
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+	<style>
+		.body{
+			background-color: #ffffff;
+		}
+        
+	</style>
+
+</head>
+<body style="background-color:#ffffff">
+    
+	<!-- Navigation -->
+	<nav class="site-navigation">
+		<div class="site-navigation-inner site-container">
+            @guest
+            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}">
+                @if (Route::has('register'))
+                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                @endif
+                @else
+                    <a id="" class='textsite fas fa-user-circle mt-1 mr-2'  href="/prof" role="button" aria-haspopup="true" aria-expanded="false" v-pre>
+                    {{ Auth::user()->name }}
+                    </a>
+                @endguest
+			<a href="">
+				<a href="/cartp" class="icons">
+					<i class="textsite fas fa-shopping-cart mt-2" ></i>
+                    <a class="iconsum" style="color:#c18f59"><b> {{$sum}} </b> </a>
+                </a>
+
+			<div class="demo-2 search mr-auto ml-3">
+		
+			</div>
+			<div class="main-navigation">
+				<ul class="main-navigation__ul">
+					<li><a href="/homepublik">Home</a></li>
+					<li><a href="/item_publik">All Product</a></li>
+					<li><a href="/kategori_publik">Category</a></li>
+					<li><a href="/trans">Transaction</a></li>
+					<li><a href="/prof">Profile</a></li>
+					<li><a href="{{ route('logout') }}"
+						onclick="event.preventDefault();
+										document.getElementById('logout-form').submit();">
+							{{ __('Logout') }}
+							<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+								@csrf
+							</form></a></li>
+					
+				</ul>
+			</div>
+			<div id="myBtn" class="burger-container" onclick="myFunction(this)">
+				<div class="bar1" ></div>
+				<div class="bar2"></div>
+				<div class="bar3"></div>
+			</div>
+			<script>
+				function myFunction(x) {
+					x.classList.toggle("change");
+				}
+			</script>
+
+		</div>
+	</nav>
+    <section class="fh5co-books">
+		<div class="site-container">
+            <h2 class="textatas" >Profile</h2>
+		<div class="bgprof">
+		<div class="borderprof">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-3">
+                    <h6 class="mb-0">Nama</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <input type="text" name="name" value="{{ $data ? $data->name : '' }}">
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3">
+                    <h6 class="mb-0">Jenis Kelamin</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <select class="form-control kota-tujuan" name="jeniskelamin" id="kota-tujuan">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3">
+                    <h6 class="mb-0">Tanggal Lahir</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <input type="date" name="tanggal_lahir" value="{{ $data ? $data->tanggal_lahir : '' }}">
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3">
+                    <h6 class="mb-0">Alamat</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    <input type="text" name="alamat" value="{{ $data ? $data->alamat : '' }}">
+                </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3">
+                    <h6 class="mb-0">Provinsi</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <select class="form-control" required name="province_id" id="">
+                            <option value="">Pilih Provinsi</option>
+                            @foreach($prov as $p)
+                                <option value="{{ $p->province_id }}">{{ $p->type }} {{ $p->title }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3">
+                    <h6 class="mb-0">Kota</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <select class="form-control" required name="city_id" id="">
+                            <option value="">Pilih Kota</option>
+                            @foreach($city as $c)
+                                <option value="{{ $c->city_id }}">{{ $c->type }} {{ $c->title }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <hr>
+                <div class="books-brand-button">
+                <button type="submit" class="brand-button">Save</button>
+        </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- Script-->
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="{{asset('assets2/js/jquery.min.js')}}"></script>
+  <script src="{{asset('assets2/js/slick.min.js')}}"></script>
+  <script src="{{asset('assets2/js/main.js')}}"></script>
+
+  @push('addon-script')
+  <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-36251023-1']);
+      _gaq.push(['_setDomainName', 'jqueryscript.net']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+  </script>
+  <script>
+      $('form').jAutoCalc();
+          $('form').jAutoCalc({
+              attribute: 'jAutoCalc',
+              thousandOpts: [',', '.', ' '],
+              decimalOpts: ['.', ','],
+              decimalPlaces: -1,
+              initFire: true,
+              chainFire: true,
+              keyEventsFire: false,
+              readOnlyResults: true,
+              showParseError: true,
+              emptyAsZero: false,
+              smartIntegers: false,
+              onShowResult: null,
+              funcs: {},
+              vars: {}
+          });
+  </script>
+@endpush
+</body>
+</html>
