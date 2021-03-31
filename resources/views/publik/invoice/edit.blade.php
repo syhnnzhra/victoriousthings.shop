@@ -1,4 +1,4 @@
-@extends('publik/layout/layout')
+@extends('publik/layout/layoutwo')
 
     @section('title', 'Second Things - Transaction')
 
