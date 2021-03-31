@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="{{asset('assets2/css/slick.css')}}">
 	<link href="{{asset('assets2/css/bootstrap.css')}}" rel="stylesheet">
 	<link href="{{asset('assets2/js/jequery.js')}}" rel="stylesheet">
+	<link rel="icon" type="image/png" href="{{ asset('assets2/images/icons/logo1.png')}}"/>
 
 	<title>Second Things</title>
 	<!-- link online -->
@@ -40,8 +41,7 @@
 			</a> -->
 			<div class="container-fluid">
 				<a class="navbar-brand" href="#">
-				<img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-top">
-					Logo
+				<img src="{{asset('assets2/images/logo.png') }}" alt="" width="80px" height="80px" class="d-inline-block align-top">
 				</a>
 			</div>
 			<div class="demo-2 search mr-auto">
